@@ -2,7 +2,7 @@
 ## SAILING ROBOT 2019
 ##
 
-    - At worst, we'll have a submarine.
+    	- At worst, we'll have a submarine.
 
 ##
 ## DOCUMENTATION
