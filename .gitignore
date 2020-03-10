@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Båt binär fil
+Boat/boat
+
+# Demo binära filer
+Demo/logDemo
+Demo/utils
+Demo/simulation
