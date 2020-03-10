@@ -3,7 +3,7 @@
 #include <chrono>
 
 #include "../Utilities/Data_Containers/GPS_POSITION.hpp"
-#include "../Utilities/ind.hpp"
+#include "../Utilities/utilities.hpp"
 
 #include "../Modules/Compass/Module_CMPS12.hpp"
 #include "../Modules/GPS/Module_GPS.hpp"
@@ -454,7 +454,7 @@ int main(int argc, char* argv[])
 		std::cout << " -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.- " << std::endl;
     }
 
-	
+
     servo_sail.set_target(0.1);
     servo_rudder.set_target(0);
     std::cout << "JOURNEY DONE!" << std::endl;
