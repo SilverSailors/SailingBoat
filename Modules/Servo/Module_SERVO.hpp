@@ -1,27 +1,27 @@
 #ifndef __MODULE_SERVO_HPP__
 #define __MODULE_SERVO_HPP__
 #include "../../Hardware/MAESTRO/MAESTRO.hpp"
-class Module_SERVO
-{
-	private:
-		bool 	m_initialized;
 
-		double	m_upper_boundary;
-		double	m_lower_boundary;
+class Module_SERVO {
+ private:
+  bool m_initialized;
 
-		int		m_channel;
+  double m_upper_boundary;
+  double m_lower_boundary;
 
-		double	m_target;
+  int m_channel;
 
-		MAESTRO	m_servo_hardware_connection;
+  double m_target;
 
-	public:
-		Module_SERVO(double lower_limit, double upper_limit, int channel);
+  MAESTRO m_servo_hardware_connection;
 
-		bool init();
+ public:
+  Module_SERVO(double lower_limit, double upper_limit, int channel);
 
-		void run();
-		void set_target(double limit);
-		
+  bool init();
+
+  void run();
+  void set_target(double limit);
+
 };
 #endif//__MODULE_SERVO_HPP__

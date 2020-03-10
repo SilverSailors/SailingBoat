@@ -2,28 +2,28 @@
 #define __MODULE_GPS_HPP__
 #include "../../Hardware/GPS/GPS.hpp"
 #include "../../Hardware/GPS/GPS_data.hpp"
-class Module_GPS
-{
-	private:
 
-		bool				m_initialized;
+class Module_GPS {
+ private:
 
-		GPS					m_gps_hardware_connection;
+  bool m_initialized;
 
-		GPS_DATA		m_data_reading;
+  GPS m_gps_hardware_connection;
 
-		//Have we read the latest reading already?
-		bool        m_new_data_available;
+  GPS_DATA m_data_reading;
 
-	public:
-		Module_GPS();
+  //Have we read the latest reading already?
+  bool m_new_data_available;
 
-		bool init();
+ public:
+  Module_GPS();
 
-		void run();
-		GPS_DATA get_reading();
+  bool init();
 
-		void report();
-    bool is_new_data_avilable();
+  void run();
+  GPS_DATA get_reading();
+
+  void report();
+  bool is_new_data_avilable();
 };
 #endif//__MODULE_GPS_HPP__
