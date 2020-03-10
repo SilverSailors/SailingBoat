@@ -51,7 +51,7 @@ GPS_DATA GPS::read()
 		}
 		else
 		{
-			time_t raw_time = gps_raw_data->fix.time;
+			time_t raw_time = gps_raw_data->fix.time.tv_sec;
 			char timeiso[20];
 			strftime(timeiso, sizeof(timeiso), "%Y-%m-%d-%H-%M-%S", localtime(&raw_time));
 
