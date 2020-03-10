@@ -5,59 +5,61 @@
 #include <vector>
 #include "../../Utilities/Data_Containers/GPS_POSITION.hpp"
 #include "ANGLE.hpp"
-class Control_Unit
-{
-    private:
 
-        bool                      m_active;                     //Is the Control Unit Activated
-        bool                      m_waypoint_reached;           //Have we reached our waypoint
-        bool                      m_waypoint_set;               //Have we set a waypoint?
-        bool                      m_destination_set;            //Have we set a destination
-        bool                      m_destination_reached;        //Have we reached our destination
+class Control_Unit {
+ private:
 
-        std::queue<GPS_POSITION>  m_destination;                //Queue of all our destinations
-        GPS_POSITION              m_waypoint;                   //Our current waypoint
+  bool m_active;                     //Is the Control Unit Activated
+  bool m_waypoint_reached;           //Have we reached our waypoint
+  bool m_waypoint_set;               //Have we set a waypoint?
+  bool m_destination_set;            //Have we set a destination
+  bool m_destination_reached;        //Have we reached our destination
 
-        double                    m_distance_threshold;         //The distance we are allowed to be away from the waypoint to consider it reached (Meters)
-        double                    m_time_threshold;             //How long should we wait until we establish a new waypoint If the old one hasnt been reached
-        double                    m_distance_factor;            //How far away should waypoints be from our initial position
-        double                    m_time_value;
-        double                    m_calculated_threshold;
-        double                    m_waypoint_distance_creation_threshold;
+  std::queue<GPS_POSITION> m_destination;                //Queue of all our destinations
+  GPS_POSITION m_waypoint;                   //Our current waypoint
 
-        ANGLE                     m_angle_direction;
+  double
+      m_distance_threshold;         //The distance we are allowed to be away from the waypoint to consider it reached (Meters)
+  double
+      m_time_threshold;             //How long should we wait until we establish a new waypoint If the old one hasnt been reached
+  double m_distance_factor;            //How far away should waypoints be from our initial position
+  double m_time_value;
+  double m_calculated_threshold;
+  double m_waypoint_distance_creation_threshold;
 
-    public:
-        Control_Unit();
+  ANGLE m_angle_direction;
 
-        bool          is_active();
-        bool          init(std::string destination, std::string settings);
+ public:
+  Control_Unit();
 
-        GPS_POSITION  get_destination();
-        void          set_destination(GPS_POSITION destination);
+  bool is_active();
+  bool init(std::string destination, std::string settings);
 
-        GPS_POSITION  get_waypoint();
-        void          set_waypoint(GPS_POSITION waypoint);
+  GPS_POSITION get_destination();
+  void set_destination(GPS_POSITION destination);
 
-        void          set_distance_threshold(double value);
-        double        get_distance_threshold();
+  GPS_POSITION get_waypoint();
+  void set_waypoint(GPS_POSITION waypoint);
 
-        bool          validate_inits(std::vector<bool> statuses);
-        bool          is_waypoint_set();
-        void          set_waypoint_status(bool status);
+  void set_distance_threshold(double value);
+  double get_distance_threshold();
 
-        void          alternate_angle();
-        ANGLE         get_angle_direction();
+  bool validate_inits(std::vector<bool> statuses);
+  bool is_waypoint_set();
+  void set_waypoint_status(bool status);
 
-        double        get_distance_factor();
+  void alternate_angle();
+  ANGLE get_angle_direction();
 
-        bool          time_discrepency_reached(int time_value);
+  double get_distance_factor();
 
-        void          set_time_value(int value);
-        double        get_calculated_threshold();
-        void          update_journey();
+  bool time_discrepency_reached(int time_value);
 
-        double        get_waypoint_creation_threshold();
+  void set_time_value(int value);
+  double get_calculated_threshold();
+  void update_journey();
+
+  double get_waypoint_creation_threshold();
 
 };
 #endif//__CONTROL_UNIT_HPP__
