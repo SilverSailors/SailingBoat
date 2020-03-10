@@ -32,9 +32,9 @@
 *.app
 
 # Båt binär fil
-Boat/boat.out
+Boat/boat
 
 # Demo binära filer
-Demo/logDemo.out
-Demo/utils.out
+Demo/logDemo
+Demo/utils
 
