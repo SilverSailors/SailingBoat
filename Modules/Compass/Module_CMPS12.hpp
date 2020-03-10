@@ -3,35 +3,35 @@
 #include <vector>
 #include "../../Hardware/CMPS12/CMPS12.hpp"
 #include "../../Hardware/CMPS12/CMPS12_data.hpp"
-class Module_CMPS12
-{
 
-    private:
-      //Hardware component for our compass module
-      CMPS12                    m_CMPS12_hardware_connection;
+class Module_CMPS12 {
 
-      //Latest reading
-      CMPS12_DATA               m_CMPS12_data_reading;
+ private:
+  //Hardware component for our compass module
+  CMPS12 m_CMPS12_hardware_connection;
 
-      //Is this module initialized
-      bool                      m_initialized;
+  //Latest reading
+  CMPS12_DATA m_CMPS12_data_reading;
 
-      //Have we read the latest reading already?
-      bool                      m_new_data_available;
+  //Is this module initialized
+  bool m_initialized;
 
-      double                    m_internal_offset;
+  //Have we read the latest reading already?
+  bool m_new_data_available;
 
-    public:
-      Module_CMPS12();
-      ~Module_CMPS12();
+  double m_internal_offset;
 
-      bool init();
-      void run();
-      bool getInitialized();
-      CMPS12_DATA get_reading();
-      void report();
+ public:
+  Module_CMPS12();
+  ~Module_CMPS12();
 
-      bool is_new_data_avilable();
+  bool init();
+  void run();
+  bool getInitialized();
+  CMPS12_DATA get_reading();
+  void report();
+
+  bool is_new_data_avilable();
 
 };
 #endif//__MODULE_CMPS12_HPP__
