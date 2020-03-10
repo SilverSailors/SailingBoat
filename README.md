@@ -1,2 +1,3 @@
 # SailingBoat
-Sailboat application
+Sailboat application for URSC 2020
+
