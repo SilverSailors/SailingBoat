@@ -1,0 +1,5 @@
+# Coordinates for our goal
+# Latitude Longitude
+# (NOTE THE Delimiter ',')
+60.10466745530005,19.94494629695896
+60.105162915344735,19.944656985343613

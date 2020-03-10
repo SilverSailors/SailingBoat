@@ -1,0 +1,5 @@
+#Destination Coordinates (Place in order of path) [NOTE THAT ',' IS OUR DELIMITER]
+1.1111,2.2222
+3.3333,4.4444
+5.5555,6.6666
+7.7777,8.8888
