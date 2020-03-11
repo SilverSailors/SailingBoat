@@ -5,6 +5,11 @@
 #include "GPS_data.hpp"
 
 class GPS {
+ public:
+  GPS();
+  bool init();
+  GPS_DATA read();
+
  private:
   bool m_initialized;
 
@@ -12,10 +17,6 @@ class GPS {
   //to use the init list to construct it,
   //parameters will be passed in init by make_unique<>()
   std::unique_ptr<gpsmm> m_gps;
-
- public:
-  GPS();
-  bool init();
-  GPS_DATA read();
 };
+
 #endif//__GPS_HPP__ 

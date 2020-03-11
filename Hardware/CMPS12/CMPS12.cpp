@@ -49,8 +49,6 @@ CMPS12_DATA CMPS12::read() {
     //Data set is valid
     compass_data.set_valid(true);
 
-
-
     //Bitshift relevant required data
     int bearing_16 = bitshift(
         raw_data[COMPASS_BEARING_16_HIGH_BYTE_DEGREES], raw_data[COMPASS_BEARING_16_LOW_BYTE_DEGREES]) / 16;
@@ -66,5 +64,4 @@ CMPS12_DATA CMPS12::read() {
     std::cout << "CMPS Hardware Not Initialized" << std::endl;
     return compass_data;
   }
-
 }

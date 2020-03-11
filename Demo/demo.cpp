@@ -61,7 +61,6 @@ int main(int argc, char *argv[]) {
 
   std::cout << "--------------" << std::endl;
 
-
   /*
   if(compass_state == false || servo_state == false || gps_state == false)
   {
@@ -114,7 +113,6 @@ int main(int argc, char *argv[]) {
     //std::cout << "WAYPOINT X : " << waypoint_vec.x << std::endl;
     //std::cout << "WAYPOINT Y : " << waypoint_vec.y << std::endl;
 
-
     //GET OFFSET FOR OUR DESTINATION BEARING
     int dest_offset = waypoint - bearing;
 
@@ -140,8 +138,6 @@ int main(int argc, char *argv[]) {
     double angle_of_approach = CU.calculate_angle_of_approach(waypoint,bearing);
     std::cout << "Recommended AOA IS: " << angle_of_approach << std::endl;
     */
-
-
   }
 
   return 0;

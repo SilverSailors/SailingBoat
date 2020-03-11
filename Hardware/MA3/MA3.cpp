@@ -29,7 +29,6 @@ bool MA3::init(int spi_channel) {
   wiringPiSetup();
   m_initialized = true;
   return m_initialized;
-
 }
 
 int MA3::read(int spi_channel) {
@@ -42,5 +41,4 @@ int MA3::read(int spi_channel) {
     std::cout << "Sensor not initialized!" << std::endl;
     return -1;
   }
-
 }

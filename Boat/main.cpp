@@ -1,30 +1,22 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-
 #include "../Utilities/Data_Containers/GPS_POSITION.hpp"
 #include "../Utilities/utilities.hpp"
-
 #include "../Modules/Compass/Module_CMPS12.hpp"
 #include "../Modules/GPS/Module_GPS.hpp"
 #include "../Modules/Wind_Sensor/Module_Wind_Sensor.hpp"
 #include "../Modules/Control_Unit/control_unit.hpp"
 #include "../Modules/Calculation_Unit/calculation_unit.hpp"
 #include "../Modules/Servo/Module_SERVO.hpp"
-
 #include "../Core/Logger/logger.hpp"
-
 #define RUDDER_CHANNEL 1
 #define SAIL_CHANNEL 0
-
 #define RUDDER_LOWER_THRESHOLD -1
 #define RUDDER_UPPER_THRESHOLD 1
-
 #define SAIL_LOWER_THRESHOLD 0
 #define SAIL_UPPER_THRESHOLD 1
-
 #define WIND_SENSOR_SPI_CHANNEL 0
-
 #define OFFSET 90
 
 //Multithreaded for polling devices at different time-intervals
@@ -104,7 +96,6 @@ int main(int argc, char *argv[]) {
       SAIL_UPPER_THRESHOLD,
       SAIL_CHANNEL);
 
-
   //#These will poll data for us
   Module_GPS module_gps;
   Module_CMPS12 module_compass;
@@ -128,7 +119,6 @@ int main(int argc, char *argv[]) {
   init_status[2] = module_gps.init();
   init_status[3] = module_compass.init();
   init_status[4] = module_wind.init();
-
 
   //Check if all modules were initialized properly
   bool components_initialized = control_unit.validate_inits(init_status);
@@ -202,7 +192,6 @@ int main(int argc, char *argv[]) {
     //module_gps.report();
     //module_wind.report();
 
-
     //Take a nap
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     //std::cout << "Primary Loop" << std::endl;
@@ -218,10 +207,9 @@ int main(int argc, char *argv[]) {
     CMPS12_DATA compass_reading = module_compass.get_reading();
     //int         wind_reading    = module_wind.get_reading();
 
-
     //Set a waypoint if there is none
     //NOTE Replace with DO-WHILE?
-    if (control_unit.is_waypoint_set() == false) {
+    if (!control_unit.is_waypoint_set()) {
       std::cout << "No Waypoint set" << std::endl;
 
       int wind_bearing = wind_reading;
@@ -309,7 +297,6 @@ int main(int argc, char *argv[]) {
     std::cout << "Wind Bearing IS: " << wind_bearing << std::endl;
     std::cout << "Boat Bearing Is: " << compass_bearing << std::endl;
 
-
     //Grab our current position and waypoint details
     GPS_POSITION current_position = Utilities::extract_position_from_data(gps_reading);
     GPS_POSITION waypoint_position = control_unit.get_waypoint();
@@ -336,7 +323,6 @@ int main(int argc, char *argv[]) {
     std::cout << "!! Waypoint Offset: " << waypoint_offset << std::endl;
     std::cout << "!! Wind offset: " << wind_offset << std::endl;
 
-
     //Generate Vectors to use in our calculation of positions (NOTE THE OFFSET IS 90)
     VEC2 rudder_vector = Utilities::degrees_to_vector(waypoint_offset + OFFSET);
     VEC2 sail_vector = Utilities::degrees_to_vector(wind_offset + OFFSET);
@@ -351,7 +337,6 @@ int main(int argc, char *argv[]) {
     //Set our servos with our calculated targets
     servo_rudder.set_target(rudder_setting);
     servo_sail.set_target(sail_setting);
-
 
     //DESTINATION CALCULATIONS
     double waypoint_distance = calculation_unit.calculate_distance(current_position, waypoint_position);
@@ -404,7 +389,6 @@ int main(int argc, char *argv[]) {
         control_unit.set_waypoint_status(false);
       }
     }
-
 
     //GENERATE LOG
     LOG fresh_log;

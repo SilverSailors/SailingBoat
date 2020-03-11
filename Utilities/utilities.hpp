@@ -6,7 +6,6 @@
 
 class Utilities {
  public:
-
   static double degrees_to_radians(double degrees);
   static double radians_to_degrees(double radians);
   static double convert_coordinates(double from_low, double from_high, double to_low, double to_high, double position);
@@ -16,6 +15,6 @@ class Utilities {
   static double flip_degrees(double degrees);
   static GPS_POSITION extract_position_from_data(GPS_DATA data);
   static double normalize(double degrees);
-
 };
+
 #endif//__UTILITIES_HPP__

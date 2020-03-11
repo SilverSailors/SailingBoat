@@ -33,7 +33,6 @@ void Module_Wind_Sensor::run() {
   int bearing_uncorrected = Utilities::convert_coordinates(2, 1020, 0, 359, reading);
   m_reading = Utilities::normalize(bearing_uncorrected + m_internal_offset);
   m_new_data_available = true;
-
 }
 
 int Module_Wind_Sensor::get_reading() {

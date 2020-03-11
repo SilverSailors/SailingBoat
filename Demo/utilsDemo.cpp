@@ -46,8 +46,6 @@ int main(void) {
   result = Utilities::coordinates_to_degrees(lat_default,lon_default,lat_e,lon_e);
   std::cout << "DEGREES EAST: " << result << std::endl;
 
-
-
    result = Utilities::coordinates_to_degrees(lat_default,lon_default,lat_s,lon_s);
   std::cout << "DEGREES SOUTH: " << result << std::endl;
 
@@ -123,9 +121,6 @@ int main(void) {
   GPS_POSITION waypoint = CU.calculate_waypoint(current_position, waypoint_distance, waypoint_angle);
 
   std::cout << "WAYPOINT: " << std::setprecision(20) << waypoint.latitude << "," << waypoint.longitude << std::endl;
-
-
-
 
   /*
   for(int i = 0; i < 360; i++)

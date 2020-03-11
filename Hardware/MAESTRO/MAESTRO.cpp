@@ -41,7 +41,6 @@ void MAESTRO::command(int handle, unsigned char channel, MAESTRO_REGISTRY comman
   if (write(handle, data, sizeof(data)) == -1) {
     std::cout << "ERROR WRITING COMMAND" << std::endl;
   }
-
 }
 
 int MAESTRO::get_file_descriptor() {

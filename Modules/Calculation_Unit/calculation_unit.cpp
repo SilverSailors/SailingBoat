@@ -101,7 +101,6 @@ double Calculation_Unit::calculate_angle_of_approach(double destination_bearing,
 GPS_POSITION Calculation_Unit::calculate_waypoint(GPS_POSITION current_position, double distance, double direction) {
   //STOLEN FROM THE INTERNET (Hence d, c, they did not specifiy what they meant)
 
-
   //LATITUDE
   double latitude_radians = Utilities::degrees_to_radians(current_position.latitude);
   double angle_radians = Utilities::degrees_to_radians(direction);
@@ -117,7 +116,6 @@ GPS_POSITION Calculation_Unit::calculate_waypoint(GPS_POSITION current_position,
   coords.latitude = corrected_latitude;
   coords.longitude = corrected_longitude;
   return coords;
-
 }
 
 double Calculation_Unit::calculate_distance(GPS_POSITION point_a, GPS_POSITION point_b) {

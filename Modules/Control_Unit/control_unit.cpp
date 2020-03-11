@@ -157,7 +157,6 @@ bool Control_Unit::validate_inits(std::vector<bool> statuses) {
     result = false;
   }
 
-
   //TEMP
   return true;
 
@@ -190,7 +189,6 @@ bool Control_Unit::time_discrepency_reached(int time_value) {
     return true;
   }
   return false;
-
 }
 
 void Control_Unit::set_time_value(int value) {

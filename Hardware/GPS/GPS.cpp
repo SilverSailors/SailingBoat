@@ -23,7 +23,6 @@ bool GPS::init() {
   }
 
   return true;
-
 }
 
 GPS_DATA GPS::read() {

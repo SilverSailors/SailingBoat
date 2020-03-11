@@ -5,7 +5,6 @@
 #include <vector>
 
 int main(void) {
-
   Calculation_Unit CU;
 
   GPS_POSITION start;

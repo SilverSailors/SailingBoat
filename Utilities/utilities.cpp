@@ -1,8 +1,8 @@
 #include "utilities.hpp"
 #include <math.h>
 #include <iostream>
-
 #define EPSILON 1e-14
+
 double Utilities::degrees_to_radians(double degrees) {
   return degrees * (M_PI / 180);
 }
@@ -52,7 +52,6 @@ double Utilities::coordinates_to_degrees(double lat1, double lon1, double lat2, 
   return radians_to_degrees(c);
   */
 
-
   double dy = lat2 - lat1;
   double dx = cos(M_PI / 180 * lat1) * (lon2 - lon1);
   double angle = atan2f(dy, dx);
@@ -69,14 +68,12 @@ double Utilities::coordinates_to_degrees(double lat1, double lon1, double lat2, 
   degrees = abs(degrees - 360);
 
   return degrees;
-
 }
 
 double Utilities::flip_degrees(double degrees) {
   if (degrees == 0) return 0;
 
   return abs(degrees - 360);
-
 }
 
 GPS_POSITION Utilities::extract_position_from_data(GPS_DATA data) {

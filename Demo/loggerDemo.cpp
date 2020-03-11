@@ -32,9 +32,7 @@ int main(void) {
       item.longitude = std::atof(split[1].c_str());
 
       gps_waypoints.push_back(item);
-
     }
-
   }
 
   std::cout << "We have #" << gps_waypoints.size() << " Waypoints to our destination" << std::endl;

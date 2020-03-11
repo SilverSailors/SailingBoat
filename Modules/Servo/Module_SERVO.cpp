@@ -33,7 +33,6 @@ void Module_SERVO::run() {
 
     //std::cout << "TARGET IS: " << servo_position << std::endl;
 
-
     m_servo_hardware_connection.command(
         m_servo_hardware_connection.get_file_descriptor(),
         m_channel,

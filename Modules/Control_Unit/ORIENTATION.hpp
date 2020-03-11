@@ -5,4 +5,5 @@ typedef enum {
   PORT = 0,
   STARBOARD = 1,
 } ANGLE;
+
 #endif//__ORIENTATION_HPP__
