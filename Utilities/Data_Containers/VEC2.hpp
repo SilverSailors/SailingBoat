@@ -10,4 +10,4 @@ class VEC2 {
   VEC2 operator-(const VEC2 &vector);
 };
 
-#endif//__VEC2_HPP__
+#endif //__VEC2_HPP__

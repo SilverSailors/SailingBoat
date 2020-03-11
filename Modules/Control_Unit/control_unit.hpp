@@ -48,4 +48,4 @@ class Control_Unit {
   ANGLE m_angle_direction;
 };
 
-#endif//__CONTROL_UNIT_HPP__
+#endif //__CONTROL_UNIT_HPP__

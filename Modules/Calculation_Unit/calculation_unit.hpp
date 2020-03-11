@@ -14,4 +14,4 @@ class Calculation_Unit {
  private:
 };
 
-#endif//__CALCULATION_UNIT_HPP__
+#endif //__CALCULATION_UNIT_HPP__

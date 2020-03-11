@@ -27,4 +27,4 @@ class GPS_DATA {
   std::string m_time;
 };
 
-#endif//__GPS_DATA_HPP__
+#endif //__GPS_DATA_HPP__

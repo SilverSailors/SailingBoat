@@ -8,4 +8,4 @@ class GPS_POSITION {
   double longitude;
 };
 
-#endif//__GPS_POSITION_HPP
+#endif //__GPS_POSITION_HPP

@@ -19,4 +19,4 @@ class GPS {
   std::unique_ptr<gpsmm> m_gps;
 };
 
-#endif//__GPS_HPP__ 
+#endif //__GPS_HPP__

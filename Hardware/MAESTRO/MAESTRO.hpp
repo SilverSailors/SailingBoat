@@ -19,4 +19,4 @@ class MAESTRO {
   int m_upper_limit;
 };
 
-#endif//__MAESTRO_HPP__
+#endif //__MAESTRO_HPP__

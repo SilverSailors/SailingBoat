@@ -19,4 +19,4 @@ class CMPS12 {
   int m_file_descriptor;
 };
 
-#endif//__CMPS12_HPP__
+#endif //__CMPS12_HPP__

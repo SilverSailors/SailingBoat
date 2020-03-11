@@ -17,4 +17,4 @@ class LOG {
  private:
 };
 
-#endif//__LOG_HPP__
+#endif //__LOG_HPP__

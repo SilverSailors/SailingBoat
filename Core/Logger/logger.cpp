@@ -9,7 +9,6 @@
 Logger::Logger(std::string path) {
   m_entries = 0;
   m_file_path = path;
-
 }
 
 void Logger::log_data(LOG packet) {
@@ -68,7 +67,6 @@ void Logger::publish_waypoint(GPS_DATA from, GPS_POSITION to, std::string messag
   io.write_file(output + " : " + message, m_file_path);
   m_entries++;
   m_available = false;
-
 }
 
 void Logger::write(std::string message) {

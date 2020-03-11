@@ -17,4 +17,4 @@ class Utilities {
   static double normalize(double degrees);
 };
 
-#endif//__UTILITIES_HPP__
+#endif //__UTILITIES_HPP__

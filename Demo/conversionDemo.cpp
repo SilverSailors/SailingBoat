@@ -2,7 +2,6 @@
 #include "../Modules/Calculation_Unit/calculation_unit.hpp"
 
 int main(int argc, char *argv[]) {
-
   Calculation_Unit CU;
 
   double test = 90;

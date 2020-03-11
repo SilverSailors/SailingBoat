@@ -13,4 +13,4 @@ class MA3 {
   int m_channel_config;
 };
 
-#endif//__MA3_HPP__
+#endif //__MA3_HPP__

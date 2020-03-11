@@ -119,7 +119,6 @@ GPS_POSITION Calculation_Unit::calculate_waypoint(GPS_POSITION current_position,
 }
 
 double Calculation_Unit::calculate_distance(GPS_POSITION point_a, GPS_POSITION point_b) {
-
   //Convert to radian
   double distance_latitude = Utilities::degrees_to_radians(point_b.latitude - point_a.latitude);
   double distance_longitude = Utilities::degrees_to_radians(point_b.longitude - point_a.longitude);

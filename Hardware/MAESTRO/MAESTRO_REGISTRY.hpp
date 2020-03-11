@@ -11,4 +11,4 @@ typedef enum {
   MAESTRO_SET_HOME = 0xA2
 } MAESTRO_REGISTRY;
 
-#endif//__MAESTRO_REGISTRY_HPP__
+#endif //__MAESTRO_REGISTRY_HPP__

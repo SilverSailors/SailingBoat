@@ -35,4 +35,4 @@ typedef enum {
   CALIBRATION_STATE_8 = 0x1E
 } CMPS12_I2C_REGISTRY;
 
-#endif//__CMPS12_I2C_REGISTRY__
+#endif //__CMPS12_I2C_REGISTRY__

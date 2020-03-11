@@ -20,4 +20,4 @@ class Logger {
   bool m_available;
 };
 
-#endif//__LOGGER_HPP__
+#endif //__LOGGER_HPP__

@@ -27,4 +27,4 @@ class Module_CMPS12 {
   double m_internal_offset;
 };
 
-#endif//__MODULE_CMPS12_HPP__
+#endif //__MODULE_CMPS12_HPP__

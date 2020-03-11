@@ -21,4 +21,4 @@ class Module_Wind_Sensor {
   bool m_new_data_available;
 };
 
-#endif//__MODULE_WIND_SENSOR_HPP__
+#endif //__MODULE_WIND_SENSOR_HPP__

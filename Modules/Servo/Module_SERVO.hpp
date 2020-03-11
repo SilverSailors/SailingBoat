@@ -18,4 +18,4 @@ class Module_SERVO {
   MAESTRO m_servo_hardware_connection;
 };
 
-#endif//__MODULE_SERVO_HPP__
+#endif //__MODULE_SERVO_HPP__

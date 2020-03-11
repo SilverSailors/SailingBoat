@@ -375,9 +375,7 @@ int main(int argc, char *argv[]) {
       debug_logger.publish_waypoint(gps_reading, ph, "[CHECKPOINT REACHED]");
       control_unit.update_journey();
       debug_logger.publish_waypoint(gps_reading, control_unit.get_destination(), "[NEXT DESTINATION]");
-
     } else {
-
       //HAS TOO MUCH TIME PASSED SINCE WE ESTABLISHED THE WAYPOINT
       int gps_time = gps_reading.get_time_value();
       std::cout << "GPS TIME: " << gps_time << std::endl;

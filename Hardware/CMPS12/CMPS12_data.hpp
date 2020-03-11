@@ -36,4 +36,4 @@ class CMPS12_DATA {
   int m_calibration;
 };
 
-#endif
+#endif //__CMPS12_DATA_HPP__

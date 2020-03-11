@@ -20,4 +20,4 @@ class Module_GPS {
   bool m_new_data_available;
 };
 
-#endif//__MODULE_GPS_HPP__
+#endif //__MODULE_GPS_HPP__

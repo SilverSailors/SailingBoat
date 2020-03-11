@@ -39,7 +39,6 @@ void Module_CMPS12::run() {
       int bearing = m_CMPS12_data_reading.get_entry(DATA_SET_COMPASS_BEARING_DEGREES_16);
       int calibrated = Utilities::normalize(bearing + m_internal_offset);
       m_CMPS12_data_reading.set_entry(DATA_SET_COMPASS_BEARING_DEGREES_16, calibrated);
-
     } else {
       std::cout << "CONNECTION ERROR: CHECK CABLING" << std::endl;
     }
@@ -63,7 +62,6 @@ void Module_CMPS12::report() {
     std::cout << "----------------------" << std::endl;
     m_new_data_available = false;
   }
-
 }
 
 bool Module_CMPS12::is_new_data_avilable() {

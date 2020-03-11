@@ -6,4 +6,4 @@ typedef enum {
   STARBOARD = 1,
 } ANGLE;
 
-#endif//__ORIENTATION_HPP__
+#endif //__ORIENTATION_HPP__
