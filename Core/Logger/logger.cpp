@@ -1,52 +1,52 @@
 #include "logger.hpp"
 #include <string>
-#include "../IO/IO.hpp"
-#include "../../Hardware/GPS/GPS_data.hpp"
+#include "../Io/io.hpp"
+#include "../../Hardware/Gps/gps_data.hpp"
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 
 Logger::Logger(std::string path) {
-  m_entries = 0;
-  m_file_path = path;
+  entries_ = 0;
+  file_path_ = path;
 }
 
-void Logger::log_data(LOG packet) {
-  m_log.m_latitude = packet.m_latitude;
-  m_log.m_longitude = packet.m_longitude;
-  m_log.m_timestamp = packet.m_timestamp;
+void Logger::LogData(Log packet) {
+  log_.latitude = packet.latitude;
+  log_.longitude = packet.longitude;
+  log_.timestamp = packet.timestamp;
 
-  m_available = true;
+  available_ = true;
 }
 
-void Logger::publish() {
-  if (m_available) {
-    //int bearing             = m_log.m_bearing;
-    double latitude = m_log.m_latitude;
-    double longitude = m_log.m_longitude;
-    //double speed            = m_log.m_speed;
-    std::string timestamp = m_log.m_timestamp;
-    //double waypoint         = m_log.m_distance_from_waypoint;
-    //double checkpoint       = m_log.m_distance_from_destination;
+void Logger::Publish() {
+  if (available_) {
+    //int bearing             = log_.bearing;
+    double latitude = log_.latitude;
+    double longitude = log_.longitude;
+    //double speed            = log_.speed;
+    std::string timestamp = log_.timestamp;
+    //double waypoint         = log_.distance_from_waypoint;
+    //double checkpoint       = log_.distance_from_destination;
 
     std::stringstream stream;
     stream << timestamp << " " << std::setprecision(15) << latitude << " " << std::setprecision(15) << longitude;
 
     std::string output = stream.str();
 
-    IO io;
-    io.write_file(output, m_file_path);
-    m_entries++;
-    m_available = false;
+    Io io;
+    io.WriteFile(output, file_path_);
+    entries_++;
+    available_ = false;
   } else {
-    std::cout << "NO NEW LOG AVAILABLE" << std::endl;
+    std::cout << "NO NEW Log AVAILABLE" << std::endl;
   }
 }
 
-void Logger::publish_waypoint(GPS_DATA from, GPS_POSITION to, std::string message) {
-  std::string timestamp = from.get_time();
-  double at_lat = from.get_latitude();
-  double at_lon = from.get_longitude();
+void Logger::PublishWaypoint(GpsData from, GpsPosition to, std::string message) {
+  std::string timestamp = from.GetTime();
+  double at_lat = from.GetLatitude();
+  double at_lon = from.GetLongitude();
 
   double dest_lat = to.latitude;
   double dest_lon = to.longitude;
@@ -63,16 +63,16 @@ void Logger::publish_waypoint(GPS_DATA from, GPS_POSITION to, std::string messag
          << std::setprecision(10) << dest_lon;
   std::string output = stream.str();
 
-  IO io;
-  io.write_file(output + " : " + message, m_file_path);
-  m_entries++;
-  m_available = false;
+  Io io;
+  io.WriteFile(output + " : " + message, file_path_);
+  entries_++;
+  available_ = false;
 }
 
-void Logger::write(std::string message) {
+void Logger::Write(std::string message) {
   std::stringstream stream;
   stream << message;
 
-  IO io;
-  io.write_file(message, m_file_path);
+  Io io;
+  io.WriteFile(message, file_path_);
 }
