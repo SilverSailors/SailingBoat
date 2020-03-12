@@ -19,7 +19,7 @@ bool ModuleWindSensor::Init() {
 
   IO io;
   Parser parser;
-  std::vector<std::string> data_raw = io.ReadFile("Settings/sensor_config.txt");
+  std::vector<std::string> data_raw = io.ReadFile("/home/alarm/.config/sailingBoat/settings/sensor_config.txt");
   std::vector<std::string> data_clean = parser.RemoveComments(data_raw);
   internal_offset_ = std::atof(data_clean[2].c_str());
   std::cout << "Internal Offset (WIND SENSOR): " << internal_offset_ << std::endl;

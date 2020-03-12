@@ -102,8 +102,8 @@ int main(int argc, char *argv[]) {
   ModuleWindSensor module_wind(WIND_SENSOR_SPI_CHANNEL);
 
   //Data Loggers (One for competition, other for journey debugging)
-  Logger data_logger("Logs/contest.txt");
-  Logger debug_logger("Logs/waypoint.txt");
+  Logger data_logger("/home/alarm/.config/sailingBoat/Logs/contest.txt");
+  Logger debug_logger("/home/alarm/.config/sailingBoat/Logs/waypoint.txt");
 
   //Init All Modules & Servos
   std::vector<bool> init_status;
@@ -124,8 +124,8 @@ int main(int argc, char *argv[]) {
   bool components_initialized = control_unit.ValidateInits(init_status);
   if (components_initialized) {
     //Read our Data files which determine our goals and other details
-    std::string destination = "Settings/destination.txt";
-    std::string settings = "Settings/settings.txt";
+    std::string destination = "/home/alarm/.config/sailingBoat/Settings/destination.txt";
+    std::string settings = "/home/alarm/.config/sailingBoat/Settings/settings.txt";
     bool final_status = control_unit.Init(destination, settings);
     if (final_status) {
       std::cout << "[ OK ]    : DESTINATION SET" << std::endl;
