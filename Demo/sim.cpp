@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../Utilities/utilities.hpp"
-#include "../Modules/CalculationUnit/calculation_unit.hpp"
+#include "../Utilities/utilities.h"
+#include "../Modules/CalculationUnit/calculation_unit.h"
 #include <iomanip>
 #include <vector>
 
