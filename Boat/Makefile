@@ -10,26 +10,26 @@ TARGET = sailingBoat
 INSTALLBINDIR = /usr/local/bin
 
 # Lägg till eventuella nya källkodsfiler för ditt program här
-SOURCES = main.cpp \
-../Modules/ControlUnit/control_unit.cpp \
-../Modules/ModuleGps/module_gps.cpp \
-../Modules/ModuleServo//module_servo.cpp \
-../Modules/ModuleWindSensor/module_wind_sensor.cpp \
-../Modules/ModuleCmps12/module_cmps12.cpp \
-../Modules/CalculationUnit/calculation_unit.cpp\
-../Utilities/utilities.cpp \
-../Utilities/DataContainers/gps_position.cpp \
-../Utilities/DataContainers/vec2.cpp \
-../Utilities/DataContainers/log.cpp\
-../Hardware/Gps/gps_data.cpp \
-../Hardware/Maestro/maestro.cpp \
-../Hardware/Cmps12/cmps12.cpp \
-../Hardware/Cmps12/cmps12_data.cpp \
-../Hardware/Ma3/ma3.cpp \
-../Hardware/Gps/gps.cpp \
-../Core/Logger/logger.cpp\
-../Core/Io/io.cpp\
-../Core/Parser/parser.cpp
+SOURCES = main.cc \
+../Modules/ControlUnit/control_unit.cc \
+../Modules/GPS/module_gps.cc \
+../Modules/Servo//module_servo.cc \
+../Modules/WindSensor/module_wind_sensor.cc \
+../Modules/CMPS12/module_cmps12.cc \
+../Modules/CalculationUnit/calculation_unit.cc \
+../Utilities/utilities.cc \
+../Utilities/DataContainers/gps_position.cc \
+../Utilities/DataContainers/vec2.cc \
+../Utilities/DataContainers/log.cc \
+../Hardware/GPS/gps_data.cc \
+../Hardware/Maestro/maestro.cc \
+../Hardware/CMPS12/cmps12.cc \
+../Hardware/CMPS12/cmps12_data.cc \
+../Hardware/MA3/ma3.cc \
+../Hardware/GPS/gps.cc \
+../Core/Logger/logger.cc \
+../Core/IO/io.cc \
+../Core/Parser/parser.cc
 
 all : $(TARGET)
 
