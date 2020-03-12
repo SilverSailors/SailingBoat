@@ -9,8 +9,8 @@ fi
 
 chmod +x run-update.sh
 
-cp /Services/boat.service /etc/systemd/system/
-cp /Services/run-update.service /etc/systemd/system/
+cp Services/boat.service /etc/systemd/system/
+cp Services/run-update.service /etc/systemd/system/
 
 systemctl enable boat.service
 systemctl enable run-update.service
