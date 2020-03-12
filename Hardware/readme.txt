@@ -3,21 +3,21 @@
 ##
 
 ##
-##  CMPS12 
+##  Cmps12
 ##
 ##  Compass Module
 ##
 ##
 
 ##
-##  MAESTRO 
+##  Maestro
 ##
 ##  Servo Module
 ##
 ##
 
 ##
-##  GPS
+##  Gps
 ##
 ##
 ##
