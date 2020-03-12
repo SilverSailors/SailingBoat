@@ -6,7 +6,8 @@
 
 CC = g++
 CFLAGS = -Wall -pthread -D_REENTRANT -lwiringPi -lgps
-TARGET = boat
+TARGET = sailingBoat
+INSTALLBINDIR = /usr/local/bin
 
 # Lägg till eventuella nya källkodsfiler för ditt program här
 SOURCES = main.cc \
@@ -35,6 +36,12 @@ all : $(TARGET)
 $(TARGET) : $(SOURCES)
 	$(CC) $(CFLAGS) $(SOURCES) -o $@
 
+install:
+	@echo "Installing $(TARGET)..."; cp $(TARGET) $(INSTALLBINDIR)
+
+distclean:
+	@echo "Removing $(TARGET)..."; rm $(INSTALLBINDIR)/$(TARGET)
+
 clean :
 	rm $(TARGET) *~
- 
+

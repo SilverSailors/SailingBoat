@@ -1,0 +1,16 @@
+[Unit]
+Description=Sailingboat update script service
+After=network.target
+StartLimitBurst=2
+StartLimitIntervalSec=10
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=root
+# Change directory if this is not the sailingBoat directory
+ExecStart=/home/alarm/SailingBoat/run-update.sh
+
+[Install]
+WantedBy=multi-user.target
