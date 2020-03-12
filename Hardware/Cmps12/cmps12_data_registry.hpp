@@ -22,4 +22,4 @@ typedef enum {
   DATA_SET_CALIBRATION_STATE_8 = 0x11
 } DataSetRegistry;
 
-#endif //__CMPS12_I2C_REGISTRY__
+#endif //__CMPS12_DATA_REGISTRY__
