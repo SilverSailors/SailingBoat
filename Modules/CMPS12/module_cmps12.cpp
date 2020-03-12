@@ -1,26 +1,26 @@
 #include <iostream>
 #include "module_cmps12.hpp"
-#include "../../Core/Io/io.hpp"
+#include "../../Core/IO/io.hpp"
 #include "../../Core/Parser/parser.hpp"
 #include "../../Utilities/utilities.hpp"
 
-ModuleCmps12::ModuleCmps12() {
-  std::cout << "Constructing [Module] : Cmps12" << std::endl;
+ModuleCMPS12::ModuleCMPS12() {
+  std::cout << "Constructing [Module] : CMPS12" << std::endl;
   initialized_ = false;
   new_data_available_ = false;
 }
 
-ModuleCmps12::~ModuleCmps12() {
+ModuleCMPS12::~ModuleCMPS12() {
 
 }
 
-bool ModuleCmps12::Init() {
+bool ModuleCMPS12::Init() {
   std::cout << "Module Initializing" << std::endl;
 
   bool state = CMPS12_hardware_connection_.Init();
   initialized_ = state;
 
-  Io io;
+  IO io;
   Parser parser;
   std::vector<std::string> data_raw = io.ReadFile("Settings/sensor_config.txt");
   std::vector<std::string> data_clean = parser.RemoveComments(data_raw);
@@ -29,9 +29,9 @@ bool ModuleCmps12::Init() {
   return state;
 }
 
-void ModuleCmps12::Run() {
+void ModuleCMPS12::Run() {
   if (initialized_) {
-    Cmps12Data data;
+    CMPS12Data data;
     data = CMPS12_hardware_connection_.Read();
     if (data.GetValid()) {
       CMPS12_data_reading_ = data;
@@ -45,15 +45,15 @@ void ModuleCmps12::Run() {
   }
 }
 
-bool ModuleCmps12::GetInitialized() {
+bool ModuleCMPS12::GetInitialized() {
   return initialized_;
 }
 
-Cmps12Data ModuleCmps12::GetReading() {
+CMPS12Data ModuleCMPS12::GetReading() {
   return CMPS12_data_reading_;
 }
 
-void ModuleCmps12::Report() {
+void ModuleCMPS12::Report() {
   if (new_data_available_) {
     std::cout << "- - COMPASS SENSOR - -" << std::endl;
     std::cout << "Bearing: " << CMPS12_data_reading_.GetEntry(DATA_SET_COMPASS_BEARING_DEGREES_16) << std::endl;
@@ -64,6 +64,6 @@ void ModuleCmps12::Report() {
   }
 }
 
-bool ModuleCmps12::IsNewDataAvilable() {
+bool ModuleCMPS12::IsNewDataAvilable() {
   return new_data_available_;
 }

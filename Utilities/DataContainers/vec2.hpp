@@ -1,5 +1,5 @@
-#ifndef __VEC2_HPP__
-#define __VEC2_HPP__
+#ifndef SAILINGBOAT_UTILITIES_DATACONTAINERS_VEC2_H_
+#define SAILINGBOAT_UTILITIES_DATACONTAINERS_VEC2_H_
 
 class Vec2 {
  public:
@@ -10,4 +10,4 @@ class Vec2 {
   Vec2 operator-(const Vec2 &vector);
 };
 
-#endif //__VEC2_HPP__
+#endif // SAILINGBOAT_UTILITIES_DATACONTAINERS_VEC2_H_

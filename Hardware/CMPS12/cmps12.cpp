@@ -5,17 +5,17 @@
 #include <wiringPi.h>
 #include <wiringPiI2C.h>
 
-Cmps12::Cmps12() {
+CMPS12::CMPS12() {
   file_descriptor_ = 0;
   initialized_ = false;
 }
 
-int Cmps12::Bitshift(int high, int low) {
+int CMPS12::Bitshift(int high, int low) {
   int result = (high << 8 | low);
   return result;
 }
 
-bool Cmps12::Init() {
+bool CMPS12::Init() {
   std::cout << "CMPS Hardware Initializing" << std::endl;
   wiringPiSetup();
   file_descriptor_ = wiringPiI2CSetup(i2c_device_address_);
@@ -27,8 +27,8 @@ bool Cmps12::Init() {
   return initialized_;
 }
 
-Cmps12Data Cmps12::Read() {
-  Cmps12Data compass_data;
+CMPS12Data CMPS12::Read() {
+  CMPS12Data compass_data;
 
   //Read data if we are initialized
   if (initialized_) {

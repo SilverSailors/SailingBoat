@@ -3,9 +3,9 @@
 ## 
 
 ##
-##  Gps POSITION
+##  GPS POSITION
 ##
-        Contains Coordinates from our Gps
+        Contains Coordinates from our GPS
         
             Latitude
         

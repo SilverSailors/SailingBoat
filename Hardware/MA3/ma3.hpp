@@ -1,9 +1,9 @@
-#ifndef __MA3_HPP__
-#define __MA3_HPP__
+#ifndef SAILINGBOAT_HARDWARE_MA3_MA3_H_
+#define SAILINGBOAT_HARDWARE_MA3_MA3_H_
 
-class Ma3 {
+class MA3 {
  public:
-  Ma3();
+  MA3();
   bool Init(int spi_channel);
   int Read(int spi_channel);
  private:
@@ -12,4 +12,4 @@ class Ma3 {
   int channel_config_;
 };
 
-#endif //__MA3_HPP__
+#endif // SAILINGBOAT_HARDWARE_MA3_MA3_H_

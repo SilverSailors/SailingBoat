@@ -1,5 +1,5 @@
-#ifndef __CALCULATION_UNIT_HPP__
-#define __CALCULATION_UNIT_HPP__
+#ifndef SAILINGBOAT_MODULES_CALCULATIONUNIT_CALCULATION_UNIT_H_
+#define SAILINGBOAT_MODULES_CALCULATIONUNIT_CALCULATION_UNIT_H_
 #include "../../Utilities/DataContainers/vec2.hpp"
 #include "../../Utilities/DataContainers/gps_position.hpp"
 
@@ -8,8 +8,8 @@ class CalculationUnit {
   double CalculateRudderPosition(Vec2 vector);
   double CalculateSailPosition(Vec2 vector);
   double CalculateAngleOfApproach(double destination_bearing, double wind_bearing);
-  GpsPosition CalculateWaypoint(GpsPosition current_position, double distance, double direction);
-  double CalculateDistance(GpsPosition point_a, GpsPosition point_b);
+  GPSPosition CalculateWaypoint(GPSPosition current_position, double distance, double direction);
+  double CalculateDistance(GPSPosition point_a, GPSPosition point_b);
 };
 
-#endif //__CALCULATION_UNIT_HPP__
+#endif // SAILINGBOAT_MODULES_CALCULATIONUNIT_CALCULATION_UNIT_H_

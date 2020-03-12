@@ -1,5 +1,5 @@
-#ifndef __CONTROL_UNIT_HPP__
-#define __CONTROL_UNIT_HPP__
+#ifndef SAILINGBOAT_MODULES_CONTROLUNIT_CONTROL_UNIT_H_
+#define SAILINGBOAT_MODULES_CONTROLUNIT_CONTROL_UNIT_H_
 #include <queue>
 #include <string>
 #include <vector>
@@ -11,10 +11,10 @@ class ControlUnit {
   ControlUnit();
   bool IsActive();
   bool Init(std::string destination, std::string settings);
-  GpsPosition GetDestination();
-  void SetDestination(GpsPosition destination);
-  GpsPosition GetWaypoint();
-  void SetWaypoint(GpsPosition waypoint);
+  GPSPosition GetDestination();
+  void SetDestination(GPSPosition destination);
+  GPSPosition GetWaypoint();
+  void SetWaypoint(GPSPosition waypoint);
   void SetDistanceThreshold(double value);
   double GetDistanceThreshold();
   bool ValidateInits(std::vector<bool> statuses);
@@ -34,8 +34,8 @@ class ControlUnit {
   bool waypoint_set_;               //Have we set a waypoint?
   bool destination_set_;            //Have we set a destination
   bool destination_reached_;        //Have we reached our destination
-  std::queue<GpsPosition> destination_;                //Queue of all our destinations
-  GpsPosition waypoint_;                   //Our current waypoint
+  std::queue<GPSPosition> destination_;                //Queue of all our destinations
+  GPSPosition waypoint_;                   //Our current waypoint
   double distance_threshold_;         //The distance we are allowed to be away from the waypoint to consider it reached (Meters)
   double time_threshold_;             //How long should we wait until we establish a new waypoint If the old one hasnt been reached
   double distance_factor_;            //How far away should waypoints be from our initial position
@@ -45,4 +45,4 @@ class ControlUnit {
   Angle angle_direction_;
 };
 
-#endif //__CONTROL_UNIT_HPP__
+#endif // SAILINGBOAT_MODULES_CONTROLUNIT_CONTROL_UNIT_H_

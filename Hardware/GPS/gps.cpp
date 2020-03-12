@@ -3,16 +3,16 @@
 #include <math.h>
 #include <string>
 
-Gps::Gps() {
+GPS::GPS() {
 
 }
 
-bool Gps::Init() {
+bool GPS::Init() {
   //Init and bind
   gps_ = std::make_unique<gpsmm>("localhost", DEFAULT_GPSD_PORT);
 
   if (gps_ == nullptr) {
-    std::cout << "Failed to bind Gps with gpsmm" << std::endl;
+    std::cout << "Failed to bind GPS with gpsmm" << std::endl;
     return false;
   }
 
@@ -25,8 +25,8 @@ bool Gps::Init() {
   return true;
 }
 
-GpsData Gps::Read() {
-  GpsData data_reading;
+GPSData GPS::Read() {
+  GPSData data_reading;
 
   struct gps_data_t *gps_raw_data;
 

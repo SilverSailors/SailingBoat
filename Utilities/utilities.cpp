@@ -76,8 +76,8 @@ double Utilities::FlipDegrees(double degrees) {
   return abs(degrees - 360);
 }
 
-GpsPosition Utilities::ExtractPositionFromData(GpsData data) {
-  GpsPosition position;
+GPSPosition Utilities::ExtractPositionFromData(GPSData data) {
+  GPSPosition position;
   position.latitude = data.GetLatitude();
   position.longitude = data.GetLongitude();
   return position;

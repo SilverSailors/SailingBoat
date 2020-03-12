@@ -3,11 +3,11 @@
 #include <wiringPiSPI.h>
 #include <iostream>
 
-Ma3::Ma3() {
+MA3::MA3() {
   channel_config_ = 8;
 }
 
-bool Ma3::Init(int spi_channel) {
+bool MA3::Init(int spi_channel) {
   //Load SPI Drivers (Not required as GPIO is native to PI)
   //And activated via Raspi-config instead
   //(Will output Warning text if Run)
@@ -31,7 +31,7 @@ bool Ma3::Init(int spi_channel) {
   return initialized_;
 }
 
-int Ma3::Read(int spi_channel) {
+int MA3::Read(int spi_channel) {
   if (initialized_) {
     unsigned char buffer[3] = {1};
     buffer[1] = (channel_config_ + 0) << 4;

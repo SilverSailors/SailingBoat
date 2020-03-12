@@ -1,10 +1,10 @@
-#ifndef __GPS_DATA_HPP__
-#define __GPS_DATA_HPP__
+#ifndef SAILINGBOAT_HARDWARE_GPS_GPS_DATA_H_
+#define SAILINGBOAT_HARDWARE_GPS_GPS_DATA_H_
 #include <string>
 
-class GpsData {
+class GPSData {
  public:
-  GpsData();
+  GPSData();
   void SetLatitude(double latitude);
   void SetLongitude(double longitude);
   void SetTimestamp(std::string timestamp);
@@ -26,4 +26,4 @@ class GpsData {
   std::string time_;
 };
 
-#endif //__GPS_DATA_HPP__
+#endif // SAILINGBOAT_HARDWARE_GPS_GPS_DATA_H_

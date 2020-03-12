@@ -3,10 +3,10 @@
 #include <math.h>
 #include "../Utilities/utilities.hpp"
 #include "../Utilities/DataContainers/vec2.hpp"
-#include "../Modules/ModuleCmps12/module_cmps12.hpp"
-#include "../Modules/ModuleServo//module_servo.hpp"
-#include "../Modules/ModuleGps/module_gps.hpp"
-#include "../Modules/ModuleWindSensor/module_wind_sensor.hpp"
+#include "../Modules/CMPS12/module_cmps12.hpp"
+#include "../Modules/Servo//module_servo.hpp"
+#include "../Modules/GPS/module_gps.hpp"
+#include "../Modules/WindSensor/module_wind_sensor.hpp"
 #include "../Modules/CalculationUnit/calculation_unit.hpp"
 
 int main(int argc, char *argv[]) {
@@ -15,10 +15,10 @@ int main(int argc, char *argv[]) {
 
   std::cout << "Starting DEMO" << std::endl;
 
-  ModuleCmps12 compass;
+  ModuleCMPS12 compass;
   ModuleServo servo_rudder(-1, 1, RUDDER);
   ModuleServo servo_sail(0, 1, SAIL);
-  ModuleGps gps;
+  ModuleGPS gps;
   ModuleWindSensor wind_sensor(0);
 
   CalculationUnit CU;
@@ -48,9 +48,9 @@ int main(int argc, char *argv[]) {
   }
 
   if (gps_state) {
-    std::cout << "[ OK ] Gps" << std::endl;
+    std::cout << "[ OK ] GPS" << std::endl;
   } else {
-    std::cout << "[ ERROR ] Gps" << std::endl;
+    std::cout << "[ ERROR ] GPS" << std::endl;
   }
 
   if (wind_sensor_state) {
@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
 
     int wind_bearing = wind_sensor.GetReading();
     int bearing = compass.GetReading().GetEntry(DATA_SET_COMPASS_BEARING_DEGREES_16);
-    std::cout << "ModuleCmps12 Bearing: " << bearing << std::endl;
+    std::cout << "ModuleCMPS12 Bearing: " << bearing << std::endl;
     std::cout << "Wind Bearing: " << wind_bearing << std::endl;
 
     int offset_bearing = bearing + offset;

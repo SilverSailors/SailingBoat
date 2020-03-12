@@ -1,14 +1,14 @@
-#ifndef __CMPS12_HPP__
-#define __CMPS12_HPP__
+#ifndef SAILINGBOAT_HARDWARE_CMPS12_CMPS12_H_
+#define SAILINGBOAT_HARDWARE_CMPS12_CMPS12_H_
 #include "cmps12_data.hpp"
 
-class Cmps12 {
+class CMPS12 {
  public:
-  Cmps12();
+  CMPS12();
   //Establish connection to I2C device
   bool Init();
   //Read data from I2C Pins, return retrieved data
-  Cmps12Data Read();
+  CMPS12Data Read();
  private:
   int Bitshift(int high, int low);
   const int total_registry_entries_ = 31;
@@ -18,4 +18,4 @@ class Cmps12 {
   int file_descriptor_;
 };
 
-#endif //__CMPS12_HPP__
+#endif // SAILINGBOAT_HARDWARE_CMPS12_CMPS12_H_

@@ -6,15 +6,15 @@
 #include <sstream>
 #include "../../Utilities/DataContainers/log.hpp"
 
-Io::Io() {
+IO::IO() {
 
 }
 
-Io::~Io() {
+IO::~IO() {
 
 }
 
-std::vector<std::string> Io::ReadFile(std::string filepath) {
+std::vector<std::string> IO::ReadFile(std::string filepath) {
   std::vector<std::string> file_data;
 
   std::ifstream instream(filepath);
@@ -33,7 +33,7 @@ std::vector<std::string> Io::ReadFile(std::string filepath) {
   return file_data;
 }
 
-void Io::WriteFile(std::string data, std::string path) {
+void IO::WriteFile(std::string data, std::string path) {
   std::fstream log_info(path, std::ios::out | std::ios::app);
   if (log_info.is_open()) {
     //std::cout << "SUCCESS!" << std::endl;

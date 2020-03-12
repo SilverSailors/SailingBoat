@@ -1,11 +1,11 @@
-#ifndef __GPS_POSITION_HPP
-#define __GPS_POSITION_HPP
+#ifndef SAILINGBOAT_UTILITIES_DATACONTAINERS_GPS_POSITION_H_
+#define SAILINGBOAT_UTILITIES_DATACONTAINERS_GPS_POSITION_H_
 
-class GpsPosition {
+class GPSPosition {
  public:
-  GpsPosition();
+  GPSPosition();
   double latitude;
   double longitude;
 };
 
-#endif //__GPS_POSITION_HPP
+#endif // SAILINGBOAT_UTILITIES_DATACONTAINERS_GPS_POSITION_H_

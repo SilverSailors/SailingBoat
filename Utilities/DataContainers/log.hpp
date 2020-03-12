@@ -1,5 +1,5 @@
-#ifndef __LOG_HPP__
-#define __LOG_HPP__
+#ifndef SAILINGBOAT_UTILITIES_DATACONTAINERS_LOG_H_
+#define SAILINGBOAT_UTILITIES_DATACONTAINERS_LOG_H_
 #include <string>
 
 class Log {
@@ -15,4 +15,4 @@ class Log {
   double distance_from_destination;
 };
 
-#endif //__LOG_HPP__
+#endif // SAILINGBOAT_UTILITIES_DATACONTAINERS_LOG_H_

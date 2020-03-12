@@ -1,15 +1,15 @@
-#ifndef __CMPS12_DATA_HPP__
-#define  __CMPS12_DATA_HPP__
+#ifndef SAILINGBOAT_HARDWARE_CMPS12_CMPS12_DATA_H_
+#define SAILINGBOAT_HARDWARE_CMPS12_CMPS12_DATA_H_
 #include <inttypes.h>
 #include <vector>
 #include "cmps12_data_registry.hpp"
 
-class Cmps12Data {
+class CMPS12Data {
  public:
-  Cmps12Data();
-  void SetEntry(DataSetRegistry entry, int data);
+  CMPS12Data();
+  void SetEntry(CMPS12DataSetRegistry entry, int data);
   void SetEntry(int entry, int data);
-  int GetEntry(DataSetRegistry entry);
+  int GetEntry(CMPS12DataSetRegistry entry);
   int GetEntry(int entry);
   void SetValid(bool valid);
   bool GetValid();
@@ -35,4 +35,4 @@ class Cmps12Data {
   int calibration_;
 };
 
-#endif //__CMPS12_DATA_HPP__
+#endif // SAILINGBOAT_HARDWARE_CMPS12_CMPS12_DATA_H_

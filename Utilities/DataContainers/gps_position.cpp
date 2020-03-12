@@ -1,6 +1,6 @@
 #include "gps_position.hpp"
 
-GpsPosition::GpsPosition() {
+GPSPosition::GPSPosition() {
   latitude = 0;
   longitude = 0;
 }

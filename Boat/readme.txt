@@ -24,7 +24,7 @@
             - SPI
             
 
-    4.  Install GPSD module (Gps Daemon will run the gps on activation)
+    4.  Install GPSD module (GPS Daemon will run the gps on activation)
             
             pi$ sudo apt-get install gpsd
             
@@ -42,12 +42,12 @@
             pi$ sudo apt-get install libgps-dev
             
             
-    7.  Activate GPSM daemon (Instructions found in Gps modules readme on how to make program run on boot)
+    7.  Activate GPSM daemon (Instructions found in GPS modules readme on how to make program run on boot)
     
     8.  Run primary program. all modules whould show [ OK ] and be ready to collect data/parse data.
 
 ##
-##  HOWTO (SENSORS [Ma3 (Wind), Cmps12 (Compass), Gps (gps))
+##  HOWTO (SENSORS [MA3 (Wind), CMPS12 (Compass), GPS (gps))
 ##
 
     Each sensor Module on the boat needs to be initialized via the Init function

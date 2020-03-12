@@ -83,17 +83,17 @@ int main(void) {
   double destination_lon = 19.926559925079346;
 
   //SCHOOL
-  GpsPosition start;
+  GPSPosition start;
   start.latitude = start_lat;
   start.longitude = start_lon;
 
   //AUTO REPAIR SHOP
-  GpsPosition destination;
+  GPSPosition destination;
   destination.latitude = destination_lat;
   destination.longitude = destination_lon;
 
   //FIRST LOOP
-  GpsPosition current_position = start;
+  GPSPosition current_position = start;
 
   //Get bearing to goal
   double destination_bearing = Utilities::CoordinatesToDegrees(
@@ -118,7 +118,7 @@ int main(void) {
   std::cout << "Distance to goal is: " << goal_distance << std::endl;
   std::cout << "Distance to Waypoint is: " << waypoint_distance << std::endl;
 
-  GpsPosition waypoint = CU.CalculateWaypoint(current_position, waypoint_distance, waypoint_angle);
+  GPSPosition waypoint = CU.CalculateWaypoint(current_position, waypoint_distance, waypoint_angle);
 
   std::cout << "WAYPOINT: " << std::setprecision(20) << waypoint.latitude << "," << waypoint.longitude << std::endl;
 
@@ -137,7 +137,7 @@ int main(void) {
 
   CalculationUnit CU;
   //SCHOOL
-  GpsPosition location;
+  GPSPosition location;
   location.latitude = start_lat;
   location.longitude = start_lon;
 
@@ -148,7 +148,7 @@ int main(void) {
   // 0.2km = 200m
   double distance_kilometers = 0.2;
 
-  GpsPosition place = CU.CalculateWaypoint(location,distance_kilometers,90);
+  GPSPosition place = CU.CalculateWaypoint(location,distance_kilometers,90);
   std::cout << "LAT: " << std::setprecision(1) << place.latitude << std::endl;
   std::cout << "LON: " << std::setprecision(1) << place.longitude << std::endl;
 
@@ -159,7 +159,7 @@ int main(void) {
   /*
   for(int i = 0; i < 360; i++)
   {
-    GpsPosition place = CU.CalculateWaypoint(location,distance_kilometers,i);
+    GPSPosition place = CU.CalculateWaypoint(location,distance_kilometers,i);
     double distance = CU.CalculateDistance(location,place);
     std::cout << "DISTANCE FROM A -> B :" << distance << std::endl;
   }

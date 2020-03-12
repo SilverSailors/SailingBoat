@@ -1,14 +1,14 @@
-#ifndef __IO_HPP__
-#define __IO_HPP__
+#ifndef SAILINGBOAT_CORE_IO_IO_H_
+#define SAILINGBOAT_CORE_IO_IO_H_
 #include <vector>
 #include <string>
 
-class Io {
+class IO {
  public:
-  Io();
-  ~Io();
+  IO();
+  ~IO();
   std::vector<std::string> ReadFile(std::string filepath);
   void WriteFile(std::string data, std::string path);
 };
 
-#endif //__IO_HPP__
+#endif // SAILINGBOAT_CORE_IO_IO_H_

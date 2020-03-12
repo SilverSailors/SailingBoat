@@ -1,5 +1,5 @@
 ##
-## Ma3 Rotary Encoder (Wind sensor)
+## MA3 Rotary Encoder (Wind sensor)
 ##
 
 

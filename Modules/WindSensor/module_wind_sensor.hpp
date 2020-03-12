@@ -1,6 +1,6 @@
-#ifndef __MODULE_WIND_SENSOR_HPP__
-#define __MODULE_WIND_SENSOR_HPP__
-#include "../../Hardware/Ma3/ma3.hpp"
+#ifndef SAILINGBOAT_MODULES_MODULEWINDSENSOR_MODULE_WIND_SENSOR_H_
+#define SAILINGBOAT_MODULES_MODULEWINDSENSOR_MODULE_WIND_SENSOR_H_
+#include "../../Hardware/MA3/ma3.hpp"
 
 class ModuleWindSensor {
  public:
@@ -12,7 +12,7 @@ class ModuleWindSensor {
   bool IsNewDataAvailable();
  private:
   bool initialized_;
-  Ma3 hardware_connection_ma3_;
+  MA3 hardware_connection_ma3_;
   int spi_channel_;
   int reading_;
   double internal_offset_;
@@ -20,4 +20,4 @@ class ModuleWindSensor {
   bool new_data_available_;
 };
 
-#endif //__MODULE_WIND_SENSOR_HPP__
+#endif // SAILINGBOAT_MODULES_MODULEWINDSENSOR_MODULE_WIND_SENSOR_H_

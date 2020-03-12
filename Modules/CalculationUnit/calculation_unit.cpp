@@ -98,7 +98,7 @@ double CalculationUnit::CalculateAngleOfApproach(double destination_bearing, dou
   return offset;
 }
 
-GpsPosition CalculationUnit::CalculateWaypoint(GpsPosition current_position, double distance, double direction) {
+GPSPosition CalculationUnit::CalculateWaypoint(GPSPosition current_position, double distance, double direction) {
   //STOLEN FROM THE INTERNET (Hence d, c, they did not specifiy what they meant)
 
   //LATITUDE
@@ -112,13 +112,13 @@ GpsPosition CalculationUnit::CalculateWaypoint(GpsPosition current_position, dou
   double c2 = atan2(sin(angle_radians) * sin(d) * cos(latitude_radians), cos(d) - sin(latitude_radians) * sin(c));
   double corrected_longitude = current_position.longitude + Utilities::RadiansToDegrees(c2);
 
-  GpsPosition coords;
+  GPSPosition coords;
   coords.latitude = corrected_latitude;
   coords.longitude = corrected_longitude;
   return coords;
 }
 
-double CalculationUnit::CalculateDistance(GpsPosition point_a, GpsPosition point_b) {
+double CalculationUnit::CalculateDistance(GPSPosition point_a, GPSPosition point_b) {
   //Convert to radian
   double distance_latitude = Utilities::DegreesToRadians(point_b.latitude - point_a.latitude);
   double distance_longitude = Utilities::DegreesToRadians(point_b.longitude - point_a.longitude);

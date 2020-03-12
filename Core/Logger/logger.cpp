@@ -1,7 +1,7 @@
 #include "logger.hpp"
 #include <string>
-#include "../Io/io.hpp"
-#include "../../Hardware/Gps/gps_data.hpp"
+#include "../IO/io.hpp"
+#include "../../Hardware/GPS/gps_data.hpp"
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -34,7 +34,7 @@ void Logger::Publish() {
 
     std::string output = stream.str();
 
-    Io io;
+    IO io;
     io.WriteFile(output, file_path_);
     entries_++;
     available_ = false;
@@ -43,7 +43,7 @@ void Logger::Publish() {
   }
 }
 
-void Logger::PublishWaypoint(GpsData from, GpsPosition to, std::string message) {
+void Logger::PublishWaypoint(GPSData from, GPSPosition to, std::string message) {
   std::string timestamp = from.GetTime();
   double at_lat = from.GetLatitude();
   double at_lon = from.GetLongitude();
@@ -63,7 +63,7 @@ void Logger::PublishWaypoint(GpsData from, GpsPosition to, std::string message) 
          << std::setprecision(10) << dest_lon;
   std::string output = stream.str();
 
-  Io io;
+  IO io;
   io.WriteFile(output + " : " + message, file_path_);
   entries_++;
   available_ = false;
@@ -73,6 +73,6 @@ void Logger::Write(std::string message) {
   std::stringstream stream;
   stream << message;
 
-  Io io;
+  IO io;
   io.WriteFile(message, file_path_);
 }

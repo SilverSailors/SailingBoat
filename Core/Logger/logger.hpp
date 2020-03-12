@@ -1,9 +1,9 @@
-#ifndef __LOGGER_HPP__
-#define __LOGGER_HPP__
+#ifndef SAILINGBOAT_CORE_LOGGER_LOGGER_H_
+#define SAILINGBOAT_CORE_LOGGER_LOGGER_H_
 #include <string>
 #include "../../Utilities/DataContainers/log.hpp"
 #include "../../Utilities/DataContainers/gps_position.hpp"
-#include "../../Hardware/Gps/gps_data.hpp"
+#include "../../Hardware/GPS/gps_data.hpp"
 
 class Logger {
  public:
@@ -11,7 +11,7 @@ class Logger {
   void LogData(Log packet);
   void Publish();
   void Write(std::string message);
-  void PublishWaypoint(GpsData from, GpsPosition to, std::string message);
+  void PublishWaypoint(GPSData from, GPSPosition to, std::string message);
  private:
   int entries_;
   Log log_;
@@ -19,4 +19,4 @@ class Logger {
   bool available_;
 };
 
-#endif //__LOGGER_HPP__
+#endif // SAILINGBOAT_CORE_LOGGER_LOGGER_H_

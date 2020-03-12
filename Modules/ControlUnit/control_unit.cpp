@@ -1,6 +1,6 @@
 #include "control_unit.hpp"
 #include <iostream>
-#include "../../Core/Io/io.hpp"
+#include "../../Core/IO/io.hpp"
 #include "../../Core/Parser/parser.hpp"
 
 ControlUnit::ControlUnit() {
@@ -23,7 +23,7 @@ ControlUnit::ControlUnit() {
 }
 
 bool ControlUnit::Init(std::string destination, std::string settings) {
-  Io io;
+  IO io;
   Parser parser;
 
   //Get file data and remove all comments
@@ -36,7 +36,7 @@ bool ControlUnit::Init(std::string destination, std::string settings) {
   for (int i = 0; i < checkpoints; i++) {
     std::vector<std::string> split = parser.SplitString(data_clean[i], ',');
     if (split.size() == 2) {
-      GpsPosition pin;
+      GPSPosition pin;
       pin.latitude = std::atof(split[0].c_str());
       pin.longitude = std::atof(split[1].c_str());
       destination_.push(pin);
@@ -85,11 +85,11 @@ bool ControlUnit::IsActive() {
   return active_;
 }
 
-GpsPosition ControlUnit::GetDestination() {
+GPSPosition ControlUnit::GetDestination() {
   return destination_.front();
 }
 
-GpsPosition ControlUnit::GetWaypoint() {
+GPSPosition ControlUnit::GetWaypoint() {
   return waypoint_;
 }
 
@@ -113,7 +113,7 @@ void ControlUnit::UpdateJourney() {
   }
 }
 
-void ControlUnit::SetWaypoint(GpsPosition waypoint) {
+void ControlUnit::SetWaypoint(GPSPosition waypoint) {
   waypoint_.latitude = waypoint.latitude;
   waypoint_.longitude = waypoint.longitude;
   waypoint_set_ = true;
@@ -123,30 +123,30 @@ bool ControlUnit::ValidateInits(std::vector<bool> statuses) {
   bool result = true;
 
   if (statuses[0]) {
-    std::cout << "[ OK ]    : ModuleServo Rudder" << std::endl;
+    std::cout << "[ OK ]    : Servo Rudder" << std::endl;
   } else {
-    std::cout << "[ ERROR ] : ModuleServo Rudder" << std::endl;
+    std::cout << "[ ERROR ] : Servo Rudder" << std::endl;
     result = false;
   }
 
   if (statuses[1]) {
-    std::cout << "[ OK ]    : ModuleServo Sail" << std::endl;
+    std::cout << "[ OK ]    : Servo Sail" << std::endl;
   } else {
-    std::cout << "[ ERROR ] : ModuleServo Sail" << std::endl;
+    std::cout << "[ ERROR ] : Servo Sail" << std::endl;
     result = false;
   }
 
   if (statuses[2]) {
-    std::cout << "[ OK ]    : Module Gps" << std::endl;
+    std::cout << "[ OK ]    : Module GPS" << std::endl;
   } else {
-    std::cout << "[ ERROR ] : Module Gps" << std::endl;
+    std::cout << "[ ERROR ] : Module GPS" << std::endl;
     result = false;
   }
 
   if (statuses[3]) {
-    std::cout << "[ OK ] : Module ModuleCmps12" << std::endl;
+    std::cout << "[ OK ] : Module ModuleCMPS12" << std::endl;
   } else {
-    std::cout << "[ ERROR ] : Module ModuleCmps12" << std::endl;
+    std::cout << "[ ERROR ] : Module ModuleCMPS12" << std::endl;
     result = false;
   }
 

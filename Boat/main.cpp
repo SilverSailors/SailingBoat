@@ -3,12 +3,12 @@
 #include <chrono>
 #include "../Utilities/DataContainers/gps_position.hpp"
 #include "../Utilities/utilities.hpp"
-#include "../Modules/ModuleCmps12/module_cmps12.hpp"
-#include "../Modules/ModuleGps/module_gps.hpp"
-#include "../Modules/ModuleWindSensor/module_wind_sensor.hpp"
+#include "../Modules/CMPS12/module_cmps12.hpp"
+#include "../Modules/GPS/module_gps.hpp"
+#include "../Modules/WindSensor/module_wind_sensor.hpp"
 #include "../Modules/ControlUnit/control_unit.hpp"
 #include "../Modules/CalculationUnit/calculation_unit.hpp"
-#include "../Modules/ModuleServo//module_servo.hpp"
+#include "../Modules/Servo//module_servo.hpp"
 #include "../Core/Logger/logger.hpp"
 #define RUDDER_CHANNEL 1
 #define SAIL_CHANNEL 0
@@ -22,7 +22,7 @@
 //Multithreaded for polling devices at different time-intervals
 //Thread for driving rudder
 void DriveRudder(ModuleServo &rudder) {
-  std::cout << "Starting Automatic Rudder ModuleServo" << std::endl;
+  std::cout << "Starting Automatic Rudder Servo" << std::endl;
   while (true) {
     rudder.Run();
   }
@@ -30,7 +30,7 @@ void DriveRudder(ModuleServo &rudder) {
 
 //Thread for driving sail
 void DriveSail(ModuleServo &sail) {
-  std::cout << "Starting Automatic Sail ModuleServo" << std::endl;
+  std::cout << "Starting Automatic Sail Servo" << std::endl;
   while (true) {
     sail.Run();
   }
@@ -47,20 +47,20 @@ void PollWindSensor(ModuleWindSensor &wind) {
 }
 
 //Thread for polling gps
-void PollGpsSensor(ModuleGps &gps) {
-  std::cout << "Starting Automatic Gps" << std::endl;
+void PollGpsSensor(ModuleGPS &gps) {
+  std::cout << "Starting Automatic GPS" << std::endl;
   while (true) {
-    //std::cout << "Polling Gps!" << std::endl;
+    //std::cout << "Polling GPS!" << std::endl;
     gps.Run();
     std::this_thread::sleep_for(std::chrono::milliseconds(1200));
   }
 }
 
 //Thread for polling compass
-void PollCompass(ModuleCmps12 &compass) {
-  std::cout << "Starting Automatic ModuleCmps12" << std::endl;
+void PollCompass(ModuleCMPS12 &compass) {
+  std::cout << "Starting Automatic ModuleCMPS12" << std::endl;
   while (true) {
-    //std::cout << "Polling ModuleCmps12!" << std::endl;
+    //std::cout << "Polling ModuleCMPS12!" << std::endl;
     compass.Run();
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
@@ -97,8 +97,8 @@ int main(int argc, char *argv[]) {
       SAIL_CHANNEL);
 
   //#These will poll data for us
-  ModuleGps module_gps;
-  ModuleCmps12 module_compass;
+  ModuleGPS module_gps;
+  ModuleCMPS12 module_compass;
   ModuleWindSensor module_wind(WIND_SENSOR_SPI_CHANNEL);
 
   //Data Loggers (One for competition, other for journey debugging)
@@ -161,7 +161,7 @@ int main(int argc, char *argv[]) {
   //INITIAL READINGS
   /*
   //SCHOOL TEMP
-  GpsData TEMP_GPS_DATA;
+  GPSData TEMP_GPS_DATA;
   TEMP_GPS_DATA.SetValid(true);
   TEMP_GPS_DATA.SetLatitude(60.10347832490164);
   TEMP_GPS_DATA.SetLongitude(19.928544759750366);
@@ -169,13 +169,13 @@ int main(int argc, char *argv[]) {
   TEMP_GPS_DATA.SetTimeValue(5235);
   TEMP_GPS_DATA.SetTimestamp("12:00:00");
 
-  Cmps12Data TEMP_COMPASS_DATA;
+  CMPS12Data TEMP_COMPASS_DATA;
   TEMP_COMPASS_DATA.SetEntry(DATA_SET_COMPASS_BEARING_DEGREES_16,122);
 
   int TEMP_WIND = 5;
 
   //TEMP WAYPOINT TEST DATA
-  GpsPosition TEMP_WAYPOINT;
+  GPSPosition TEMP_WAYPOINT;
   TEMP_WAYPOINT.latitude = 60.105879322635616;
   TEMP_WAYPOINT.longitude = 19.926559925079346;
   */
@@ -198,13 +198,13 @@ int main(int argc, char *argv[]) {
     //std::cout << "------------------" << std::endl;
 
     //GRAB A SET OF ITERATION DATA AT THIS MOMENT IN TIME
-    //GpsData      gps_reading     = TEMP_GPS_DATA;
-    //Cmps12Data   compass_reading = TEMP_COMPASS_DATA;
+    //GPSData      gps_reading     = TEMP_GPS_DATA;
+    //CMPS12Data   compass_reading = TEMP_COMPASS_DATA;
     int wind_reading = 0;
 
     //GRAB A SET OF ITERATION DATA AT THIS MOMENT IN TIME
-    GpsData gps_reading = module_gps.GetReading();
-    Cmps12Data compass_reading = module_compass.GetReading();
+    GPSData gps_reading = module_gps.GetReading();
+    CMPS12Data compass_reading = module_compass.GetReading();
     //int         wind_reading    = module_wind.GetReading();
 
     //Set a waypoint if there is none
@@ -213,9 +213,9 @@ int main(int argc, char *argv[]) {
       std::cout << "No Waypoint set" << std::endl;
 
       int wind_bearing = wind_reading;
-      GpsPosition
-          current_position = Utilities::ExtractPositionFromData(gps_reading); //GRAB FROM Gps AND UTILITIES TO FORMAT
-      int time_unit = gps_reading.GetTimeValue(); //GRAB FROM Gps AND REFORMAT
+      GPSPosition
+          current_position = Utilities::ExtractPositionFromData(gps_reading); //GRAB FROM GPS AND UTILITIES TO FORMAT
+      int time_unit = gps_reading.GetTimeValue(); //GRAB FROM GPS AND REFORMAT
 
       std::cout << "Wind Bearing Is: " << wind_bearing << std::endl;
 
@@ -223,7 +223,7 @@ int main(int argc, char *argv[]) {
       std::cout << "Current Lon: " << current_position.longitude << std::endl;
 
       //Grab our destination from our control unit
-      GpsPosition destination = control_unit.GetDestination();
+      GPSPosition destination = control_unit.GetDestination();
       std::cout << "Destination Lat: " << destination.latitude << std::endl;
       std::cout << "Destination Lon: " << destination.longitude << std::endl;
 
@@ -271,7 +271,7 @@ int main(int argc, char *argv[]) {
       }
 
       //Generate new waypoint
-      GpsPosition
+      GPSPosition
           new_waypoint = calculation_unit.CalculateWaypoint(current_position, waypoint_distance, waypoint_angle);
       std::cout << "Waypoint Lat: " << new_waypoint.latitude << std::endl;
       std::cout << "Waypoint Lon: " << new_waypoint.longitude << std::endl;
@@ -298,8 +298,8 @@ int main(int argc, char *argv[]) {
     std::cout << "Boat Bearing Is: " << compass_bearing << std::endl;
 
     //Grab our current position and waypoint details
-    GpsPosition current_position = Utilities::ExtractPositionFromData(gps_reading);
-    GpsPosition waypoint_position = control_unit.GetWaypoint();
+    GPSPosition current_position = Utilities::ExtractPositionFromData(gps_reading);
+    GPSPosition waypoint_position = control_unit.GetWaypoint();
 
     std::cout << "Current Lat: " << current_position.latitude << std::endl;
     std::cout << "Current Lon: " << current_position.longitude << std::endl;
@@ -351,13 +351,13 @@ int main(int argc, char *argv[]) {
       std::cout << "We Are close enough to our destination, grab a new waypoint" << std::endl;
       control_unit.SetWaypointStatus(false);
       //TODO Log EVENT
-      GpsPosition ph;
+      GPSPosition ph;
       debug_logger.PublishWaypoint(gps_reading, ph, "[REACHED WAYPOINT, GRAB NEW ONE!]");
       //Set our message in our custom logger to be "Waypoint Reached"
     }
 
     //Grab our goal (Checkpoint)
-    GpsPosition checkpoint = control_unit.GetDestination();
+    GPSPosition checkpoint = control_unit.GetDestination();
     std::cout << "Checkpoint Lat: " << checkpoint.latitude << std::endl;
     std::cout << "Checkpoint Lon: " << checkpoint.longitude << std::endl;
 
@@ -371,18 +371,18 @@ int main(int argc, char *argv[]) {
       std::cout << "CHECKPOINT REACHED" << std::endl;
       //Pops the top checkpoint off and turns itself off if at end.
       //TODO Log EVENT
-      GpsPosition ph;
+      GPSPosition ph;
       debug_logger.PublishWaypoint(gps_reading, ph, "[CHECKPOINT REACHED]");
       control_unit.UpdateJourney();
       debug_logger.PublishWaypoint(gps_reading, control_unit.GetDestination(), "[NEXT DESTINATION]");
     } else {
       //HAS TOO MUCH TIME PASSED SINCE WE ESTABLISHED THE WAYPOINT
       int gps_time = gps_reading.GetTimeValue();
-      std::cout << "Gps TIME: " << gps_time << std::endl;
+      std::cout << "GPS TIME: " << gps_time << std::endl;
       if (control_unit.TimeDiscrepencyReached(gps_time)) {
         std::cout << "TOO MUCH TIME HAS PASSED!" << std::endl;
         //Set flag to false to generate new waypoint
-        GpsPosition ph;
+        GPSPosition ph;
         debug_logger.PublishWaypoint(gps_reading, ph, "[Too much time has passed to reach waypoint]");
         control_unit.SetWaypointStatus(false);
       }

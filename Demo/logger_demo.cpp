@@ -9,7 +9,7 @@
 int main(void) {
   std::cout << "Beginning Logger Test" << std::endl;
 
-  Io io;
+  IO io;
   Parser parser;
 
   std::vector<std::string> gps_file_data = io.ReadFile("test.txt");
@@ -23,11 +23,11 @@ int main(void) {
   std::vector<std::string> cleaned = parser.RemoveComments(gps_file_data);
 
   std::cout << "we have #" << cleaned.size() << " Coordinates" << std::endl;
-  std::vector<GpsPosition> gps_waypoints;
+  std::vector<GPSPosition> gps_waypoints;
   for (int i = 0; i < cleaned.size(); i++) {
     std::vector<std::string> split = parser.SplitString(cleaned[i], ',');
     if (split.size() == 2) {
-      GpsPosition item;
+      GPSPosition item;
       item.latitude = std::atof(split[0].c_str());
       item.longitude = std::atof(split[1].c_str());
 

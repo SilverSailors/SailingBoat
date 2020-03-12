@@ -1,14 +1,14 @@
-#ifndef __GPS_HPP__
-#define __GPS_HPP__
+#ifndef SAILINGBOAT_HARDWARE_GPS_GPS_H_
+#define SAILINGBOAT_HARDWARE_GPS_GPS_H_
 #include <libgpsmm.h>
 #include <memory>
 #include "gps_data.hpp"
 
-class Gps {
+class GPS {
  public:
-  Gps();
+  GPS();
   bool Init();
-  GpsData Read();
+  GPSData Read();
  private:
   bool initialized_;
   //GPSMM is an unique vector so we dont have
@@ -17,4 +17,4 @@ class Gps {
   std::unique_ptr<gpsmm> gps_;
 };
 
-#endif //__GPS_HPP__
+#endif // SAILINGBOAT_HARDWARE_GPS_GPS_H_

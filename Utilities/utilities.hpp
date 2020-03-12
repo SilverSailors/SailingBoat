@@ -1,8 +1,8 @@
-#ifndef __UTILITIES_HPP__
-#define __UTILITIES_HPP__
+#ifndef SAILINGBOAT_UTILITIES_UTILITIES_H_
+#define SAILINGBOAT_UTILITIES_UTILITIES_H_
 #include "DataContainers/vec2.hpp"
 #include "DataContainers/gps_position.hpp"
-#include "../Hardware/Gps/gps_data.hpp"
+#include "../Hardware/GPS/gps_data.hpp"
 
 class Utilities {
  public:
@@ -13,8 +13,8 @@ class Utilities {
   static double VectorToDegrees(Vec2 vector);
   static double CoordinatesToDegrees(double lat1, double lon1, double lat2, double lon2);
   static double FlipDegrees(double degrees);
-  static GpsPosition ExtractPositionFromData(GpsData data);
+  static GPSPosition ExtractPositionFromData(GPSData data);
   static double Normalize(double degrees);
 };
 
-#endif //__UTILITIES_HPP__
+#endif // SAILINGBOAT_UTILITIES_UTILITIES_H_

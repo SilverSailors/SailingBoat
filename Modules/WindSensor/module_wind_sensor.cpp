@@ -1,6 +1,6 @@
 #include "module_wind_sensor.hpp"
 #include "../../Utilities/utilities.hpp"
-#include "../../Core/Io/io.hpp"
+#include "../../Core/IO/io.hpp"
 #include "../../Core/Parser/parser.hpp"
 #include <iostream>
 #include <vector>
@@ -17,7 +17,7 @@ bool ModuleWindSensor::Init() {
   bool result = hardware_connection_ma3_.Init(spi_channel_);
   initialized_ = result;
 
-  Io io;
+  IO io;
   Parser parser;
   std::vector<std::string> data_raw = io.ReadFile("Settings/sensor_config.txt");
   std::vector<std::string> data_clean = parser.RemoveComments(data_raw);

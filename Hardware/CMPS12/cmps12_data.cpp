@@ -1,11 +1,11 @@
 #include "cmps12_data.hpp"
 #include <iostream>
 
-Cmps12Data::Cmps12Data() {
+CMPS12Data::CMPS12Data() {
   data_reading_valid_ = false;
 }
 
-void Cmps12Data::SetEntry(DataSetRegistry entry, int data) {
+void CMPS12Data::SetEntry(CMPS12DataSetRegistry entry, int data) {
   switch (entry) {
     case DATA_SET_CALIBRATION_STATE_8:calibration_ = data;
       break;
@@ -20,7 +20,7 @@ void Cmps12Data::SetEntry(DataSetRegistry entry, int data) {
   }
 }
 
-int Cmps12Data::GetEntry(DataSetRegistry entry) {
+int CMPS12Data::GetEntry(CMPS12DataSetRegistry entry) {
   switch (entry) {
     case DATA_SET_CALIBRATION_STATE_8:return calibration_;
       break;
@@ -36,7 +36,7 @@ int Cmps12Data::GetEntry(DataSetRegistry entry) {
   }
 }
 
-int Cmps12Data::GetEntry(int entry) {
+int CMPS12Data::GetEntry(int entry) {
   switch (entry) {
     default:std::cout << "NOT IMPLEMENTED IN THIS VERSION" << std::endl;
       return -1;
@@ -44,17 +44,17 @@ int Cmps12Data::GetEntry(int entry) {
   }
 }
 
-void Cmps12Data::SetEntry(int entry, int data) {
+void CMPS12Data::SetEntry(int entry, int data) {
   switch (entry) {
     default:std::cout << "NOT IMPLEMENTED IN THIS VERSION" << std::endl;
       break;
   }
 }
 
-void Cmps12Data::SetValid(bool valid) {
+void CMPS12Data::SetValid(bool valid) {
   data_reading_valid_ = valid;
 }
 
-bool Cmps12Data::GetValid() {
+bool CMPS12Data::GetValid() {
   return data_reading_valid_;
 }
