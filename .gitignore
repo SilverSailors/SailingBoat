@@ -32,7 +32,7 @@
 *.app
 
 # Båt binär fil
-Boat/boat
+Boat/sailingBoat
 
 # Demo binära filer
 Demo/logDemo

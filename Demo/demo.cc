@@ -1,8 +1,8 @@
 #include <iostream>
 #include <unistd.h>
 #include <math.h>
-#include "utilities.h"
-#include "DataContainers/vec2.h"
+#include "../Utilities/utilities.h"
+#include "../Utilities/DataContainers/vec2.h"
 #include "../Modules/CMPS12/module_cmps12.h"
 #include "../Modules/Servo/module_servo.h"
 #include "../Modules/GPS/module_gps.h"
