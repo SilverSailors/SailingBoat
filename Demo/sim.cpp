@@ -1,22 +1,21 @@
 #include <iostream>
 #include "../Utilities/utilities.hpp"
-#include "../Modules/Calculation_Unit/calculation_unit.hpp"
+#include "../Modules/CalculationUnit/calculation_unit.hpp"
 #include <iomanip>
 #include <vector>
 
 int main(void) {
+  CalculationUnit CU;
 
-  Calculation_Unit CU;
-
-  GPS_POSITION start;
+  GpsPosition start;
   start.latitude = 60.10347832490164;
   start.longitude = 19.928544759750366;
 
-  GPS_POSITION destination;
+  GpsPosition destination;
   destination.latitude = 60.105879322635616;
   destination.longitude = 19.926559925079346;
 
-  GPS_POSITION current_position = start;
+  GpsPosition current_position = start;
 
   //Direction of wind in degrees
   double wind_bearing = 337;
@@ -28,33 +27,33 @@ int main(void) {
 
   int side = 0;
 
-  std::vector<GPS_POSITION> waypoint_log;
+  std::vector<GpsPosition> waypoint_log;
 
   waypoint_log.push_back(start);
   bool done = false;
   while (done == false) {
     //Get bearing to destination from current position
-    double destination_bearing = Utilities::coordinates_to_degrees(
+    double destination_bearing = Utilities::CoordinatesToDegrees(
         current_position.latitude, current_position.longitude,
         destination.latitude, destination.longitude);
 
     double AOA = 0;
     //Determine should we head left or right
     if (side == 0) {
-      AOA = CU.calculate_angle_of_approach(destination_bearing, wind_bearing);
+      AOA = CU.CalculateAngleOfApproach(destination_bearing, wind_bearing);
       side = 1;
     } else {
       side = 0;
-      AOA = Utilities::flip_degrees(CU.calculate_angle_of_approach(destination_bearing, wind_bearing));
+      AOA = Utilities::FlipDegrees(CU.CalculateAngleOfApproach(destination_bearing, wind_bearing));
     }
 
     //Add our current angle to the recommended one, normalized
-    double waypoint_angle = Utilities::normalize(AOA + destination_bearing);
+    double waypoint_angle = Utilities::Normalize(AOA + destination_bearing);
 
-    double goal_distance = CU.calculate_distance(current_position, destination);
+    double goal_distance = CU.CalculateDistance(current_position, destination);
 
     double waypoint_distance = goal_distance / distance_factor;
-    GPS_POSITION waypoint = CU.calculate_waypoint(current_position, waypoint_distance, waypoint_angle);
+    GpsPosition waypoint = CU.CalculateWaypoint(current_position, waypoint_distance, waypoint_angle);
 
     current_position.latitude = waypoint.latitude;
     current_position.longitude = waypoint.longitude;

@@ -1,23 +1,22 @@
 #ifndef __LOGGER_HPP__
 #define __LOGGER_HPP__
 #include <string>
-#include "../../Utilities/Data_Containers/LOG.hpp"
-#include "../../Utilities/Data_Containers/GPS_POSITION.hpp"
-#include "../../Hardware/GPS/GPS_data.hpp"
+#include "../../Utilities/DataContainers/log.hpp"
+#include "../../Utilities/DataContainers/gps_position.hpp"
+#include "../../Hardware/Gps/gps_data.hpp"
 
 class Logger {
- private:
-  int m_entries;
-  LOG m_log;
-  std::string m_file_path;
-  bool m_available;
-
  public:
   Logger(std::string path);
-
-  void log_data(LOG packet);
-  void publish();
-  void write(std::string message);
-  void publish_waypoint(GPS_DATA from, GPS_POSITION to, std::string message);
+  void LogData(Log packet);
+  void Publish();
+  void Write(std::string message);
+  void PublishWaypoint(GpsData from, GpsPosition to, std::string message);
+ private:
+  int entries_;
+  Log log_;
+  std::string file_path_;
+  bool available_;
 };
-#endif//__LOGGER_HPP__
+
+#endif //__LOGGER_HPP__
