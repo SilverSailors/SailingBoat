@@ -6,9 +6,9 @@ The following has been used for this application:
 
 - Raspberry Pi 3 WiFi - Arch Linux ARM
 - CMPS 12 - Compass unit
-- MAESTRO - Servo unit
-- MA3 Digital - Analog potentiometer
-- GlobalSat GPS Receiver
+- Maestro - Servo unit
+- Ma3 Digital - Analog potentiometer
+- GlobalSat Gps Receiver
 - RC Laser sailing boat
 - Futaba RC Receiver
 - Futaba RC Controller

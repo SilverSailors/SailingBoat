@@ -9,7 +9,21 @@ CFLAGS = -Wall -pthread -D_REENTRANT -lwiringPi -lgps
 TARGET = boatDemo
 
 # Lägg till eventuella nya källkodsfiler för ditt program här
-SOURCES = demo.cpp ../Modules/Compass/Module_CMPS12.cpp ../Modules/Servo/Module_SERVO.cpp ../Modules/GPS/Module_GPS.cpp ../Modules/Wind_Sensor/Module_Wind_Sensor.cpp ../Modules/Calculation_Unit/calculation_unit.cpp ../Utilities/utilities.cpp ../Utilities/Data_Containers/GPS_POSITION.cpp ../Utilities/Data_Containers/VEC2.cpp ../Hardware/GPS/GPS.cpp ../Hardware/CMPS12/CMPS12.cpp ../Hardware/CMPS12/CMPS12_data.cpp ../Hardware/MA3/MA3.cpp ../Hardware/MAESTRO/MAESTRO.cpp ../Hardware/GPS/GPS_data.cpp 
+SOURCES = demo.cpp \
+../Modules/ModuleCmps12/module_cmps12.cpp \
+../Modules/ModuleServo//module_servo.cpp \
+../Modules/ModuleGps/module_gps.cpp \
+../Modules/ModuleWindSensor/module_wind_sensor.cpp \
+../Modules/CalculationUnit/calculation_unit.cpp \
+../Utilities/utilities.cpp \
+../Utilities/DataContainers/gps_position.cpp \
+../Utilities/DataContainers/vec2.cpp \
+../Hardware/Gps/gps.cpp \
+../Hardware/Cmps12/cmps12.cpp \
+../Hardware/Cmps12/cmps12_data.cpp \
+../Hardware/Ma3/ma3.cpp \
+../Hardware/Maestro/maestro.cpp \
+../Hardware/Gps/gps_data.cpp
 
 all : $(TARGET)
 

@@ -1,5 +1,5 @@
 ##
-##  IO
+##  Io
 ##
 
     Handles writing and reading to determined files
@@ -9,11 +9,11 @@
 ##  Logger
 ##
 
-    Logs determined data from the LOG packets.
+    Logs determined data from the Log packets.
     
 ##
 ##  Parser
 ##
 
-    Examines and manipulates read content files (Removes comment lines for easier handling etc)
+    Examines and manipulates Read content files (Removes comment lines for easier handling etc)
     

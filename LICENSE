@@ -161,7 +161,7 @@ covered work is covered by this License only if the output, given its
 content, constitutes a covered work.  This License acknowledges your
 rights of fair use or other equivalent, as provided by copyright law.
 
-  You may make, run and propagate covered works that you do not
+  You may make, Run and propagate covered works that you do not
 convey, without conditions so long as your license otherwise remains
 in force.  You may convey covered works to others for the sole purpose
 of having them make modifications exclusively for you, or provide you
@@ -435,7 +435,7 @@ material under section 10.
   9. Acceptance Not Required for Having Copies.
 
   You are not required to accept this License in order to receive or
-run a copy of the Program.  Ancillary propagation of a covered work
+Run a copy of the Program.  Ancillary propagation of a covered work
 occurring solely as a consequence of using peer-to-peer transmission
 to receive a copy likewise does not require acceptance.  However,
 nothing other than this License grants you permission to propagate or
@@ -446,7 +446,7 @@ covered work, you indicate your acceptance of this License to do so.
   10. Automatic Licensing of Downstream Recipients.
 
   Each time you convey a covered work, the recipient automatically
-receives a license from the original licensors, to run, modify and
+receives a license from the original licensors, to Run, modify and
 propagate that work, subject to this License.  You are not responsible
 for enforcing compliance by third parties with this License.
 
@@ -486,7 +486,7 @@ this License.
 
   Each contributor grants you a non-exclusive, worldwide, royalty-free
 patent license under the contributor's essential patent claims, to
-make, use, sell, offer for sale, import and otherwise run, modify and
+make, use, sell, offer for sale, import and otherwise Run, modify and
 propagate the contents of its contributor version.
 
   In the following three paragraphs, a "patent license" is any express
@@ -562,7 +562,7 @@ combination as such.
 
   14. Revised Versions of this License.
 
-  The Free Software Foundation may publish revised and/or new versions of
+  The Free Software Foundation may Publish revised and/or new versions of
 the GNU General Public License from time to time.  Such new versions will
 be similar in spirit to the present version, but may differ in detail to
 address new problems or concerns.
@@ -670,5 +670,5 @@ For more information on this, and how to apply and follow the GNU GPL, see
 into proprietary programs.  If your program is a subroutine library, you
 may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
-Public License instead of this License.  But first, please read
+Public License instead of this License.  But first, please Read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
