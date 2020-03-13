@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_MODULES_SERVO_MODULE_SERVO_H_
-#define SAILINGBOAT_MODULES_SERVO_MODULE_SERVO_H_
+#ifndef SAILINGBOAT_INCLUDE_MODULE_SERVO_H_
+#define SAILINGBOAT_INCLUDE_MODULE_SERVO_H_
 #include "maestro.h"
 
 class ModuleServo {
@@ -17,4 +17,4 @@ class ModuleServo {
   Maestro servo_hardware_connection_;
 };
 
-#endif // SAILINGBOAT_MODULES_SERVO_MODULE_SERVO_H_
+#endif // SAILINGBOAT_INCLUDE_MODULE_SERVO_H_

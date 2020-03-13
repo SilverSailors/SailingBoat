@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_HARDWARE_GPS_GPS_H_
-#define SAILINGBOAT_HARDWARE_GPS_GPS_H_
+#ifndef SAILINGBOAT_INCLUDE_GPS_H_
+#define SAILINGBOAT_INCLUDE_GPS_H_
 #include <libgpsmm.h>
 #include <memory>
 #include "gps_data.h"
@@ -17,4 +17,4 @@ class GPS {
   std::unique_ptr<gpsmm> gps_;
 };
 
-#endif // SAILINGBOAT_HARDWARE_GPS_GPS_H_
+#endif // SAILINGBOAT_INCLUDE_GPS_H_

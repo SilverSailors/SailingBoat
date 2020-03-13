@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_HARDWARE_CMPS12_CMPS12_DATA_H_
-#define SAILINGBOAT_HARDWARE_CMPS12_CMPS12_DATA_H_
+#ifndef SAILINGBOAT_INCLUDE_CMPS12_DATA_H_
+#define SAILINGBOAT_INCLUDE_CMPS12_DATA_H_
 #include <inttypes.h>
 #include <vector>
 #include "cmps12_data_registry.h"
@@ -35,4 +35,4 @@ class CMPS12Data {
   int calibration_;
 };
 
-#endif // SAILINGBOAT_HARDWARE_CMPS12_CMPS12_DATA_H_
+#endif // SAILINGBOAT_INCLUDE_CMPS12_DATA_H_

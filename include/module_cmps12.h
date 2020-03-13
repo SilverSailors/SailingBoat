@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_MODULES_CMPS12_MODULE_CMPS12_H_
-#define SAILINGBOAT_MODULES_CMPS12_MODULE_CMPS12_H_
+#ifndef SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_
+#define SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_
 #include <vector>
 #include "cmps12.h"
 #include "cmps12_data.h"
@@ -26,4 +26,4 @@ class ModuleCMPS12 {
   double internal_offset_;
 };
 
-#endif // SAILINGBOAT_MODULES_CMPS12_MODULE_CMPS12_H_
+#endif // SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_

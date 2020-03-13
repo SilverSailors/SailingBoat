@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_CORE_IO_IO_H_
-#define SAILINGBOAT_CORE_IO_IO_H_
+#ifndef SAILINGBOAT_INCLUDE_IO_H_
+#define SAILINGBOAT_INCLUDE_IO_H_
 #include <vector>
 #include <string>
 
@@ -11,4 +11,4 @@ class IO {
   void WriteFile(std::string data, std::string path);
 };
 
-#endif // SAILINGBOAT_CORE_IO_IO_H_
+#endif // SAILINGBOAT_INCLUDE_IO_H_

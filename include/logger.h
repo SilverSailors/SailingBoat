@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_CORE_LOGGER_LOGGER_H_
-#define SAILINGBOAT_CORE_LOGGER_LOGGER_H_
+#ifndef SAILINGBOAT_INCLUDE_LOGGER_H_
+#define SAILINGBOAT_INCLUDE_LOGGER_H_
 #include <string>
 #include "DataContainers/log.h"
 #include "DataContainers/gps_position.h"
@@ -19,4 +19,4 @@ class Logger {
   bool available_;
 };
 
-#endif // SAILINGBOAT_CORE_LOGGER_LOGGER_H_
+#endif // SAILINGBOAT_INCLUDE_LOGGER_H_

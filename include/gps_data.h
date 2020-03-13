@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_HARDWARE_GPS_GPS_DATA_H_
-#define SAILINGBOAT_HARDWARE_GPS_GPS_DATA_H_
+#ifndef SAILINGBOAT_INCLUDE_GPS_DATA_H_
+#define SAILINGBOAT_INCLUDE_GPS_DATA_H_
 #include <string>
 
 class GPSData {
@@ -26,4 +26,4 @@ class GPSData {
   std::string time_;
 };
 
-#endif // SAILINGBOAT_HARDWARE_GPS_GPS_DATA_H_
+#endif // SAILINGBOAT_INCLUDE_GPS_DATA_H_
