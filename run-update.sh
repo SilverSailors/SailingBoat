@@ -14,7 +14,6 @@ fi
 git pull
 
 # Go to Boat directory and make the sailingBoat binary
-cd Boat/
 rm sailingBoat
 make -j $(nproc)
 
