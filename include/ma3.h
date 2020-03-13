@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_HARDWARE_MA3_MA3_H_
-#define SAILINGBOAT_HARDWARE_MA3_MA3_H_
+#ifndef SAILINGBOAT_INCLUDE_MA3_H_
+#define SAILINGBOAT_INCLUDE_MA3_H_
 
 class MA3 {
  public:
@@ -12,4 +12,4 @@ class MA3 {
   int channel_config_;
 };
 
-#endif // SAILINGBOAT_HARDWARE_MA3_MA3_H_
+#endif // SAILINGBOAT_INCLUDE_MA3_H_

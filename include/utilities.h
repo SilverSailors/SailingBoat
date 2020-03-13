@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_UTILITIES_UTILITIES_H_
-#define SAILINGBOAT_UTILITIES_UTILITIES_H_
+#ifndef SAILINGBOAT_INCLUDE_UTILITIES_H_
+#define SAILINGBOAT_INCLUDE_UTILITIES_H_
 #include "DataContainers/vec2.h"
 #include "DataContainers/gps_position.h"
 #include "gps_data.h"
@@ -17,4 +17,4 @@ class Utilities {
   static double Normalize(double degrees);
 };
 
-#endif // SAILINGBOAT_UTILITIES_UTILITIES_H_
+#endif // SAILINGBOAT_INCLUDE_UTILITIES_H_

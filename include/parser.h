@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_CORE_PARSER_PARSER_H_
-#define SAILINGBOAT_CORE_PARSER_PARSER_H_
+#ifndef SAILINGBOAT_INCLUDE_PARSER_H_
+#define SAILINGBOAT_INCLUDE_PARSER_H_
 #include <string>
 #include <vector>
 
@@ -9,4 +9,4 @@ class Parser {
   std::vector<std::string> SplitString(std::string line, char delimiter);
 };
 
-#endif //SAILINGBOAT_CORE_PARSER_PARSER_H_
+#endif //SAILINGBOAT_INCLUDE_PARSER_H_

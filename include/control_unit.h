@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_MODULES_CONTROLUNIT_CONTROL_UNIT_H_
-#define SAILINGBOAT_MODULES_CONTROLUNIT_CONTROL_UNIT_H_
+#ifndef SAILINGBOAT_INCLUDE_CONTROL_UNIT_H_
+#define SAILINGBOAT_INCLUDE_CONTROL_UNIT_H_
 #include <queue>
 #include <string>
 #include <vector>
@@ -45,4 +45,4 @@ class ControlUnit {
   Angle angle_direction_;
 };
 
-#endif // SAILINGBOAT_MODULES_CONTROLUNIT_CONTROL_UNIT_H_
+#endif // SAILINGBOAT_INCLUDE_CONTROL_UNIT_H_

@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_MODULES_CALCULATIONUNIT_CALCULATION_UNIT_H_
-#define SAILINGBOAT_MODULES_CALCULATIONUNIT_CALCULATION_UNIT_H_
+#ifndef SAILINGBOAT_INCLUDE_CALCULATION_UNIT_H_
+#define SAILINGBOAT_INCLUDE_CALCULATION_UNIT_H_
 #include "DataContainers/vec2.h"
 #include "DataContainers/gps_position.h"
 
@@ -12,4 +12,4 @@ class CalculationUnit {
   double CalculateDistance(GPSPosition point_a, GPSPosition point_b);
 };
 
-#endif // SAILINGBOAT_MODULES_CALCULATIONUNIT_CALCULATION_UNIT_H_
+#endif // SAILINGBOAT_INCLUDE_CALCULATION_UNIT_H_

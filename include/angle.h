@@ -1,9 +1,9 @@
-#ifndef __ANGLE_HPP__
-#define __ANGLE_HPP__
+#ifndef SAILINGBOAT_INCLUDE_ANGLE_H_
+#define SAILINGBOAT_INCLUDE_ANGLE_H_
 
 typedef enum {
   PORT = 0,
   STARBOARD = 1,
 } Angle;
 
-#endif //__ANGLE_HPP__
+#endif //SAILINGBOAT_INCLUDE_ANGLE_H_

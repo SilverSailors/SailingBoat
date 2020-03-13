@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_MODULES_GPS_MODULE_GPS_H_
-#define SAILINGBOAT_MODULES_GPS_MODULE_GPS_H_
+#ifndef SAILINGBOAT_INCLUDE_MODULE_GPS_H_
+#define SAILINGBOAT_INCLUDE_MODULE_GPS_H_
 #include "gps.h"
 #include "gps_data.h"
 
@@ -19,4 +19,4 @@ class ModuleGPS {
   bool new_data_available_;
 };
 
-#endif // SAILINGBOAT_MODULES_GPS_MODULE_GPS_H_
+#endif // SAILINGBOAT_INCLUDE_MODULE_GPS_H_

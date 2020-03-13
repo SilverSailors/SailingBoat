@@ -1,5 +1,5 @@
-#ifndef SAILINGBOAT_HARDWARE_MAESTRO_MAESTRO_H_
-#define SAILINGBOAT_HARDWARE_MAESTRO_MAESTRO_H_
+#ifndef SAILINGBOAT_INCLUDE_MAESTRO_H_
+#define SAILINGBOAT_INCLUDE_MAESTRO_H_
 #include "maestro_registry.h"
 
 class Maestro {
@@ -18,4 +18,4 @@ class Maestro {
   int upper_limit_;
 };
 
-#endif // SAILINGBOAT_HARDWARE_MAESTRO_MAESTRO_H_
+#endif // SAILINGBOAT_INCLUDE_MAESTRO_H_
