@@ -1,21 +1,21 @@
 #include <iostream>
-#include "../Utilities/utilities.hpp"
-#include "../Modules/CalculationUnit/calculation_unit.hpp"
+#include "../Utilities/utilities.h"
+#include "../Modules/CalculationUnit/calculation_unit.h"
 #include <iomanip>
 #include <vector>
 
 int main(void) {
   CalculationUnit CU;
 
-  GpsPosition start;
+  GPSPosition start;
   start.latitude = 60.10347832490164;
   start.longitude = 19.928544759750366;
 
-  GpsPosition destination;
+  GPSPosition destination;
   destination.latitude = 60.105879322635616;
   destination.longitude = 19.926559925079346;
 
-  GpsPosition current_position = start;
+  GPSPosition current_position = start;
 
   //Direction of wind in degrees
   double wind_bearing = 337;
@@ -27,7 +27,7 @@ int main(void) {
 
   int side = 0;
 
-  std::vector<GpsPosition> waypoint_log;
+  std::vector<GPSPosition> waypoint_log;
 
   waypoint_log.push_back(start);
   bool done = false;
@@ -53,7 +53,7 @@ int main(void) {
     double goal_distance = CU.CalculateDistance(current_position, destination);
 
     double waypoint_distance = goal_distance / distance_factor;
-    GpsPosition waypoint = CU.CalculateWaypoint(current_position, waypoint_distance, waypoint_angle);
+    GPSPosition waypoint = CU.CalculateWaypoint(current_position, waypoint_distance, waypoint_angle);
 
     current_position.latitude = waypoint.latitude;
     current_position.longitude = waypoint.longitude;
