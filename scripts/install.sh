@@ -10,9 +10,7 @@ mkdir -p ${XDG_CONFIG_HOME:-~/.config}/sailingBoat
 mkdir -p ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/logs/
 mkdir -p ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/
 
-
 touch ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/settings.txt
-
 echo "# Distance Threshold (Meters)
 # How far should we be to our waypoints before getting a new one
 5.0
@@ -36,6 +34,7 @@ echo "
 
 #WIND SENSOR OFFSET
 0" >> ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/sensor_config.txt
+
 touch ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/destination.txt
 echo "# Coordinates for our goal
 # Latitude Longitude
