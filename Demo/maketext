@@ -1,1 +1,0 @@
-g++ demo.cpp -o boatDemo ../Modules/ModuleCmps12/ModuleCmps12.cpp ../Hardware/Cmps12/CMPS12_data.cpp ../Hardware/Cmps12/Cmps12.cpp ../Modules/ModuleServo//ModuleServo.cpp ../Hardware/Maestro/Maestro.cpp -lwiringPi ../Modules/CalculationUnit/calculation_unit.cpp ../Utilities/utilities.cpp ../Utilities/DataContainers/Vec2.cpp ../Modules/ModuleGps/ModuleGps.cpp

@@ -7,15 +7,15 @@ The following has been used for this application:
 - Raspberry Pi 3 WiFi - Arch Linux ARM
 - CMPS 12 - Compass unit
 - Maestro - Servo unit
-- Ma3 Digital - Analog potentiometer
-- GlobalSat Gps Receiver
+- MA3 Digital - Analog potentiometer
+- GlobalSat GPS Receiver
 - RC Laser sailing boat
 - Futaba RC Receiver
 - Futaba RC Controller
 - RC Switch (RC -> digital)
 
 ## General (HOWTO)
-Each Hardware component is wrapped wihtin a module component, this wrapper
+Each Hardware component is wrapped within a module component, this wrapper
 ensures that all exceptions caused by hardware can be caught by the module
 without extensive fault checking by the user, and will be notified if
 something went wrong via the module.
@@ -51,16 +51,19 @@ Edit the file */etc/hostname*.
     
 for more information about devices on the raspberry pi go to: [this link](https://archlinuxarm.org/wiki/Raspberry_Pi)
     
-    
+# Core
+Handles writing and reading to determined files (If said files do not exist they will be created upon execution).
+Logs determined data from the Log packets. 
+Examines and manipulates Read content files (Removes comment lines for easier handling etc).
     
 # Hardware
-Each hardware component represents the hard connection to the device it is
-speaking from->to.
-    
+Each hardware component represents the hard connection to the device it is speaking from->to.
     
 # Modules
-Modules will perform the required adaptation of our raw data which our
-hardware components aquire.
+Modules will perform the required adaptation of our raw data which our hardware components aquire.
+
+# Utilities
+Utitiles contain all conversion maths, Convert A -> B, B -> A etc. Flip degrees etc.
     
 # Procedure
 
