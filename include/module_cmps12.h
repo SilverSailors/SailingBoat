@@ -15,13 +15,21 @@ class ModuleCMPS12 {
   void Report();
   bool IsNewDataAvilable();
  private:
-  //Hardware component for our compass module
+  ///
+  ///Hardware component for our compass module
+  ///
   CMPS12 CMPS12_hardware_connection_;
-  //Latest reading
+  ///
+  ///Latest reading
+  ///
   CMPS12Data CMPS12_data_reading_;
-  //Is this module initialized
+  ///
+  ///Is this module initialized
+  ///
   bool initialized_;
-  //Have we Read the latest reading already?
+  ///
+  ///Have we Read the latest reading already?
+  ///
   bool new_data_available_;
   double internal_offset_;
 };

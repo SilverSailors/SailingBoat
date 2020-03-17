@@ -11,9 +11,11 @@ class GPS {
   GPSData Read();
  private:
   bool initialized_;
-  //GPSMM is an unique vector so we dont have
-  //to use the Init list to construct it,
-  //parameters will be passed in Init by make_unique<>()
+  ///
+  ///GPSMM is an unique vector so we dont have
+  ///to use the Init list to construct it,
+  ///parameters will be passed in Init by make_unique<>()
+  ///
   std::unique_ptr<gpsmm> gps_;
 };
 
