@@ -5,9 +5,15 @@
 class CMPS12 {
  public:
   CMPS12();
-  //Establish connection to I2C device
+
+  ///
+  ///Establish connection to I2C device
+  ///
   bool Init();
-  //Read data from I2C Pins, return retrieved data
+
+  ///
+  ///Read data from I2C Pins, return retrieved data
+  ///
   CMPS12Data Read();
  private:
   int Bitshift(int high, int low);
