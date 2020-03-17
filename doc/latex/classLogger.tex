@@ -1,0 +1,99 @@
+\hypertarget{classLogger}{}\doxysection{Logger Class Reference}
+\label{classLogger}\index{Logger@{Logger}}
+
+
+{\ttfamily \#include $<$logger.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLogger_a7f4c364f1578e19501f88ee5b7ddd66e}{Logger}} (std\+::string path)
+\item 
+void \mbox{\hyperlink{classLogger_ab7087593c44b51a04ea22bb64a7bb620}{Log\+Data}} (\mbox{\hyperlink{classLog}{Log}} packet)
+\item 
+void \mbox{\hyperlink{classLogger_aaf86a5dfb84ef91c67685b0169e9299b}{Publish}} ()
+\item 
+void \mbox{\hyperlink{classLogger_af0d7273d6c812cb94851885c38bd9415}{Write}} (std\+::string message)
+\item 
+void \mbox{\hyperlink{classLogger_a04822c411d956fe54289364ff6dbe64d}{Publish\+Waypoint}} (\mbox{\hyperlink{classGPSData}{G\+P\+S\+Data}} from, \mbox{\hyperlink{classGPSPosition}{G\+P\+S\+Position}} to, std\+::string message)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classLogger_a82f45f825197bfef22dbe6dc205cd5a9}{entries\+\_\+}}
+\item 
+\mbox{\hyperlink{classLog}{Log}} \mbox{\hyperlink{classLogger_a6e14dad92e6b6ee5d0c6d358228021a9}{log\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{classLogger_a7380406bac1ed98c8057483f36e16d4f}{file\+\_\+path\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classLogger_a673a55553b3f877cedc225aadb369f97}{available\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLogger_a7f4c364f1578e19501f88ee5b7ddd66e}\label{classLogger_a7f4c364f1578e19501f88ee5b7ddd66e}} 
+\index{Logger@{Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}}
+{\footnotesize\ttfamily Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLogger_ab7087593c44b51a04ea22bb64a7bb620}\label{classLogger_ab7087593c44b51a04ea22bb64a7bb620}} 
+\index{Logger@{Logger}!LogData@{LogData}}
+\index{LogData@{LogData}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{LogData()}{LogData()}}
+{\footnotesize\ttfamily void Logger\+::\+Log\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLog}{Log}}}]{packet }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLogger_aaf86a5dfb84ef91c67685b0169e9299b}\label{classLogger_aaf86a5dfb84ef91c67685b0169e9299b}} 
+\index{Logger@{Logger}!Publish@{Publish}}
+\index{Publish@{Publish}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Publish()}{Publish()}}
+{\footnotesize\ttfamily void Logger\+::\+Publish (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLogger_a04822c411d956fe54289364ff6dbe64d}\label{classLogger_a04822c411d956fe54289364ff6dbe64d}} 
+\index{Logger@{Logger}!PublishWaypoint@{PublishWaypoint}}
+\index{PublishWaypoint@{PublishWaypoint}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{PublishWaypoint()}{PublishWaypoint()}}
+{\footnotesize\ttfamily void Logger\+::\+Publish\+Waypoint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGPSData}{G\+P\+S\+Data}}}]{from,  }\item[{\mbox{\hyperlink{classGPSPosition}{G\+P\+S\+Position}}}]{to,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLogger_af0d7273d6c812cb94851885c38bd9415}\label{classLogger_af0d7273d6c812cb94851885c38bd9415}} 
+\index{Logger@{Logger}!Write@{Write}}
+\index{Write@{Write}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Write()}{Write()}}
+{\footnotesize\ttfamily void Logger\+::\+Write (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLogger_a673a55553b3f877cedc225aadb369f97}\label{classLogger_a673a55553b3f877cedc225aadb369f97}} 
+\index{Logger@{Logger}!available\_@{available\_}}
+\index{available\_@{available\_}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{available\_}{available\_}}
+{\footnotesize\ttfamily bool Logger\+::available\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classLogger_a82f45f825197bfef22dbe6dc205cd5a9}\label{classLogger_a82f45f825197bfef22dbe6dc205cd5a9}} 
+\index{Logger@{Logger}!entries\_@{entries\_}}
+\index{entries\_@{entries\_}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{entries\_}{entries\_}}
+{\footnotesize\ttfamily int Logger\+::entries\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classLogger_a7380406bac1ed98c8057483f36e16d4f}\label{classLogger_a7380406bac1ed98c8057483f36e16d4f}} 
+\index{Logger@{Logger}!file\_path\_@{file\_path\_}}
+\index{file\_path\_@{file\_path\_}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{file\_path\_}{file\_path\_}}
+{\footnotesize\ttfamily std\+::string Logger\+::file\+\_\+path\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classLogger_a6e14dad92e6b6ee5d0c6d358228021a9}\label{classLogger_a6e14dad92e6b6ee5d0c6d358228021a9}} 
+\index{Logger@{Logger}!log\_@{log\_}}
+\index{log\_@{log\_}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{log\_}{log\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLog}{Log}} Logger\+::log\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{logger_8h}{logger.\+h}}\item 
+src/\mbox{\hyperlink{logger_8cc}{logger.\+cc}}\end{DoxyCompactItemize}

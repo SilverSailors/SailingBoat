@@ -1,0 +1,123 @@
+\hypertarget{classModuleWindSensor}{}\doxysection{Module\+Wind\+Sensor Class Reference}
+\label{classModuleWindSensor}\index{ModuleWindSensor@{ModuleWindSensor}}
+
+
+{\ttfamily \#include $<$module\+\_\+wind\+\_\+sensor.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classModuleWindSensor_a5017dcf2d77a0947c0c28db0c1b5c757}{Module\+Wind\+Sensor}} (int spi\+\_\+channel)
+\item 
+bool \mbox{\hyperlink{classModuleWindSensor_a510a6c64eaae66927cb46f38e71546d7}{Init}} ()
+\item 
+void \mbox{\hyperlink{classModuleWindSensor_afcf44dc504b4ae133ded52910eb43bdc}{Run}} ()
+\item 
+int \mbox{\hyperlink{classModuleWindSensor_ac5c1e6a91f324147b0f063cbf332d202}{Get\+Reading}} ()
+\item 
+void \mbox{\hyperlink{classModuleWindSensor_a0ef42a47c87b7d8b763d93afa0e1b426}{Report}} ()
+\item 
+bool \mbox{\hyperlink{classModuleWindSensor_a262d4fa3781e867eef19b164ef9b6bb9}{Is\+New\+Data\+Available}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classModuleWindSensor_a47b813d1011c906a04f49e3a951e8423}{initialized\+\_\+}}
+\item 
+\mbox{\hyperlink{classMA3}{M\+A3}} \mbox{\hyperlink{classModuleWindSensor_a679a818d469199218631035ec62f0746}{hardware\+\_\+connection\+\_\+ma3\+\_\+}}
+\item 
+int \mbox{\hyperlink{classModuleWindSensor_ab75b4ab1d109bf3c135af683e8e0dacd}{spi\+\_\+channel\+\_\+}}
+\item 
+int \mbox{\hyperlink{classModuleWindSensor_a54a352fabe8272a19b5a395b5731be7b}{reading\+\_\+}}
+\item 
+double \mbox{\hyperlink{classModuleWindSensor_a710b767d0184e94fec4d631343ad85df}{internal\+\_\+offset\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classModuleWindSensor_a90ac02ceaade4dff33cafec725c7fcf5}{new\+\_\+data\+\_\+available\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classModuleWindSensor_a5017dcf2d77a0947c0c28db0c1b5c757}\label{classModuleWindSensor_a5017dcf2d77a0947c0c28db0c1b5c757}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!ModuleWindSensor@{ModuleWindSensor}}
+\index{ModuleWindSensor@{ModuleWindSensor}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{ModuleWindSensor()}{ModuleWindSensor()}}
+{\footnotesize\ttfamily Module\+Wind\+Sensor\+::\+Module\+Wind\+Sensor (\begin{DoxyParamCaption}\item[{int}]{spi\+\_\+channel }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classModuleWindSensor_ac5c1e6a91f324147b0f063cbf332d202}\label{classModuleWindSensor_ac5c1e6a91f324147b0f063cbf332d202}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!GetReading@{GetReading}}
+\index{GetReading@{GetReading}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{GetReading()}{GetReading()}}
+{\footnotesize\ttfamily int Module\+Wind\+Sensor\+::\+Get\+Reading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classModuleWindSensor_a510a6c64eaae66927cb46f38e71546d7}\label{classModuleWindSensor_a510a6c64eaae66927cb46f38e71546d7}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!Init@{Init}}
+\index{Init@{Init}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily bool Module\+Wind\+Sensor\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classModuleWindSensor_a262d4fa3781e867eef19b164ef9b6bb9}\label{classModuleWindSensor_a262d4fa3781e867eef19b164ef9b6bb9}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!IsNewDataAvailable@{IsNewDataAvailable}}
+\index{IsNewDataAvailable@{IsNewDataAvailable}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{IsNewDataAvailable()}{IsNewDataAvailable()}}
+{\footnotesize\ttfamily bool Module\+Wind\+Sensor\+::\+Is\+New\+Data\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classModuleWindSensor_a0ef42a47c87b7d8b763d93afa0e1b426}\label{classModuleWindSensor_a0ef42a47c87b7d8b763d93afa0e1b426}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!Report@{Report}}
+\index{Report@{Report}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{Report()}{Report()}}
+{\footnotesize\ttfamily void Module\+Wind\+Sensor\+::\+Report (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classModuleWindSensor_afcf44dc504b4ae133ded52910eb43bdc}\label{classModuleWindSensor_afcf44dc504b4ae133ded52910eb43bdc}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!Run@{Run}}
+\index{Run@{Run}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Module\+Wind\+Sensor\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classModuleWindSensor_a679a818d469199218631035ec62f0746}\label{classModuleWindSensor_a679a818d469199218631035ec62f0746}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!hardware\_connection\_ma3\_@{hardware\_connection\_ma3\_}}
+\index{hardware\_connection\_ma3\_@{hardware\_connection\_ma3\_}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{hardware\_connection\_ma3\_}{hardware\_connection\_ma3\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMA3}{M\+A3}} Module\+Wind\+Sensor\+::hardware\+\_\+connection\+\_\+ma3\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classModuleWindSensor_a47b813d1011c906a04f49e3a951e8423}\label{classModuleWindSensor_a47b813d1011c906a04f49e3a951e8423}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!initialized\_@{initialized\_}}
+\index{initialized\_@{initialized\_}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{initialized\_}{initialized\_}}
+{\footnotesize\ttfamily bool Module\+Wind\+Sensor\+::initialized\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classModuleWindSensor_a710b767d0184e94fec4d631343ad85df}\label{classModuleWindSensor_a710b767d0184e94fec4d631343ad85df}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!internal\_offset\_@{internal\_offset\_}}
+\index{internal\_offset\_@{internal\_offset\_}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{internal\_offset\_}{internal\_offset\_}}
+{\footnotesize\ttfamily double Module\+Wind\+Sensor\+::internal\+\_\+offset\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classModuleWindSensor_a90ac02ceaade4dff33cafec725c7fcf5}\label{classModuleWindSensor_a90ac02ceaade4dff33cafec725c7fcf5}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!new\_data\_available\_@{new\_data\_available\_}}
+\index{new\_data\_available\_@{new\_data\_available\_}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{new\_data\_available\_}{new\_data\_available\_}}
+{\footnotesize\ttfamily bool Module\+Wind\+Sensor\+::new\+\_\+data\+\_\+available\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classModuleWindSensor_a54a352fabe8272a19b5a395b5731be7b}\label{classModuleWindSensor_a54a352fabe8272a19b5a395b5731be7b}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!reading\_@{reading\_}}
+\index{reading\_@{reading\_}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{reading\_}{reading\_}}
+{\footnotesize\ttfamily int Module\+Wind\+Sensor\+::reading\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classModuleWindSensor_ab75b4ab1d109bf3c135af683e8e0dacd}\label{classModuleWindSensor_ab75b4ab1d109bf3c135af683e8e0dacd}} 
+\index{ModuleWindSensor@{ModuleWindSensor}!spi\_channel\_@{spi\_channel\_}}
+\index{spi\_channel\_@{spi\_channel\_}!ModuleWindSensor@{ModuleWindSensor}}
+\doxysubsubsection{\texorpdfstring{spi\_channel\_}{spi\_channel\_}}
+{\footnotesize\ttfamily int Module\+Wind\+Sensor\+::spi\+\_\+channel\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{module__wind__sensor_8h}{module\+\_\+wind\+\_\+sensor.\+h}}\item 
+src/\mbox{\hyperlink{module__wind__sensor_8cc}{module\+\_\+wind\+\_\+sensor.\+cc}}\end{DoxyCompactItemize}

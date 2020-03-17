@@ -1,0 +1,102 @@
+\hypertarget{classCMPS12}{}\doxysection{C\+M\+P\+S12 Class Reference}
+\label{classCMPS12}\index{CMPS12@{CMPS12}}
+
+
+{\ttfamily \#include $<$cmps12.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCMPS12_a95ab7ee773046a4327d5dd7857655c31}{C\+M\+P\+S12}} ()
+\item 
+bool \mbox{\hyperlink{classCMPS12_a14154b0d72ef286efef42c7476308dbe}{Init}} ()
+\item 
+\mbox{\hyperlink{classCMPS12Data}{C\+M\+P\+S12\+Data}} \mbox{\hyperlink{classCMPS12_adc5c825032fb4a734fb91ab77ba6f2cb}{Read}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classCMPS12_ab04fece3ec8f32c47570c2a3b9fc2dad}{Bitshift}} (int high, int low)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{classCMPS12_a6041982046e50b9331e37b54f34e4d31}{total\+\_\+registry\+\_\+entries\+\_\+}} = 31
+\item 
+const int \mbox{\hyperlink{classCMPS12_a0277312d543815b88c53cbe204a92ee6}{i2c\+\_\+device\+\_\+address\+\_\+}} = 0x60
+\item 
+const char $\ast$ \mbox{\hyperlink{classCMPS12_a2218917c192ef0f0060bc12851cfd3a0}{i2c\+\_\+device\+\_\+path\+\_\+}} = \char`\"{}/dev/i2c-\/1\char`\"{}
+\item 
+bool \mbox{\hyperlink{classCMPS12_a6f1f2a9134593a0b67c42fe03761557b}{initialized\+\_\+}}
+\item 
+int \mbox{\hyperlink{classCMPS12_a6f341fb8a1889003d8c410ad435c1ead}{file\+\_\+descriptor\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCMPS12_a95ab7ee773046a4327d5dd7857655c31}\label{classCMPS12_a95ab7ee773046a4327d5dd7857655c31}} 
+\index{CMPS12@{CMPS12}!CMPS12@{CMPS12}}
+\index{CMPS12@{CMPS12}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{CMPS12()}{CMPS12()}}
+{\footnotesize\ttfamily C\+M\+P\+S12\+::\+C\+M\+P\+S12 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCMPS12_ab04fece3ec8f32c47570c2a3b9fc2dad}\label{classCMPS12_ab04fece3ec8f32c47570c2a3b9fc2dad}} 
+\index{CMPS12@{CMPS12}!Bitshift@{Bitshift}}
+\index{Bitshift@{Bitshift}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{Bitshift()}{Bitshift()}}
+{\footnotesize\ttfamily int C\+M\+P\+S12\+::\+Bitshift (\begin{DoxyParamCaption}\item[{int}]{high,  }\item[{int}]{low }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCMPS12_a14154b0d72ef286efef42c7476308dbe}\label{classCMPS12_a14154b0d72ef286efef42c7476308dbe}} 
+\index{CMPS12@{CMPS12}!Init@{Init}}
+\index{Init@{Init}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily bool C\+M\+P\+S12\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCMPS12_adc5c825032fb4a734fb91ab77ba6f2cb}\label{classCMPS12_adc5c825032fb4a734fb91ab77ba6f2cb}} 
+\index{CMPS12@{CMPS12}!Read@{Read}}
+\index{Read@{Read}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{Read()}{Read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCMPS12Data}{C\+M\+P\+S12\+Data}} C\+M\+P\+S12\+::\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCMPS12_a6f341fb8a1889003d8c410ad435c1ead}\label{classCMPS12_a6f341fb8a1889003d8c410ad435c1ead}} 
+\index{CMPS12@{CMPS12}!file\_descriptor\_@{file\_descriptor\_}}
+\index{file\_descriptor\_@{file\_descriptor\_}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{file\_descriptor\_}{file\_descriptor\_}}
+{\footnotesize\ttfamily int C\+M\+P\+S12\+::file\+\_\+descriptor\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCMPS12_a0277312d543815b88c53cbe204a92ee6}\label{classCMPS12_a0277312d543815b88c53cbe204a92ee6}} 
+\index{CMPS12@{CMPS12}!i2c\_device\_address\_@{i2c\_device\_address\_}}
+\index{i2c\_device\_address\_@{i2c\_device\_address\_}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{i2c\_device\_address\_}{i2c\_device\_address\_}}
+{\footnotesize\ttfamily const int C\+M\+P\+S12\+::i2c\+\_\+device\+\_\+address\+\_\+ = 0x60\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCMPS12_a2218917c192ef0f0060bc12851cfd3a0}\label{classCMPS12_a2218917c192ef0f0060bc12851cfd3a0}} 
+\index{CMPS12@{CMPS12}!i2c\_device\_path\_@{i2c\_device\_path\_}}
+\index{i2c\_device\_path\_@{i2c\_device\_path\_}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{i2c\_device\_path\_}{i2c\_device\_path\_}}
+{\footnotesize\ttfamily const char$\ast$ C\+M\+P\+S12\+::i2c\+\_\+device\+\_\+path\+\_\+ = \char`\"{}/dev/i2c-\/1\char`\"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCMPS12_a6f1f2a9134593a0b67c42fe03761557b}\label{classCMPS12_a6f1f2a9134593a0b67c42fe03761557b}} 
+\index{CMPS12@{CMPS12}!initialized\_@{initialized\_}}
+\index{initialized\_@{initialized\_}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{initialized\_}{initialized\_}}
+{\footnotesize\ttfamily bool C\+M\+P\+S12\+::initialized\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCMPS12_a6041982046e50b9331e37b54f34e4d31}\label{classCMPS12_a6041982046e50b9331e37b54f34e4d31}} 
+\index{CMPS12@{CMPS12}!total\_registry\_entries\_@{total\_registry\_entries\_}}
+\index{total\_registry\_entries\_@{total\_registry\_entries\_}!CMPS12@{CMPS12}}
+\doxysubsubsection{\texorpdfstring{total\_registry\_entries\_}{total\_registry\_entries\_}}
+{\footnotesize\ttfamily const int C\+M\+P\+S12\+::total\+\_\+registry\+\_\+entries\+\_\+ = 31\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{cmps12_8h}{cmps12.\+h}}\item 
+src/\mbox{\hyperlink{cmps12_8cc}{cmps12.\+cc}}\end{DoxyCompactItemize}
