@@ -6,7 +6,10 @@ class Vec2 {
   Vec2();
   double x;
   double y;
-  //Overloaded operators
+  
+  ///
+  ///Overloaded operators
+  ///
   Vec2 operator-(const Vec2 &vector);
 };
 

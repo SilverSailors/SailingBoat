@@ -16,7 +16,9 @@ class ModuleWindSensor {
   int spi_channel_;
   int reading_;
   double internal_offset_;
-  //Have we Read the latest reading already?
+  ///
+  ///Have we Read the latest reading already?
+  ///
   bool new_data_available_;
 };
 
