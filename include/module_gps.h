@@ -15,7 +15,9 @@ class ModuleGPS {
   bool initialized_;
   GPS gps_hardware_connection_;
   GPSData data_reading_;
-  //Have we Read the latest reading already?
+  ///
+  ///Have we Read the latest reading already?
+  ///
   bool new_data_available_;
 };
 

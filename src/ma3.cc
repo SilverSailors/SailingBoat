@@ -8,9 +8,11 @@ MA3::MA3() {
 }
 
 bool MA3::Init(int spi_channel) {
-  //Load SPI Drivers (Not required as GPIO is native to PI)
-  //And activated via Raspi-config instead
-  //(Will output Warning text if Run)
+  ///
+  ///Load SPI Drivers (Not required as GPIO is native to PI)
+  ///And activated via Raspi-config instead
+  ///(Will output Warning text if Run)
+  ///
 
   /*
   if(system("gpio load spi") == -1)

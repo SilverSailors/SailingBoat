@@ -26,13 +26,17 @@ bool ControlUnit::Init(std::string destination, std::string settings) {
   IO io;
   Parser parser;
 
-  //Get file data and remove all comments
+  ///
+  ///Get file data and remove all comments
+  ///
   std::vector<std::string> data_raw = io.ReadFile(destination);
   std::vector<std::string> data_clean = parser.RemoveComments(data_raw);
   int checkpoints = data_clean.size();
   std::cout << "We Have #" << checkpoints << " Checkpoints to travel to" << std::endl;
 
-  //Store each checkpoints in reverse (FIFO, we want our first one to be on top of the stack)
+  ///
+  ///Store each checkpoints in reverse (FIFO, we want our first one to be on top of the stack)
+  ///
   for (int i = 0; i < checkpoints; i++) {
     std::vector<std::string> split = parser.SplitString(data_clean[i], ',');
     if (split.size() == 2) {
@@ -52,8 +56,11 @@ bool ControlUnit::Init(std::string destination, std::string settings) {
   //Store threshold variables
   std::vector<std::string> settings_raw = io.ReadFile(settings);
   std::vector<std::string> settings_clean = parser.RemoveComments(settings_raw);
-  //NOTE THAT OUR ELEMENTS ARE THE SETTINGS POSITIONS; REMOVAL OF SETTINGS OR
-  //ADDING WITHOUT MENDING WILL CAUSE FAULTS
+
+  ///
+  ///NOTE THAT OUR ELEMENTS ARE THE SETTINGS POSITIONS; REMOVAL OF SETTINGS OR
+  ///ADDING WITHOUT MENDING WILL CAUSE FAULTS
+  ///
   int total_settings = settings_clean.size();
   std::cout << "Total Settings found: " << total_settings << std::endl;
   if (total_settings < 2) {
@@ -64,7 +71,10 @@ bool ControlUnit::Init(std::string destination, std::string settings) {
     waypoint_distance_creation_threshold_ = 0;
     calculated_threshold_ = distance_threshold_ / distance_factor_;
   } else {
-    //NOTE WE DONT REMOVE EMPTY LINES SO WE SKIP [1] AS IT IS EMPTY
+    
+    ///
+    ///NOTE WE DONT REMOVE EMPTY LINES SO WE SKIP [1] AS IT IS EMPTY
+    ///
     distance_threshold_ = std::atof(settings_clean[0].c_str());
     time_threshold_ = std::atof(settings_clean[2].c_str());
     distance_factor_ = std::atof(settings_clean[4].c_str());

@@ -27,8 +27,10 @@ bool ModuleWindSensor::Init() {
 }
 
 void ModuleWindSensor::Run() {
-  //The values retrieved from the sensor need to be converted to our range
-  //(Initial values are between 2-1020, we want 0 - 359
+  ///
+  ///The values retrieved from the sensor need to be converted to our range
+  ///(Initial values are between 2-1020, we want 0 - 359
+  ///
   int reading = hardware_connection_ma3_.Read(spi_channel_);
   int bearing_uncorrected = Utilities::ConvertCoordinates(2, 1020, 0, 359, reading);
   reading_ = Utilities::Normalize(bearing_uncorrected + internal_offset_);
