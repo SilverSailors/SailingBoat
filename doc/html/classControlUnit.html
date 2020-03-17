@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SailingRobot
    &#160;<span id="projectnumber">1.0</span>
@@ -328,6 +329,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get file data and remove all comments</p>
+<p>Store each checkpoints in reverse (FIFO, we want our first one to be on top of the stack)</p>
+<p>NOTE THAT OUR ELEMENTS ARE THE SETTINGS POSITIONS; REMOVAL OF SETTINGS OR ADDING WITHOUT MENDING WILL CAUSE FAULTS</p>
+<p>NOTE WE DONT REMOVE EMPTY LINES SO WE SKIP [1] AS IT IS EMPTY</p>
 
 </div>
 </div>
@@ -594,6 +599,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Have we reached our destination </p>
 
 </div>
 </div>
@@ -616,6 +622,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Have we set a destination </p>
 
 </div>
 </div>
@@ -638,6 +645,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Have we set a waypoint? </p>
 
 </div>
 </div>
@@ -660,6 +668,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>How long should we wait until we establish a new waypoint If the old one hasnt been reached </p>
 
 </div>
 </div>
@@ -682,6 +691,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Our current waypoint </p>
 
 </div>
 </div>
@@ -704,6 +714,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The distance we are allowed to be away from the waypoint to consider it reached (Meters) </p>
 
 </div>
 </div>
@@ -726,6 +737,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>How far away should waypoints be from our initial position </p>
 
 </div>
 </div>
@@ -748,6 +760,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Queue of all our destinations </p>
 
 </div>
 </div>
@@ -792,6 +805,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Is the Control Unit Activated </p>
 
 </div>
 </div>
@@ -814,6 +828,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Have we reached our waypoint </p>
 
 </div>
 </div>

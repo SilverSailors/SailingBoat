@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SailingRobot
    &#160;<span id="projectnumber">1.0</span>
@@ -112,6 +113,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Even if we are head on we want to move slightly to the side for good measure</p>
+<p>Calculate single side of our bearings (To get other side just flip)</p>
+<p>Cut it in half so that we can only turn +- 90 degrees</p>
+<p>If our angle is too big or too small Offset with our discrepancy so we get a small variation</p>
 
 </div>
 </div>
@@ -140,6 +145,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Convert to radian</p>
 
 </div>
 </div>
@@ -158,6 +164,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>NOTE VECTOR BEARING SHOULD BE ROTATED 90 DEGREES SO THAT X,Y = 0,1 IS NORTH NOTE Dead zone represents how much of our centering we should ignore This is to prevent constant wiggle as we try to center in on our target</p>
+<p>If Y is negative then we need to turn around</p>
 
 </div>
 </div>
@@ -176,6 +184,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>IF Y IS POSITIVE THEN WIND AT OUR BACKS (GOOD) IF Y IS NEGATIVE THEN WIND IS BLOWING AT US (BAD) IF Y IS 0 THEN IT IS FROM OUR SIDE</p>
+<p>Y AXIS DETERMINES HOW HARD WE NEED TO SWING OUR SAILS -1 MIN +1 MAX</p>
+<p>ADDING IN RESTRAINT TO SAIL AS WE DONT NEED ALL POWER (TOO WIDE IN LOWER ANGLES, 0-75%)</p>
+<p>POS NEG X IS IRRELEVANT AS SAIL CAN SWING AROUND TO OTHER SIDE</p>
 
 </div>
 </div>
@@ -210,6 +222,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>STOLEN FROM THE INTERNET (Hence d, c, they did not specifiy what they meant)</p>
+<p>LATITUDE</p>
+<p>LONGITUDE</p>
 
 </div>
 </div>

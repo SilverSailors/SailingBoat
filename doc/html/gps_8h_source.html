@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SailingRobot
    &#160;<span id="projectnumber">1.0</span>
@@ -84,21 +85,18 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="classGPSData.html">GPSData</a> <a class="code" href="classGPS.html#a62052f6fe648896065596ee401145422">Read</a>();</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classGPS.html#a6457f65f57cf77c4ca152155fe562370">   13</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classGPS.html#a6457f65f57cf77c4ca152155fe562370">initialized_</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="comment">//GPSMM is an unique vector so we dont have</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="comment">//to use the Init list to construct it,</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="comment">//parameters will be passed in Init by make_unique&lt;&gt;()</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classGPS.html#a15068c85cf1a7a74bc348c4d51137538">   17</a></span>&#160;  std::unique_ptr&lt;gpsmm&gt; <a class="code" href="classGPS.html#a15068c85cf1a7a74bc348c4d51137538">gps_</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif // SAILINGBOAT_INCLUDE_GPS_H_</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classGPS.html#a15068c85cf1a7a74bc348c4d51137538">   19</a></span>&#160;  std::unique_ptr&lt;gpsmm&gt; <a class="code" href="classGPS.html#a15068c85cf1a7a74bc348c4d51137538">gps_</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif // SAILINGBOAT_INCLUDE_GPS_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassGPS_html_a501b2959a88d280888cc85c8c26cb461"><div class="ttname"><a href="classGPS.html#a501b2959a88d280888cc85c8c26cb461">GPS::Init</a></div><div class="ttdeci">bool Init()</div><div class="ttdef"><b>Definition:</b> gps.cc:10</div></div>
 <div class="ttc" id="agps__data_8h_html"><div class="ttname"><a href="gps__data_8h.html">gps_data.h</a></div></div>
 <div class="ttc" id="aclassGPS_html_a6457f65f57cf77c4ca152155fe562370"><div class="ttname"><a href="classGPS.html#a6457f65f57cf77c4ca152155fe562370">GPS::initialized_</a></div><div class="ttdeci">bool initialized_</div><div class="ttdef"><b>Definition:</b> gps.h:13</div></div>
 <div class="ttc" id="aclassGPS_html_a0c347a188512d0d5cf7ed5c91b145fc4"><div class="ttname"><a href="classGPS.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS::GPS</a></div><div class="ttdeci">GPS()</div><div class="ttdef"><b>Definition:</b> gps.cc:6</div></div>
 <div class="ttc" id="aclassGPS_html"><div class="ttname"><a href="classGPS.html">GPS</a></div><div class="ttdef"><b>Definition:</b> gps.h:7</div></div>
-<div class="ttc" id="aclassGPS_html_a15068c85cf1a7a74bc348c4d51137538"><div class="ttname"><a href="classGPS.html#a15068c85cf1a7a74bc348c4d51137538">GPS::gps_</a></div><div class="ttdeci">std::unique_ptr&lt; gpsmm &gt; gps_</div><div class="ttdef"><b>Definition:</b> gps.h:17</div></div>
-<div class="ttc" id="aclassGPS_html_a62052f6fe648896065596ee401145422"><div class="ttname"><a href="classGPS.html#a62052f6fe648896065596ee401145422">GPS::Read</a></div><div class="ttdeci">GPSData Read()</div><div class="ttdef"><b>Definition:</b> gps.cc:28</div></div>
+<div class="ttc" id="aclassGPS_html_a15068c85cf1a7a74bc348c4d51137538"><div class="ttname"><a href="classGPS.html#a15068c85cf1a7a74bc348c4d51137538">GPS::gps_</a></div><div class="ttdeci">std::unique_ptr&lt; gpsmm &gt; gps_</div><div class="ttdef"><b>Definition:</b> gps.h:19</div></div>
+<div class="ttc" id="aclassGPS_html_a62052f6fe648896065596ee401145422"><div class="ttname"><a href="classGPS.html#a62052f6fe648896065596ee401145422">GPS::Read</a></div><div class="ttdeci">GPSData Read()</div><div class="ttdef"><b>Definition:</b> gps.cc:32</div></div>
 <div class="ttc" id="aclassGPSData_html"><div class="ttname"><a href="classGPSData.html">GPSData</a></div><div class="ttdef"><b>Definition:</b> gps_data.h:5</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

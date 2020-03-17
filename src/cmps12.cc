@@ -30,26 +30,36 @@ bool CMPS12::Init() {
 CMPS12Data CMPS12::Read() {
   CMPS12Data compass_data;
 
-  //Read data if we are initialized
+  ///
+  ///Read data if we are initialized
+  ///
   if (initialized_) {
     std::vector<int> raw_data;
-    //Reserve 31 Slots for our raw data
+    ///
+    ///Reserve 31 Slots for our raw data
+    ///
     raw_data.reserve(31);
 
     for (int i = 0; i < total_registry_entries_; i++) {
       raw_data[i] = wiringPiI2CReadReg8(file_descriptor_, i);
     }
 
-    //Check if calibration was valid (If yes then usually the data was OK Read)
+    ///
+    ///Check if calibration was valid (If yes then usually the data was OK Read)
+    ///
     if (raw_data[CALIBRATION_STATE_8] == -1) {
       compass_data.SetValid(false);
       return compass_data;
     }
 
-    //Data set is valid
+    ///
+    ///Data set is valid
+    ///
     compass_data.SetValid(true);
 
-    //Bitshift relevant required data
+    ///
+    ///Bitshift relevant required data
+    ///
     int bearing_16 = Bitshift(
         raw_data[COMPASS_BEARING_16_HIGH_BYTE_DEGREES], raw_data[COMPASS_BEARING_16_LOW_BYTE_DEGREES]) / 16;
 

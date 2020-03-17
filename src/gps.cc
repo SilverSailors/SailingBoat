@@ -8,7 +8,9 @@ GPS::GPS() {
 }
 
 bool GPS::Init() {
-  //Init and bind
+  ///
+  ///Init and bind
+  ///
   gps_ = std::make_unique<gpsmm>("localhost", DEFAULT_GPSD_PORT);
 
   if (gps_ == nullptr) {
@@ -16,7 +18,9 @@ bool GPS::Init() {
     return false;
   }
 
-  //Check if our DAEMON is running
+  ///
+  ///Check if our DAEMON is running
+  ///
   if (gps_->stream(WATCH_ENABLE | WATCH_JSON) == nullptr) {
     std::cout << "GPSD DAEMON NOT RUNNING" << std::endl;
     return false;
