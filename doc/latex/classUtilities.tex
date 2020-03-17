@@ -1,0 +1,90 @@
+\hypertarget{classUtilities}{}\doxysection{Utilities Class Reference}
+\label{classUtilities}\index{Utilities@{Utilities}}
+
+
+{\ttfamily \#include $<$utilities.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classUtilities_a699d5ed0fe3708d77a7bebc8e175ca9c}{Degrees\+To\+Radians}} (double degrees)
+\item 
+static double \mbox{\hyperlink{classUtilities_a001ebc26bc1d08432806f32177dd7933}{Radians\+To\+Degrees}} (double radians)
+\item 
+static double \mbox{\hyperlink{classUtilities_add8fca0a2a5ddca84e0eca02d7e6660c}{Convert\+Coordinates}} (double from\+\_\+low, double from\+\_\+high, double to\+\_\+low, double to\+\_\+high, double position)
+\item 
+static \mbox{\hyperlink{classVec2}{Vec2}} \mbox{\hyperlink{classUtilities_a453dd8d22702e559083eafb2009d8f09}{Degrees\+To\+Vector}} (double value)
+\item 
+static double \mbox{\hyperlink{classUtilities_a89558bbe58246d7e8e258f3ebf444afe}{Vector\+To\+Degrees}} (\mbox{\hyperlink{classVec2}{Vec2}} vector)
+\item 
+static double \mbox{\hyperlink{classUtilities_a1d816a75ab50f4f3575bfae7f5253b5a}{Coordinates\+To\+Degrees}} (double lat1, double lon1, double lat2, double lon2)
+\item 
+static double \mbox{\hyperlink{classUtilities_ab24ff662ef2c9850821e114ff2f87b7f}{Flip\+Degrees}} (double degrees)
+\item 
+static \mbox{\hyperlink{classGPSPosition}{G\+P\+S\+Position}} \mbox{\hyperlink{classUtilities_a4932966b95bab494d2ccd34d337ec519}{Extract\+Position\+From\+Data}} (\mbox{\hyperlink{classGPSData}{G\+P\+S\+Data}} data)
+\item 
+static double \mbox{\hyperlink{classUtilities_a332601b9efddf651151b060a73ae9e0d}{Normalize}} (double degrees)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtilities_add8fca0a2a5ddca84e0eca02d7e6660c}\label{classUtilities_add8fca0a2a5ddca84e0eca02d7e6660c}} 
+\index{Utilities@{Utilities}!ConvertCoordinates@{ConvertCoordinates}}
+\index{ConvertCoordinates@{ConvertCoordinates}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{ConvertCoordinates()}{ConvertCoordinates()}}
+{\footnotesize\ttfamily double Utilities\+::\+Convert\+Coordinates (\begin{DoxyParamCaption}\item[{double}]{from\+\_\+low,  }\item[{double}]{from\+\_\+high,  }\item[{double}]{to\+\_\+low,  }\item[{double}]{to\+\_\+high,  }\item[{double}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classUtilities_a1d816a75ab50f4f3575bfae7f5253b5a}\label{classUtilities_a1d816a75ab50f4f3575bfae7f5253b5a}} 
+\index{Utilities@{Utilities}!CoordinatesToDegrees@{CoordinatesToDegrees}}
+\index{CoordinatesToDegrees@{CoordinatesToDegrees}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{CoordinatesToDegrees()}{CoordinatesToDegrees()}}
+{\footnotesize\ttfamily double Utilities\+::\+Coordinates\+To\+Degrees (\begin{DoxyParamCaption}\item[{double}]{lat1,  }\item[{double}]{lon1,  }\item[{double}]{lat2,  }\item[{double}]{lon2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classUtilities_a699d5ed0fe3708d77a7bebc8e175ca9c}\label{classUtilities_a699d5ed0fe3708d77a7bebc8e175ca9c}} 
+\index{Utilities@{Utilities}!DegreesToRadians@{DegreesToRadians}}
+\index{DegreesToRadians@{DegreesToRadians}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{DegreesToRadians()}{DegreesToRadians()}}
+{\footnotesize\ttfamily double Utilities\+::\+Degrees\+To\+Radians (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classUtilities_a453dd8d22702e559083eafb2009d8f09}\label{classUtilities_a453dd8d22702e559083eafb2009d8f09}} 
+\index{Utilities@{Utilities}!DegreesToVector@{DegreesToVector}}
+\index{DegreesToVector@{DegreesToVector}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{DegreesToVector()}{DegreesToVector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVec2}{Vec2}} Utilities\+::\+Degrees\+To\+Vector (\begin{DoxyParamCaption}\item[{double}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classUtilities_a4932966b95bab494d2ccd34d337ec519}\label{classUtilities_a4932966b95bab494d2ccd34d337ec519}} 
+\index{Utilities@{Utilities}!ExtractPositionFromData@{ExtractPositionFromData}}
+\index{ExtractPositionFromData@{ExtractPositionFromData}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{ExtractPositionFromData()}{ExtractPositionFromData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGPSPosition}{G\+P\+S\+Position}} Utilities\+::\+Extract\+Position\+From\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGPSData}{G\+P\+S\+Data}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classUtilities_ab24ff662ef2c9850821e114ff2f87b7f}\label{classUtilities_ab24ff662ef2c9850821e114ff2f87b7f}} 
+\index{Utilities@{Utilities}!FlipDegrees@{FlipDegrees}}
+\index{FlipDegrees@{FlipDegrees}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{FlipDegrees()}{FlipDegrees()}}
+{\footnotesize\ttfamily double Utilities\+::\+Flip\+Degrees (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classUtilities_a332601b9efddf651151b060a73ae9e0d}\label{classUtilities_a332601b9efddf651151b060a73ae9e0d}} 
+\index{Utilities@{Utilities}!Normalize@{Normalize}}
+\index{Normalize@{Normalize}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{Normalize()}{Normalize()}}
+{\footnotesize\ttfamily double Utilities\+::\+Normalize (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classUtilities_a001ebc26bc1d08432806f32177dd7933}\label{classUtilities_a001ebc26bc1d08432806f32177dd7933}} 
+\index{Utilities@{Utilities}!RadiansToDegrees@{RadiansToDegrees}}
+\index{RadiansToDegrees@{RadiansToDegrees}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{RadiansToDegrees()}{RadiansToDegrees()}}
+{\footnotesize\ttfamily double Utilities\+::\+Radians\+To\+Degrees (\begin{DoxyParamCaption}\item[{double}]{radians }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classUtilities_a89558bbe58246d7e8e258f3ebf444afe}\label{classUtilities_a89558bbe58246d7e8e258f3ebf444afe}} 
+\index{Utilities@{Utilities}!VectorToDegrees@{VectorToDegrees}}
+\index{VectorToDegrees@{VectorToDegrees}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{VectorToDegrees()}{VectorToDegrees()}}
+{\footnotesize\ttfamily double Utilities\+::\+Vector\+To\+Degrees (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVec2}{Vec2}}}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{utilities_8h}{utilities.\+h}}\item 
+src/\mbox{\hyperlink{utilities_8cc}{utilities.\+cc}}\end{DoxyCompactItemize}
