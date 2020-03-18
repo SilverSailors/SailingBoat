@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SailingRobot
    &#160;<span id="projectnumber">1.0</span>
@@ -78,32 +79,32 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classCMPS12.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="classCMPS12.html">CMPS12</a> {</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <a class="code" href="classCMPS12.html#a95ab7ee773046a4327d5dd7857655c31">CMPS12</a>();</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  <span class="comment">//Establish connection to I2C device</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classCMPS12.html#a14154b0d72ef286efef42c7476308dbe">Init</a>();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="comment">//Read data from I2C Pins, return retrieved data</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <a class="code" href="classCMPS12Data.html">CMPS12Data</a> <a class="code" href="classCMPS12.html#adc5c825032fb4a734fb91ab77ba6f2cb">Read</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classCMPS12.html#ab04fece3ec8f32c47570c2a3b9fc2dad">Bitshift</a>(<span class="keywordtype">int</span> high, <span class="keywordtype">int</span> low);</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classCMPS12.html#a6041982046e50b9331e37b54f34e4d31">   14</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classCMPS12.html#a6041982046e50b9331e37b54f34e4d31">total_registry_entries_</a> = 31;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classCMPS12.html#a0277312d543815b88c53cbe204a92ee6">   15</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classCMPS12.html#a0277312d543815b88c53cbe204a92ee6">i2c_device_address_</a> = 0x60;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classCMPS12.html#a2218917c192ef0f0060bc12851cfd3a0">   16</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classCMPS12.html#a2218917c192ef0f0060bc12851cfd3a0">i2c_device_path_</a> = <span class="stringliteral">&quot;/dev/i2c-1&quot;</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classCMPS12.html#a6f1f2a9134593a0b67c42fe03761557b">   17</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classCMPS12.html#a6f1f2a9134593a0b67c42fe03761557b">initialized_</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classCMPS12.html#a6f341fb8a1889003d8c410ad435c1ead">   18</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classCMPS12.html#a6f341fb8a1889003d8c410ad435c1ead">file_descriptor_</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif // SAILINGBOAT_INCLUDE_CMPS12_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classCMPS12.html#a14154b0d72ef286efef42c7476308dbe">Init</a>();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <a class="code" href="classCMPS12Data.html">CMPS12Data</a> <a class="code" href="classCMPS12.html#adc5c825032fb4a734fb91ab77ba6f2cb">Read</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classCMPS12.html#ab04fece3ec8f32c47570c2a3b9fc2dad">Bitshift</a>(<span class="keywordtype">int</span> high, <span class="keywordtype">int</span> low);</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classCMPS12.html#a6041982046e50b9331e37b54f34e4d31">   20</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classCMPS12.html#a6041982046e50b9331e37b54f34e4d31">total_registry_entries_</a> = 31;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classCMPS12.html#a0277312d543815b88c53cbe204a92ee6">   21</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classCMPS12.html#a0277312d543815b88c53cbe204a92ee6">i2c_device_address_</a> = 0x60;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classCMPS12.html#a2218917c192ef0f0060bc12851cfd3a0">   22</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classCMPS12.html#a2218917c192ef0f0060bc12851cfd3a0">i2c_device_path_</a> = <span class="stringliteral">&quot;/dev/i2c-1&quot;</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classCMPS12.html#a6f1f2a9134593a0b67c42fe03761557b">   23</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classCMPS12.html#a6f1f2a9134593a0b67c42fe03761557b">initialized_</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classCMPS12.html#a6f341fb8a1889003d8c410ad435c1ead">   24</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classCMPS12.html#a6f341fb8a1889003d8c410ad435c1ead">file_descriptor_</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif // SAILINGBOAT_INCLUDE_CMPS12_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="acmps12__data_8h_html"><div class="ttname"><a href="cmps12__data_8h.html">cmps12_data.h</a></div></div>
-<div class="ttc" id="aclassCMPS12_html_a6f1f2a9134593a0b67c42fe03761557b"><div class="ttname"><a href="classCMPS12.html#a6f1f2a9134593a0b67c42fe03761557b">CMPS12::initialized_</a></div><div class="ttdeci">bool initialized_</div><div class="ttdef"><b>Definition:</b> cmps12.h:17</div></div>
-<div class="ttc" id="aclassCMPS12_html_a6f341fb8a1889003d8c410ad435c1ead"><div class="ttname"><a href="classCMPS12.html#a6f341fb8a1889003d8c410ad435c1ead">CMPS12::file_descriptor_</a></div><div class="ttdeci">int file_descriptor_</div><div class="ttdef"><b>Definition:</b> cmps12.h:18</div></div>
+<div class="ttc" id="aclassCMPS12_html_a6f1f2a9134593a0b67c42fe03761557b"><div class="ttname"><a href="classCMPS12.html#a6f1f2a9134593a0b67c42fe03761557b">CMPS12::initialized_</a></div><div class="ttdeci">bool initialized_</div><div class="ttdef"><b>Definition:</b> cmps12.h:23</div></div>
+<div class="ttc" id="aclassCMPS12_html_a6f341fb8a1889003d8c410ad435c1ead"><div class="ttname"><a href="classCMPS12.html#a6f341fb8a1889003d8c410ad435c1ead">CMPS12::file_descriptor_</a></div><div class="ttdeci">int file_descriptor_</div><div class="ttdef"><b>Definition:</b> cmps12.h:24</div></div>
 <div class="ttc" id="aclassCMPS12_html_a95ab7ee773046a4327d5dd7857655c31"><div class="ttname"><a href="classCMPS12.html#a95ab7ee773046a4327d5dd7857655c31">CMPS12::CMPS12</a></div><div class="ttdeci">CMPS12()</div><div class="ttdef"><b>Definition:</b> cmps12.cc:8</div></div>
-<div class="ttc" id="aclassCMPS12_html_a0277312d543815b88c53cbe204a92ee6"><div class="ttname"><a href="classCMPS12.html#a0277312d543815b88c53cbe204a92ee6">CMPS12::i2c_device_address_</a></div><div class="ttdeci">const int i2c_device_address_</div><div class="ttdef"><b>Definition:</b> cmps12.h:15</div></div>
+<div class="ttc" id="aclassCMPS12_html_a0277312d543815b88c53cbe204a92ee6"><div class="ttname"><a href="classCMPS12.html#a0277312d543815b88c53cbe204a92ee6">CMPS12::i2c_device_address_</a></div><div class="ttdeci">const int i2c_device_address_</div><div class="ttdef"><b>Definition:</b> cmps12.h:21</div></div>
 <div class="ttc" id="aclassCMPS12Data_html"><div class="ttname"><a href="classCMPS12Data.html">CMPS12Data</a></div><div class="ttdef"><b>Definition:</b> cmps12_data.h:7</div></div>
 <div class="ttc" id="aclassCMPS12_html_ab04fece3ec8f32c47570c2a3b9fc2dad"><div class="ttname"><a href="classCMPS12.html#ab04fece3ec8f32c47570c2a3b9fc2dad">CMPS12::Bitshift</a></div><div class="ttdeci">int Bitshift(int high, int low)</div><div class="ttdef"><b>Definition:</b> cmps12.cc:13</div></div>
 <div class="ttc" id="aclassCMPS12_html"><div class="ttname"><a href="classCMPS12.html">CMPS12</a></div><div class="ttdef"><b>Definition:</b> cmps12.h:5</div></div>
-<div class="ttc" id="aclassCMPS12_html_a2218917c192ef0f0060bc12851cfd3a0"><div class="ttname"><a href="classCMPS12.html#a2218917c192ef0f0060bc12851cfd3a0">CMPS12::i2c_device_path_</a></div><div class="ttdeci">const char * i2c_device_path_</div><div class="ttdef"><b>Definition:</b> cmps12.h:16</div></div>
+<div class="ttc" id="aclassCMPS12_html_a2218917c192ef0f0060bc12851cfd3a0"><div class="ttname"><a href="classCMPS12.html#a2218917c192ef0f0060bc12851cfd3a0">CMPS12::i2c_device_path_</a></div><div class="ttdeci">const char * i2c_device_path_</div><div class="ttdef"><b>Definition:</b> cmps12.h:22</div></div>
 <div class="ttc" id="aclassCMPS12_html_a14154b0d72ef286efef42c7476308dbe"><div class="ttname"><a href="classCMPS12.html#a14154b0d72ef286efef42c7476308dbe">CMPS12::Init</a></div><div class="ttdeci">bool Init()</div><div class="ttdef"><b>Definition:</b> cmps12.cc:18</div></div>
-<div class="ttc" id="aclassCMPS12_html_a6041982046e50b9331e37b54f34e4d31"><div class="ttname"><a href="classCMPS12.html#a6041982046e50b9331e37b54f34e4d31">CMPS12::total_registry_entries_</a></div><div class="ttdeci">const int total_registry_entries_</div><div class="ttdef"><b>Definition:</b> cmps12.h:14</div></div>
+<div class="ttc" id="aclassCMPS12_html_a6041982046e50b9331e37b54f34e4d31"><div class="ttname"><a href="classCMPS12.html#a6041982046e50b9331e37b54f34e4d31">CMPS12::total_registry_entries_</a></div><div class="ttdeci">const int total_registry_entries_</div><div class="ttdef"><b>Definition:</b> cmps12.h:20</div></div>
 <div class="ttc" id="aclassCMPS12_html_adc5c825032fb4a734fb91ab77ba6f2cb"><div class="ttname"><a href="classCMPS12.html#adc5c825032fb4a734fb91ab77ba6f2cb">CMPS12::Read</a></div><div class="ttdeci">CMPS12Data Read()</div><div class="ttdef"><b>Definition:</b> cmps12.cc:30</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
