@@ -1,13 +1,17 @@
 var searchData=
 [
-  ['e_2437',['e',['../structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp.html#ae22e170815983961447c429f324c944d',1,'nlohmann::detail::dtoa_impl::diyfp::e()'],['../structnlohmann_1_1detail_1_1dtoa__impl_1_1cached__power.html#a9e89bc89bb7bf4361f43ea27eed91d23',1,'nlohmann::detail::dtoa_impl::cached_power::e()']]],
-  ['empty_5fstr_2438',['empty_str',['../classnlohmann_1_1detail_1_1iteration__proxy__value.html#a298dae04e3c0a64719752c16754d1d71',1,'nlohmann::detail::iteration_proxy_value']]],
-  ['end_5fvalue_2439',['end_value',['../classnlohmann_1_1detail_1_1primitive__iterator__t.html#aa37c37da44f19e6ec1d7d4a9910511c7',1,'nlohmann::detail::primitive_iterator_t']]],
-  ['entries_5f_2440',['entries_',['../classLogger.html#a82f45f825197bfef22dbe6dc205cd5a9',1,'Logger']]],
-  ['entry_5fid_2441',['entry_id',['../classLog.html#a6744e45a62cbc6ae1ad7cc5f945d0adb',1,'Log']]],
-  ['error_5fhandler_2442',['error_handler',['../classnlohmann_1_1detail_1_1serializer.html#a09d5a046fb0f7cb61977d6e5fbe8b3a1',1,'nlohmann::detail::serializer']]],
-  ['error_5fmessage_2443',['error_message',['../classnlohmann_1_1detail_1_1lexer.html#ae2a15e440f1889e0ab0c6a35344e48df',1,'nlohmann::detail::lexer']]],
-  ['error_5fstring_2444',['error_string',['../structdoctest_1_1TestCaseException.html#a656c8971ccbedc7d3a0a38f7c6af927e',1,'doctest::TestCaseException']]],
-  ['errored_2445',['errored',['../classnlohmann_1_1detail_1_1json__sax__dom__parser.html#a31ccb472ed855e2f2370fd091d91aad7',1,'nlohmann::detail::json_sax_dom_parser::errored()'],['../classnlohmann_1_1detail_1_1json__sax__dom__callback__parser.html#ab06baaa640cfaae5846daa7c3594b116',1,'nlohmann::detail::json_sax_dom_callback_parser::errored()']]],
-  ['exit_2446',['exit',['../structdoctest_1_1ContextOptions.html#a85d785559ea88e0bd61890f77f00a82f',1,'doctest::ContextOptions']]]
+  ['data_2654',['data',['../classdoctest_1_1String.html#a5c77ed634a1b81aea739a73fb01d986a',1,'doctest::String::data()'],['../structdoctest_1_1QueryData.html#a8085a29db9a1cd5c7eff22ef44e9a9e8',1,'doctest::QueryData::data()']]],
+  ['data_5freading_5f_2655',['data_reading_',['../classModuleGPS.html#a83af1c6f274911b1bb435ed6163f1dc8',1,'ModuleGPS']]],
+  ['data_5freading_5fvalid_5f_2656',['data_reading_valid_',['../classCMPS12Data.html#a609f57ac3beb7be745bd690e3f471882',1,'CMPS12Data']]],
+  ['decimal_5fpoint_2657',['decimal_point',['../classnlohmann_1_1detail_1_1serializer.html#a311e5d6f4b31d5be0eb3c0cb20b6965a',1,'nlohmann::detail::serializer']]],
+  ['decimal_5fpoint_5fchar_2658',['decimal_point_char',['../classnlohmann_1_1detail_1_1lexer.html#a16593b0475f6d1cddd5eaf7c045771f3',1,'nlohmann::detail::lexer']]],
+  ['destination_5f_2659',['destination_',['../classControlUnit.html#a52e66c51e4a518d4ee68ef03a5a76778',1,'ControlUnit']]],
+  ['destination_5freached_5f_2660',['destination_reached_',['../classControlUnit.html#a8ca42964915bd9919fc9194c267850db',1,'ControlUnit']]],
+  ['destination_5fset_5f_2661',['destination_set_',['../classControlUnit.html#a4b76754722ab948a7b77d454f72013bd',1,'ControlUnit']]],
+  ['discarded_2662',['discarded',['../classnlohmann_1_1detail_1_1json__sax__dom__callback__parser.html#a8997ee6dc3bd39116b951465b946445e',1,'nlohmann::detail::json_sax_dom_callback_parser']]],
+  ['distance_5ffactor_5f_2663',['distance_factor_',['../classControlUnit.html#a6104403ef03df984e673a9925c54207a',1,'ControlUnit']]],
+  ['distance_5ffrom_5fdestination_2664',['distance_from_destination',['../classLog.html#af1dac9382f07e3d2d59950bbfa1f263c',1,'Log']]],
+  ['distance_5ffrom_5fwaypoint_2665',['distance_from_waypoint',['../classLog.html#ab00507af4d84cc36c67fd4c31e2dd87c',1,'Log']]],
+  ['distance_5fthreshold_5f_2666',['distance_threshold_',['../classControlUnit.html#a9c7b5d7da8951ddd3c8fa6696103c84c',1,'ControlUnit']]],
+  ['duration_2667',['duration',['../structdoctest_1_1ContextOptions.html#a0fc3e0c1cf669cffd1f826c005fc4223',1,'doctest::ContextOptions']]]
 ];
