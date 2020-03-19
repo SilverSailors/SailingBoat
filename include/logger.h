@@ -1,9 +1,9 @@
 #ifndef SAILINGBOAT_INCLUDE_LOGGER_H_
 #define SAILINGBOAT_INCLUDE_LOGGER_H_
 #include <string>
+#include <ctime>
 #include "DataContainers/log.h"
-#include "DataContainers/gps_position.h"
-#include "gps_data.h"
+#include "json.hpp"
 
 class Logger {
  public:
