@@ -27,21 +27,15 @@ double Utilities::ConvertCoordinates(double from_low,
 }
 
 Vec2 Utilities::DegreesToVector(double value) {
-  ///
-  ///Convert our degrees to radians
-  ///(cos & sin uses radians for its calculations)
-  ///
+  //Convert our degrees to radians
+  //(cos & sin uses radians for its calculations)
   double radians = DegreesToRadians(value);
 
   Vec2 vec;
-  ///
-  ///We inverse x so it matches our rotation (Right + | Left -)
-  ///
+  //We inverse x so it matches our rotation (Right + | Left -)
   vec.x = -cos(radians);
   vec.y = sin(radians);
-  ///
-  ///PI/2 gives a value very close to 0 (1e-17 etc)
-  ///
+  //PI/2 gives a value very close to 0 (1e-17 etc)
   if (std::abs(vec.x) < EPSILON) vec.x = 0;
   if (std::abs(vec.y) < EPSILON) vec.y = 0;
 

@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <sstream>
 #include <cstdio>
+#include "gps_data.h"
+#include "DataContainers/gps_position.h"
 
 Logger::Logger(std::string path) {
   entries_ = 0;

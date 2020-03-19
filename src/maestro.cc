@@ -9,9 +9,7 @@
 #define MAESTRO_SERVO_LOWER_LIMIT 3968
 
 Maestro::Maestro() {
-  ///
-  ///992 & 2000 respectively IN MCU (Maestro Control Unit)
-  ///
+  //992 & 2000 respectively IN MCU (Maestro Control Unit)
   lower_limit_ = MAESTRO_SERVO_LOWER_LIMIT;
   upper_limit_ = MAESTRO_SERVO_UPPER_LIMIT;
   portname_ = "/dev/ttyACM0";

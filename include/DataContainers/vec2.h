@@ -3,13 +3,23 @@
 
 class Vec2 {
  public:
+  /**
+   * The constructor, initializes member fields
+   */
   Vec2();
+  /**
+   * Vector X axis
+   */
   double x;
+  /**
+   * Vector Y axis
+   */
   double y;
-  
-  ///
-  ///Overloaded operators
-  ///
+  /**
+   * Overloaded subtraction operator
+   * @param vector Vec2 object
+   * @return New Vec2 object
+   */
   Vec2 operator-(const Vec2 &vector);
 };
 
