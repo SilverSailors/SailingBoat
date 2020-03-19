@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <iomanip>
 #include "../include/DataContainers/log.h"
 
 IO::IO() {
@@ -33,8 +34,19 @@ std::vector<std::string> IO::ReadFile(std::string filepath) {
   return file_data;
 }
 
+void IO::WriteJsonFile(nlohmann::json data, std::string path) {
+  std::ofstream log_info(path, std::ios::app);
+  if (log_info.is_open()) {
+    //std::cout << "SUCCESS!" << std::endl;
+    log_info << std::setw(4) << data << std::endl;
+    log_info.close();
+  } else {
+    std::cout << "FAILED TO CREATE/OPEN FILE" << std::endl;
+  }
+}
+
 void IO::WriteFile(std::string data, std::string path) {
-  std::fstream log_info(path, std::ios::out | std::ios::app);
+  std::ofstream log_info(path, std::ios::app);
   if (log_info.is_open()) {
     //std::cout << "SUCCESS!" << std::endl;
     log_info << data << std::endl;
@@ -43,5 +55,3 @@ void IO::WriteFile(std::string data, std::string path) {
     std::cout << "FAILED TO CREATE/OPEN FILE" << std::endl;
   }
 }
-
-

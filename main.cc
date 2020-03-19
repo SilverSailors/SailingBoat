@@ -12,7 +12,6 @@
 #include "include/logger.h"
 #include "test/doctest.h"
 
-
 #define RUDDER_CHANNEL 1
 #define SAIL_CHANNEL 0
 #define RUDDER_LOWER_THRESHOLD -1
@@ -108,8 +107,8 @@ int main(int argc, char *argv[]) {
   ModuleWindSensor module_wind(WIND_SENSOR_SPI_CHANNEL);
 
   //Data Loggers (One for competition, other for journey debugging)
-  Logger data_logger("/home/alarm/.config/sailingBoat/logs/contest.txt");
-  Logger debug_logger("/home/alarm/.config/sailingBoat/logs/waypoint.txt");
+  Logger data_logger("/home/alarm/.config/sailingBoat/logs/contest.json");
+  Logger debug_logger("/home/alarm/.config/sailingBoat/logs/waypoint.json");
 
   //Init All Modules & Servos
   std::vector<bool> init_status;

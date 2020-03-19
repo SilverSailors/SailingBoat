@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['rudder_5fchannel_564',['RUDDER_CHANNEL',['../main_8cc.html#a00c901d40515c75d27d0e68f3e111942',1,'main.cc']]],
-  ['rudder_5flower_5fthreshold_565',['RUDDER_LOWER_THRESHOLD',['../main_8cc.html#aaf352081f1a88f560eee0cb45722aa40',1,'main.cc']]],
-  ['rudder_5fupper_5fthreshold_566',['RUDDER_UPPER_THRESHOLD',['../main_8cc.html#acb6e02cd24e74e339a0f751096c2f514',1,'main.cc']]]
+  ['earth_5fradius_3181',['EARTH_RADIUS',['../calculation__unit_8cc.html#aacdf1719d113d68a71127426f7c730cd',1,'calculation_unit.cc']]],
+  ['epsilon_3182',['EPSILON',['../utilities_8cc.html#a002b2f4894492820fe708b1b7e7c5e70',1,'utilities.cc']]]
 ];
