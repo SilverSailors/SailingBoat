@@ -1,14 +1,15 @@
 #include "../include/logger.h"
 #include <string>
 #include "../include/io.h"
-#include "../include/gps_data.h"
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <cstdio>
 
 Logger::Logger(std::string path) {
   entries_ = 0;
   file_path_ = path;
+  remove(path.c_str());
 }
 
 void Logger::LogData(Log packet) {
@@ -28,14 +29,13 @@ void Logger::Publish() {
     std::string timestamp = log_.timestamp;
     //double waypoint         = log_.distance_from_waypoint;
     //double checkpoint       = log_.distance_from_destination;
-
-    std::stringstream stream;
-    stream << timestamp << " " << std::setprecision(15) << latitude << " " << std::setprecision(15) << longitude;
-
-    std::string output = stream.str();
+    nlohmann::json j;
+    j["timestamp"] = timestamp;
+    j["latitude"] = latitude;
+    j["longitude"] = longitude;
 
     IO io;
-    io.WriteFile(output, file_path_);
+    io.WriteJsonFile(j, file_path_);
     entries_++;
     available_ = false;
   } else {
@@ -51,20 +51,16 @@ void Logger::PublishWaypoint(GPSData from, GPSPosition to, std::string message) 
   double dest_lat = to.latitude;
   double dest_lon = to.longitude;
 
-  std::stringstream stream;
-  stream << timestamp
-         << " : "
-         << std::setprecision(10) << at_lat
-         << " "
-         << std::setprecision(10) << at_lon
-         << " (->) "
-         << std::setprecision(10) << dest_lat
-         << " "
-         << std::setprecision(10) << dest_lon;
-  std::string output = stream.str();
+  nlohmann::json j;
+  j["time"] = timestamp;
+  j["at_lat"] = at_lat;
+  j["at_lon"] = at_lon;
+  j["dest_lat"] = dest_lat;
+  j["dest_lon"] = dest_lon;
+  j["message"] = message;
 
   IO io;
-  io.WriteFile(output + " : " + message, file_path_);
+  io.WriteJsonFile(j, file_path_);
   entries_++;
   available_ = false;
 }
