@@ -10,6 +10,8 @@
 #include "include/calculation_unit.h"
 #include "include/module_servo.h"
 #include "include/logger.h"
+#include "test/doctest.h"
+
 
 #define RUDDER_CHANNEL 1
 #define SAIL_CHANNEL 0
@@ -80,6 +82,9 @@ void LogData(Logger &data_logger) {
 }
 
 int main(int argc, char *argv[]) {
+  doctest::Context context(argc, argv);
+  int result = context.run();
+  if(context.shouldExit()) return result;
   //--------------------------------
 
   //#These will help us determine where we go
@@ -409,5 +414,5 @@ int main(int argc, char *argv[]) {
   servo_rudder.SetTarget(0);
   std::cout << "JOURNEY DONE!" << std::endl;
 
-  return 0;
+  return result + 0;
 }

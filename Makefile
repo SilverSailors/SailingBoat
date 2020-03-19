@@ -29,7 +29,9 @@ src/ma3.cc \
 src/gps.cc \
 src/logger.cc \
 src/io.cc \
-src/parser.cc
+src/parser.cc \
+test/test_main.cc
+
 
 all : $(TARGET)
 
@@ -44,4 +46,3 @@ distclean:
 
 clean :
 	rm $(TARGET) *~
-

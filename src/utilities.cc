@@ -1,10 +1,15 @@
 #include "../include/utilities.h"
+#include "../test/doctest.h"
 #include <math.h>
 #include <iostream>
 #define EPSILON 1e-14
 
 double Utilities::DegreesToRadians(double degrees) {
   return degrees * (M_PI / 180);
+}
+
+TEST_CASE("test degrees to radians function") {
+  CHECK(Utilities::DegreesToRadians(100) == doctest::Approx(1.74533));
 }
 
 double Utilities::RadiansToDegrees(double radians) {
