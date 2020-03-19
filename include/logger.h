@@ -5,24 +5,6 @@
 #include "DataContainers/log.h"
 #include "json.hpp"
 
-//TEMP
-class GPSData {
-  public:
-    double latitude;
-    double longitude;
-    std::string time;
-    double GetLongitude(){return longitude;};
-    double GetLatitude(){return latitude;};
-    std::string GetTime(){return time;};
-};
-
-class GPSPosition {
-  public:
-    double latitude;
-    double longitude;
-};
-//TEMP
-
 class Logger {
  public:
   Logger(std::string path);
