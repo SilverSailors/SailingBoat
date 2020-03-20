@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
   //#These will poll data for us
   ModuleGPS module_gps;
   ModuleCMPS12 module_compass;
-  ModuleWindSensor module_wind(WIND_SENSOR_SPI_CHANNEL);
+  ModuleWindSensor module_wind;
 
   //Data Loggers (One for competition, other for journey debugging)
   Logger data_logger("/home/alarm/.config/sailingBoat/logs/contest.json");
