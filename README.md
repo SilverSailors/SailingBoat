@@ -1,4 +1,4 @@
-![alt text](logo.png "") 
+![alt text](logo.png "")
 # SailingBoat
 Application
 
@@ -18,31 +18,32 @@ Application
 - Batteries - Turnigy 11V 500mAh
 
 ## Diagram
-TODO
-    
+Hardware scheme [this link](https://github.com/SilverSailors/SailingBoat/blob/master/doc_hardware/scheme_hardware.JPG)
+
+![alt text](doc_hardware/scheme_hardware.JPG "")
 ## Installation
 Follow the [Arch Linux ARM download and installation guide](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3)
 
 Install packages:
-- i2c-tools
+- [i2c-tools](https://www.archlinux.org/packages/community/x86_64/i2c-tools/)
 - [WiringPi](https://github.com/WiringPi/WiringPi)
-- gpsd
+- [gpsd](https://www.archlinux.org/packages/community/x86_64/gpsd/)
 
-Edit the file *boot/cmdline.txt* and remove entries with *ttyAMA0(ex. console=ttyAMA0,115200)*.
-    
+Edit the file *boot/cmdline.txt* and remove entries with*ttyAMA0(ex. console=ttyAMA0,115200)*.
+
 Edit the file *boot/config.txt*
 - Uncomment the line *device_tree_param=i2c_arm=on*.
 - Uncomment the line *device_tree_param=i2s=on*.
 - Uncomment the line *device_tree_param=spi=on*.
-    
+
 Edit the file */etc/modules-load.d/raspberrypi.conf*.
 - Add line *i2c-bcm2708*.
 - Add line *i2c-dev*.
-    
+
 Edit the file */etc/hostname*.
 
 - Change text to *sailbot*.
-    
+
 For more information about devices on the raspberry pi go to: [this link](https://archlinuxarm.org/wiki/Raspberry_Pi)
 
 ## Code Procedure
