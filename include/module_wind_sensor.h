@@ -1,6 +1,6 @@
 #ifndef SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
 #define SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
-#include "ma3.h"
+//#include "ma3.h"
 
 class ModuleWindSensor {
  public:
@@ -40,7 +40,7 @@ class ModuleWindSensor {
   /**
    * MA3 Hardware connection, Hardware component for the module
    */
-  MA3 hardware_connection_ma3_;
+  //MA3 hardware_connection_ma3_;
   /**
    * SPI channel to use
    */
