@@ -1,45 +1,40 @@
 #include "../include/module_wind_sensor.h"
-#include "../include/utilities.h"
-#include "../include/io.h"
-#include "../include/parser.h"
 #include <iostream>
-#include <vector>
+#include <string>
+#include <sstream>
+#include "../include/json.hpp"
 
-ModuleWindSensor::ModuleWindSensor(int spi_channel) {
+ModuleWindSensor::ModuleWindSensor() {
   std::cout << "Constructing [Module] Wind Sensor" << std::endl;
   initialized_ = false;
   new_data_available_ = false;
-  spi_channel_ = spi_channel;
-  internal_offset_ = 0;
 }
 
 bool ModuleWindSensor::Init() {
-  //bool result = hardware_connection_ma3_.Init(spi_channel_);
-  bool result = true;
-
-  initialized_ = result;
-
-  IO io;
-  Parser parser;
-  std::vector<std::string> data_raw = io.ReadFile("/home/alarm/.config/sailingBoat/settings/sensor_config.txt");
-  std::vector<std::string> data_clean = parser.RemoveComments(data_raw);
-  internal_offset_ = std::atof(data_clean[2].c_str());
-  std::cout << "Internal Offset (WIND SENSOR): " << internal_offset_ << std::endl;
-  return result;
+  curl_ = curl_easy_init();
+  if(curl_) {
+    initialized_ = true;
+  }
+  return initialized_;
 }
 
 void ModuleWindSensor::Run() {
-  //The values retrieved from the sensor need to be converted to our range
-  //(Initial values are between 2-1020, we want 0 - 359
+  if (initialized_) {
+    std::string data;
+    curl_easy_setopt(curl_, CURLOPT_URL, "http://api.openweathermap.org/data/2.5/weather?q=Mariehamn,ax&appid=e9877347da3a765b545040c9d6aa0e74");
+    curl_easy_setopt(curl_, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, WriteCallback);
+    curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &data);
+    curl_easy_perform(curl_);
+    nlohmann::json jsonObj;
+    std::stringstream(data) >> jsonObj;
+    reading_ = jsonObj["wind"]["deg"];
+    new_data_available_ = true;
+  }
+}
 
-  // old code
-  //int reading = hardware_connection_ma3_.Read(spi_channel_);
-
-  int reading = 100;
-
-  int bearing_uncorrected = Utilities::ConvertCoordinates(2, 1020, 0, 359, reading);
-  reading_ = Utilities::Normalize(bearing_uncorrected + internal_offset_);
-  new_data_available_ = true;
+bool ModuleWindSensor::IsNewDataAvailable() {
+  return new_data_available_;
 }
 
 int ModuleWindSensor::GetReading() {
@@ -55,6 +50,7 @@ void ModuleWindSensor::Report() {
   }
 }
 
-bool ModuleWindSensor::IsNewDataAvailable() {
-  return new_data_available_;
+static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp) {
+  ((std::string*)userp)->append((char*)contents, size * nmemb);
+  return size * nmemb;
 }
