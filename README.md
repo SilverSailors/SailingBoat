@@ -18,7 +18,7 @@ Application
 - Batteries - Turnigy 11V 500mAh
 
 ## Diagram
-TODO
+Hardware scheme [this link](https://github.com/SilverSailors/SailingBoat/blob/master/doc_hardware/scheme_hardware.JPG)
     
 ## Installation
 Follow the [Arch Linux ARM download and installation guide](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3)
