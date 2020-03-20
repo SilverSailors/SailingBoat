@@ -64,6 +64,6 @@ void ModuleCMPS12::Report() {
   }
 }
 
-bool ModuleCMPS12::IsNewDataAvilable() {
+bool ModuleCMPS12::IsNewDataAvailable() {
   return new_data_available_;
 }

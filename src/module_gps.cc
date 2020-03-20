@@ -41,6 +41,6 @@ void ModuleGPS::Report() {
   }
 }
 
-bool ModuleGPS::IsNewDataAvilable() {
+bool ModuleGPS::IsNewDataAvailable() {
   return new_data_available_;
 }
