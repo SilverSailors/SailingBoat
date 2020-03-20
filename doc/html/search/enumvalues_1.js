@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['calibration_5fstate_5f8_507',['CALIBRATION_STATE_8',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327dad7fca62b35af70fdbf4c0f548624f49a',1,'cmps12_i2c_registry.h']]],
-  ['command_5fregister_5fsoftware_5fread_5f8_508',['COMMAND_REGISTER_SOFTWARE_READ_8',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327dad65ca10aa798448ecb7ca425d6c08b98',1,'cmps12_i2c_registry.h']]],
-  ['compass_5fbearing_5f16_5fhigh_5fbyte_509',['COMPASS_BEARING_16_HIGH_BYTE',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327dab7a0fb6145c1f1959c8ee0fbd8664f24',1,'cmps12_i2c_registry.h']]],
-  ['compass_5fbearing_5f16_5fhigh_5fbyte_5fdegrees_510',['COMPASS_BEARING_16_HIGH_BYTE_DEGREES',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327dabf525dc4264c8cc16c9cde16e825245e',1,'cmps12_i2c_registry.h']]],
-  ['compass_5fbearing_5f16_5flow_5fbyte_511',['COMPASS_BEARING_16_LOW_BYTE',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327da7be73b53570408c4a7bc004b2938f949',1,'cmps12_i2c_registry.h']]],
-  ['compass_5fbearing_5f16_5flow_5fbyte_5fdegrees_512',['COMPASS_BEARING_16_LOW_BYTE_DEGREES',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327dad84b7984cfc81c5d73384491c91a6a60',1,'cmps12_i2c_registry.h']]],
-  ['compass_5fbearing_5f8_513',['COMPASS_BEARING_8',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327da6f3efb5cd2c4a0eb82f1aa32d63861ff',1,'cmps12_i2c_registry.h']]],
-  ['compass_5ftemperature_5f16_5fhigh_5fbyte_514',['COMPASS_TEMPERATURE_16_HIGH_BYTE',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327da0174c5ca0f6f92f3a4f44b534f265e9b',1,'cmps12_i2c_registry.h']]],
-  ['compass_5ftemperature_5f16_5flow_5fbyte_515',['COMPASS_TEMPERATURE_16_LOW_BYTE',['../cmps12__i2c__registry_8h.html#ac02db03e7375349611f0daa6a43b327dab922d12f2cca416aef4ec64203c0b4d8',1,'cmps12_i2c_registry.h']]]
+  ['begin_5farray_2984',['begin_array',['../classnlohmann_1_1detail_1_1lexer.html#a3f313cdbe187cababfc5e06f0b69b098a16c226b4425b68560fea322b46dabe01',1,'nlohmann::detail::lexer']]],
+  ['begin_5fobject_2985',['begin_object',['../classnlohmann_1_1detail_1_1lexer.html#a3f313cdbe187cababfc5e06f0b69b098a9a9ffd53b6869d4eca271b1ed5b57fe8',1,'nlohmann::detail::lexer']]],
+  ['blue_2986',['Blue',['../namespacedoctest_1_1Color.html#a32e9eaf6013139846e848af6e6cf2b92aada3ad8958b1319450cc20f3f8e5e2d6',1,'doctest::Color']]],
+  ['boolean_2987',['boolean',['../namespacenlohmann_1_1detail.html#a1ed8fc6239da25abcaf681d30ace4985a84e2c64f38f78ba3ea5c905ab5a2da27',1,'nlohmann::detail']]],
+  ['bright_2988',['Bright',['../namespacedoctest_1_1Color.html#a32e9eaf6013139846e848af6e6cf2b92a7659647d16a78c607f9bafaa207b9e07',1,'doctest::Color']]],
+  ['brightgreen_2989',['BrightGreen',['../namespacedoctest_1_1Color.html#a32e9eaf6013139846e848af6e6cf2b92a016090b96620a42a63dadf0265977664',1,'doctest::Color']]],
+  ['brightred_2990',['BrightRed',['../namespacedoctest_1_1Color.html#a32e9eaf6013139846e848af6e6cf2b92a236dfdbcd49d10dbf1a31f9e2947a671',1,'doctest::Color']]],
+  ['brightwhite_2991',['BrightWhite',['../namespacedoctest_1_1Color.html#a32e9eaf6013139846e848af6e6cf2b92a4f80853796b4875d61ff5e4ad138492e',1,'doctest::Color']]],
+  ['bson_2992',['bson',['../namespacenlohmann_1_1detail.html#aa554fc6a11519e4f347deb25a9f0db40a0b6879b186bfb2b1ec65d2460e4eccd4',1,'nlohmann::detail']]]
 ];

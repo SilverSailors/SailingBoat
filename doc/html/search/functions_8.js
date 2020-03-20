@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['log_388',['Log',['../classLog.html#af6071a60aa52b6c1b511f99b4bc1b8fe',1,'Log']]],
-  ['logdata_389',['LogData',['../classLogger.html#ab7087593c44b51a04ea22bb64a7bb620',1,'Logger::LogData()'],['../main_8cc.html#a4d6ae824125dea65b4a6bdb6c593abc4',1,'LogData():&#160;main.cc']]],
-  ['logger_390',['Logger',['../classLogger.html#a7f4c364f1578e19501f88ee5b7ddd66e',1,'Logger']]]
+  ['handle_5fvalue_2222',['handle_value',['../classnlohmann_1_1detail_1_1json__sax__dom__parser.html#aa1a5e21be350727cf61a101aa5c6796e',1,'nlohmann::detail::json_sax_dom_parser::handle_value()'],['../classnlohmann_1_1detail_1_1json__sax__dom__callback__parser.html#a875e678e20e75b37b93b80be78fe60e6',1,'nlohmann::detail::json_sax_dom_callback_parser::handle_value()']]]
 ];

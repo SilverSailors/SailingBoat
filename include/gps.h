@@ -6,16 +6,29 @@
 
 class GPS {
  public:
+  /**
+   * The constructor
+   */
   GPS();
+  /**
+   * Initializes and binds GPS to hardware
+   * @return boolean value on successful initialization
+   */
   bool Init();
+  /**
+   * Reads data from GPS component
+   * @return Retrieved GPS data
+   */
   GPSData Read();
  private:
+  /**
+   * Initialized, boolean value on GPS component initialized or not
+   */
   bool initialized_;
-  ///
-  ///GPSMM is an unique vector so we dont have
-  ///to use the Init list to construct it,
-  ///parameters will be passed in Init by make_unique<>()
-  ///
+
+  /**
+   * Connection to GPS hardware, GPSMM is an unique vector
+   */
   std::unique_ptr<gpsmm> gps_;
 };
 

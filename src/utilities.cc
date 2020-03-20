@@ -1,10 +1,15 @@
 #include "../include/utilities.h"
+#include "../test/doctest.h"
 #include <math.h>
 #include <iostream>
 #define EPSILON 1e-14
 
 double Utilities::DegreesToRadians(double degrees) {
   return degrees * (M_PI / 180);
+}
+
+TEST_CASE("test degrees to radians function") {
+  CHECK(Utilities::DegreesToRadians(100) == doctest::Approx(1.74533));
 }
 
 double Utilities::RadiansToDegrees(double radians) {
@@ -22,21 +27,15 @@ double Utilities::ConvertCoordinates(double from_low,
 }
 
 Vec2 Utilities::DegreesToVector(double value) {
-  ///
-  ///Convert our degrees to radians
-  ///(cos & sin uses radians for its calculations)
-  ///
+  //Convert our degrees to radians
+  //(cos & sin uses radians for its calculations)
   double radians = DegreesToRadians(value);
 
   Vec2 vec;
-  ///
-  ///We inverse x so it matches our rotation (Right + | Left -)
-  ///
+  //We inverse x so it matches our rotation (Right + | Left -)
   vec.x = -cos(radians);
   vec.y = sin(radians);
-  ///
-  ///PI/2 gives a value very close to 0 (1e-17 etc)
-  ///
+  //PI/2 gives a value very close to 0 (1e-17 etc)
   if (std::abs(vec.x) < EPSILON) vec.x = 0;
   if (std::abs(vec.y) < EPSILON) vec.y = 0;
 

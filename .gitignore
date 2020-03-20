@@ -32,9 +32,5 @@
 *.app
 
 # Båt binär fil
-Boat/sailingBoat
-
-# Demo binära filer
-Demo/logDemo
-Demo/utils
-Demo/simulation
+sailingBoat
+testSailingBoat

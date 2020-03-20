@@ -7,6 +7,7 @@
 CC = g++
 CFLAGS = -Wall -pthread -D_REENTRANT -lwiringPi -lgps
 TARGET = sailingBoat
+TEST = testSailingBoat
 INSTALLBINDIR = /usr/local/bin
 
 # Lägg till eventuella nya källkodsfiler för ditt program här
@@ -25,16 +26,20 @@ src/gps_data.cc \
 src/maestro.cc \
 src/cmps12.cc \
 src/cmps12_data.cc \
-src/ma3.cc \
 src/gps.cc \
 src/logger.cc \
 src/io.cc \
 src/parser.cc
 
+# test-main samt de fristående testfilerna
+TESTSOURCES = test/test_main.cc \
+test/test_utilities.cc
+
+
 all : $(TARGET)
 
-$(TARGET) : $(SOURCES)
-	$(CC) $(CFLAGS) $(SOURCES) -o $@
+$(TARGET) : $(SOURCES) $(TESTSOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) $(TESTSOURCES) -DDOCTEST_CONFIG_DISABLE -o $@
 
 install:
 	@echo "Installing $(TARGET)..."; cp $(TARGET) $(INSTALLBINDIR)
@@ -45,3 +50,7 @@ distclean:
 clean :
 	rm $(TARGET) *~
 
+test : $(TEST)
+
+$(TEST) : $(SOURCES) $(TESTSOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) $(TESTSOURCES) -o $@

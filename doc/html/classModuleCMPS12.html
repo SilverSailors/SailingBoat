@@ -91,8 +91,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2b6126ca89009a23ea1ccaee69bb3f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c14e4b1f71b34c3e507026fdaa09bc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleCMPS12.html#a7c14e4b1f71b34c3e507026fdaa09bc0">Report</a> ()</td></tr>
 <tr class="separator:a7c14e4b1f71b34c3e507026fdaa09bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78ee82c9a8625cc4a7701b47242182cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleCMPS12.html#a78ee82c9a8625cc4a7701b47242182cc">IsNewDataAvilable</a> ()</td></tr>
-<tr class="separator:a78ee82c9a8625cc4a7701b47242182cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af588c5856a7cb63f4f1dfb99b160c340"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModuleCMPS12.html#af588c5856a7cb63f4f1dfb99b160c340">IsNewDataAvailable</a> ()</td></tr>
+<tr class="separator:af588c5856a7cb63f4f1dfb99b160c340"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -122,6 +122,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The constructor, initializes member fields </p>
 
 </div>
 </div>
@@ -139,6 +140,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The destructor </p>
 
 </div>
 </div>
@@ -157,6 +159,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Not in use </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -174,6 +177,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Returns "CMPS12_data_reading_" member field value </p><dl class="section return"><dt>Returns</dt><dd>"CMPS12_data_reading_" object </dd></dl>
 
 </div>
 </div>
@@ -191,23 +195,25 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initializes "CMPS12_hardware_connection_" </p><dl class="section return"><dt>Returns</dt><dd>boolean on successful initialization </dd></dl>
 
 </div>
 </div>
-<a id="a78ee82c9a8625cc4a7701b47242182cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78ee82c9a8625cc4a7701b47242182cc">&#9670;&nbsp;</a></span>IsNewDataAvilable()</h2>
+<a id="af588c5856a7cb63f4f1dfb99b160c340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af588c5856a7cb63f4f1dfb99b160c340">&#9670;&nbsp;</a></span>IsNewDataAvailable()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModuleCMPS12::IsNewDataAvilable </td>
+          <td class="memname">bool ModuleCMPS12::IsNewDataAvailable </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Not in use </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -225,6 +231,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Not in use </p>
 
 </div>
 </div>
@@ -242,6 +249,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Runs module, reads from hardware connection and saves it </p>
 
 </div>
 </div>
@@ -265,7 +273,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Latest reading </p>
+<p><a class="el" href="classCMPS12.html">CMPS12</a> Data reading, the latest </p>
 
 </div>
 </div>
@@ -288,7 +296,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Hardware component for our compass module </p>
+<p><a class="el" href="classCMPS12.html">CMPS12</a> Hardware connection, Hardware component for the module </p>
 
 </div>
 </div>
@@ -311,7 +319,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Is this module initialized </p>
+<p>Initialized, if <a class="el" href="classModuleCMPS12.html">ModuleCMPS12</a> is initialized </p>
 
 </div>
 </div>
@@ -334,6 +342,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Internal offset for compass </p>
 
 </div>
 </div>
@@ -356,7 +365,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Have we Read the latest reading already? </p>
+<p>New data available for reading </p>
 
 </div>
 </div>
@@ -367,7 +376,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 19 2020 17:11:54 for SailingRobot by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>
