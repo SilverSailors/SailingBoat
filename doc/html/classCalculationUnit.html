@@ -113,10 +113,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Even if we are head on we want to move slightly to the side for good measure</p>
-<p>Calculate single side of our bearings (To get other side just flip)</p>
-<p>Cut it in half so that we can only turn +- 90 degrees</p>
-<p>If our angle is too big or too small Offset with our discrepancy so we get a small variation</p>
+<p>Calculates new sailing angle of approach for boat, from destination- and wind-bearing </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">destination_bearing</td><td>Destination bearing </td></tr>
+    <tr><td class="paramname">wind_bearing</td><td>Wind bearing </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New sailing angle of approach </dd></dl>
 
 </div>
 </div>
@@ -145,7 +149,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Convert to radian</p>
+<p>Calculates the distance between point A and B </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point_a</td><td>Point A </td></tr>
+    <tr><td class="paramname">point_b</td><td>Point B </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Distance between the points </dd></dl>
 
 </div>
 </div>
@@ -164,8 +175,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>NOTE VECTOR BEARING SHOULD BE ROTATED 90 DEGREES SO THAT X,Y = 0,1 IS NORTH NOTE Dead zone represents how much of our centering we should ignore This is to prevent constant wiggle as we try to center in on our target</p>
-<p>If Y is negative then we need to turn around</p>
+<p>Calculates new position for rudder based on vector </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td><a class="el" href="classVec2.html">Vec2</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New rudder position </dd></dl>
 
 </div>
 </div>
@@ -184,10 +200,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>IF Y IS POSITIVE THEN WIND AT OUR BACKS (GOOD) IF Y IS NEGATIVE THEN WIND IS BLOWING AT US (BAD) IF Y IS 0 THEN IT IS FROM OUR SIDE</p>
-<p>Y AXIS DETERMINES HOW HARD WE NEED TO SWING OUR SAILS -1 MIN +1 MAX</p>
-<p>ADDING IN RESTRAINT TO SAIL AS WE DONT NEED ALL POWER (TOO WIDE IN LOWER ANGLES, 0-75%)</p>
-<p>POS NEG X IS IRRELEVANT AS SAIL CAN SWING AROUND TO OTHER SIDE</p>
+<p>Calculates new position for sail based on vector </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td><a class="el" href="classVec2.html">Vec2</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New sail position </dd></dl>
 
 </div>
 </div>
@@ -222,9 +241,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>STOLEN FROM THE INTERNET (Hence d, c, they did not specifiy what they meant)</p>
-<p>LATITUDE</p>
-<p>LONGITUDE</p>
+<p>Calculates a new target waypoint for the boat given distance ahead </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current_position</td><td>The current position </td></tr>
+    <tr><td class="paramname">distance</td><td>Target distance from current position </td></tr>
+    <tr><td class="paramname">direction</td><td>Target direction from current position </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New waypoint with coordinates </dd></dl>
 
 </div>
 </div>
@@ -235,7 +260,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 19 2020 17:03:17 for SailingRobot by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 19 2020 17:11:54 for SailingRobot by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>
