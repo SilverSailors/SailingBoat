@@ -1,12 +1,12 @@
-#include "../include/logger.h"
-#include <string>
-#include "../include/io.h"
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 #include <cstdio>
-#include "gps_data.h"
-#include "DataContainers/gps_position.h"
+#include <string>
+#include "../include/gps_data.h"
+#include "../include/DataContainers/gps_position.h"
+#include "../include/logger.h"
+#include "../include/io.h"
 
 Logger::Logger(std::string path) {
   entries_ = 0;

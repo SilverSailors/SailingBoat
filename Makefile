@@ -26,7 +26,6 @@ src/gps_data.cc \
 src/maestro.cc \
 src/cmps12.cc \
 src/cmps12_data.cc \
-src/ma3.cc \
 src/gps.cc \
 src/logger.cc \
 src/io.cc \
