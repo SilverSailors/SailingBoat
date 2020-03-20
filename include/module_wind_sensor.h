@@ -1,6 +1,6 @@
 #ifndef SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
 #define SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
-#include <curl.h>
+#include <curl/curl.h>
 
 class ModuleWindSensor {
  public:
