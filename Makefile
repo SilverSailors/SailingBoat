@@ -5,7 +5,7 @@
 ####################################################
 
 CC = g++
-CFLAGS = -Wall -pthread -D_REENTRANT -lwiringPi -lgps
+CFLAGS = -Wall -pthread -D_REENTRANT -lwiringPi -lgps -lcurl
 TARGET = sailingBoat
 TEST = testSailingBoat
 INSTALLBINDIR = /usr/local/bin
