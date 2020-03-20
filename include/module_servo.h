@@ -4,16 +4,51 @@
 
 class ModuleServo {
  public:
+  /**
+   * The constructor, initializes member fields
+   * @param lower_limit Servo lower limit
+   * @param upper_limit Servo upper limit
+   * @param channel Channel to use
+   */
   ModuleServo(double lower_limit, double upper_limit, int channel);
+  /**
+   * Initializes "servo_hardware_connection_"
+   * @return boolean on successful initialization
+   */
   bool Init();
+  /**
+   * Runs module and writes to hardware connection
+   */
   void Run();
+  /**
+   * Sets "target_" member field value based on limit and boundaries
+   * @param limit Limit value
+   */
   void SetTarget(double limit);
  private:
+  /**
+   * Initialized, if ModuleServo is initialized
+   */
   bool initialized_;
+  /**
+   * Upper boundary for servo
+   */
   double upper_boundary_;
+  /**
+   * Lower boundary for servo
+   */
   double lower_boundary_;
+  /**
+   * Channel to use
+   */
   int channel_;
+  /**
+   * Target, current servo position
+   */
   double target_;
+  /**
+   * Servo hardware connection, Hardware component for the module
+   */
   Maestro servo_hardware_connection_;
 };
 

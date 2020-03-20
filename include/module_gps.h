@@ -5,19 +5,49 @@
 
 class ModuleGPS {
  public:
+  /**
+   * The constructor, initializes member fields
+   */
   ModuleGPS();
+  /**
+   * Initializes "gps_hardware_connection_"
+   * @return boolean on successful initialization
+   */
   bool Init();
+  /**
+   * Runs module, reads from hardware connection and saves it
+   */
   void Run();
+  /**
+   * Returns "data_reading_" member field value
+   * @return "data_reading_" object
+   */
   GPSData GetReading();
+  /**
+   * Not in use
+   */
   void Report();
-  bool IsNewDataAvilable();
+  /**
+   * Not in use
+   * @return
+   */
+  bool IsNewDataAvailable();
  private:
+  /**
+   * Initialized, if ModuleCMPS12 is initialized
+   */
   bool initialized_;
+  /**
+   * GPS Hardware connection, Hardware component for the module
+   */
   GPS gps_hardware_connection_;
+  /**
+   * GPS data reading, the latest
+   */
   GPSData data_reading_;
-  ///
-  ///Have we Read the latest reading already?
-  ///
+  /**
+   * New data available for reading
+   */
   bool new_data_available_;
 };
 

@@ -3,8 +3,17 @@
 
 class GPSPosition {
  public:
+  /**
+   * The constructor, initializes member fields
+   */
   GPSPosition();
+  /**
+   * Latitude coordinate
+   */
   double latitude;
+  /**
+   * Longitude coordinate
+   */
   double longitude;
 };
 
