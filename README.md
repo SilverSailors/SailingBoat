@@ -22,7 +22,7 @@ Project application for the "Programkonstruktion och projekthantering"
 ## Diagram
 Hardware scheme [this link](https://github.com/SilverSailors/SailingBoat/blob/master/doc_hardware/scheme_hardware.JPG)
 
-![alt text](doc_hardware/scheme_hardware.JPG "")
+![alt text](doc/hardware/scheme_hardware.JPG "")
 ## Installation
 Either use Archlinux ARM(which is default for this course), or use Raspbian,
 but if Raspbian is used, then some things might not be done the same way.
