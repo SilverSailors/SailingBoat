@@ -3,11 +3,14 @@
 #include <string>
 #include <sstream>
 #include "../include/json.hpp"
+#include "../test/doctest.h"
 
 ModuleWindSensor::ModuleWindSensor() {
   std::cout << "Constructing [Module] Wind Sensor" << std::endl;
   initialized_ = false;
   new_data_available_ = false;
+  wind_speed_ = -1.0;
+  reading_ = -1;
 }
 
 bool ModuleWindSensor::Init() {
@@ -34,8 +37,18 @@ void ModuleWindSensor::Run() {
     nlohmann::json json_obj;
     std::stringstream(data) >> json_obj;
     reading_ = json_obj["wind"]["deg"];
+    wind_speed_ = json_obj["wind"]["speed"];
     new_data_available_ = true;
   }
+}
+
+TEST_CASE("testing module wind sensor") {
+  ModuleWindSensor sensor;
+  sensor.Init();
+  sensor.Run();
+  sensor.Report();
+  CHECK(sensor.GetReading() != -1);
+  CHECK(sensor.GetWindSpeed() != doctest::Approx(-1.0));
 }
 
 bool ModuleWindSensor::IsNewDataAvailable() {
@@ -46,10 +59,15 @@ int ModuleWindSensor::GetReading() {
   return reading_;
 }
 
+double ModuleWindSensor::GetWindSpeed() {
+  return wind_speed_;
+}
+
 void ModuleWindSensor::Report() {
   if (new_data_available_) {
     std::cout << "- - WIND SENSOR - -" << std::endl;
     std::cout << "Wind Bearing: " << reading_ << std::endl;
+    std::cout << "Wind Speed: " << wind_speed_ << std::endl;
     std::cout << "-------------------" << std::endl;
     new_data_available_ = false;
   }
