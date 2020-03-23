@@ -1,13 +1,13 @@
-#ifndef SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
-#define SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
+#ifndef SAILINGBOAT_INCLUDE_MODULE_WIND_H_
+#define SAILINGBOAT_INCLUDE_MODULE_WIND_H_
 #include <curl/curl.h>
 
-class ModuleWindSensor {
+class ModuleWind {
  public:
   /**
    * The constructor, initializes member fields
    */
-  ModuleWindSensor();
+  ModuleWind();
   /**
    * Initializes "curl_"
    * @return boolean on successful initialization
@@ -23,15 +23,15 @@ class ModuleWindSensor {
    */
   bool IsNewDataAvailable();
   /**
-   * Returns "reading_" member field
-   * @return "reading_" value
+   * Returns "wind_speed_reading_" member field
+   * @return "wind_speed_reading_" value
    */
-  int GetReading();
+   double GetWindSpeedReading();
   /**
-  * Returns "wind_speed" member field
-  * @return "wind_speed_" value
-  */
-  double GetWindSpeed();
+   * Returns "wind_deg_reading_" member field
+   * @return "wind_deg_reading_" value
+   */
+  int GetWindDegReading();
   /**
    * Reports the latest reading
    */
@@ -42,7 +42,7 @@ class ModuleWindSensor {
    */
   CURL *curl_;
   /**
-   * If ModuleWindSensor is initialized
+   * If ModuleWind is initialized
    */
   bool initialized_;
   /**
@@ -50,13 +50,13 @@ class ModuleWindSensor {
    */
   bool new_data_available_;
   /**
-   * The latest bearing/angle reading
+   * The latest wind speed reading
    */
-  int reading_;
+  double wind_speed_reading_;
   /**
-  * The latest wind speed reading
+  * The latest wind deg reading
   */
-  double wind_speed_;
+  int wind_deg_reading_;
 };
 
-#endif // SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
+#endif //SAILINGBOAT_INCLUDE_MODULE_WIND_H_

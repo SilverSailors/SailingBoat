@@ -78,7 +78,7 @@ $(function() {
 <code>#include &quot;<a class="el" href="utilities_8h_source.html">include/utilities.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="module__cmps12_8h_source.html">include/module_cmps12.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="module__gps_8h_source.html">include/module_gps.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="module__wind__sensor_8h_source.html">include/module_wind_sensor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="module__wind_8h_source.html">include/module_wind.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="control__unit_8h_source.html">include/control_unit.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="calculation__unit_8h_source.html">include/calculation_unit.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="module__servo_8h_source.html">include/module_servo.h</a>&quot;</code><br />
@@ -99,8 +99,6 @@ Macros</h2></td></tr>
 <tr class="separator:ac11d6e268182eb78672a1106bc45a565"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76330a9760acebd22bacadb55c852b26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cc.html#a76330a9760acebd22bacadb55c852b26">SAIL_UPPER_THRESHOLD</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a76330a9760acebd22bacadb55c852b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1960040587402f0c97c587ce0e3fbd1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cc.html#ae1960040587402f0c97c587ce0e3fbd1">WIND_SENSOR_SPI_CHANNEL</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:ae1960040587402f0c97c587ce0e3fbd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21005f9f4e2ce7597c5eb4351816d7e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cc.html#a21005f9f4e2ce7597c5eb4351816d7e2">OFFSET</a>&#160;&#160;&#160;90</td></tr>
 <tr class="separator:a21005f9f4e2ce7597c5eb4351816d7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -110,8 +108,8 @@ Functions</h2></td></tr>
 <tr class="separator:ad3baeedd7b1974841449d1f037654d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d064f8b133c89c72b5cec1058a8594f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cc.html#a1d064f8b133c89c72b5cec1058a8594f">DriveSail</a> (<a class="el" href="classModuleServo.html">ModuleServo</a> &amp;sail)</td></tr>
 <tr class="separator:a1d064f8b133c89c72b5cec1058a8594f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af13345e03f2d152a8cfac4698df9fdf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cc.html#af13345e03f2d152a8cfac4698df9fdf3">PollWindSensor</a> (<a class="el" href="classModuleWindSensor.html">ModuleWindSensor</a> &amp;wind)</td></tr>
-<tr class="separator:af13345e03f2d152a8cfac4698df9fdf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7b14ea80c44a6e7e0bd3c88f4fc9b5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cc.html#ae7b14ea80c44a6e7e0bd3c88f4fc9b5e">PollWind</a> (<a class="el" href="classModuleWind.html">ModuleWind</a> &amp;wind)</td></tr>
+<tr class="separator:ae7b14ea80c44a6e7e0bd3c88f4fc9b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f0b71e74b49f1aa3c7f7c286fb44f94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cc.html#a8f0b71e74b49f1aa3c7f7c286fb44f94">PollGpsSensor</a> (<a class="el" href="classModuleGPS.html">ModuleGPS</a> &amp;gps)</td></tr>
 <tr class="separator:a8f0b71e74b49f1aa3c7f7c286fb44f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4f10c31215b539baaea78ea96ae91b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cc.html#ad4f10c31215b539baaea78ea96ae91b0">PollCompass</a> (<a class="el" href="classModuleCMPS12.html">ModuleCMPS12</a> &amp;compass)</td></tr>
@@ -214,20 +212,6 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define SAIL_UPPER_THRESHOLD&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae1960040587402f0c97c587ce0e3fbd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1960040587402f0c97c587ce0e3fbd1">&#9670;&nbsp;</a></span>WIND_SENSOR_SPI_CHANNEL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define WIND_SENSOR_SPI_CHANNEL&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -353,16 +337,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af13345e03f2d152a8cfac4698df9fdf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af13345e03f2d152a8cfac4698df9fdf3">&#9670;&nbsp;</a></span>PollWindSensor()</h2>
+<a id="ae7b14ea80c44a6e7e0bd3c88f4fc9b5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7b14ea80c44a6e7e0bd3c88f4fc9b5e">&#9670;&nbsp;</a></span>PollWind()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void PollWindSensor </td>
+          <td class="memname">void PollWind </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classModuleWindSensor.html">ModuleWindSensor</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classModuleWind.html">ModuleWind</a> &amp;&#160;</td>
           <td class="paramname"><em>wind</em></td><td>)</td>
           <td></td>
         </tr>
@@ -374,7 +358,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 23 2020 09:15:13 for SailingRobot by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 23 2020 11:31:56 for SailingRobot by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

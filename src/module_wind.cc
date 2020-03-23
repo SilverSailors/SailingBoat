@@ -1,19 +1,16 @@
-#include "../include/module_wind_sensor.h"
+#include "module_wind.h"
 #include <iostream>
 #include <string>
 #include <sstream>
 #include "../include/json.hpp"
-#include "../test/doctest.h"
 
-ModuleWindSensor::ModuleWindSensor() {
-  std::cout << "Constructing [Module] Wind Sensor" << std::endl;
+ModuleWind::ModuleWind() {
+  std::cout << "Constructing [Module] Wind" << std::endl;
   initialized_ = false;
   new_data_available_ = false;
-  wind_speed_ = -1.0;
-  reading_ = -1;
 }
 
-bool ModuleWindSensor::Init() {
+bool ModuleWind::Init() {
   curl_ = curl_easy_init();
   if(curl_) {
     initialized_ = true;
@@ -26,7 +23,7 @@ static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *use
   return size * nmemb;
 }
 
-void ModuleWindSensor::Run() {
+void ModuleWind::Run() {
   if (initialized_) {
     std::string data;
     curl_easy_setopt(curl_, CURLOPT_URL, "http://api.openweathermap.org/data/2.5/weather?q=Mariehamn,ax&appid=e9877347da3a765b545040c9d6aa0e74");
@@ -34,40 +31,32 @@ void ModuleWindSensor::Run() {
     curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &data);
     curl_easy_perform(curl_);
+    curl_easy_cleanup(curl_);
     nlohmann::json json_obj;
     std::stringstream(data) >> json_obj;
-    reading_ = json_obj["wind"]["deg"];
-    wind_speed_ = json_obj["wind"]["speed"];
+    wind_speed_reading_ = json_obj["wind"]["speed"];
+    wind_deg_reading_ = json_obj["wind"]["deg"];
     new_data_available_ = true;
   }
 }
 
-TEST_CASE("testing module wind sensor") {
-  ModuleWindSensor sensor;
-  sensor.Init();
-  sensor.Run();
-  sensor.Report();
-  CHECK(sensor.GetReading() != -1);
-  CHECK(sensor.GetWindSpeed() != doctest::Approx(-1.0));
-}
-
-bool ModuleWindSensor::IsNewDataAvailable() {
+bool ModuleWind::IsNewDataAvailable() {
   return new_data_available_;
 }
 
-int ModuleWindSensor::GetReading() {
-  return reading_;
+double ModuleWind::GetWindSpeedReading() {
+  return wind_speed_reading_;
 }
 
-double ModuleWindSensor::GetWindSpeed() {
-  return wind_speed_;
+int ModuleWind::GetWindDegReading() {
+  return wind_deg_reading_;
 }
 
-void ModuleWindSensor::Report() {
+void ModuleWind::Report() {
   if (new_data_available_) {
-    std::cout << "- - WIND SENSOR - -" << std::endl;
-    std::cout << "Wind Bearing: " << reading_ << std::endl;
-    std::cout << "Wind Speed: " << wind_speed_ << std::endl;
+    std::cout << "- - WIND - -" << std::endl;
+    std::cout << "Wind Speed: " << wind_speed_reading_ << std::endl;
+    std::cout << "Wind Bearing: " << wind_deg_reading_ << std::endl;
     std::cout << "-------------------" << std::endl;
     new_data_available_ = false;
   }
