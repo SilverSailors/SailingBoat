@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Ensuring that root runs this.
 # if (( $EUID != 0 )); then

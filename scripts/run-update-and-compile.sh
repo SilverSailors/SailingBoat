@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Run this file on boot after network.target is up,
 # to ensure that the application is running the latest version of the application,
