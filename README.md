@@ -20,7 +20,7 @@ Project application for the "Programkonstruktion och projekthantering"
 - Batteries - Turnigy 11V 500mAh
 
 ## Diagram
-Hardware scheme [this link](https://github.com/SilverSailors/SailingBoat/blob/master/doc_hardware/scheme_hardware.JPG)
+Hardware scheme [this link](doc/hardware/scheme_hardware.JPG)
 
 ![alt text](doc/hardware/scheme_hardware.JPG "")
 ## Installation
