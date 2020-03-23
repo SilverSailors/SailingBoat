@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Run this only once!
 
 # Ensure that root runs this script.
