@@ -1,62 +1,53 @@
 #ifndef SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
 #define SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
-//#include "ma3.h"
+#include <curl/curl.h>
 
 class ModuleWindSensor {
  public:
   /**
    * The constructor, initializes member fields
-   * @param spi_channel Spi channel
    */
-  ModuleWindSensor(int spi_channel);
+  ModuleWindSensor();
   /**
-   * Initializes "hardware_connection_ma3_"
+   * Initializes "curl_"
    * @return boolean on successful initialization
    */
   bool Init();
   /**
-   * Runs module, reads from hardware connection and saves it
+   * Runs module, reads data from api and saves it
    */
   void Run();
   /**
-   * Not in use
-   * @return
+   * Returns "new_data_available_" member field
+   * @return "new_data_available_" boolean value
+   */
+  bool IsNewDataAvailable();
+  /**
+   * Returns "reading_" member field
+   * @return "reading_" value
    */
   int GetReading();
   /**
-   * Not in use
+   * Reports the latest reading
    */
   void Report();
-  /**
-   * Not in use
-   * @return
-   */
-  bool IsNewDataAvailable();
  private:
   /**
-   * Initialized, if ModuleWindSensor is initialized
+   * CURL library for api fetching
+   */
+  CURL *curl_;
+  /**
+   * If ModuleWindSensor is initialized
    */
   bool initialized_;
   /**
-   * MA3 Hardware connection, Hardware component for the module
-   */
-  //MA3 hardware_connection_ma3_;
-  /**
-   * SPI channel to use
-   */
-  int spi_channel_;
-  /**
-   * Reading, the latest
-   */
-  int reading_;
-  /**
-   * Internal offset for wind sensor
-   */
-  double internal_offset_;
-  /**
-   * New data available for reading
+   * Is new data available for reading
    */
   bool new_data_available_;
+  /**
+   * The latest reading
+   */
+  int reading_;
 };
 
 #endif // SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
