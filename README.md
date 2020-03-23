@@ -31,8 +31,9 @@ Follow the [Arch Linux ARM download and installation
 guide](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3) for Arch.
 
 ## Post-Installation
-The application requires some libraries in order to compile, these packages
-holds things such as the i2c 
+The application requires some libraries in order to compile, they can be named
+differently depending on the system you install the packages from, however this
+is what they are called for Archlinux atleast.
 
 ### Install packages:
 - [i2c-tools](https://www.archlinux.org/packages/community/x86_64/i2c-tools/)
