@@ -39,6 +39,7 @@ is what they are called for Archlinux atleast.
 - [i2c-tools](https://www.archlinux.org/packages/community/x86_64/i2c-tools/)
 - [WiringPi](https://github.com/WiringPi/WiringPi)
 - [gpsd](https://www.archlinux.org/packages/community/x86_64/gpsd/)
+- [curl](https://www.archlinux.org/packages/core/x86_64/curl/)
 
 Edit the file *boot/cmdline.txt* and remove entries with*ttyAMA0(ex. console=ttyAMA0,115200)*.
 
