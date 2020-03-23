@@ -28,6 +28,11 @@ class ModuleWindSensor {
    */
   int GetReading();
   /**
+  * Returns "wind_speed" member field
+  * @return "wind_speed_" value
+  */
+  double GetWindSpeed();
+  /**
    * Reports the latest reading
    */
   void Report();
@@ -45,9 +50,13 @@ class ModuleWindSensor {
    */
   bool new_data_available_;
   /**
-   * The latest reading
+   * The latest bearing/angle reading
    */
   int reading_;
+  /**
+  * The latest wind speed reading
+  */
+  double wind_speed_;
 };
 
 #endif // SAILINGBOAT_INCLUDE_MODULE_WIND_SENSOR_H_
