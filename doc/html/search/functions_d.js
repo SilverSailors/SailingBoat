@@ -10,7 +10,7 @@ var searchData=
   ['modulecmps12_2281',['ModuleCMPS12',['../classModuleCMPS12.html#ad5730658510171f46250c3ca3fc83d6a',1,'ModuleCMPS12']]],
   ['modulegps_2282',['ModuleGPS',['../classModuleGPS.html#a427de792205babb49f7b0b376f5cff90',1,'ModuleGPS']]],
   ['moduleservo_2283',['ModuleServo',['../classModuleServo.html#a842fb77328b2938079dec2e4cc883329',1,'ModuleServo']]],
-  ['modulewindsensor_2284',['ModuleWindSensor',['../classModuleWindSensor.html#a5017dcf2d77a0947c0c28db0c1b5c757',1,'ModuleWindSensor']]],
+  ['modulewindsensor_2284',['ModuleWindSensor',['../classModuleWindSensor.html#a21a4a537b7045089423bcde202785674',1,'ModuleWindSensor']]],
   ['moved_5for_5fcopied_2285',['moved_or_copied',['../classnlohmann_1_1detail_1_1json__ref.html#ae39e523218bf05cac3fb5b5b1cd5efb6',1,'nlohmann::detail::json_ref']]],
   ['mul_2286',['mul',['../structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp.html#aa5f250d12ce89c81fdb08900c6a823e8',1,'nlohmann::detail::dtoa_impl::diyfp']]],
   ['my_5fmemcpy_2287',['my_memcpy',['../namespacedoctest_1_1detail.html#a4027cb5407ce2ff132645e89bba97010',1,'doctest::detail']]]

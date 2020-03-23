@@ -13,14 +13,12 @@ Application
 - Relay - Omron
 - GPS - GlobalSat
 - Compass - CMPS12
-- Wind-sensor - MA3
 - Converter - Turnigy 40V 5A
 - Batteries - Turnigy 11V 500mAh
 
 ## Diagram
-Hardware scheme [this link](https://github.com/SilverSailors/SailingBoat/blob/master/doc_hardware/scheme_hardware.JPG)
+![alt text](doc/hardware/scheme_hardware.JPG "")
 
-![alt text](doc_hardware/scheme_hardware.JPG "")
 ## Installation
 Follow the [Arch Linux ARM download and installation guide](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3)
 
