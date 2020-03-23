@@ -67,4 +67,4 @@ For more information about devices on the raspberry pi go to: [this link](https:
 5. repeat step 2-4.
 
 ## License
-This is free software, licensed under [MIT](LICENSE).
+This application is licensed under [MIT](LICENSE).
