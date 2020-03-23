@@ -31,9 +31,9 @@ void ModuleWindSensor::Run() {
     curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &data);
     curl_easy_perform(curl_);
-    nlohmann::json jsonObj;
-    std::stringstream(data) >> jsonObj;
-    reading_ = jsonObj["wind"]["deg"];
+    nlohmann::json json_obj;
+    std::stringstream(data) >> json_obj;
+    reading_ = json_obj["wind"]["deg"];
     new_data_available_ = true;
   }
 }
