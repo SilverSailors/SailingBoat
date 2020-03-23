@@ -87,7 +87,7 @@ var searchData=
   ['modulecmps12_1244',['ModuleCMPS12',['../classModuleCMPS12.html',1,'ModuleCMPS12'],['../classModuleCMPS12.html#ad5730658510171f46250c3ca3fc83d6a',1,'ModuleCMPS12::ModuleCMPS12()']]],
   ['modulegps_1245',['ModuleGPS',['../classModuleGPS.html',1,'ModuleGPS'],['../classModuleGPS.html#a427de792205babb49f7b0b376f5cff90',1,'ModuleGPS::ModuleGPS()']]],
   ['moduleservo_1246',['ModuleServo',['../classModuleServo.html',1,'ModuleServo'],['../classModuleServo.html#a842fb77328b2938079dec2e4cc883329',1,'ModuleServo::ModuleServo()']]],
-  ['modulewindsensor_1247',['ModuleWindSensor',['../classModuleWindSensor.html',1,'ModuleWindSensor'],['../classModuleWindSensor.html#a5017dcf2d77a0947c0c28db0c1b5c757',1,'ModuleWindSensor::ModuleWindSensor()']]],
+  ['modulewindsensor_1247',['ModuleWindSensor',['../classModuleWindSensor.html',1,'ModuleWindSensor'],['../classModuleWindSensor.html#a21a4a537b7045089423bcde202785674',1,'ModuleWindSensor::ModuleWindSensor()']]],
   ['moved_5for_5fcopied_1248',['moved_or_copied',['../classnlohmann_1_1detail_1_1json__ref.html#ae39e523218bf05cac3fb5b5b1cd5efb6',1,'nlohmann::detail::json_ref']]],
   ['msgpack_1249',['msgpack',['../namespacenlohmann_1_1detail.html#aa554fc6a11519e4f347deb25a9f0db40ac40d516627022a54003ac2b74a82688a',1,'nlohmann::detail']]],
   ['mul_1250',['mul',['../structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp.html#aa5f250d12ce89c81fdb08900c6a823e8',1,'nlohmann::detail::dtoa_impl::diyfp']]],
