@@ -26,12 +26,6 @@ class IO {
    * @param path Path to file
    */
   void WriteJsonFile(nlohmann::json data, std::string path);
-  /**
-   * Writes the data given to file
-   * @param data Data to write
-   * @param path Path to file
-   */
-  void WriteFile(std::string data, std::string path);
 };
 
 #endif // SAILINGBOAT_INCLUDE_IO_H_

@@ -67,10 +67,3 @@ void Logger::PublishWaypoint(GPSData from, GPSPosition to, std::string message) 
   available_ = false;
 }
 
-void Logger::Write(std::string message) {
-  std::stringstream stream;
-  stream << message;
-
-  IO io;
-  io.WriteFile(message, file_path_);
-}

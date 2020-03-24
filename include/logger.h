@@ -24,11 +24,6 @@ class Logger {
    */
   void Publish();
   /**
-   * Writes "log_" member field data to file
-   * @param message Data to write
-   */
-  void Write(std::string message);
-  /**
    * Publishes from and to GPSData by writing it to file
    * @param from From coordinates
    * @param to To coordinates
