@@ -5,7 +5,7 @@
 #include "include/utilities.h"
 #include "include/module_cmps12.h"
 #include "include/module_gps.h"
-#include "include/module_wind_sensor.h"
+#include "include/module_wind.h"
 #include "include/control_unit.h"
 #include "include/calculation_unit.h"
 #include "include/module_servo.h"
@@ -18,7 +18,6 @@
 #define RUDDER_UPPER_THRESHOLD 1
 #define SAIL_LOWER_THRESHOLD 0
 #define SAIL_UPPER_THRESHOLD 1
-#define WIND_SENSOR_SPI_CHANNEL 0
 #define OFFSET 90
 
 //Multithreaded for polling devices at different time-intervals
@@ -39,10 +38,10 @@ void DriveSail(ModuleServo &sail) {
 }
 
 //Thread for polling wind sensor
-void PollWindSensor(ModuleWindSensor &wind) {
+void PollWind(ModuleWind &wind) {
   std::cout << "Starting Automatic Wind Sensor" << std::endl;
   while (true) {
-    //std::cout << "Polling Wind Sensor!" << std::endl;
+    //std::cout << "Polling Wind!" << std::endl;
     wind.Run();
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
@@ -104,7 +103,7 @@ int main(int argc, char *argv[]) {
   //#These will poll data for us
   ModuleGPS module_gps;
   ModuleCMPS12 module_compass;
-  ModuleWindSensor module_wind;
+  ModuleWind module_wind;
 
   //Data Loggers (One for competition, other for journey debugging)
   Logger data_logger("/home/alarm/.config/sailingBoat/logs/contest.json");
@@ -149,7 +148,7 @@ int main(int argc, char *argv[]) {
 
   std::cout << "Activating Threads..." << std::endl;
   //IF all modules were initialize properly we launch our threads
-  std::thread t1(PollWindSensor, std::ref(module_wind));
+  std::thread t1(PollWind, std::ref(module_wind));
   std::thread t2(PollCompass, std::ref(module_compass));
   std::thread t3(PollGpsSensor, std::ref(module_gps));
   std::thread t4(DriveRudder, std::ref(servo_rudder));
@@ -210,7 +209,7 @@ int main(int argc, char *argv[]) {
     //GRAB A SET OF ITERATION DATA AT THIS MOMENT IN TIME
     GPSData gps_reading = module_gps.GetReading();
     CMPS12Data compass_reading = module_compass.GetReading();
-    //int         wind_reading    = module_wind.GetReading();
+    //int         wind_reading    = module_wind.GetWindDegReading();
 
     //Set a waypoint if there is none
     //NOTE Replace with DO-WHILE?

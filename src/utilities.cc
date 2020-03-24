@@ -8,10 +8,6 @@ double Utilities::DegreesToRadians(double degrees) {
   return degrees * (M_PI / 180);
 }
 
-TEST_CASE("test degrees to radians function") {
-  CHECK(Utilities::DegreesToRadians(100) == doctest::Approx(1.74533));
-}
-
 double Utilities::RadiansToDegrees(double radians) {
   return radians * (180 / M_PI);
 }

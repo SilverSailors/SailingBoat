@@ -15,7 +15,7 @@ SOURCES = main.cc \
 src/control_unit.cc \
 src/module_gps.cc \
 src/module_servo.cc \
-src/module_wind_sensor.cc \
+src/module_wind.cc \
 src/module_cmps12.cc \
 src/calculation_unit.cc \
 src/utilities.cc \
@@ -33,8 +33,8 @@ src/parser.cc
 
 # test-main samt de fristående testfilerna
 TESTSOURCES = test/test_main.cc \
+test/test_module_wind.cc
 test/test_utilities.cc
-
 
 all : $(TARGET)
 
