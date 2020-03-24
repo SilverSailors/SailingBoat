@@ -45,13 +45,3 @@ void IO::WriteJsonFile(nlohmann::json data, std::string path) {
   }
 }
 
-void IO::WriteFile(std::string data, std::string path) {
-  std::ofstream log_info(path, std::ios::app);
-  if (log_info.is_open()) {
-    //std::cout << "SUCCESS!" << std::endl;
-    log_info << data << std::endl;
-    log_info.close();
-  } else {
-    std::cout << "FAILED TO CREATE/OPEN FILE" << std::endl;
-  }
-}
