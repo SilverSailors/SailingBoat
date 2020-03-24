@@ -33,7 +33,7 @@ src/parser.cc
 
 # test-main samt de fristående testfilerna
 TESTSOURCES = test/test_main.cc \
-test/test_module_wind.cc
+test/test_module_wind.cc \
 test/test_utilities.cc
 
 all : $(TARGET)
