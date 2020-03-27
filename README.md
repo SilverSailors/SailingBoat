@@ -15,7 +15,6 @@ Project application for the "Programkonstruktion och projekthantering"
 - Relay - Omron
 - GPS - GlobalSat
 - Compass - CMPS12
-- Wind-sensor - MA3
 - Converter - Turnigy 40V 5A
 - Batteries - Turnigy 11V 500mAh
 
