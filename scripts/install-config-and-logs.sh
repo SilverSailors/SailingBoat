@@ -30,9 +30,6 @@ echo "# Distance Threshold (Meters)
 touch ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/sensor_config.txt
 echo "
 #COMPASS OFFSET
-0
-
-#WIND SENSOR OFFSET
 0" >> ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/sensor_config.txt
 
 touch ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/destination.txt
