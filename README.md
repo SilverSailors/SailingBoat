@@ -4,7 +4,6 @@ Project application for the "Programkonstruktion och projekthantering"
 (also known as the PoP kurs) course at Åland Polytechnic.
 
 ## Components
-
 - PC - Raspberry Pi 3 WiFi
 - Boat - RC Laser
 - Receiver - Futaba

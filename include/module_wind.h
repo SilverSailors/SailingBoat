@@ -9,6 +9,10 @@ class ModuleWind {
    */
   ModuleWind();
   /**
+   * The destructor, cleans up
+   */
+  ~ModuleWind();
+  /**
    * Initializes "curl_"
    * @return boolean on successful initialization
    */
@@ -38,7 +42,7 @@ class ModuleWind {
   void Report();
  private:
   /**
-   * CURL library for api fetching
+   * CURL library
    */
   CURL *curl_;
   /**
