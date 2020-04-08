@@ -5,9 +5,14 @@
 class ModuleWind {
  public:
   /**
-   * The constructor, initializes member fields
+   * A constructor, initializes member fields
    */
   ModuleWind();
+  /**
+   * A constructor, uses hardcoded value for wind
+   * @param wind_deg Wind direction value
+   */
+  ModuleWind(int wind_deg);
   /**
    * The destructor, cleans up
    */
