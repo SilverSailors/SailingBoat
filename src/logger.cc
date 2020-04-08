@@ -33,9 +33,9 @@ void Logger::Publish() {
 void Logger::PublishWaypoint(GPSData from, GPSData to, std::string message) {
   nlohmann::json json_obj;
   json_obj["at_lat"] = from.latitude;
-  json_obj["at_lon"] = from.latitude;
+  json_obj["at_long"] = from.longitude;
   json_obj["dest_lat"] = to.latitude;
-  json_obj["dest_lon"] = to.longitude;
+  json_obj["dest_long"] = to.longitude;
   json_obj["message"] = message;
   json_obj["time"] = from.timestamp;
 
