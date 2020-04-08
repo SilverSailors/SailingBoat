@@ -13,9 +13,16 @@ ModuleWind::ModuleWind() {
   data_reading_ = -1;
 }
 
+ModuleWind::ModuleWind(int wind_deg) {
+  std::cout << "Constructing [Module] Wind" << std::endl;
+  data_reading_ = wind_deg;
+  initialized_ = true;
+  new_data_available_ = true;
+}
+
 ModuleWind::~ModuleWind() {
   /* Always cleanup */
-  curl_easy_cleanup(curl_);
+  if (curl_) curl_easy_cleanup(curl_);
 }
 
 bool ModuleWind::GetInitialized() {
