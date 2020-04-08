@@ -2,25 +2,17 @@
 #include <iostream>
 
 ModuleGPS::ModuleGPS() {
-  std::cout << "Constructing [Module] GPS Module" << std::endl;
-  initialized_ = false;
+  std::cout << "Constructing [Module] GPS" << std::endl;
+  initialized_ = gps_hardware_connection_.GetInitialized();
   new_data_available_ = false;
 }
 
-bool ModuleGPS::Init() {
-  bool result = gps_hardware_connection_.Init();
-  initialized_ = result;
-  return result;
-}
-
 void ModuleGPS::Run() {
-  if (initialized_) {
-    GPSData reading = gps_hardware_connection_.Read();
-    if (reading.GetValid()) {
-      data_reading_ = reading;
+  if(initialized_) {
+    GPSData gps_data = gps_hardware_connection_.Read();
+    if((gps_data.latitude >= 0.0) && (gps_data.longitude >= 0.0)) {
+      data_reading_ = gps_data;
       new_data_available_ = true;
-    } else {
-      std::cout << "GPS: DATA READING NOT VALID" << std::endl;
     }
   }
 }
@@ -32,15 +24,14 @@ GPSData ModuleGPS::GetReading() {
 void ModuleGPS::Report() {
   if (new_data_available_) {
     std::cout << "- - GPS SENSOR - -" << std::endl;
-    std::cout << "GPS LAT : " << data_reading_.GetLatitude() << std::endl;
-    std::cout << "GPS LON : " << data_reading_.GetLongitude() << std::endl;
-    std::cout << "GPS TIME: " << data_reading_.GetTime() << std::endl;
-    std::cout << "GPS TIME: " << data_reading_.GetTimeValue() << std::endl;
+    std::cout << "GPS LAT : " << data_reading_.latitude << std::endl;
+    std::cout << "GPS LON : " << data_reading_.longitude << std::endl;
+    std::cout << "GPS TIMESTAMP : " << data_reading_.timestamp << std::endl;
     std::cout << "------------------" << std::endl;
     new_data_available_ = false;
   }
 }
 
-bool ModuleGPS::IsNewDataAvailable() {
-  return new_data_available_;
+bool ModuleGPS::GetInitialized() {
+  return initialized_;
 }

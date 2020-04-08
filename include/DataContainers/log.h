@@ -2,22 +2,13 @@
 #define SAILINGBOAT_INCLUDE_DATACONTAINERS_LOG_H_
 #include <string>
 
-class Log {
- public:
+struct Log {
   /**
-   * The constructor, initializes member fields
-   */
-  Log();
-  /**
-   * Not in use
+   * Log entry
    */
   int entry_id;
   /**
-   * Bearing
-   */
-  double bearing;
-  /**
-   * Latitude, coordinate
+   * Latitude coordinate
    */
   double latitude;
   /**
@@ -25,21 +16,9 @@ class Log {
    */
   double longitude;
   /**
-   * Not in use
-   */
-  double speed;
-  /**
    * Timestamp
    */
   std::string timestamp;
-  /**
-   * Not in use
-   */
-  double distance_from_waypoint;
-  /**
-   * Not in use
-   */
-  double distance_from_destination;
 };
 
 #endif // SAILINGBOAT_INCLUDE_DATACONTAINERS_LOG_H_

@@ -2,19 +2,19 @@
 #define SAILINGBOAT_INCLUDE_GPS_H_
 #include <libgpsmm.h>
 #include <memory>
-#include "gps_data.h"
+#include "DataContainers/gps_data.h"
 
 class GPS {
  public:
   /**
-   * The constructor
+   * The constructor, initializes and binds GPS to hardware
    */
   GPS();
   /**
-   * Initializes and binds GPS to hardware
-   * @return boolean value on successful initialization
+   * Returns "initialized_" member field value
+   * @return "initialized_" object
    */
-  bool Init();
+  bool GetInitialized();
   /**
    * Reads data from GPS component
    * @return Retrieved GPS data
@@ -25,7 +25,6 @@ class GPS {
    * Initialized, boolean value on GPS component initialized or not
    */
   bool initialized_;
-
   /**
    * Connection to GPS hardware, GPSMM is an unique vector
    */

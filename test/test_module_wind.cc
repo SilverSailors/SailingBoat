@@ -3,8 +3,6 @@
 
 TEST_CASE("Test ModuleWind") {
   ModuleWind wind;
-  wind.Init();
   wind.Run();
-  CHECK(wind.GetWindSpeedReading() >= 0);
-  CHECK(wind.GetWindDegReading() >= 0);
+  CHECK(wind.GetReading() != doctest::Approx(-1));
 }
