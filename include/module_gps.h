@@ -1,7 +1,7 @@
 #ifndef SAILINGBOAT_INCLUDE_MODULE_GPS_H_
 #define SAILINGBOAT_INCLUDE_MODULE_GPS_H_
 #include "gps.h"
-#include "gps_data.h"
+#include "DataContainers/gps_data.h"
 
 class ModuleGPS {
  public:
@@ -10,10 +10,10 @@ class ModuleGPS {
    */
   ModuleGPS();
   /**
-   * Initializes "gps_hardware_connection_"
-   * @return boolean on successful initialization
+   * Returns "initialized_" member field value
+   * @return "initialized_" object
    */
-  bool Init();
+  bool GetInitialized();
   /**
    * Runs module, reads from hardware connection and saves it
    */
@@ -24,14 +24,9 @@ class ModuleGPS {
    */
   GPSData GetReading();
   /**
-   * Not in use
+   * Reports the latest reading
    */
   void Report();
-  /**
-   * Not in use
-   * @return
-   */
-  bool IsNewDataAvailable();
  private:
   /**
    * Initialized, if ModuleCMPS12 is initialized

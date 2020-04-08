@@ -18,23 +18,16 @@ src/module_servo.cc \
 src/module_wind.cc \
 src/module_cmps12.cc \
 src/calculation_unit.cc \
-src/utilities.cc \
-src/DataContainers/gps_position.cc \
-src/DataContainers/vec2.cc \
-src/DataContainers/log.cc \
-src/gps_data.cc \
+src/DataContainers/gps_data.cc \
 src/maestro.cc \
 src/cmps12.cc \
-src/cmps12_data.cc \
 src/gps.cc \
 src/logger.cc \
 src/io.cc \
-src/parser.cc
 
 # test-main samt de fristående testfilerna
 TESTSOURCES = test/test_main.cc \
-test/test_module_wind.cc \
-test/test_utilities.cc
+test/test_module_wind.cc
 
 all : $(TARGET)
 

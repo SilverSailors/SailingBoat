@@ -7,14 +7,6 @@
 class IO {
  public:
   /**
-   * The constructor
-   */
-  IO();
-  /**
-   * The destructor
-   */
-  ~IO();
-  /**
    * Opens up and reads file specified
    * @param filepath Path to file
    * @return File's content
@@ -25,7 +17,7 @@ class IO {
    * @param data Data to write
    * @param path Path to file
    */
-  void WriteJsonFile(nlohmann::json data, std::string path);
+  void WriteFile(nlohmann::json data, std::string path);
 };
 
 #endif // SAILINGBOAT_INCLUDE_IO_H_
