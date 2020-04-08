@@ -1,6 +1,5 @@
 #include "../include/control_unit.h"
 #include "../include/io.h"
-#define CALCULATED_THRESHOLD 5.0 / 2.0;
 
 ControlUnit::ControlUnit(std::string destination) {
   active_ = false;
@@ -22,17 +21,15 @@ bool ControlUnit::IsActive() {
 }
 
 GPSData ControlUnit::GetDestination() {
-  return destination_.front();
+  if (destination_.empty()) return {};
+  else return destination_.front();
 }
 
 void ControlUnit::UpdateJourney() {
-  if (destination_.size() > 0) {
+  if (!destination_.empty()) {
     destination_.pop();
-  } else {
-    active_ = false;
+    if (destination_.empty()) {
+      active_ = false;
+    }
   }
-}
-
-double ControlUnit::GetCalculatedThreshold() {
-  return CALCULATED_THRESHOLD;
 }
