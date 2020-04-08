@@ -21,7 +21,8 @@ bool ControlUnit::IsActive() {
 }
 
 GPSData ControlUnit::GetDestination() {
-  return destination_.front();
+  if (destination_.empty()) return {};
+  else return destination_.front();
 }
 
 void ControlUnit::UpdateJourney() {
