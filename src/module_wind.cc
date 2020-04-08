@@ -8,10 +8,9 @@ ModuleWind::ModuleWind() {
   std::cout << "Constructing [Module] Wind" << std::endl;
   /* Get a curl handle */
   curl_ = curl_easy_init();
-  initialized_ = curl_ != nullptr || false;
+  initialized_ = curl_ != nullptr;
   new_data_available_ = false;
-  wind_speed_reading_ = -1.0;
-  wind_deg_reading_ = -1;
+  data_reading_ = -1;
 }
 
 ModuleWind::~ModuleWind() {
@@ -19,8 +18,7 @@ ModuleWind::~ModuleWind() {
   curl_easy_cleanup(curl_);
 }
 
-bool ModuleWind::Init() {
-  /* No need for initialization here */
+bool ModuleWind::GetInitialized() {
   return initialized_;
 }
 
@@ -40,33 +38,21 @@ void ModuleWind::Run() {
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &data);
     /* Perform the request, res will get the return code */
     CURLcode res = curl_easy_perform(curl_);
-    /* Check for errors */
-    if (res != CURLE_OK) std::cout << curl_easy_strerror(res) << std::endl;
     nlohmann::json json_obj;
     std::stringstream(data) >> json_obj;
-    wind_speed_reading_ = json_obj["wind"]["speed"];
-    wind_deg_reading_ = json_obj["wind"]["deg"];
+    data_reading_ = json_obj["wind"]["deg"];
     new_data_available_ = true;
   }
 }
 
-bool ModuleWind::IsNewDataAvailable() {
-  return new_data_available_;
-}
-
-double ModuleWind::GetWindSpeedReading() {
-  return wind_speed_reading_;
-}
-
-int ModuleWind::GetWindDegReading() {
-  return wind_deg_reading_;
+int ModuleWind::GetReading() {
+  return data_reading_;
 }
 
 void ModuleWind::Report() {
   if (new_data_available_) {
     std::cout << "- - WIND - -" << std::endl;
-    std::cout << "Wind Speed: " << wind_speed_reading_ << std::endl;
-    std::cout << "Wind Bearing: " << wind_deg_reading_ << std::endl;
+    std::cout << "Wind Bearing: " << data_reading_ << std::endl;
     std::cout << "-------------------" << std::endl;
     new_data_available_ = false;
   }

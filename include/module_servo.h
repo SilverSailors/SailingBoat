@@ -12,10 +12,10 @@ class ModuleServo {
    */
   ModuleServo(double lower_limit, double upper_limit, int channel);
   /**
-   * Initializes "servo_hardware_connection_"
+   * Returns "initialized_"
    * @return boolean on successful initialization
    */
-  bool Init();
+  bool GetInitialized();
   /**
    * Runs module and writes to hardware connection
    */
@@ -31,6 +31,18 @@ class ModuleServo {
    */
   bool initialized_;
   /**
+   * Channel to use
+   */
+  int channel_;
+  /**
+   * Servo hardware connection, Hardware component for the module
+   */
+  Maestro servo_hardware_connection_;
+  /**
+   * Target, current servo position
+   */
+  double target_;
+  /**
    * Upper boundary for servo
    */
   double upper_boundary_;
@@ -38,18 +50,6 @@ class ModuleServo {
    * Lower boundary for servo
    */
   double lower_boundary_;
-  /**
-   * Channel to use
-   */
-  int channel_;
-  /**
-   * Target, current servo position
-   */
-  double target_;
-  /**
-   * Servo hardware connection, Hardware component for the module
-   */
-  Maestro servo_hardware_connection_;
 };
 
 #endif // SAILINGBOAT_INCLUDE_MODULE_SERVO_H_

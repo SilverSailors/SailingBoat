@@ -13,29 +13,19 @@ class ModuleWind {
    */
   ~ModuleWind();
   /**
-   * Initializes "curl_"
-   * @return boolean on successful initialization
+   * Returns "initialized_" member field value
+   * @return "initialized_" object
    */
-  bool Init();
+  bool GetInitialized();
   /**
    * Runs module, reads data from api and saves it
    */
   void Run();
   /**
-   * Returns "new_data_available_" member field
-   * @return "new_data_available_" boolean value
+   * Returns "data_reading_" member field
+   * @return "data_reading_" value
    */
-  bool IsNewDataAvailable();
-  /**
-   * Returns "wind_speed_reading_" member field
-   * @return "wind_speed_reading_" value
-   */
-   double GetWindSpeedReading();
-  /**
-   * Returns "wind_deg_reading_" member field
-   * @return "wind_deg_reading_" value
-   */
-  int GetWindDegReading();
+   int GetReading();
   /**
    * Reports the latest reading
    */
@@ -56,11 +46,7 @@ class ModuleWind {
   /**
    * The latest wind speed reading
    */
-  double wind_speed_reading_;
-  /**
-  * The latest wind deg reading
-  */
-  int wind_deg_reading_;
+  int data_reading_;
 };
 
 #endif //SAILINGBOAT_INCLUDE_MODULE_WIND_H_

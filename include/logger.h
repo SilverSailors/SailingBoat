@@ -1,10 +1,9 @@
 #ifndef SAILINGBOAT_INCLUDE_LOGGER_H_
 #define SAILINGBOAT_INCLUDE_LOGGER_H_
 #include <string>
-#include <ctime>
-#include "DataContainers/gps_position.h"
 #include "DataContainers/log.h"
-#include "gps_data.h"
+#include "DataContainers/gps_data.h"
+#include <ctime>
 #include "json.hpp"
 
 class Logger {
@@ -29,22 +28,18 @@ class Logger {
    * @param to To coordinates
    * @param message Data to write
    */
-  void PublishWaypoint(GPSData from, GPSPosition to, std::string message);
+  void PublishWaypoint(GPSData from, GPSData to, std::string message);
  private:
   /**
-   * Entries, number of entries written to file
-   */
-  int entries_;
-  /**
-   * Log, log info object
+   * Log info object
    */
   Log log_;
   /**
-   * File path, path for reading and writing
+   * File path for reading and writing
    */
   std::string file_path_;
   /**
-   * Available, available to publish data
+   * Available to publish data
    */
   bool available_;
 };
