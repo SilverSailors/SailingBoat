@@ -33,5 +33,8 @@ void ModuleGPS::Report() {
 }
 
 bool ModuleGPS::GetInitialized() {
+  if(!initialized_) {
+    std::cout << "GPS HARDWARE FAILLLLLLLLL\n";
+  }
   return initialized_;
 }

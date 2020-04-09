@@ -50,5 +50,8 @@ void ModuleServo::SetTarget(double limit) {
 }
 
 bool ModuleServo::GetInitialized() {
+  if(!initialized_) {
+    std::cout << "MODUL SERVO HARDWARE FAILLLLLLLLL\n";
+  }
   return initialized_;
 }

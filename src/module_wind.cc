@@ -27,6 +27,9 @@ ModuleWind::~ModuleWind() {
 }
 
 bool ModuleWind::GetInitialized() {
+  if(!initialized_) {
+    std::cout << "module wind HARDWARE FAILLLLLLLLL\n";
+  }
   return initialized_;
 }
 
