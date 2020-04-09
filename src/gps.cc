@@ -12,9 +12,7 @@ GPS::GPS() {
 }
 
 bool GPS::GetInitialized() {
-  if(!initialized_) {
-    std::cout << "GPS HARDWARE FAILLLLLLLLL\n";
-  }
+  if (!initialized_) std::cout << "[Hardware] GPS not initialized" << std::endl;
   return initialized_;
 }
 
