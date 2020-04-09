@@ -7,11 +7,14 @@ GPS::GPS() {
   std::cout << "Constructing [Hardware] GPS" << std::endl;
   // Init and bind
   gps_ = std::make_unique<gpsmm>("localhost", DEFAULT_GPSD_PORT);
-  initialized_ = gps_ != nullptr && 
+  initialized_ = gps_ != nullptr &&
                  gps_->stream(WATCH_ENABLE | WATCH_JSON) != nullptr ? true : false;
 }
 
 bool GPS::GetInitialized() {
+  if(!initialized_) {
+    std::cout << "GPS HARDWARE FAILLLLLLLLL\n";
+  }
   return initialized_;
 }
 

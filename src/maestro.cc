@@ -21,6 +21,9 @@ Maestro::Maestro() {
 }
 
 bool Maestro::GetInitialized() {
+  if(!initialized_) {
+    std::cout << "MAESTRO HARDWARE FAILLLLLLLLL\n";
+  }
   return initialized_;
 }
 
