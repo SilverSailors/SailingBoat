@@ -3,13 +3,11 @@
 #include "../include/calculation_unit.h"
 
 ModuleCMPS12::ModuleCMPS12() {
-  std::cout << "Constructing [Module] CMPS12" << std::endl;
   new_data_available_ = false;
   initialized_ = CMPS12_hardware_connection_.GetInitialized();
 }
 
 bool ModuleCMPS12::GetInitialized() {
-  if (!initialized_) std::cout << "[Module] CMPS12 not initialized" << std::endl;
   return initialized_;
 }
 
@@ -29,9 +27,7 @@ int ModuleCMPS12::GetReading() {
 
 void ModuleCMPS12::Report() {
   if (new_data_available_) {
-    std::cout << "- - COMPASS SENSOR - -" << std::endl;
-    std::cout << "Bearing: " << data_reading_ << std::endl;
-    std::cout << "------------------" << std::endl;
+    std::cout << "Boat heading            : " << data_reading_ << std::endl;
     new_data_available_ = false;
   }
 }
