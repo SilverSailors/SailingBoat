@@ -22,11 +22,6 @@ class ControlUnit {
    */
   GPSData GetDestination();
   /**
-   * Returns "CALCULATED_THRESHOLD" define
-   * @return "CALCULATED_THRESHOLD" value
-   */
-  double GetCalculatedThreshold();
-  /**
    * Updates journey on a destination reached
    */
   void UpdateJourney();

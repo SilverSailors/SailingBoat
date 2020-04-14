@@ -14,6 +14,7 @@
 #define RUDDER_UPPER_THRESHOLD 1
 #define SAIL_LOWER_THRESHOLD 0
 #define SAIL_UPPER_THRESHOLD 1
+#define CALCULATED_THRESHOLD 5.0 / 2.0
 
 void DriveRudder(ModuleServo &rudder) {
   while (true) {
@@ -128,7 +129,7 @@ int main(int argc, char *argv[]) {
     // Distance to destination
     double desination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
     // If close enough to destination
-    if (desination_distance < control_unit.GetCalculatedThreshold()) {
+    if (desination_distance < CALCULATED_THRESHOLD) {
       // Get next destination or quit
       control_unit.UpdateJourney();
       // Write debug

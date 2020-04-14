@@ -36,5 +36,5 @@ elif (( linux_type == pacman ))
 	cd WiringPi
 	sh build
 else
-	echo "You do not have one of the most used linux distributions, please use it."
+	echo "You do not have any of the most used linux distributions, please use one of them."
 fi

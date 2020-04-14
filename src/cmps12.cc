@@ -17,9 +17,7 @@ CMPS12::CMPS12() {
 }
 
 bool CMPS12::GetInitialized() {
-  if(!initialized_) {
-    std::cout << "CMPS 12 HARDWARE FAILLLLLLLLL\n";
-  }
+  if (!initialized_) std::cout << "[Hardware] CMPS12 not initialized" << std::endl;
   return initialized_;
 }
 
