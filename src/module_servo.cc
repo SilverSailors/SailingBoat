@@ -7,7 +7,6 @@
 #define MAESTRO_SERVO_LOWER_LIMIT 3968
 
 ModuleServo::ModuleServo(double lower_limit, double upper_limit, int channel) {
-  std::cout << "Constructing [Module] Servo" << std::endl;
   upper_boundary_ = upper_limit;
   lower_boundary_ = lower_limit;
   channel_ = channel;
@@ -22,7 +21,6 @@ ModuleServo::ModuleServo(double lower_limit, double upper_limit, int channel) {
 }
 
 bool ModuleServo::GetInitialized() {
-  if (!initialized_) std::cout << "[Module] Servo not initialized" << std::endl;
   return initialized_;
 }
 

@@ -10,14 +10,12 @@
 #define CALIBRATION_STATE_8 0x1E
 
 CMPS12::CMPS12() {
-  std::cout << "Constructing [Hardware] CMPS12" << std::endl;
   wiringPiSetup();
   file_descriptor_ = wiringPiI2CSetup(I2C_DEVICE_ADDRESS);
   initialized_ = file_descriptor_ != -1;
 }
 
 bool CMPS12::GetInitialized() {
-  if (!initialized_) std::cout << "[Hardware] CMPS12 not initialized" << std::endl;
   return initialized_;
 }
 

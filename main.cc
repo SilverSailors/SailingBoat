@@ -7,6 +7,7 @@
 #include "include/calculation_unit.h"
 #include "include/module_servo.h"
 #include "include/logger.h"
+#include <iostream>
 #include "test/doctest.h"
 #define RUDDER_CHANNEL 1
 #define SAIL_CHANNEL 0
@@ -72,13 +73,14 @@ int main(int argc, char *argv[]) {
   CalculationUnit calculation_unit;
 
   // Checks if all modules are OK
-  if (!servo_rudder.GetInitialized() ||
-      !servo_sail.GetInitialized() ||
-      !module_gps.GetInitialized() ||
-      !module_compass.GetInitialized() ||
-      !module_wind.GetInitialized() ||
-      !calculation_unit.GetInitialized()
-  ) return -1;
+  bool fail = false;
+  if (!servo_rudder.GetInitialized()) { std::cout << "Servo rudder not initialized!" << std::endl; fail = true; }
+  else if (!servo_sail.GetInitialized()) { std::cout << "Servo sail not initialized!" << std::endl; fail = true; }
+  else if (!module_gps.GetInitialized()) { std::cout << "Module GPS not initialized!" << std::endl; fail = true; }
+  else if (!module_compass.GetInitialized()) { std::cout << "Module compass not initialized!" << std::endl; fail = true; }
+  else if (!module_wind.GetInitialized()) { std::cout << "Module wind not initialized!" << std::endl; fail = true; }
+  if (fail) return -1;
+  else std::cout << "All modules initialized!" << std::endl;
   
   // Creates control unit for journey, with destinations path
   ControlUnit control_unit("/home/alarm/.config/sailingBoat/settings/destination.txt");
@@ -127,9 +129,9 @@ int main(int argc, char *argv[]) {
     // Updates sail setting
     servo_sail.SetTarget(calculation_unit.GetSailAngle());
     // Distance to destination
-    double desination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
+    double destination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
     // If close enough to destination
-    if (desination_distance < CALCULATED_THRESHOLD) {
+    if (destination_distance < CALCULATED_THRESHOLD) {
       // Get next destination or quit
       control_unit.UpdateJourney();
       // Write debug
@@ -148,6 +150,14 @@ int main(int argc, char *argv[]) {
     new_log.timestamp = boat_pos.timestamp;
     data_logger.LogData(new_log);
     entry++;
+
+    // Outputs journey information
+    std::cout << "======================================" << std::endl;
+    module_gps.Report();
+    module_wind.Report();
+    module_compass.Report();
+    calculation_unit.Report();
+    std::cout << "Distance to destination : " << destination_distance << std::endl;
   }
 
   // Destroys the threads created

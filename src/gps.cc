@@ -4,7 +4,6 @@
 #include <string>
 
 GPS::GPS() {
-  std::cout << "Constructing [Hardware] GPS" << std::endl;
   // Init and bind
   gps_ = std::make_unique<gpsmm>("localhost", DEFAULT_GPSD_PORT);
   initialized_ = gps_ != nullptr &&
@@ -12,7 +11,6 @@ GPS::GPS() {
 }
 
 bool GPS::GetInitialized() {
-  if (!initialized_) std::cout << "[Hardware] GPS not initialized" << std::endl;
   return initialized_;
 }
 
