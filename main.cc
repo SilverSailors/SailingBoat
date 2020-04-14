@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
   // End of line position
   GPSData waypoint2 = control_unit.GetDestination();
   // Runs until GPS module is online
-  while(waypoint1.latitude >= 0.0) {
+  while(waypoint1.latitude >= 0.001) {
     waypoint1 = module_gps.GetReading();
     std::cout << "Waiting for GPS hardware to warm-up...\n";
   }
