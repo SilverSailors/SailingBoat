@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
   else if (!module_wind.GetInitialized()) { std::cout << "Module wind not initialized!" << std::endl; fail = true; }
   if (fail) return -1;
   else std::cout << "All modules initialized!" << std::endl;
-  
+
   // Creates control unit for journey, with destinations path
   ControlUnit control_unit("/home/alarm/.config/sailingBoat/settings/destination.txt");
 
@@ -106,7 +106,10 @@ int main(int argc, char *argv[]) {
   // End of line position
   GPSData waypoint2 = control_unit.GetDestination();
   // Runs until GPS module is online
-  while(waypoint1.latitude != 0.0) {waypoint1 = module_gps.GetReading();}
+  while(waypoint1.latitude >= 0.0) {
+    waypoint1 = module_gps.GetReading();
+    std::cout << "Waiting for GPS hardware to warm-up...\n";
+  }
 
   // Log entry
   int entry = 1;
