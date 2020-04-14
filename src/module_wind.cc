@@ -58,9 +58,7 @@ int ModuleWind::GetReading() {
 
 void ModuleWind::Report() {
   if (new_data_available_) {
-    std::cout << "- - WIND - -" << std::endl;
-    std::cout << "Wind bearing: " << data_reading_ << std::endl;
-    std::cout << "-------------------" << std::endl;
+    std::cout << "Wind angle              : " << data_reading_ << std::endl;
     new_data_available_ = false;
   }
 }

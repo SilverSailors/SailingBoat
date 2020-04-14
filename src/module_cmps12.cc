@@ -27,9 +27,7 @@ int ModuleCMPS12::GetReading() {
 
 void ModuleCMPS12::Report() {
   if (new_data_available_) {
-    std::cout << "- - COMPASS SENSOR - -" << std::endl;
-    std::cout << "Bearing: " << data_reading_ << std::endl;
-    std::cout << "------------------" << std::endl;
+    std::cout << "Boat heading            : " << data_reading_ << std::endl;
     new_data_available_ = false;
   }
 }

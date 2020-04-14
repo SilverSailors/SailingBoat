@@ -99,6 +99,10 @@ class CalculationUnit {
    */
   static double ConvertCoordinates(double from_low, double from_high,
                             double to_low, double to_high, double position);
+  /**
+   * Reports the latest reading
+   */
+  void Report();
  private:
   /**
    * First waypoint
@@ -148,6 +152,10 @@ class CalculationUnit {
    * Angle of sail
    */
   double sail_angle_;
+  /**
+   * New data available for reading
+   */
+  bool new_data_available_;
 };
 
 #endif // SAILINGBOAT_INCLUDE_CALCULATION_UNIT_H_

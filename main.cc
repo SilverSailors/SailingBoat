@@ -129,9 +129,9 @@ int main(int argc, char *argv[]) {
     // Updates sail setting
     servo_sail.SetTarget(calculation_unit.GetSailAngle());
     // Distance to destination
-    double desination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
+    double destination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
     // If close enough to destination
-    if (desination_distance < CALCULATED_THRESHOLD) {
+    if (destination_distance < CALCULATED_THRESHOLD) {
       // Get next destination or quit
       control_unit.UpdateJourney();
       // Write debug
@@ -151,15 +151,13 @@ int main(int argc, char *argv[]) {
     data_logger.LogData(new_log);
     entry++;
 
-    // Outputs data
-    std::cout << "\n======================================\n";
-    std::cout << "Boat position lat       : " << boat_pos.latitude << std::endl;
-    std::cout << "Boat position long      : " << boat_pos.longitude << std::endl;
-    std::cout << "Wind angle              : " << wind_angle << std::endl;
-    std::cout << "Boat heading            : " << boat_heading << std::endl;
-    std::cout << "Servo rudder angle      : " << calculation_unit.GetRudderAngle() << std::endl;
-    std::cout << "Servo sail angle        : " << calculation_unit.GetSailAngle() << std::endl;
-    std::cout << "Distance to destination : " << desination_distance << std::endl;
+    // Outputs journey information
+    std::cout << "======================================" << std::endl;
+    module_gps.Report();
+    module_wind.Report();
+    module_compass.Report();
+    calculation_unit.Report();
+    std::cout << "Distance to destination : " << destination_distance << std::endl;
   }
 
   // Destroys the threads created

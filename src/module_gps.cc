@@ -26,11 +26,9 @@ GPSData ModuleGPS::GetReading() {
 
 void ModuleGPS::Report() {
   if (new_data_available_) {
-    std::cout << "- - GPS SENSOR - -" << std::endl;
-    std::cout << "GPS lat: " << data_reading_.latitude << std::endl;
-    std::cout << "GPS long: " << data_reading_.longitude << std::endl;
-    std::cout << "GPS timestamp: " << data_reading_.timestamp << std::endl;
-    std::cout << "------------------" << std::endl;
+    std::cout << "Boat position lat       : " << data_reading_.latitude << std::endl;
+    std::cout << "Boat position long      : " << data_reading_.longitude << std::endl;
+    std::cout << "Timestamp               : " << data_reading_.longitude << std::endl;
     new_data_available_ = false;
   }
 }
