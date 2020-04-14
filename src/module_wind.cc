@@ -5,7 +5,6 @@
 #include "../include/json.hpp"
 
 ModuleWind::ModuleWind() {
-  std::cout << "Constructing [Module] Wind" << std::endl;
   /* Get a curl handle */
   curl_ = curl_easy_init();
   initialized_ = curl_ != nullptr;
@@ -14,7 +13,6 @@ ModuleWind::ModuleWind() {
 }
 
 ModuleWind::ModuleWind(int wind_deg) {
-  std::cout << "Constructing [Module] Wind" << std::endl;
   curl_ = nullptr;
   initialized_ = true;
   data_reading_ = wind_deg;
@@ -27,7 +25,6 @@ ModuleWind::~ModuleWind() {
 }
 
 bool ModuleWind::GetInitialized() {
-  if (!initialized_) std::cout << "[Module] Wind not initialized" << std::endl;
   return initialized_;
 }
 
@@ -62,7 +59,7 @@ int ModuleWind::GetReading() {
 void ModuleWind::Report() {
   if (new_data_available_) {
     std::cout << "- - WIND - -" << std::endl;
-    std::cout << "Wind Bearing: " << data_reading_ << std::endl;
+    std::cout << "Wind bearing: " << data_reading_ << std::endl;
     std::cout << "-------------------" << std::endl;
     new_data_available_ = false;
   }

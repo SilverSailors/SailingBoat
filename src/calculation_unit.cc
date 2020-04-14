@@ -14,11 +14,6 @@ CalculationUnit::CalculationUnit()
   favored_tack_ = 0;
   angle_of_line_ = 0;
   nominal_angle_ = 0;
-  initialized_ = true;
-}
-
-bool CalculationUnit::GetInitialized() {
-  return initialized_;
 }
 
 void CalculationUnit::SetBoatValues(GPSData waypoint1, GPSData waypoint2, GPSData boat_pos, double wind_angle, double boat_heading)

@@ -7,6 +7,7 @@
 #include "include/calculation_unit.h"
 #include "include/module_servo.h"
 #include "include/logger.h"
+#include <iostream>
 #include "test/doctest.h"
 #define RUDDER_CHANNEL 1
 #define SAIL_CHANNEL 0
@@ -72,13 +73,14 @@ int main(int argc, char *argv[]) {
   CalculationUnit calculation_unit;
 
   // Checks if all modules are OK
-  if (!servo_rudder.GetInitialized() ||
-      !servo_sail.GetInitialized() ||
-      !module_gps.GetInitialized() ||
-      !module_compass.GetInitialized() ||
-      !module_wind.GetInitialized() ||
-      !calculation_unit.GetInitialized()
-  ) return -1;
+  bool fail = false;
+  if (!servo_rudder.GetInitialized()) { std::cout << "Servo rudder not initialized!" << std::endl; fail = true; }
+  else if (!servo_sail.GetInitialized()) { std::cout << "Servo sail not initialized!" << std::endl; fail = true; }
+  else if (!module_gps.GetInitialized()) { std::cout << "Module GPS not initialized!" << std::endl; fail = true; }
+  else if (!module_compass.GetInitialized()) { std::cout << "Module compass not initialized!" << std::endl; fail = true; }
+  else if (!module_wind.GetInitialized()) { std::cout << "Module wind not initialized!" << std::endl; fail = true; }
+  if (fail) return -1;
+  else std::cout << "All modules initialized!" << std::endl;
   
   // Creates control unit for journey, with destinations path
   ControlUnit control_unit("/home/alarm/.config/sailingBoat/settings/destination.txt");
@@ -148,6 +150,16 @@ int main(int argc, char *argv[]) {
     new_log.timestamp = boat_pos.timestamp;
     data_logger.LogData(new_log);
     entry++;
+
+    // Outputs data
+    std::cout << "\n======================================\n";
+    std::cout << "Boat position lat       : " << boat_pos.latitude << std::endl;
+    std::cout << "Boat position long      : " << boat_pos.longitude << std::endl;
+    std::cout << "Wind angle              : " << wind_angle << std::endl;
+    std::cout << "Boat heading            : " << boat_heading << std::endl;
+    std::cout << "Servo rudder angle      : " << calculation_unit.GetRudderAngle() << std::endl;
+    std::cout << "Servo sail angle        : " << calculation_unit.GetSailAngle() << std::endl;
+    std::cout << "Distance to destination : " << desination_distance << std::endl;
   }
 
   // Destroys the threads created

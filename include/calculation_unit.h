@@ -101,10 +101,6 @@ class CalculationUnit {
                             double to_low, double to_high, double position);
  private:
   /**
-   * If CalculationUnit is initialized
-   */
-  bool initialized_;
-  /**
    * First waypoint
    */
   GPSData waypoint1_;

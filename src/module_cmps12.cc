@@ -3,13 +3,11 @@
 #include "../include/calculation_unit.h"
 
 ModuleCMPS12::ModuleCMPS12() {
-  std::cout << "Constructing [Module] CMPS12" << std::endl;
   new_data_available_ = false;
   initialized_ = CMPS12_hardware_connection_.GetInitialized();
 }
 
 bool ModuleCMPS12::GetInitialized() {
-  if (!initialized_) std::cout << "[Module] CMPS12 not initialized" << std::endl;
   return initialized_;
 }
 
