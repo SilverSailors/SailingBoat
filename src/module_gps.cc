@@ -7,6 +7,11 @@ ModuleGPS::ModuleGPS() {
   new_data_available_ = false;
 }
 
+bool ModuleGPS::GetInitialized() {
+  if (!initialized_) std::cout << "[Module] GPS not initialized" << std::endl;
+  return initialized_;
+}
+
 void ModuleGPS::Run() {
   if(initialized_) {
     GPSData gps_data = gps_hardware_connection_.Read();
@@ -30,11 +35,4 @@ void ModuleGPS::Report() {
     std::cout << "------------------" << std::endl;
     new_data_available_ = false;
   }
-}
-
-bool ModuleGPS::GetInitialized() {
-  if(!initialized_) {
-    std::cout << "GPS HARDWARE FAILLLLLLLLL\n";
-  }
-  return initialized_;
 }

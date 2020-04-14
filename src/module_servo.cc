@@ -21,6 +21,11 @@ ModuleServo::ModuleServo(double lower_limit, double upper_limit, int channel) {
   }
 }
 
+bool ModuleServo::GetInitialized() {
+  if (!initialized_) std::cout << "[Module] Servo not initialized" << std::endl;
+  return initialized_;
+}
+
 void ModuleServo::Run() {
   if (initialized_) {
     int servo_position = CalculationUnit::ConvertCoordinates(
@@ -47,11 +52,4 @@ void ModuleServo::SetTarget(double limit) {
   } else if (limit < lower_boundary_) {
     target_ = lower_boundary_;
   }
-}
-
-bool ModuleServo::GetInitialized() {
-  if(!initialized_) {
-    std::cout << "MODUL SERVO HARDWARE FAILLLLLLLLL\n";
-  }
-  return initialized_;
 }

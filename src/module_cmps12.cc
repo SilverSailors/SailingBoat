@@ -9,9 +9,7 @@ ModuleCMPS12::ModuleCMPS12() {
 }
 
 bool ModuleCMPS12::GetInitialized() {
-  if(!initialized_) {
-    std::cout << "CMPS 12 MODULE FAILLLLLLLLL\n";
-  }
+  if (!initialized_) std::cout << "[Module] CMPS12 not initialized" << std::endl;
   return initialized_;
 }
 
