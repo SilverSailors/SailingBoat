@@ -81,7 +81,13 @@ class CalculationUnit {
    * @param degrees Degrees value
    * @return Value in radians
    */
-  static double DegreesToRadians(double degrees);
+  double DegreesToRadians(double degrees);
+  /**
+   * Converts given randians to degrees format
+   * @param radians Radians value
+   * @return Value in degrees
+   */
+  double RadiansToDegrees(double radians);
   /**
    * Normalizes degrees to between 0 and 360
    * @param degrees Degrees value

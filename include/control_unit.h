@@ -7,7 +7,7 @@
 class ControlUnit {
  public:
   /**
-   * The constructor, initializes member fields and reads destinations from file
+   * The constructor, initializes member fields and saves destinations read from file
    * @param destination Destinations
    */
   ControlUnit(std::string destination);

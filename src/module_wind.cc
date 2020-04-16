@@ -9,14 +9,12 @@ ModuleWind::ModuleWind() {
   curl_ = curl_easy_init();
   initialized_ = curl_ != nullptr;
   data_reading_ = -1;
-  new_data_available_ = false;
 }
 
 ModuleWind::ModuleWind(int wind_deg) {
   curl_ = nullptr;
   initialized_ = true;
   data_reading_ = wind_deg;
-  new_data_available_ = true;
 }
 
 ModuleWind::~ModuleWind() {
@@ -48,7 +46,6 @@ void ModuleWind::Run() {
     nlohmann::json json_obj;
     std::stringstream(data) >> json_obj;
     data_reading_ = json_obj["wind"]["deg"];
-    new_data_available_ = true;
   }
 }
 
@@ -57,8 +54,5 @@ int ModuleWind::GetReading() {
 }
 
 void ModuleWind::Report() {
-  if (new_data_available_) {
-    std::cout << "Wind angle              : " << data_reading_ << std::endl;
-    new_data_available_ = false;
-  }
+  std::cout << "Wind angle              : " << data_reading_ << std::endl;
 }

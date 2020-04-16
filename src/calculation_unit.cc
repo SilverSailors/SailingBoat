@@ -42,9 +42,9 @@ void CalculationUnit::Calculate() {
 
 void CalculationUnit::CalculateDistanceFromBoatToLine() {
   GPSData position1;
+  // Calculate unit vector waypoint2 - waypoint1
   position1 = waypoint2_ - waypoint1_;
 
-  // Calculate unit vector waypoint2 - waypoint1
   double dotproduct = (waypoint2_.latitude * waypoint1_.latitude) + (waypoint2_.longitude * waypoint1_.longitude);
   double magnitude = sqrt(dotproduct);
 
@@ -63,12 +63,12 @@ void CalculationUnit::CheckTackVariable() {
 
 void CalculationUnit::CalculateAngleOfLine() {
   GPSData position = waypoint2_ - waypoint1_;
-  angle_of_line_ = atan2(position.longitude, position.latitude) * 180 / PI;
+  angle_of_line_ = RadiansToDegrees(atan2(position.longitude, position.latitude));
 }
 
 void CalculationUnit::CalculateNominalAngle() {
   nominal_angle_ = angle_of_line_
-      - (((2 * INCIDENCE_ANGLE) / PI) * ((atan(boat_to_line_distance_ / BOAT_TO_LINE_MAX_DISTANCE)) * 180 / PI));
+      - (((2 * INCIDENCE_ANGLE) / PI) * RadiansToDegrees(atan(boat_to_line_distance_ / BOAT_TO_LINE_MAX_DISTANCE)));
 }
 
 void CalculationUnit::CalculateBoatDirection() {
@@ -128,6 +128,10 @@ double CalculationUnit::CalculateDistance(GPSData position1, GPSData position2) 
 
 double CalculationUnit::DegreesToRadians(double degrees) {
   return degrees * (PI / 180);
+}
+
+double CalculationUnit::RadiansToDegrees(double radians) {
+  return radians * 180 / PI;
 }
 
 double CalculationUnit::NormalizeDegrees(double degrees) {

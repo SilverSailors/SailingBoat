@@ -8,7 +8,6 @@
 #define MAESTRO_SERVO_LOWER_LIMIT 3968
 
 Maestro::Maestro() {
-  // 992 & 2000 respectively IN MCU (Maestro Control Unit)
   file_descriptor_ = open(PORT_NAME, O_RDWR | O_NOCTTY);
   initialized_ = file_descriptor_ >= 0;
 
