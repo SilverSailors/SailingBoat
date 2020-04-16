@@ -1,12 +1,13 @@
+#include "threads.h"
+#include "include/module_servo.h"
+#include "include/module_gps.h"
+#include "include/module_cmps12.h"
+#include "include/module_wind.h"
+#include "include/calculation_unit.h"
+#include "include/control_unit.h"
+#include "include/logger.h"
 #include <thread>
 #include <chrono>
-#include "include/module_cmps12.h"
-#include "include/module_gps.h"
-#include "include/module_wind.h"
-#include "include/control_unit.h"
-#include "include/calculation_unit.h"
-#include "include/module_servo.h"
-#include "include/logger.h"
 #include <iostream>
 #include "test/doctest.h"
 #define RUDDER_CHANNEL 1
@@ -16,47 +17,6 @@
 #define SAIL_LOWER_THRESHOLD 0
 #define SAIL_UPPER_THRESHOLD 1
 #define CALCULATED_THRESHOLD 5.0 / 2.0
-
-void DriveRudder(ModuleServo &rudder) {
-  while (true) {
-    rudder.Run();
-  }
-}
-
-void DriveSail(ModuleServo &sail) {
-  while (true) {
-    sail.Run();
-  }
-}
-
-void PollGPS(ModuleGPS &gps) {
-  while (true) {
-    gps.Run();
-    std::this_thread::sleep_for(std::chrono::milliseconds(1200));
-  }
-}
-
-void PollCompass(ModuleCMPS12 &compass) {
-  while (true) {
-    compass.Run();
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-  }
-}
-
-void PollWind(ModuleWind &wind) {
-  while (true) {
-    wind.Run();
-    std::this_thread::sleep_for(std::chrono::milliseconds(60000));
-  }
-}
-
-void LogData(Logger &data_logger) {
-  std::this_thread::sleep_for(std::chrono::milliseconds(6000));
-  while (true) {
-    data_logger.Publish();
-    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
-  }
-}
 
 int main(int argc, char *argv[]) {
   // If testing should be done
@@ -106,9 +66,9 @@ int main(int argc, char *argv[]) {
   // End of line position
   GPSData waypoint2 = control_unit.GetDestination();
   // Runs until GPS module is online
-  while(waypoint1.latitude <= 0.001) {
+  while(waypoint1.latitude == 0.0) {
     waypoint1 = module_gps.GetReading();
-    std::cout << "Waiting for GPS hardware to warm-up...\n";
+    std::cout << "GPS not ready yet!" << std::endl;
   }
 
   // Log entry

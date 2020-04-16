@@ -13,7 +13,7 @@ class IO {
    */
   std::vector<std::string> ReadFile(std::string filepath);
   /**
-   * Writes the data given to json
+   * Writes the data given to json file
    * @param data Data to write
    * @param path Path to file
    */

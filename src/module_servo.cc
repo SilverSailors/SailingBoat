@@ -1,6 +1,5 @@
 #include "../include/module_servo.h"
 #include "../include/calculation_unit.h"
-#include <iostream>
 #define MAESTRO_SET_POSITION 0x84
 #define MAESTRO_SET_SPEED 0x87
 #define MAESTRO_SERVO_UPPER_LIMIT 8000
