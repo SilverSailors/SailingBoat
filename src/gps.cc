@@ -9,6 +9,11 @@ GPS::GPS() {
                  gps_->stream(WATCH_ENABLE | WATCH_JSON) != nullptr ? true : false;
 }
 
+GPS::~GPS() {
+  // Disables GPS connection
+  gps_->stream(WATCH_DISABLE);
+}
+
 bool GPS::GetInitialized() {
   return initialized_;
 }
