@@ -49,13 +49,10 @@ int main(int argc, char *argv[]) {
   Logger data_logger("/home/alarm/.config/sailingBoat/logs/contest.json");
   Logger debug_logger("/home/alarm/.config/sailingBoat/logs/waypoint.json");
 
-  // Start threads for asynchronous updating
+  // Start polling threads
   std::thread t1(PollWind, std::ref(module_wind));
   std::thread t2(PollCompass, std::ref(module_compass));
   std::thread t3(PollGPS, std::ref(module_gps));
-  std::thread t4(DriveRudder, std::ref(servo_rudder));
-  std::thread t5(DriveSail, std::ref(servo_sail));
-  std::thread t6(LogData, std::ref(data_logger));
 
   // Start rudder setting
   servo_rudder.SetTarget(0);
@@ -70,6 +67,11 @@ int main(int argc, char *argv[]) {
     waypoint1 = module_gps.GetReading();
     std::cout << "GPS not ready yet!" << std::endl;
   }
+
+  // Start the remaining threads
+  std::thread t4(DriveRudder, std::ref(servo_rudder));
+  std::thread t5(DriveSail, std::ref(servo_sail));
+  std::thread t6(LogData, std::ref(data_logger));
 
   // Log entry
   int entry = 1;

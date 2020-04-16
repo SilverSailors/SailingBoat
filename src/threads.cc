@@ -40,7 +40,6 @@ void PollWind(ModuleWind &wind) {
 }
 
 void LogData(Logger &data_logger) {
-  std::this_thread::sleep_for(std::chrono::milliseconds(6000));
   while (true) {
     data_logger.Publish();
     std::this_thread::sleep_for(std::chrono::milliseconds(1500));
