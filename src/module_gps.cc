@@ -28,7 +28,7 @@ void ModuleGPS::Report() {
   if (new_data_available_) {
     std::cout << "Boat position lat       : " << data_reading_.latitude << std::endl;
     std::cout << "Boat position long      : " << data_reading_.longitude << std::endl;
-    std::cout << "Timestamp               : " << data_reading_.longitude << std::endl;
+    std::cout << "Timestamp               : " << data_reading_.timestamp << std::endl;
     new_data_available_ = false;
   }
 }
