@@ -1,37 +1,31 @@
 #include "doctest.h"
 #include "../include/calculation_unit.h"
 #include <iostream>
+#define CALCULATED_THRESHOLD 5.0 / 2.0
 
 TEST_CASE("Test CalculationUnit") {
   CalculationUnit calculation_unit;
 
-  GPSData boat_pos = {};
-  boat_pos.latitude = 60.0;
-  boat_pos.longitude = 20.0;
-  GPSData waypoint1 = boat_pos;
-  GPSData waypoint2;
-  waypoint2.latitude = 61.0;
-  waypoint2.longitude = 21.0;
-
+  GPSData waypoint1 = {60.0, 20.0};
+  GPSData waypoint2 = {61.0, 21.0};
+  GPSData boat_pos = waypoint1;
   double wind_angle = 40;
   double boat_heading = 50;
 
-  while(1) {
-    cu.SetBoatValues(waypoint1, waypoint2, boat_pos, wind_angle, boat_heading);
-    cu.Calculate();
-    cu.Report();
-
-    // Update boat pos
+  bool isActive = true;
+  while(isActive) {
     boat_pos.latitude += 0.1;
     boat_pos.longitude += 0.1;
-    wind_angle += 10;
 
-    double distance = cu.CalculateDistance(boat_pos, waypoint2);
-
-    std::cout << "Distance to destination = " << distance << "\n";
-    if(distance < 2.5) {
-      std::cout << "Destination reached\n";
-      break;
+    calculation_unit.SetBoatValues(waypoint1, waypoint2, boat_pos, wind_angle, boat_heading);
+    calculation_unit.Calculate();
+    double destination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
+    if (destination_distance < CALCULATED_THRESHOLD) {
+      std::cout << "Destination reached" << std::endl;
+      isActive = false;
     }
+
+    calculation_unit.Report();
+    std::cout << "Distance to destination : " << destination_distance << std::endl;
   }
 }
