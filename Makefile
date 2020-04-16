@@ -12,18 +12,19 @@ INSTALLBINDIR = /usr/local/bin
 
 # Lägg till eventuella nya källkodsfiler för ditt program här
 SOURCES = main.cc \
+src/DataContainers/gps_data.cc \
+src/calculation_unit.cc \
+src/cmps12.cc \
 src/control_unit.cc \
+src/gps.cc \
+src/io.cc \
+src/logger.cc \
+src/maestro.cc \
+src/module_cmps12.cc \
 src/module_gps.cc \
 src/module_servo.cc \
 src/module_wind.cc \
-src/module_cmps12.cc \
-src/calculation_unit.cc \
-src/DataContainers/gps_data.cc \
-src/maestro.cc \
-src/cmps12.cc \
-src/gps.cc \
-src/logger.cc \
-src/io.cc \
+src/threads.cc
 
 # test-main samt de fristående testfilerna
 TESTSOURCES = test/test_main.cc \
