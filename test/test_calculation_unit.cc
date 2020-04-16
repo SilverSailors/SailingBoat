@@ -3,9 +3,9 @@
 #include <iostream>
 
 TEST_CASE("Test CalculationUnit") {
-  CalculationUnit cu;
+  CalculationUnit calculation_unit;
 
-  GPSData boat_pos = { };
+  GPSData boat_pos = {};
   boat_pos.latitude = 60.0;
   boat_pos.longitude = 20.0;
   GPSData waypoint1 = boat_pos;
