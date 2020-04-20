@@ -27,7 +27,7 @@ class ModuleServo {
   void SetTarget(double limit);
  private:
   /**
-   * Initialized, if ModuleServo is initialized
+   * If ModuleServo is initialized
    */
   bool initialized_;
   /**
@@ -35,11 +35,11 @@ class ModuleServo {
    */
   int channel_;
   /**
-   * Servo hardware connection, Hardware component for the module
+   * Hardware component for the module
    */
   Maestro servo_hardware_connection_;
   /**
-   * Target, current servo position
+   * Current servo position
    */
   double target_;
   /**

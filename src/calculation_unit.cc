@@ -14,7 +14,6 @@ CalculationUnit::CalculationUnit() {
   favored_tack_ = 0;
   angle_of_line_ = 0;
   nominal_angle_ = 0;
-  new_data_available_ = false;
 }
 
 void CalculationUnit::SetBoatValues(GPSData waypoint1,
@@ -37,7 +36,6 @@ void CalculationUnit::Calculate() {
   CalculateBoatDirection();
   CalculateRudderAngle();
   CalculateSailAngle();
-  new_data_available_ = true;
 }
 
 void CalculationUnit::CalculateDistanceFromBoatToLine() {
@@ -150,9 +148,6 @@ double CalculationUnit::ConvertCoordinates(double from_low,
 }
 
 void CalculationUnit::Report() {
-  if (new_data_available_) {
-    std::cout << "Servo rudder angle      : " << rudder_angle_ << std::endl;
-    std::cout << "Servo sail angle        : " << sail_angle_ << std::endl;
-    new_data_available_ = false;
-  }
+  std::cout << "Servo rudder angle      : " << rudder_angle_ << std::endl;
+  std::cout << "Servo sail angle        : " << sail_angle_ << std::endl;
 }

@@ -27,11 +27,11 @@ class ControlUnit {
   void UpdateJourney();
  private:
   /**
-   * Active, if there are destionations left
+   * If there are destionations left
    */
   bool active_;
   /**
-   * Destinations, queue of all our GPS destinations
+   * Queue of all our GPS destinations
    */
   std::queue<GPSData> destination_;
 };

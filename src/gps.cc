@@ -3,14 +3,13 @@
 #include <string>
 
 GPS::GPS() {
-  // Initializes and binds
+  // Make unique pointer to hardware
   gps_ = std::make_unique<gpsmm>("localhost", DEFAULT_GPSD_PORT);
   initialized_ = gps_ != nullptr &&
                  gps_->stream(WATCH_ENABLE | WATCH_JSON) != nullptr ? true : false;
 }
 
 GPS::~GPS() {
-  // Disables GPS connection
   gps_->stream(WATCH_DISABLE);
 }
 
