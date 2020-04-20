@@ -7,7 +7,7 @@ ControlUnit::ControlUnit(std::string destination) {
   IO io;
   std::vector<std::string> data = io.ReadFile(destination);
 
-  // Loops through all rows from file
+  // Loops through all rows from file, one row per coordinate
   for (size_t i = 0; i < data.size(); i+=2) {
     GPSData gps_data;
     gps_data.latitude = std::atof(data[i].c_str());
