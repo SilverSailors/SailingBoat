@@ -6,11 +6,12 @@
 #define MAESTRO_SERVO_LOWER_LIMIT 3968
 
 ModuleServo::ModuleServo(double lower_limit, double upper_limit, int channel) {
-  upper_boundary_ = upper_limit;
   lower_boundary_ = lower_limit;
+  upper_boundary_ = upper_limit;
   channel_ = channel;
   initialized_ = servo_hardware_connection_.GetInitialized();
   if (initialized_) {
+    // Sets the speed limit for value updates
     servo_hardware_connection_.Command(
       channel_,
       MAESTRO_SET_SPEED,
@@ -25,6 +26,7 @@ bool ModuleServo::GetInitialized() {
 
 void ModuleServo::Run() {
   if (initialized_) {
+    // Converts to value usable by hardware
     int servo_position = CalculationUnit::ConvertCoordinates(
       upper_boundary_,
       lower_boundary_,
@@ -33,6 +35,7 @@ void ModuleServo::Run() {
       target_
     );
 
+    // Updates servo position
     servo_hardware_connection_.Command(
       channel_,
       MAESTRO_SET_POSITION,

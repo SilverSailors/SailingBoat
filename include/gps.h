@@ -30,7 +30,7 @@ class GPS {
    */
   bool initialized_;
   /**
-   * Connection to GPS hardware, GPSMM is an unique vector
+   * Connection to GPS hardware
    */
   std::unique_ptr<gpsmm> gps_;
 };

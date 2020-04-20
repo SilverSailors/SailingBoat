@@ -5,7 +5,6 @@
 
 Logger::Logger(std::string path) {
   file_path_ = path;
-  remove(path.c_str());
 }
 
 void Logger::LogData(Log packet) {
@@ -17,6 +16,7 @@ void Logger::LogData(Log packet) {
 }
 
 void Logger::Publish() {
+  // Only when new log is received
   if (available_) {
     nlohmann::json json_obj;
     json_obj["entry_id"] = log_.entry_id;
@@ -41,5 +41,4 @@ void Logger::PublishWaypoint(GPSData from, GPSData to, std::string message) {
 
   IO io;
   io.WriteFile(json_obj, file_path_);
-  available_ = false;
 }

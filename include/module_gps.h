@@ -29,15 +29,15 @@ class ModuleGPS {
   void Report();
  private:
   /**
-   * Initialized, if ModuleCMPS12 is initialized
+   * If ModuleCMPS12 is initialized
    */
   bool initialized_;
   /**
-   * GPS Hardware connection, Hardware component for the module
+   * Hardware component for the module
    */
   GPS gps_hardware_connection_;
   /**
-   * GPS data reading, the latest
+   * The latest GPS data reading
    */
   GPSData data_reading_;
   /**

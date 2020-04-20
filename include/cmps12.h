@@ -26,11 +26,11 @@ class CMPS12 {
     */
   int Bitshift(int high, int low);
   /**
-   * Initialized, boolean value on CMPS12 component initialized or not
+   * Boolean value on CMPS12 component initialized or not
    */
   bool initialized_;
   /**
-   * File descriptor, connection to hardware
+   * Connection to hardware
    */
   int file_descriptor_;
 };

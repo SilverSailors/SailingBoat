@@ -2,6 +2,7 @@
 #include <iostream>
 
 ModuleGPS::ModuleGPS() {
+  data_reading_ = {};
   initialized_ = gps_hardware_connection_.GetInitialized();
 }
 
@@ -12,7 +13,7 @@ bool ModuleGPS::GetInitialized() {
 void ModuleGPS::Run() {
   if(initialized_) {
     GPSData gps_data = gps_hardware_connection_.Read();
-    if((gps_data.latitude > 0.0) && (gps_data.longitude > 0.0)) {
+    if(!gps_data.timestamp.empty()) {
       data_reading_ = gps_data;
     }
   }
