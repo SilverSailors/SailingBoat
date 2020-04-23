@@ -6,6 +6,3 @@ mkdir -p ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/
 
 touch ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/destination.txt
 echo "" >> ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/settings/destination.txt
-
-touch ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/logs/waypoint.json
-touch ${XDG_CONFIG_HOME:-~/.config}/sailingBoat/logs/contest.json

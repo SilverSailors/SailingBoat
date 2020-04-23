@@ -16,6 +16,14 @@ struct Log {
    */
   double longitude;
   /**
+   * Rudder angle
+   */
+  double rudder_angle;
+  /**
+   * Sail angle
+   */
+  double sail_angle;
+  /**
    * Timestamp
    */
   std::string timestamp;

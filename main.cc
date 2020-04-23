@@ -10,13 +10,13 @@
 #include <chrono>
 #include <iostream>
 #include "test/doctest.h"
-#define RUDDER_CHANNEL 1
-#define SAIL_CHANNEL 0
-#define RUDDER_LOWER_THRESHOLD -1
-#define RUDDER_UPPER_THRESHOLD 1
-#define SAIL_LOWER_THRESHOLD 0
-#define SAIL_UPPER_THRESHOLD 1
-#define CALCULATED_THRESHOLD 5.0 / 2.0
+constexpr int RUDDER_CHANNEL = 1;
+constexpr int SAIL_CHANNEL = 0;
+constexpr int RUDDER_LOWER_THRESHOLD = -1;
+constexpr int RUDDER_UPPER_THRESHOLD = 1;
+constexpr int SAIL_LOWER_THRESHOLD = 0;
+constexpr int SAIL_UPPER_THRESHOLD = 1;
+constexpr double CALCULATED_THRESHOLD = 0.005;
 
 int main(int argc, char *argv[]) {
   // If testing should be done
@@ -43,11 +43,14 @@ int main(int argc, char *argv[]) {
   else std::cout << "All modules initialized!" << std::endl;
 
   // Creates control unit for journey, with destinations path
-  ControlUnit control_unit("/home/alarm/.config/sailingBoat/settings/destination.txt");
+  ControlUnit control_unit("/home/pi/.config/sailingBoat/settings/destination.txt");
 
   // Our loggers
-  Logger data_logger("/home/alarm/.config/sailingBoat/logs/contest.json");
-  Logger debug_logger("/home/alarm/.config/sailingBoat/logs/waypoint.json");
+  time_t raw_time = std::time(nullptr);
+  char timeiso[20];
+  strftime(timeiso, sizeof(timeiso), "%Y-%m-%d-%H-%M-%S", localtime(&raw_time));
+  Logger data_logger(std::string("/home/pi/.config/sailingBoat/logs/data_") + timeiso + ".json");
+  Logger debug_logger(std::string("/home/pi/.config/sailingBoat/logs/debug_") + timeiso + ".json");
 
   // Start polling threads
   std::thread t1(PollWind, std::ref(module_wind));
@@ -112,6 +115,8 @@ int main(int argc, char *argv[]) {
     new_log.entry_id = entry;
     new_log.latitude = boat_pos.latitude;
     new_log.longitude = boat_pos.longitude;
+    new_log.rudder_angle = calculation_unit.GetRudderAngle();
+    new_log.sail_angle = calculation_unit.GetSailAngle();
     new_log.timestamp = boat_pos.timestamp;
     data_logger.LogData(new_log);
     entry++;

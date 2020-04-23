@@ -1,13 +1,13 @@
 #include "../include/calculation_unit.h"
-#include <cmath>
 #include <iostream>
-#define PI 3.14159265
-#define EARTH_RADIUS 6371.0
-#define BOAT_TO_LINE_MAX_DISTANCE 50
-#define RUDDER_MAX_ANGLE 1
-#define SAIL_MAX_ANGLE 1
-#define INCIDENCE_ANGLE PI/4
-#define CLOSED_HAUL_ANGLE PI/3
+#define _USE_MATH_DEFINES
+#include <cmath>
+constexpr double EARTH_RADIUS = 6371.0;
+constexpr int BOAT_TO_LINE_MAX_DISTANCE = 50;
+constexpr int RUDDER_MAX_ANGLE = 1;
+constexpr int SAIL_MAX_ANGLE = 1;
+constexpr double INCIDENCE_ANGLE = M_PI / 4;
+constexpr double CLOSED_HAUL_ANGLE = M_PI / 3;
 
 CalculationUnit::CalculationUnit() {
   boat_to_line_distance_ = 0;
@@ -66,7 +66,7 @@ void CalculationUnit::CalculateAngleOfLine() {
 
 void CalculationUnit::CalculateNominalAngle() {
   nominal_angle_ = angle_of_line_
-      - (((2 * INCIDENCE_ANGLE) / PI) * RadiansToDegrees(atan(boat_to_line_distance_ / BOAT_TO_LINE_MAX_DISTANCE)));
+      - (((2 * INCIDENCE_ANGLE) / M_PI) * RadiansToDegrees(atan(boat_to_line_distance_ / BOAT_TO_LINE_MAX_DISTANCE)));
 }
 
 void CalculationUnit::CalculateBoatDirection() {
@@ -74,7 +74,7 @@ void CalculationUnit::CalculateBoatDirection() {
   if ((cos(wind_angle_ - nominal_angle_) + cos(CLOSED_HAUL_ANGLE) < 0)
       || (abs(boat_to_line_distance_) < BOAT_TO_LINE_MAX_DISTANCE
           && (cos(wind_angle_ - angle_of_line_) + cos(CLOSED_HAUL_ANGLE)) < 0)) {
-    route_angle_ = PI + wind_angle_ - favored_tack_ * CLOSED_HAUL_ANGLE;
+    route_angle_ = M_PI + wind_angle_ - favored_tack_ * CLOSED_HAUL_ANGLE;
   } else {
     // If not, use the previously calculated direction
     route_angle_ = nominal_angle_;
@@ -125,11 +125,11 @@ double CalculationUnit::CalculateDistance(GPSData position1, GPSData position2) 
 }
 
 double CalculationUnit::DegreesToRadians(double degrees) {
-  return degrees * (PI / 180);
+  return degrees * (M_PI / 180);
 }
 
 double CalculationUnit::RadiansToDegrees(double radians) {
-  return radians * 180 / PI;
+  return radians * 180 / M_PI;
 }
 
 double CalculationUnit::NormalizeDegrees(double degrees) {
