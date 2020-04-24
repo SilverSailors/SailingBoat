@@ -3,11 +3,11 @@
 #include <vector>
 #include <wiringPi.h>
 #include <wiringPiI2C.h>
-#define I2C_DEVICE_ADDRESS 0x60
-#define TOTAL_REGISTRY_ENTRIES 31
-#define COMPASS_BEARING_16_HIGH_BYTE_DEGREES 0x1A
-#define COMPASS_BEARING_16_LOW_BYTE_DEGREES 0x1B
-#define CALIBRATION_STATE_8 0x1E
+constexpr int I2C_DEVICE_ADDRESS = 0x60;
+constexpr int TOTAL_REGISTRY_ENTRIES = 31;
+constexpr int COMPASS_BEARING_16_HIGH_BYTE_DEGREES = 0x1A;
+constexpr int COMPASS_BEARING_16_LOW_BYTE_DEGREES = 0x1B;
+constexpr int CALIBRATION_STATE_8 = 0x1E;
 
 CMPS12::CMPS12() {
   // Initializes wiringPi

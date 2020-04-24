@@ -1,9 +1,9 @@
 #include "../include/module_servo.h"
 #include "../include/calculation_unit.h"
-#define MAESTRO_SET_POSITION 0x84
-#define MAESTRO_SET_SPEED 0x87
-#define MAESTRO_SERVO_UPPER_LIMIT 8000
-#define MAESTRO_SERVO_LOWER_LIMIT 3968
+constexpr int MAESTRO_SET_POSITION = 0x84;
+constexpr int MAESTRO_SET_SPEED = 0x87;
+constexpr int MAESTRO_SERVO_UPPER_LIMIT = 8000;
+constexpr int MAESTRO_SERVO_LOWER_LIMIT = 3968;
 
 ModuleServo::ModuleServo(double lower_limit, double upper_limit, int channel) {
   lower_boundary_ = lower_limit;

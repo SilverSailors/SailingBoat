@@ -1,7 +1,7 @@
 #include "doctest.h"
 #include "../include/calculation_unit.h"
 #include <iostream>
-#define CALCULATED_THRESHOLD 5.0 / 2.0
+constexpr double CALCULATED_THRESHOLD = 0.005;
 
 TEST_CASE("Test CalculationUnit") {
   CalculationUnit calculation_unit;

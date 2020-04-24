@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <fcntl.h>
-#define PORT_NAME "/dev/ttyACM0"
+constexpr char PORT_NAME[] = "/dev/ttyACM0";
 
 Maestro::Maestro() {
   // Initializes hardware connection
