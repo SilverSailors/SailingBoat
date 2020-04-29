@@ -18,13 +18,13 @@ class CalculationUnit {
    */
   void Calculate();
   /**
-   * @param waypoint1 First waypoint
-   * @param waypoint2 Second waypoint
+   * @param waypoint_1 First waypoint
+   * @param waypoint_2 Second waypoint
    * @param boat_pos Boat position
    * @param wind_angle Wind direction
    * @param boat_heading Boat sail direction
    */
-  void SetBoatValues(GPSData waypoint1, GPSData waypoint2, GPSData boat_pos, double wind_angle, double boat_heading);
+  void SetBoatValues(GPSData waypoint_1, GPSData waypoint_2, GPSData boat_pos, double wind_angle, double boat_heading);
   /**
    * Calculates distance from boat to line of the two waypoints
    */
@@ -71,11 +71,11 @@ class CalculationUnit {
   double Sign(double sign);
   /**
    * Calculates the distance between the two positions
-   * @param position1 First position
-   * @param position2 Second position
+   * @param position_1 First position
+   * @param position_2 Second position
    * @return Distance between the positions
    */
-  double CalculateDistance(GPSData position1, GPSData position2);
+  double CalculateDistance(GPSData position_1, GPSData position_2);
   /**
    * Converts given degrees to radians format
    * @param degrees Degrees value
@@ -113,11 +113,11 @@ class CalculationUnit {
   /**
    * First waypoint
    */
-  GPSData waypoint1_;
+  GPSData waypoint_1_;
   /**
    * Second waypoint
    */
-  GPSData waypoint2_;
+  GPSData waypoint_2_;
   /**
    * Current boat position
    */
@@ -126,6 +126,10 @@ class CalculationUnit {
    * Wind direction
    */
   double wind_angle_;
+  /**
+   * Algebraic distance between boat and line
+   */
+  double algebraic_boat_to_line_distance_;
   /**
    * Distance between boat and line
    */

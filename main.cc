@@ -16,7 +16,7 @@ constexpr int RUDDER_LOWER_THRESHOLD = -1;
 constexpr int RUDDER_UPPER_THRESHOLD = 1;
 constexpr int SAIL_LOWER_THRESHOLD = 0;
 constexpr int SAIL_UPPER_THRESHOLD = 1;
-constexpr double CALCULATED_THRESHOLD = 0.005;
+constexpr double CALCULATED_THRESHOLD = 5;
 
 int main(int argc, char *argv[]) {
   // If testing should be done
