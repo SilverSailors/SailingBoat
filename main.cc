@@ -10,13 +10,13 @@
 #include <chrono>
 #include <iostream>
 #include "test/doctest.h"
-#define RUDDER_CHANNEL 1
-#define SAIL_CHANNEL 0
-#define RUDDER_LOWER_THRESHOLD -1
-#define RUDDER_UPPER_THRESHOLD 1
-#define SAIL_LOWER_THRESHOLD 0
-#define SAIL_UPPER_THRESHOLD 1
-#define CALCULATED_THRESHOLD 5.0 / 2.0
+constexpr int RUDDER_CHANNEL = 1;
+constexpr int SAIL_CHANNEL = 0;
+constexpr int RUDDER_LOWER_THRESHOLD = -1;
+constexpr int RUDDER_UPPER_THRESHOLD = 1;
+constexpr int SAIL_LOWER_THRESHOLD = 0;
+constexpr int SAIL_UPPER_THRESHOLD = 1;
+constexpr double CALCULATED_THRESHOLD = 5;
 
 int main(int argc, char *argv[]) {
   // If testing should be done
@@ -43,25 +43,29 @@ int main(int argc, char *argv[]) {
   else std::cout << "All modules initialized!" << std::endl;
 
   // Creates control unit for journey, with destinations path
-  ControlUnit control_unit("/home/alarm/.config/sailingBoat/settings/destination.txt");
+  ControlUnit control_unit("/home/pi/.config/sailingBoat/settings/destination.txt");
 
   // Our loggers
-  Logger data_logger("/home/alarm/.config/sailingBoat/logs/contest.json");
-  Logger debug_logger("/home/alarm/.config/sailingBoat/logs/waypoint.json");
+  time_t raw_time = std::time(nullptr);
+  char timeiso[20];
+  strftime(timeiso, sizeof(timeiso), "%Y-%m-%d-%H-%M-%S", localtime(&raw_time));
+  Logger data_logger(std::string("/home/pi/.config/sailingBoat/logs/data_") + timeiso + ".json");
+  Logger debug_logger(std::string("/home/pi/.config/sailingBoat/logs/debug_") + timeiso + ".json");
 
   // Start polling threads
   std::thread t1(PollWind, std::ref(module_wind));
   std::thread t2(PollCompass, std::ref(module_compass));
   std::thread t3(PollGPS, std::ref(module_gps));
 
-  // Start rudder setting
+  // Start rudder and sail settings
   servo_rudder.SetTarget(0);
-  // Start sail setting
   servo_sail.SetTarget(0.5);
+
   // Beginning of line position
   GPSData waypoint1 = {};
   // End of line position
   GPSData waypoint2 = control_unit.GetDestination();
+
   // Runs until GPS module is online
   while(waypoint1.latitude == 0.0) {
     waypoint1 = module_gps.GetReading();
@@ -73,27 +77,25 @@ int main(int argc, char *argv[]) {
   std::thread t5(DriveSail, std::ref(servo_sail));
   std::thread t6(LogData, std::ref(data_logger));
 
-  // Log entry
+  // Log entry id
   int entry = 1;
   // Runs until no more destinations
   while (control_unit.IsActive()) {
-    // Waits half a second each loop
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    // Current boat position
+    // Get new readings
     GPSData boat_pos = module_gps.GetReading();
-    // Wind direction
     double wind_angle = module_wind.GetReading();
-    // Boat sailing direction
     double boat_heading = module_compass.GetReading();
+
     // Updates values for sail calculation
     calculation_unit.SetBoatValues(waypoint1, waypoint2, boat_pos, wind_angle, boat_heading);
     // Calculates new servo targets
     calculation_unit.Calculate();
-    // Updates rudder setting
+
+    // Updates rudder and sail settings
     servo_rudder.SetTarget(calculation_unit.GetRudderAngle());
-    // Updates sail setting
     servo_sail.SetTarget(calculation_unit.GetSailAngle());
-    // Distance to destination
+
     double destination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
     // If close enough to destination
     if (destination_distance < CALCULATED_THRESHOLD) {
@@ -101,6 +103,7 @@ int main(int argc, char *argv[]) {
       control_unit.UpdateJourney();
       // Write debug
       debug_logger.PublishWaypoint(boat_pos, control_unit.GetDestination(), "CHECKPOINT REACHED, NEXT DESTINATION");
+
       // New beginning of line
       waypoint1 = waypoint2;
       // New end of line position
@@ -112,12 +115,14 @@ int main(int argc, char *argv[]) {
     new_log.entry_id = entry;
     new_log.latitude = boat_pos.latitude;
     new_log.longitude = boat_pos.longitude;
+    new_log.rudder_angle = calculation_unit.GetRudderAngle();
+    new_log.sail_angle = calculation_unit.GetSailAngle();
     new_log.timestamp = boat_pos.timestamp;
     data_logger.LogData(new_log);
     entry++;
 
     // Outputs journey information
-    std::cout << "======================================" << std::endl;
+    std::cout << "=============================================" << std::endl;
     module_gps.Report();
     module_wind.Report();
     module_compass.Report();

@@ -14,7 +14,7 @@ class ModuleWind {
    */
   ModuleWind(int wind_deg);
   /**
-   * The destructor, cleans up
+   * The destructor, closes api
    */
   ~ModuleWind();
   /**

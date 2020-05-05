@@ -21,40 +21,6 @@ Project application for the "Programkonstruktion och projekthantering"
 Hardware scheme [this link](doc/hardware/scheme_hardware.JPG)
 
 ![alt text](doc/hardware/scheme_hardware.JPG "")
-## Installation
-Either use Archlinux ARM(which is default for this course), or use Raspbian,
-but if Raspbian is used, then some things might not be done the same way.
-
-Follow the [Arch Linux ARM download and installation
-guide](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3) for Arch.
-
-## Post-Installation
-The application requires some libraries in order to compile, they can be named
-differently depending on the system you install the packages from, however this
-is what they are called for Archlinux atleast.
-
-### Install packages:
-- [i2c-tools](https://www.archlinux.org/packages/community/x86_64/i2c-tools/)
-- [WiringPi](https://github.com/WiringPi/WiringPi)
-- [gpsd](https://www.archlinux.org/packages/community/x86_64/gpsd/)
-- [curl](https://www.archlinux.org/packages/core/x86_64/curl/)
-
-Edit the file *boot/cmdline.txt* and remove entries with*ttyAMA0(ex. console=ttyAMA0,115200)*.
-
-Edit the file *boot/config.txt*
-- Uncomment the line *device_tree_param=i2c_arm=on*.
-- Uncomment the line *device_tree_param=i2s=on*.
-- Uncomment the line *device_tree_param=spi=on*.
-
-Edit the file */etc/modules-load.d/raspberrypi.conf*.
-- Add line *i2c-bcm2708*.
-- Add line *i2c-dev*.
-
-Edit the file */etc/hostname*.
-
-- Change text to *sailbot*.
-
-For more information about devices on the raspberry pi go to: [this link](https://archlinuxarm.org/wiki/Raspberry_Pi)
 
 ## Code Procedure
 
@@ -64,6 +30,82 @@ For more information about devices on the raspberry pi go to: [this link](https:
 4. Each update cycle, compare our current bearing vector and adjust the
    waypoint, adjust bearing as neccesary.
 5. repeat step 2-4.
+
+# Getting Started
+This guide will configure your Raspbian installation, install the much
+needed scripts and finally building the project and starting it up.
+
+## Prerequisites
+Make sure you have installed Raspbian on your Raspberry Pi and gone
+through the *raspi-config* application provided by Raspbian.
+
+## Step 1: Install required packages
+Just use this command to install most required packages.
+
+```bash
+sudo apt install i2c-tools gpsd libgps-dev libboost-all-dev curl
+```
+The last package needed is WiringPi, you can clone the WiringPi
+repository and build that from source.
+
+Start by cloning the repository:
+```
+git clone https://github.com/WiringPi/WiringPi
+```
+Go into the directory and write:
+```
+./build
+```
+and that will build the library and you will finally be able to use
+WiringPi as a library when compiling.
+
+## Step 2: enable RPi Interfacing Options
+There are several services which is required to be enabled in order
+for the RPi to function with the code, as well as with the hardware,
+and those services are:
+
+```
+- SPI
+- I2C
+- Serial
+- SSH
+```
+All of these can be enabled through *raspi-config* under **Interfacing Options**
+
+## Step 3: Install services & Misc
+
+Inside the **scripts/** directory, you will find *install-services.sh*
+run this file as sudo.
+
+In order to have everything set-up for the application, you will also
+need to run *install-config-and-logs.sh* for certain log and settings
+folders and files to be added into *.config/*
+
+## Step 4: Build and run
+
+Before any sort of build, you should always make sure that the
+repository you have cloned is up-to-date, so start by doing **git
+pull** so the latest version is pulled from github.
+
+Following that, you should build it:
+
+```
+make -j$(nproc)
+sudo make install
+```
+
+this will build the application and install it to **/usr/local/bin**
+so now all that's needed is to run the application as sudo like this:
+
+```
+sudo sailingBoat
+```
+
+## Optional add-on
+[Front-end](https://github.com/Dreameh/sailboat-logsite) can
+be used as a front-end for logs and adding coordinates to the
+application if you use a HTTP server that can handle the requests and
+the current one used is [this](https://github.com/Dreameh/python-simple-http).
 
 ## License
 This application is licensed under [MIT](LICENSE).

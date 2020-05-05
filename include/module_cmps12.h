@@ -28,7 +28,7 @@ class ModuleCMPS12 {
   void Report();
  private:
   /**
-   * CMPS12 Hardware connection, Hardware component for the module
+   * Hardware component for the module
    */
   CMPS12 CMPS12_hardware_connection_;
   /**
@@ -36,7 +36,7 @@ class ModuleCMPS12 {
    */
   int data_reading_;
   /**
-   * Initialized, if ModuleCMPS12 is initialized
+   * If ModuleCMPS12 is initialized
    */
   bool initialized_;
   /**

@@ -21,7 +21,7 @@ void DriveSail(ModuleServo &sail) {
 void PollGPS(ModuleGPS &gps) {
   while (true) {
     gps.Run();
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
   }
 }
 

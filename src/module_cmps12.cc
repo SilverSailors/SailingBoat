@@ -3,6 +3,7 @@
 #include "../include/calculation_unit.h"
 
 ModuleCMPS12::ModuleCMPS12() {
+  data_reading_ = 0;
   initialized_ = CMPS12_hardware_connection_.GetInitialized();
 }
 
@@ -14,6 +15,7 @@ void ModuleCMPS12::Run() {
   if (initialized_) {
     int data = CMPS12_hardware_connection_.Read();
     if (data != -1) {
+      // Only overwrites on valid compass calibration
       data_reading_ = CalculationUnit::NormalizeDegrees(data);
     }
   }

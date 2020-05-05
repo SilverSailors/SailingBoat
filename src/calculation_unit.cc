@@ -1,29 +1,29 @@
 #include "../include/calculation_unit.h"
-#include <cmath>
 #include <iostream>
-#define PI 3.14159265
-#define EARTH_RADIUS 6371.0
-#define BOAT_TO_LINE_MAX_DISTANCE 50
-#define RUDDER_MAX_ANGLE 1
-#define SAIL_MAX_ANGLE 1
-#define INCIDENCE_ANGLE PI/4
-#define CLOSED_HAUL_ANGLE PI/3
+#define _USE_MATH_DEFINES
+#include <cmath>
+constexpr double EARTH_RADIUS = 6371.0;
+constexpr int BOAT_TO_LINE_MAX_DISTANCE = 50;
+constexpr int RUDDER_MAX_ANGLE = 1;
+constexpr int SAIL_MAX_ANGLE = 1;
+constexpr double INCIDENCE_ANGLE = M_PI / 4;
+constexpr double CLOSED_HAUL_ANGLE = M_PI / 3;
 
 CalculationUnit::CalculationUnit() {
+  algebraic_boat_to_line_distance_ = 0;
   boat_to_line_distance_ = 0;
   favored_tack_ = 0;
   angle_of_line_ = 0;
   nominal_angle_ = 0;
-  new_data_available_ = false;
 }
 
-void CalculationUnit::SetBoatValues(GPSData waypoint1,
-                                    GPSData waypoint2,
+void CalculationUnit::SetBoatValues(GPSData waypoint_1,
+                                    GPSData waypoint_2,
                                     GPSData boat_pos,
                                     double wind_angle,
                                     double boat_heading) {
-  waypoint1_ = waypoint1;
-  waypoint2_ = waypoint2;
+  waypoint_1_ = waypoint_1;
+  waypoint_2_ = waypoint_2;
   boat_pos_ = boat_pos;
   wind_angle_ = wind_angle;
   boat_heading_ = boat_heading;
@@ -37,38 +37,56 @@ void CalculationUnit::Calculate() {
   CalculateBoatDirection();
   CalculateRudderAngle();
   CalculateSailAngle();
-  new_data_available_ = true;
 }
 
 void CalculationUnit::CalculateDistanceFromBoatToLine() {
-  GPSData position1;
+  GPSData position_1;
   // Calculate unit vector waypoint2 - waypoint1
-  position1 = waypoint2_ - waypoint1_;
+  position_1 = waypoint_2_ - waypoint_1_;
 
-  double dotproduct = (waypoint2_.latitude * waypoint1_.latitude) + (waypoint2_.longitude * waypoint1_.longitude);
-  double magnitude = sqrt(dotproduct);
+  double dotproduct_1 = (waypoint_2_.latitude * waypoint_1_.latitude) + (waypoint_2_.longitude * waypoint_1_.longitude);
+  double magnitude_1 = sqrt(fabsl(dotproduct_1));
 
-  position1.latitude = position1.latitude / magnitude;
-  position1.longitude = position1.longitude / magnitude;
+  position_1.latitude = position_1.latitude / magnitude_1;
+  position_1.longitude = position_1.longitude / magnitude_1;
 
-  GPSData position2 = boat_pos_ - waypoint1_;
+  GPSData position_2 = boat_pos_ - waypoint_1_;
 
   // In the formula, the determinant between two vectors is defined by: det(u,v) = u1v2 - v1u2
-  boat_to_line_distance_ = (position1.latitude * position2.longitude) - (position2.latitude * position1.longitude);
+  algebraic_boat_to_line_distance_ = (position_1.latitude * position_2.longitude) - (position_2.latitude * position_1.longitude);
+
+  double dotproduct_2 = (position_1.latitude * position_2.latitude) + (position_2.longitude * position_1.longitude);
+  double magnitude_2 = sqrt(fabsl(dotproduct_2));
+
+  GPSData closest_point;
+  double dist = dotproduct_2 / magnitude_2;
+  if (dist < 0 || position_2.latitude == 0) {
+    closest_point = waypoint_1_;
+  } else if (dist > 1) {
+    closest_point = waypoint_2_;
+  } else {
+    GPSData temp;
+    temp.latitude = position_1.latitude * dist;
+    temp.longitude = position_1.longitude * dist;
+
+    closest_point.latitude = waypoint_1_.latitude + temp.latitude;
+    closest_point.longitude = waypoint_1_.longitude + temp.longitude;
+  }
+  boat_to_line_distance_ = CalculateDistance(boat_pos_, closest_point);
 }
 
 void CalculationUnit::CheckTackVariable() {
-  favored_tack_ = Sign(boat_to_line_distance_);
+  favored_tack_ = Sign(algebraic_boat_to_line_distance_);
 }
 
 void CalculationUnit::CalculateAngleOfLine() {
-  GPSData position = waypoint2_ - waypoint1_;
+  GPSData position = waypoint_2_ - waypoint_1_;
   angle_of_line_ = RadiansToDegrees(atan2(position.longitude, position.latitude));
 }
 
 void CalculationUnit::CalculateNominalAngle() {
   nominal_angle_ = angle_of_line_
-      - (((2 * INCIDENCE_ANGLE) / PI) * RadiansToDegrees(atan(boat_to_line_distance_ / BOAT_TO_LINE_MAX_DISTANCE)));
+      - (((2 * INCIDENCE_ANGLE) / M_PI) * RadiansToDegrees(atan(boat_to_line_distance_ / BOAT_TO_LINE_MAX_DISTANCE)));
 }
 
 void CalculationUnit::CalculateBoatDirection() {
@@ -76,7 +94,7 @@ void CalculationUnit::CalculateBoatDirection() {
   if ((cos(wind_angle_ - nominal_angle_) + cos(CLOSED_HAUL_ANGLE) < 0)
       || (abs(boat_to_line_distance_) < BOAT_TO_LINE_MAX_DISTANCE
           && (cos(wind_angle_ - angle_of_line_) + cos(CLOSED_HAUL_ANGLE)) < 0)) {
-    route_angle_ = PI + wind_angle_ - favored_tack_ * CLOSED_HAUL_ANGLE;
+    route_angle_ = M_PI + wind_angle_ - favored_tack_ * CLOSED_HAUL_ANGLE;
   } else {
     // If not, use the previously calculated direction
     route_angle_ = nominal_angle_;
@@ -92,7 +110,7 @@ void CalculationUnit::CalculateRudderAngle() {
 }
 
 void CalculationUnit::CalculateSailAngle() {
-  sail_angle_ = SAIL_MAX_ANGLE * ((cos(wind_angle_ - route_angle_) + 1) / 2);
+  sail_angle_ = 1 - SAIL_MAX_ANGLE * ((cos(wind_angle_ - route_angle_) + 1) / 2);
 }
 
 double CalculationUnit::GetRudderAngle() {
@@ -109,29 +127,29 @@ double CalculationUnit::Sign(double sign) {
   return 0;
 }
 
-double CalculationUnit::CalculateDistance(GPSData position1, GPSData position2) {
+double CalculationUnit::CalculateDistance(GPSData position_1, GPSData position_2) {
   // Convert to radians
-  double distance_latitude = DegreesToRadians(position2.latitude - position1.latitude);
-  double distance_longitude = DegreesToRadians(position2.longitude - position1.longitude);
+  double distance_latitude = DegreesToRadians(position_2.latitude - position_1.latitude);
+  double distance_longitude = DegreesToRadians(position_2.longitude - position_1.longitude);
 
   double factor =
       sin(distance_latitude / 2) *
           sin(distance_latitude / 2) +
-          cos(DegreesToRadians(position1.latitude)) *
-              cos(DegreesToRadians(position2.latitude)) *
+          cos(DegreesToRadians(position_1.latitude)) *
+              cos(DegreesToRadians(position_2.latitude)) *
               sin(distance_longitude / 2) *
               sin(distance_longitude / 2);
 
   double range = 2 * atan2(sqrt(factor), sqrt(1 - factor));
-  return range * EARTH_RADIUS;
+  return range * EARTH_RADIUS * 1000;
 }
 
 double CalculationUnit::DegreesToRadians(double degrees) {
-  return degrees * (PI / 180);
+  return degrees * (M_PI / 180);
 }
 
 double CalculationUnit::RadiansToDegrees(double radians) {
-  return radians * 180 / PI;
+  return radians * 180 / M_PI;
 }
 
 double CalculationUnit::NormalizeDegrees(double degrees) {
@@ -150,9 +168,6 @@ double CalculationUnit::ConvertCoordinates(double from_low,
 }
 
 void CalculationUnit::Report() {
-  if (new_data_available_) {
-    std::cout << "Servo rudder angle      : " << rudder_angle_ << std::endl;
-    std::cout << "Servo sail angle        : " << sail_angle_ << std::endl;
-    new_data_available_ = false;
-  }
+  std::cout << "Servo rudder angle      : " << rudder_angle_ << std::endl;
+  std::cout << "Servo sail angle        : " << sail_angle_ << std::endl;
 }
