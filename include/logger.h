@@ -2,20 +2,45 @@
 #define SAILINGBOAT_INCLUDE_LOGGER_H_
 #include <string>
 #include "DataContainers/log.h"
-#include "DataContainers/gps_position.h"
-#include "gps_data.h"
+#include "DataContainers/gps_data.h"
+#include <ctime>
+#include "json.hpp"
 
 class Logger {
  public:
+  /**
+   * The constructor, initializes member fields
+   * @param path File path
+   */
   Logger(std::string path);
+  /**
+   * Saves log packet to "log_" member field
+   * @param packet Log object
+   */
   void LogData(Log packet);
+  /**
+   * Publishes "log_" member field data by writing it to file
+   */
   void Publish();
-  void Write(std::string message);
-  void PublishWaypoint(GPSData from, GPSPosition to, std::string message);
+  /**
+   * Publishes from and to GPSData by writing it to file
+   * @param from From coordinates
+   * @param to To coordinates
+   * @param message Data to write
+   */
+  void PublishWaypoint(GPSData from, GPSData to, std::string message);
  private:
-  int entries_;
+  /**
+   * Log info object
+   */
   Log log_;
+  /**
+   * File path for reading and writing
+   */
   std::string file_path_;
+  /**
+   * Available to publish data
+   */
   bool available_;
 };
 

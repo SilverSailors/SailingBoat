@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Run this file on boot after network.target is up,
 # to ensure that the application is running the latest version of the application,
@@ -14,6 +14,7 @@ fi
 git pull
 
 # Go to Boat directory and make the sailingBoat binary
+cd ..
 rm sailingBoat
 make -j $(nproc)
 

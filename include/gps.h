@@ -2,20 +2,36 @@
 #define SAILINGBOAT_INCLUDE_GPS_H_
 #include <libgpsmm.h>
 #include <memory>
-#include "gps_data.h"
+#include "DataContainers/gps_data.h"
 
 class GPS {
  public:
+  /**
+   * The constructor, initializes and binds GPS to hardware
+   */
   GPS();
-  bool Init();
+  /**
+   * The destructor, closes gps connection
+   */
+  ~GPS();
+  /**
+   * Returns "initialized_" member field value
+   * @return "initialized_" object
+   */
+  bool GetInitialized();
+  /**
+   * Reads data from GPS component
+   * @return Retrieved GPS data
+   */
   GPSData Read();
  private:
+  /**
+   * Initialized, boolean value on GPS component initialized or not
+   */
   bool initialized_;
-  ///
-  ///GPSMM is an unique vector so we dont have
-  ///to use the Init list to construct it,
-  ///parameters will be passed in Init by make_unique<>()
-  ///
+  /**
+   * Connection to GPS hardware
+   */
   std::unique_ptr<gpsmm> gps_;
 };
 

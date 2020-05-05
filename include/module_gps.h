@@ -1,23 +1,48 @@
 #ifndef SAILINGBOAT_INCLUDE_MODULE_GPS_H_
 #define SAILINGBOAT_INCLUDE_MODULE_GPS_H_
 #include "gps.h"
-#include "gps_data.h"
+#include "DataContainers/gps_data.h"
 
 class ModuleGPS {
  public:
+  /**
+   * The constructor, initializes member fields
+   */
   ModuleGPS();
-  bool Init();
+  /**
+   * Returns "initialized_" member field value
+   * @return "initialized_" object
+   */
+  bool GetInitialized();
+  /**
+   * Runs module, reads from hardware connection and saves it
+   */
   void Run();
+  /**
+   * Returns "data_reading_" member field value
+   * @return "data_reading_" object
+   */
   GPSData GetReading();
+  /**
+   * Reports the latest reading
+   */
   void Report();
-  bool IsNewDataAvilable();
  private:
+  /**
+   * If ModuleCMPS12 is initialized
+   */
   bool initialized_;
+  /**
+   * Hardware component for the module
+   */
   GPS gps_hardware_connection_;
+  /**
+   * The latest GPS data reading
+   */
   GPSData data_reading_;
-  ///
-  ///Have we Read the latest reading already?
-  ///
+  /**
+   * New data available for reading
+   */
   bool new_data_available_;
 };
 

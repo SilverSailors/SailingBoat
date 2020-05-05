@@ -1,162 +1,173 @@
 #include "../include/calculation_unit.h"
-#include <math.h>
 #include <iostream>
-#include "../include/utilities.h"
-#define EARTH_RADIUS 6371.0
+#define _USE_MATH_DEFINES
+#include <cmath>
+constexpr double EARTH_RADIUS = 6371.0;
+constexpr int BOAT_TO_LINE_MAX_DISTANCE = 50;
+constexpr int RUDDER_MAX_ANGLE = 1;
+constexpr int SAIL_MAX_ANGLE = 1;
+constexpr double INCIDENCE_ANGLE = M_PI / 4;
+constexpr double CLOSED_HAUL_ANGLE = M_PI / 3;
 
-double CalculationUnit::CalculateRudderPosition(Vec2 vector) {
-  ///
-  ///NOTE VECTOR BEARING SHOULD BE ROTATED 90 DEGREES SO THAT X,Y = 0,1 IS NORTH
-  ///NOTE Dead zone represents how much of our centering we should ignore
-  ///This is to prevent constant wiggle as we try to center in on our target
-  ///
-  const double RUDDER_DEAD_ZONE = 0.225;
+CalculationUnit::CalculationUnit() {
+  algebraic_boat_to_line_distance_ = 0;
+  boat_to_line_distance_ = 0;
+  favored_tack_ = 0;
+  angle_of_line_ = 0;
+  nominal_angle_ = 0;
+}
 
-  //V.x = cos(A)
-  //V.y = sin(A)
+void CalculationUnit::SetBoatValues(GPSData waypoint_1,
+                                    GPSData waypoint_2,
+                                    GPSData boat_pos,
+                                    double wind_angle,
+                                    double boat_heading) {
+  waypoint_1_ = waypoint_1;
+  waypoint_2_ = waypoint_2;
+  boat_pos_ = boat_pos;
+  wind_angle_ = wind_angle;
+  boat_heading_ = boat_heading;
+}
 
-  ///
-  ///If Y is negative then we need to turn around
-  ///
-  if (vector.y <= 0) {
-    //TURN RIGHT
-    if (vector.x >= 0) {
-      //std::cout << "WRONG SIDE : TURN RIGHT " << std::endl;
-      return 1;
-    }
-      //TURN LEFT
-    else if (vector.x < 0) {
-      //std::cout << "RONG SIDE : TURN LEFT" << std::endl;
-      return -1;
-    }
+void CalculationUnit::Calculate() {
+  CalculateDistanceFromBoatToLine();
+  CheckTackVariable();
+  CalculateAngleOfLine();
+  CalculateNominalAngle();
+  CalculateBoatDirection();
+  CalculateRudderAngle();
+  CalculateSailAngle();
+}
+
+void CalculationUnit::CalculateDistanceFromBoatToLine() {
+  GPSData position_1;
+  // Calculate unit vector waypoint2 - waypoint1
+  position_1 = waypoint_2_ - waypoint_1_;
+
+  double dotproduct_1 = (waypoint_2_.latitude * waypoint_1_.latitude) + (waypoint_2_.longitude * waypoint_1_.longitude);
+  double magnitude_1 = sqrt(fabsl(dotproduct_1));
+
+  position_1.latitude = position_1.latitude / magnitude_1;
+  position_1.longitude = position_1.longitude / magnitude_1;
+
+  GPSData position_2 = boat_pos_ - waypoint_1_;
+
+  // In the formula, the determinant between two vectors is defined by: det(u,v) = u1v2 - v1u2
+  algebraic_boat_to_line_distance_ = (position_1.latitude * position_2.longitude) - (position_2.latitude * position_1.longitude);
+
+  double dotproduct_2 = (position_1.latitude * position_2.latitude) + (position_2.longitude * position_1.longitude);
+  double magnitude_2 = sqrt(fabsl(dotproduct_2));
+
+  GPSData closest_point;
+  double dist = dotproduct_2 / magnitude_2;
+  if (dist < 0 || position_2.latitude == 0) {
+    closest_point = waypoint_1_;
+  } else if (dist > 1) {
+    closest_point = waypoint_2_;
+  } else {
+    GPSData temp;
+    temp.latitude = position_1.latitude * dist;
+    temp.longitude = position_1.longitude * dist;
+
+    closest_point.latitude = waypoint_1_.latitude + temp.latitude;
+    closest_point.longitude = waypoint_1_.longitude + temp.longitude;
   }
-    //We are looking in the correct half
-  else {
-    double threshold = RUDDER_DEAD_ZONE - abs(vector.x);
-    //std::cout << "DEADZONE: " << threshold << std::endl;
-    if (threshold >= 0) {
-      //GO STRAIGHT
-      //std::cout << "THRESHOLD REACHED GO STRAIGHT!!" << std::endl;
-      return 0;
-    } else {
-      //TURN RIGHT
-      if (vector.x >= 0) {
-        //std::cout << "CORRECT SIDE : TURN RIGHT " << std::endl;
-        return 0.5;
-      }
-        //TURN LEFT
-      else if (vector.x < 0) {
-        //std::cout << "CORRECT SIDE : TURN LEFT" << std::endl;
-        return -0.5;
-      }
-    }
-  }
+  boat_to_line_distance_ = CalculateDistance(boat_pos_, closest_point);
+}
 
+void CalculationUnit::CheckTackVariable() {
+  favored_tack_ = Sign(algebraic_boat_to_line_distance_);
+}
+
+void CalculationUnit::CalculateAngleOfLine() {
+  GPSData position = waypoint_2_ - waypoint_1_;
+  angle_of_line_ = RadiansToDegrees(atan2(position.longitude, position.latitude));
+}
+
+void CalculationUnit::CalculateNominalAngle() {
+  nominal_angle_ = angle_of_line_
+      - (((2 * INCIDENCE_ANGLE) / M_PI) * RadiansToDegrees(atan(boat_to_line_distance_ / BOAT_TO_LINE_MAX_DISTANCE)));
+}
+
+void CalculationUnit::CalculateBoatDirection() {
+  // Checks if direction is too close to the wind
+  if ((cos(wind_angle_ - nominal_angle_) + cos(CLOSED_HAUL_ANGLE) < 0)
+      || (abs(boat_to_line_distance_) < BOAT_TO_LINE_MAX_DISTANCE
+          && (cos(wind_angle_ - angle_of_line_) + cos(CLOSED_HAUL_ANGLE)) < 0)) {
+    route_angle_ = M_PI + wind_angle_ - favored_tack_ * CLOSED_HAUL_ANGLE;
+  } else {
+    // If not, use the previously calculated direction
+    route_angle_ = nominal_angle_;
+  }
+}
+
+void CalculationUnit::CalculateRudderAngle() {
+  if (cos(boat_heading_ - route_angle_) >= 0) {
+    rudder_angle_ = RUDDER_MAX_ANGLE * sin(boat_heading_ - route_angle_);
+  } else {
+    rudder_angle_ = RUDDER_MAX_ANGLE * Sign(sin(boat_heading_ - route_angle_));
+  }
+}
+
+void CalculationUnit::CalculateSailAngle() {
+  sail_angle_ = 1 - SAIL_MAX_ANGLE * ((cos(wind_angle_ - route_angle_) + 1) / 2);
+}
+
+double CalculationUnit::GetRudderAngle() {
+  return rudder_angle_;
+}
+
+double CalculationUnit::GetSailAngle() {
+  return sail_angle_;
+}
+
+double CalculationUnit::Sign(double sign) {
+  if (sign < 0) return -1;
+  if (sign > 0) return 1;
   return 0;
 }
 
-double CalculationUnit::CalculateSailPosition(Vec2 vector) {
-  ///
-  ///IF Y IS POSITIVE THEN WIND AT OUR BACKS (GOOD)
-  ///IF Y IS NEGATIVE THEN WIND IS BLOWING AT US (BAD)
-  ///IF Y IS 0 THEN IT IS FROM OUR SIDE
-  ///
-  ///Y AXIS DETERMINES HOW HARD WE NEED TO SWING OUR SAILS
-  ///-1 MIN
-  ///+1 MAX
-  ///
-
-  ///
-  ///ADDING IN RESTRAINT TO SAIL AS WE DONT NEED ALL POWER (TOO WIDE IN LOWER ANGLES, 0-75%)
-  ///
-  double sail = Utilities::ConvertCoordinates(-1, 1, 0, 0.75, vector.y);
-
-  double temp = Utilities::ConvertCoordinates(-1, 1, 0, 1, vector.y);
-  double sail_power = sail;
-  std::cout << "SAILS ARE AT: " << temp * 100 << " Percentage" << std::endl;
-  ///
-  ///POS NEG X IS IRRELEVANT AS SAIL CAN SWING AROUND TO OTHER SIDE
-  ///
-  return sail_power;
-}
-
-double CalculationUnit::CalculateAngleOfApproach(double destination_bearing, double wind_bearing) {
-  ///
-  ///Even if we are head on we want to move
-  ///slightly to the side for good measure
-  ///
-  const double upper_angle_discrepancy = 45.0;
-  const double lower_angle_discrepancy = 5.0;
-  //const double max_angle = 90.0;
-
-  ///
-  ///Calculate single side of our bearings (To get other side just flip)
-  ///
-  double offset = abs(destination_bearing - wind_bearing);
-  if (offset > 180) offset = abs(offset - 360);
-
-  //std::cout << "OFFSET: " << offset << std::endl;
-
-  ///
-  ///Cut it in half so that we can only turn +- 90 degrees
-  ///
-  offset = offset / 2;
-
-  //Add our discrepancy;
-
-  //std::cout << "PROPER Angle OFFSET: " << offset << std::endl;
-
-  ///
-  ///If our angle is too big or too small
-  ///Offset with our discrepancy so we get a small variation
-  ///
-  if (offset < lower_angle_discrepancy) offset = lower_angle_discrepancy;
-  if (offset > upper_angle_discrepancy) offset = upper_angle_discrepancy;
-  return offset;
-}
-
-GPSPosition CalculationUnit::CalculateWaypoint(GPSPosition current_position, double distance, double direction) {
-  ///
-  ///STOLEN FROM THE INTERNET (Hence d, c, they did not specifiy what they meant)
-  ///
-
-  ///
-  ///LATITUDE
-  ///
-  double latitude_radians = Utilities::DegreesToRadians(current_position.latitude);
-  double angle_radians = Utilities::DegreesToRadians(direction);
-  double d = distance / EARTH_RADIUS;
-  double c = asin(sin(latitude_radians) * cos(d) + cos(latitude_radians) * sin(d) * cos(angle_radians));
-  double corrected_latitude = Utilities::RadiansToDegrees(c);
-
-  ///
-  ///LONGITUDE
-  ///
-  double c2 = atan2(sin(angle_radians) * sin(d) * cos(latitude_radians), cos(d) - sin(latitude_radians) * sin(c));
-  double corrected_longitude = current_position.longitude + Utilities::RadiansToDegrees(c2);
-
-  GPSPosition coords;
-  coords.latitude = corrected_latitude;
-  coords.longitude = corrected_longitude;
-  return coords;
-}
-
-double CalculationUnit::CalculateDistance(GPSPosition point_a, GPSPosition point_b) {
-  ///
-  ///Convert to radian
-  ///
-  double distance_latitude = Utilities::DegreesToRadians(point_b.latitude - point_a.latitude);
-  double distance_longitude = Utilities::DegreesToRadians(point_b.longitude - point_a.longitude);
+double CalculationUnit::CalculateDistance(GPSData position_1, GPSData position_2) {
+  // Convert to radians
+  double distance_latitude = DegreesToRadians(position_2.latitude - position_1.latitude);
+  double distance_longitude = DegreesToRadians(position_2.longitude - position_1.longitude);
 
   double factor =
       sin(distance_latitude / 2) *
           sin(distance_latitude / 2) +
-          cos(Utilities::DegreesToRadians(point_a.latitude)) *
-              cos(Utilities::DegreesToRadians(point_b.latitude)) *
+          cos(DegreesToRadians(position_1.latitude)) *
+              cos(DegreesToRadians(position_2.latitude)) *
               sin(distance_longitude / 2) *
               sin(distance_longitude / 2);
 
   double range = 2 * atan2(sqrt(factor), sqrt(1 - factor));
-  double distance = range * EARTH_RADIUS;
-  return distance;
+  return range * EARTH_RADIUS * 1000;
+}
+
+double CalculationUnit::DegreesToRadians(double degrees) {
+  return degrees * (M_PI / 180);
+}
+
+double CalculationUnit::RadiansToDegrees(double radians) {
+  return radians * 180 / M_PI;
+}
+
+double CalculationUnit::NormalizeDegrees(double degrees) {
+  while (degrees > 360) degrees -= 360;
+  while (degrees < 0) degrees += 360;
+  return degrees;
+}
+
+double CalculationUnit::ConvertCoordinates(double from_low,
+                                           double from_high,
+                                           double to_low,
+                                           double to_high,
+                                           double position) {
+  double percentile = (position - from_low) / (from_high - from_low);
+  return percentile * (to_high - to_low) + to_low;
+}
+
+void CalculationUnit::Report() {
+  std::cout << "Servo rudder angle      : " << rudder_angle_ << std::endl;
+  std::cout << "Servo sail angle        : " << sail_angle_ << std::endl;
 }

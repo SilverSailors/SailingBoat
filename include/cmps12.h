@@ -1,26 +1,37 @@
 #ifndef SAILINGBOAT_INCLUDE_CMPS12_H_
 #define SAILINGBOAT_INCLUDE_CMPS12_H_
-#include "cmps12_data.h"
 
 class CMPS12 {
  public:
+  /**
+   * The constructor, initializes member fields
+   */
   CMPS12();
-
-  ///
-  ///Establish connection to I2C device
-  ///
-  bool Init();
-
-  ///
-  ///Read data from I2C Pins, return retrieved data
-  ///
-  CMPS12Data Read();
+  /**
+   * Returns "initialized_" member field value
+   * @return "initialized_" object
+   */
+  bool GetInitialized();
+  /**
+   * Reads data from CMPS12 component
+   * @return Retrieved compass data
+   */
+  int Read();
  private:
+  /**
+    * Shifts bits with a left shift
+    * @param high Bits to be shifted
+    * @param low Endian value
+    * @return Result from shift
+    */
   int Bitshift(int high, int low);
-  const int total_registry_entries_ = 31;
-  const int i2c_device_address_ = 0x60;
-  const char *i2c_device_path_ = "/dev/i2c-1";
+  /**
+   * Boolean value on CMPS12 component initialized or not
+   */
   bool initialized_;
+  /**
+   * Connection to hardware
+   */
   int file_descriptor_;
 };
 

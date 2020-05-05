@@ -1,37 +1,48 @@
 #ifndef SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_
 #define SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_
-#include <vector>
 #include "cmps12.h"
-#include "cmps12_data.h"
 
 class ModuleCMPS12 {
  public:
+  /**
+   * The constructor, initializes member fields
+   */
   ModuleCMPS12();
-  ~ModuleCMPS12();
-  bool Init();
-  void Run();
+  /**
+   * Returns "initialized_"
+   * @return boolean on successful initialization
+   */
   bool GetInitialized();
-  CMPS12Data GetReading();
+  /**
+   * Runs module, reads from hardware connection and saves it
+   */
+  void Run();
+  /**
+   * Returns "data_reading_" member field value
+   * @return "data_reading_" value
+   */
+  int GetReading();
+  /**
+   * Reports the latest reading
+   */
   void Report();
-  bool IsNewDataAvilable();
  private:
-  ///
-  ///Hardware component for our compass module
-  ///
+  /**
+   * Hardware component for the module
+   */
   CMPS12 CMPS12_hardware_connection_;
-  ///
-  ///Latest reading
-  ///
-  CMPS12Data CMPS12_data_reading_;
-  ///
-  ///Is this module initialized
-  ///
+  /**
+   * The latest data reading
+   */
+  int data_reading_;
+  /**
+   * If ModuleCMPS12 is initialized
+   */
   bool initialized_;
-  ///
-  ///Have we Read the latest reading already?
-  ///
+  /**
+   * New data available for reading
+   */
   bool new_data_available_;
-  double internal_offset_;
 };
 
 #endif // SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_

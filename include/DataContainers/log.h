@@ -2,17 +2,31 @@
 #define SAILINGBOAT_INCLUDE_DATACONTAINERS_LOG_H_
 #include <string>
 
-class Log {
- public:
-  Log();
+struct Log {
+  /**
+   * Log entry
+   */
   int entry_id;
-  double bearing;
+  /**
+   * Latitude coordinate
+   */
   double latitude;
+  /**
+   * Longitude coordinate
+   */
   double longitude;
-  double speed;
+  /**
+   * Rudder angle
+   */
+  double rudder_angle;
+  /**
+   * Sail angle
+   */
+  double sail_angle;
+  /**
+   * Timestamp
+   */
   std::string timestamp;
-  double distance_from_waypoint;
-  double distance_from_destination;
 };
 
 #endif // SAILINGBOAT_INCLUDE_DATACONTAINERS_LOG_H_

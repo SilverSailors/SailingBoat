@@ -1,78 +1,47 @@
-#include "../include/logger.h"
 #include <string>
+#include "../include/logger.h"
 #include "../include/io.h"
-#include "../include/gps_data.h"
-#include <iostream>
-#include <iomanip>
-#include <sstream>
 
 Logger::Logger(std::string path) {
-  entries_ = 0;
   file_path_ = path;
 }
 
 void Logger::LogData(Log packet) {
+  log_.entry_id = packet.entry_id;
   log_.latitude = packet.latitude;
   log_.longitude = packet.longitude;
+  log_.rudder_angle = packet.rudder_angle;
+  log_.sail_angle = packet.sail_angle;
   log_.timestamp = packet.timestamp;
-
   available_ = true;
 }
 
 void Logger::Publish() {
+  // Only when new log is received
   if (available_) {
-    //int bearing             = log_.bearing;
-    double latitude = log_.latitude;
-    double longitude = log_.longitude;
-    //double speed            = log_.speed;
-    std::string timestamp = log_.timestamp;
-    //double waypoint         = log_.distance_from_waypoint;
-    //double checkpoint       = log_.distance_from_destination;
-
-    std::stringstream stream;
-    stream << timestamp << " " << std::setprecision(15) << latitude << " " << std::setprecision(15) << longitude;
-
-    std::string output = stream.str();
+    nlohmann::json json_obj;
+    json_obj["entry_id"] = log_.entry_id;
+    json_obj["latitude"] = log_.latitude;
+    json_obj["longitude"] = log_.longitude;
+    json_obj["rudder_angle"] = log_.rudder_angle;
+    json_obj["sail_angle"] = log_.sail_angle;
+    json_obj["timestamp"] = log_.timestamp;
 
     IO io;
-    io.WriteFile(output, file_path_);
-    entries_++;
+    io.WriteFile(json_obj, file_path_);
     available_ = false;
-  } else {
-    std::cout << "NO NEW Log AVAILABLE" << std::endl;
   }
 }
 
-void Logger::PublishWaypoint(GPSData from, GPSPosition to, std::string message) {
-  std::string timestamp = from.GetTime();
-  double at_lat = from.GetLatitude();
-  double at_lon = from.GetLongitude();
-
-  double dest_lat = to.latitude;
-  double dest_lon = to.longitude;
-
-  std::stringstream stream;
-  stream << timestamp
-         << " : "
-         << std::setprecision(10) << at_lat
-         << " "
-         << std::setprecision(10) << at_lon
-         << " (->) "
-         << std::setprecision(10) << dest_lat
-         << " "
-         << std::setprecision(10) << dest_lon;
-  std::string output = stream.str();
+void Logger::PublishWaypoint(GPSData from, GPSData to, std::string message) {
+  nlohmann::json json_obj;
+  json_obj["at_lat"] = from.latitude;
+  json_obj["at_long"] = from.longitude;
+  json_obj["dest_lat"] = to.latitude;
+  json_obj["dest_long"] = to.longitude;
+  json_obj["message"] = message;
+  json_obj["time"] = from.timestamp;
 
   IO io;
-  io.WriteFile(output + " : " + message, file_path_);
-  entries_++;
-  available_ = false;
-}
-
-void Logger::Write(std::string message) {
-  std::stringstream stream;
-  stream << message;
-
-  IO io;
-  io.WriteFile(message, file_path_);
+  io.WriteFile(json_obj, file_path_);
 }

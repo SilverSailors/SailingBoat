@@ -1,46 +1,46 @@
 #include "../include/module_servo.h"
-#include "../include/utilities.h"
-#include <iostream>
+#include "../include/calculation_unit.h"
+constexpr int MAESTRO_SET_POSITION = 0x84;
+constexpr int MAESTRO_SET_SPEED = 0x87;
+constexpr int MAESTRO_SERVO_UPPER_LIMIT = 8000;
+constexpr int MAESTRO_SERVO_LOWER_LIMIT = 3968;
 
 ModuleServo::ModuleServo(double lower_limit, double upper_limit, int channel) {
-  upper_boundary_ = upper_limit;
   lower_boundary_ = lower_limit;
+  upper_boundary_ = upper_limit;
   channel_ = channel;
-  initialized_ = false;
+  initialized_ = servo_hardware_connection_.GetInitialized();
+  if (initialized_) {
+    // Sets the speed limit for value updates
+    servo_hardware_connection_.Command(
+      channel_,
+      MAESTRO_SET_SPEED,
+      50
+    );
+  }
 }
 
-bool ModuleServo::Init() {
-  bool result = servo_hardware_connection_.Init();
-  initialized_ = result;
-  if (result) {
-    servo_hardware_connection_.Command(
-        servo_hardware_connection_.GetFileDescriptor(),
-        channel_,
-        MAESTRO_SET_SPEED,
-        50);
-  }
-  return result;
+bool ModuleServo::GetInitialized() {
+  return initialized_;
 }
 
 void ModuleServo::Run() {
   if (initialized_) {
-    int servo_position = Utilities::ConvertCoordinates(
-        upper_boundary_,
-        lower_boundary_,
-        servo_hardware_connection_.GetUpperLimit(),
-        servo_hardware_connection_.GetLowerLimit(),
-        target_);
+    // Converts to value usable by hardware
+    int servo_position = CalculationUnit::ConvertCoordinates(
+      upper_boundary_,
+      lower_boundary_,
+      MAESTRO_SERVO_UPPER_LIMIT,
+      MAESTRO_SERVO_LOWER_LIMIT,
+      target_
+    );
 
-    //std::cout << "TARGET IS: " << servo_position << std::endl;
-
+    // Updates servo position
     servo_hardware_connection_.Command(
-        servo_hardware_connection_.GetFileDescriptor(),
-        channel_,
-        MAESTRO_SET_POSITION,
-        servo_position);
-
-  } else {
-    std::cout << "Module_Servo not initialized" << std::endl;
+      channel_,
+      MAESTRO_SET_POSITION,
+      servo_position
+    );
   }
 }
 
