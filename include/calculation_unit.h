@@ -5,15 +5,6 @@
 class CalculationUnit {
  public:
   /**
-   * Constructor, initializes member fields
-   */
-  CalculationUnit();
-  /**
-   * Returns if CalculationUnit is initialized
-   * @return If initialized
-   */
-  bool GetInitialized();
-  /**
    * Calculates new settings for rudder and sail
    */
   void Calculate();
@@ -73,26 +64,20 @@ class CalculationUnit {
    * @param sign Sign in form of number
    * @return -1 or +1
    */
-  double Sign(double sign);
+  static double Sign(double sign);
   /**
    * Calculates the distance between the two positions
    * @param position_1 First position
    * @param position_2 Second position
    * @return Distance between the positions
    */
-  double CalculateDistance(GPSData position_1, GPSData position_2);
+  static double CalculateDistance(const GPSData &position_1, const GPSData &position_2);
   /**
    * Converts given degrees to radians format
    * @param degrees Degrees value
    * @return Value in radians
    */
-  double DegreesToRadians(double degrees);
-  /**
-   * Converts given randians to degrees format
-   * @param radians Radians value
-   * @return Value in degrees
-   */
-  double RadiansToDegrees(double radians);
+  static double DegreesToRadians(double degrees);
   /**
    * Normalizes degrees to between 0 and 360
    * @param degrees Degrees value
@@ -109,7 +94,7 @@ class CalculationUnit {
    * @return Result from conversion
    */
   static double ConvertCoordinates(double from_low, double from_high,
-                            double to_low, double to_high, double position);
+                                   double to_low, double to_high, double position);
   /**
    * Reports the latest reading
    */
@@ -130,7 +115,7 @@ class CalculationUnit {
   /**
    * Wind direction
    */
-  int wind_angle_;
+  double wind_angle_;
   /**
    * Algebraic distance between boat and line
    */
@@ -142,7 +127,7 @@ class CalculationUnit {
   /**
    * Favored tack
    */
-  double favored_tack_;
+  double favored_tack_ = 0;
   /**
    * Angle between line and east
    */
@@ -158,7 +143,7 @@ class CalculationUnit {
   /**
    * Boat sailing direction
    */
-  int boat_heading_;
+  double boat_heading_;
   /**
    * Angle of rudder
    */
