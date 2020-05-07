@@ -16,6 +16,30 @@ struct Log {
    */
   double longitude;
   /**
+   * Wing angle
+   */
+  int wind_angle;
+  /**
+   * Boat heading
+   */
+  int boat_heading;
+  /**
+   * Destination latitude coordinate
+   */
+  double destination_latitude;
+  /**
+   * Destination longitude coordinate
+   */
+  double destination_longitude;
+  /**
+   * Destination distance
+   */
+  double destination_distance;
+  /**
+   * Route angle
+   */
+  double route_angle;
+  /**
    * Rudder angle
    */
   double rudder_angle;

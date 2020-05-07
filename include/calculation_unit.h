@@ -5,15 +5,6 @@
 class CalculationUnit {
  public:
   /**
-   * Constructor, initializes member fields
-   */
-  CalculationUnit();
-  /**
-   * Returns if CalculationUnit is initialized
-   * @return If initialized
-   */
-  bool GetInitialized();
-  /**
    * Calculates new settings for rudder and sail
    */
   void Calculate();
@@ -24,7 +15,7 @@ class CalculationUnit {
    * @param wind_angle Wind direction
    * @param boat_heading Boat sail direction
    */
-  void SetBoatValues(GPSData waypoint_1, GPSData waypoint_2, GPSData boat_pos, double wind_angle, double boat_heading);
+  void SetBoatValues(GPSData waypoint_1, GPSData waypoint_2, GPSData boat_pos, int wind_angle, int boat_heading);
   /**
    * Calculates distance from boat to line of the two waypoints
    */
@@ -54,6 +45,11 @@ class CalculationUnit {
    */
   void CalculateSailAngle();
   /**
+   * Returns route_angle_ member field
+   * @return route_angle_ value
+   */
+  double GetRouteAngle();
+  /**
    * Returns rudder_angle_ member field
    * @return rudder_angle_ value
    */
@@ -68,32 +64,26 @@ class CalculationUnit {
    * @param sign Sign in form of number
    * @return -1 or +1
    */
-  double Sign(double sign);
+  static double Sign(double sign);
   /**
    * Calculates the distance between the two positions
    * @param position_1 First position
    * @param position_2 Second position
    * @return Distance between the positions
    */
-  double CalculateDistance(GPSData position_1, GPSData position_2);
+  static double CalculateDistance(const GPSData &position_1, const GPSData &position_2);
   /**
    * Converts given degrees to radians format
    * @param degrees Degrees value
    * @return Value in radians
    */
-  double DegreesToRadians(double degrees);
-  /**
-   * Converts given randians to degrees format
-   * @param radians Radians value
-   * @return Value in degrees
-   */
-  double RadiansToDegrees(double radians);
+  static double DegreesToRadians(double degrees);
   /**
    * Normalizes degrees to between 0 and 360
    * @param degrees Degrees value
    * @return Normalized value
    */
-  static double NormalizeDegrees(double degrees);
+  static int NormalizeDegrees(int degrees);
   /**
    * Converts given from-, to- and position-coordinates to double
    * @param from_low From low
@@ -104,7 +94,7 @@ class CalculationUnit {
    * @return Result from conversion
    */
   static double ConvertCoordinates(double from_low, double from_high,
-                            double to_low, double to_high, double position);
+                                   double to_low, double to_high, double position);
   /**
    * Reports the latest reading
    */
@@ -137,7 +127,7 @@ class CalculationUnit {
   /**
    * Favored tack
    */
-  double favored_tack_;
+  double favored_tack_ = 0;
   /**
    * Angle between line and east
    */

@@ -62,13 +62,13 @@ int main(int argc, char *argv[]) {
   servo_sail.SetTarget(0.5);
 
   // Beginning of line position
-  GPSData waypoint1 = {};
+  GPSData waypoint_1 = {};
   // End of line position
-  GPSData waypoint2 = control_unit.GetDestination();
+  GPSData waypoint_2 = control_unit.GetDestination();
 
   // Runs until GPS module is online
-  while(waypoint1.latitude == 0.0) {
-    waypoint1 = module_gps.GetReading();
+  while(waypoint_1.latitude == 0.0) {
+    waypoint_1 = module_gps.GetReading();
     std::cout << "GPS not ready yet!" << std::endl;
   }
 
@@ -84,11 +84,11 @@ int main(int argc, char *argv[]) {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     // Get new readings
     GPSData boat_pos = module_gps.GetReading();
-    double wind_angle = module_wind.GetReading();
-    double boat_heading = module_compass.GetReading();
+    int wind_angle = module_wind.GetReading();
+    int boat_heading = module_compass.GetReading();
 
     // Updates values for sail calculation
-    calculation_unit.SetBoatValues(waypoint1, waypoint2, boat_pos, wind_angle, boat_heading);
+    calculation_unit.SetBoatValues(waypoint_1, waypoint_2, boat_pos, wind_angle, boat_heading);
     // Calculates new servo targets
     calculation_unit.Calculate();
 
@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
     servo_rudder.SetTarget(calculation_unit.GetRudderAngle());
     servo_sail.SetTarget(calculation_unit.GetSailAngle());
 
-    double destination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
+    double destination_distance = CalculationUnit::CalculateDistance(boat_pos, waypoint_2);
     // If close enough to destination
     if (destination_distance < CALCULATED_THRESHOLD) {
       // Get next destination or quit
@@ -105,9 +105,9 @@ int main(int argc, char *argv[]) {
       debug_logger.PublishWaypoint(boat_pos, control_unit.GetDestination(), "CHECKPOINT REACHED, NEXT DESTINATION");
 
       // New beginning of line
-      waypoint1 = waypoint2;
+      waypoint_1 = waypoint_2;
       // New end of line position
-      waypoint2 = control_unit.GetDestination();
+      waypoint_2 = control_unit.GetDestination();
     }
 
     // Logs an entry
@@ -115,6 +115,12 @@ int main(int argc, char *argv[]) {
     new_log.entry_id = entry;
     new_log.latitude = boat_pos.latitude;
     new_log.longitude = boat_pos.longitude;
+    new_log.wind_angle = wind_angle;
+    new_log.boat_heading = boat_heading;
+    new_log.destination_latitude = waypoint_2.latitude;
+    new_log.destination_longitude = waypoint_2.longitude;
+    new_log.destination_distance = destination_distance;
+    new_log.route_angle = calculation_unit.GetRouteAngle();
     new_log.rudder_angle = calculation_unit.GetRudderAngle();
     new_log.sail_angle = calculation_unit.GetSailAngle();
     new_log.timestamp = boat_pos.timestamp;

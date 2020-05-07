@@ -1,31 +1,20 @@
 #include "doctest.h"
 #include "../include/calculation_unit.h"
 #include <iostream>
-constexpr double CALCULATED_THRESHOLD = 0.005;
 
 TEST_CASE("Test CalculationUnit") {
   CalculationUnit calculation_unit;
 
-  GPSData waypoint1 = {60.0, 20.0};
-  GPSData waypoint2 = {61.0, 21.0};
-  GPSData boat_pos = waypoint1;
-  double wind_angle = 40;
-  double boat_heading = 50;
+  GPSData waypoint1 = {60.103093, 19.861749};
+  GPSData waypoint2 = {60.103650, 19.863887};
+  GPSData boat_pos = {60.102992, 19.863860};
+  int wind_angle = 270;
+  int boat_heading = 0;
 
-  bool isActive = true;
-  while(isActive) {
-    boat_pos.latitude += 0.1;
-    boat_pos.longitude += 0.1;
+  calculation_unit.SetBoatValues(waypoint1, waypoint2, boat_pos, wind_angle, boat_heading);
+  calculation_unit.Calculate();
 
-    calculation_unit.SetBoatValues(waypoint1, waypoint2, boat_pos, wind_angle, boat_heading);
-    calculation_unit.Calculate();
-    double destination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint2);
-    if (destination_distance < CALCULATED_THRESHOLD) {
-      std::cout << "Destination reached" << std::endl;
-      isActive = false;
-    }
-
-    calculation_unit.Report();
-    std::cout << "Distance to destination : " << destination_distance << std::endl;
-  }
+  std::cout << "Route angle : " << calculation_unit.GetRouteAngle() << std::endl;
+  std::cout << "Rudder angle : " << calculation_unit.GetRudderAngle() << std::endl;
+  std::cout << "Sail angle : " << calculation_unit.GetSailAngle() << std::endl;
 }
