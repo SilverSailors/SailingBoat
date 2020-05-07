@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
     servo_rudder.SetTarget(calculation_unit.GetRudderAngle());
     servo_sail.SetTarget(calculation_unit.GetSailAngle());
 
-    double destination_distance = calculation_unit.CalculateDistance(boat_pos, waypoint_2);
+    double destination_distance = CalculationUnit::CalculateDistance(boat_pos, waypoint_2);
     // If close enough to destination
     if (destination_distance < CALCULATED_THRESHOLD) {
       // Get next destination or quit
