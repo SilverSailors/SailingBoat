@@ -3,7 +3,7 @@
 #include <cmath>
 #include <iostream>
 constexpr int EARTH_RADIUS = 6371;
-constexpr double BOAT_TO_LINE_MAX_DISTANCE = 50;
+constexpr double BOAT_TO_LINE_MAX_DISTANCE = 25;
 constexpr int RUDDER_MAX_ANGLE = 1;
 constexpr int SAIL_MAX_ANGLE = 1;
 constexpr double INCIDENCE_ANGLE = M_PI / 4;
