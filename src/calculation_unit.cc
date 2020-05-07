@@ -20,8 +20,8 @@ CalculationUnit::CalculationUnit() {
 void CalculationUnit::SetBoatValues(GPSData waypoint_1,
                                     GPSData waypoint_2,
                                     GPSData boat_pos,
-                                    double wind_angle,
-                                    double boat_heading) {
+                                    int wind_angle,
+                                    int boat_heading) {
   waypoint_1_ = waypoint_1;
   waypoint_2_ = waypoint_2;
   boat_pos_ = boat_pos;
@@ -92,7 +92,7 @@ void CalculationUnit::CalculateNominalAngle() {
 void CalculationUnit::CalculateBoatDirection() {
   // Checks if direction is too close to the wind
   if ((cos(wind_angle_ - nominal_angle_) + cos(CLOSED_HAUL_ANGLE) < 0)
-      || (abs(boat_to_line_distance_) < BOAT_TO_LINE_MAX_DISTANCE
+      || (boat_to_line_distance_ < BOAT_TO_LINE_MAX_DISTANCE
           && (cos(wind_angle_ - angle_of_line_) + cos(CLOSED_HAUL_ANGLE)) < 0)) {
     route_angle_ = M_PI + wind_angle_ - favored_tack_ * CLOSED_HAUL_ANGLE;
   } else {
@@ -111,6 +111,10 @@ void CalculationUnit::CalculateRudderAngle() {
 
 void CalculationUnit::CalculateSailAngle() {
   sail_angle_ = 1 - SAIL_MAX_ANGLE * ((cos(wind_angle_ - route_angle_) + 1) / 2);
+}
+
+double CalculationUnit::GetRouteAngle() {
+  return route_angle_;
 }
 
 double CalculationUnit::GetRudderAngle() {
@@ -152,7 +156,7 @@ double CalculationUnit::RadiansToDegrees(double radians) {
   return radians * 180 / M_PI;
 }
 
-double CalculationUnit::NormalizeDegrees(double degrees) {
+int CalculationUnit::NormalizeDegrees(int degrees) {
   while (degrees > 360) degrees -= 360;
   while (degrees < 0) degrees += 360;
   return degrees;

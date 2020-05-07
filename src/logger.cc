@@ -10,6 +10,12 @@ void Logger::LogData(Log packet) {
   log_.entry_id = packet.entry_id;
   log_.latitude = packet.latitude;
   log_.longitude = packet.longitude;
+  log_.wind_angle = packet.wind_angle;
+  log_.boat_heading = packet.boat_heading;
+  log_.destination_latitude = packet.destination_latitude;
+  log_.destination_longitude = packet.destination_longitude;
+  log_.destination_distance = packet.destination_distance;
+  log_.route_angle = packet.route_angle;
   log_.rudder_angle = packet.rudder_angle;
   log_.sail_angle = packet.sail_angle;
   log_.timestamp = packet.timestamp;
@@ -23,6 +29,12 @@ void Logger::Publish() {
     json_obj["entry_id"] = log_.entry_id;
     json_obj["latitude"] = log_.latitude;
     json_obj["longitude"] = log_.longitude;
+    json_obj["wind_angle"] = log_.wind_angle;
+    json_obj["boat_heading"] = log_.boat_heading;
+    json_obj["destination_latitude"] = log_.destination_latitude;
+    json_obj["destination_longitude"] = log_.destination_longitude;
+    json_obj["destination_distance"] = log_.destination_distance;
+    json_obj["route_angle"] = log_.route_angle;
     json_obj["rudder_angle"] = log_.rudder_angle;
     json_obj["sail_angle"] = log_.sail_angle;
     json_obj["timestamp"] = log_.timestamp;

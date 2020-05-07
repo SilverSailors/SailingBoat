@@ -24,7 +24,7 @@ class CalculationUnit {
    * @param wind_angle Wind direction
    * @param boat_heading Boat sail direction
    */
-  void SetBoatValues(GPSData waypoint_1, GPSData waypoint_2, GPSData boat_pos, double wind_angle, double boat_heading);
+  void SetBoatValues(GPSData waypoint_1, GPSData waypoint_2, GPSData boat_pos, int wind_angle, int boat_heading);
   /**
    * Calculates distance from boat to line of the two waypoints
    */
@@ -53,6 +53,11 @@ class CalculationUnit {
    * Calculates new sail setting
    */
   void CalculateSailAngle();
+  /**
+   * Returns route_angle_ member field
+   * @return route_angle_ value
+   */
+  double GetRouteAngle();
   /**
    * Returns rudder_angle_ member field
    * @return rudder_angle_ value
@@ -93,7 +98,7 @@ class CalculationUnit {
    * @param degrees Degrees value
    * @return Normalized value
    */
-  static double NormalizeDegrees(double degrees);
+  static int NormalizeDegrees(int degrees);
   /**
    * Converts given from-, to- and position-coordinates to double
    * @param from_low From low
@@ -125,7 +130,7 @@ class CalculationUnit {
   /**
    * Wind direction
    */
-  double wind_angle_;
+  int wind_angle_;
   /**
    * Algebraic distance between boat and line
    */
@@ -153,7 +158,7 @@ class CalculationUnit {
   /**
    * Boat sailing direction
    */
-  double boat_heading_;
+  int boat_heading_;
   /**
    * Angle of rudder
    */
