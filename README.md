@@ -23,6 +23,8 @@ Hardware scheme [this link](doc/hardware/scheme_hardware.JPG)
 
 ![alt text](doc/hardware/scheme_hardware.JPG "")
 
+![alt text](doc/software/Component_diagram.png "")
+
 ## Code Procedure
 
 1. Determine destination (Latitude, Longitude)
