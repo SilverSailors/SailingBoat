@@ -8,21 +8,13 @@ struct Log {
    */
   int entry_id;
   /**
-   * Latitude coordinate
+   * Current boat latitude coordinate
    */
   double latitude;
   /**
-   * Longitude coordinate
+   * Current boat longitude coordinate
    */
   double longitude;
-  /**
-   * Wing angle
-   */
-  int wind_angle;
-  /**
-   * Boat heading
-   */
-  int boat_heading;
   /**
    * Destination latitude coordinate
    */
@@ -36,15 +28,39 @@ struct Log {
    */
   double destination_distance;
   /**
-   * Route angle
+   * Wind direction
+   */
+  int wind_angle;
+  /**
+   * Boat sailing direction
+   */
+  int boat_heading;
+  /**
+   * Distance between boat and line in meters
+   */
+  double boat_to_line_distance_;
+  /**
+   * Favored tack
+   */
+  double favored_tack_ = 0;
+  /**
+   * Angle between line and east
+   */
+  double angle_of_line_;
+  /**
+   * Nominal angle
+   */
+  double nominal_angle_;
+  /**
+   * Preferred sailing direction
    */
   double route_angle;
   /**
-   * Rudder angle
+   * Angle of rudder
    */
   double rudder_angle;
   /**
-   * Sail angle
+   * Angle of sail
    */
   double sail_angle;
   /**
