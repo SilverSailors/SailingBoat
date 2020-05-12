@@ -45,6 +45,26 @@ class CalculationUnit {
    */
   void CalculateSailAngle();
   /**
+   * Returns boat_to_line_distance member field
+   * @return boat_to_line_distance value
+   */
+  double GetBoatToLineDistance();
+  /**
+   * Returns favored_tack_ member field
+   * @return favored_tack_ value
+   */
+  double GetFavoredTack();
+  /**
+   * Returns angle_of_line_ member field
+   * @return angle_of_line_ value
+   */
+  double GetAngleOfLine();
+  /**
+   * Returns nominal_angle_ member field
+   * @return nominal_angle_ value
+   */
+  double GetNominalAngle();
+  /**
    * Returns route_angle_ member field
    * @return route_angle_ value
    */
@@ -83,7 +103,7 @@ class CalculationUnit {
    * @param degrees Degrees value
    * @return Normalized value
    */
-  static int NormalizeDegrees(int degrees);
+  static double NormalizeDegrees(double degrees);
   /**
    * Converts given from-, to- and position-coordinates to double
    * @param from_low From low
@@ -117,11 +137,11 @@ class CalculationUnit {
    */
   double wind_angle_;
   /**
-   * Algebraic distance between boat and line
+   * Boat sailing direction
    */
-  double algebraic_boat_to_line_distance_;
+  double boat_heading_;
   /**
-   * Distance between boat and line
+   * Distance between boat and line in meters
    */
   double boat_to_line_distance_;
   /**
@@ -140,10 +160,6 @@ class CalculationUnit {
    * Preferred sailing direction
    */
   double route_angle_;
-  /**
-   * Boat sailing direction
-   */
-  double boat_heading_;
   /**
    * Angle of rudder
    */
