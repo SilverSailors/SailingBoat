@@ -2,6 +2,7 @@
 #define SAILINGBOAT_INCLUDE_MODULE_GPS_H_
 #include "gps.h"
 #include "DataContainers/gps_data.h"
+#include <deque>
 
 class ModuleGPS {
  public:
@@ -24,6 +25,11 @@ class ModuleGPS {
    */
   GPSData GetReading();
   /**
+   * Returns mean value of "data_readings_" member field
+   * @return "data_readings_" object
+   */
+  GPSData GetMeanReading();
+  /**
    * Reports the latest reading
    */
   void Report();
@@ -40,6 +46,10 @@ class ModuleGPS {
    * The latest GPS data reading
    */
   GPSData data_reading_;
+  /**
+   * The 10 latest GPS data readings
+   */
+  std::deque<GPSData> data_readings_;
   /**
    * New data available for reading
    */
