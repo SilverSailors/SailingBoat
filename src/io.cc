@@ -24,7 +24,7 @@ std::vector<std::string> IO::ReadFile(std::string filepath) {
 void IO::WriteFile(nlohmann::json data, std::string path) {
   std::ofstream log_info(path, std::ios::app);
   if (log_info.is_open()) {
-    log_info << std::setw(4) << data << std::endl;
+    log_info << std::setw(4) << data << "," << std::endl;
     log_info.close();
   }
 }
