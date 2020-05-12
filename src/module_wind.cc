@@ -45,7 +45,12 @@ void ModuleWind::Run() {
 
     nlohmann::json json_obj;
     std::stringstream(data) >> json_obj;
-    data_reading_ = json_obj["wind"]["deg"];
+
+    if(json_obj["wind"]["deg"] == nullptr) {
+      std::cout << "ERROR (MODULE_WIND): Could not read wind deg from weather API";
+    } else {
+      data_reading_ = json_obj["wind"]["deg"];
+    }
   }
 }
 
