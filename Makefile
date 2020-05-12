@@ -29,7 +29,8 @@ src/threads.cc
 # test-main samt de fristående testfilerna
 TESTSOURCES = test/test_main.cc \
 test/test_module_wind.cc \
-test/test_calculation_unit.cc
+test/test_calculation_unit.cc \
+test/test_logger.cc
 
 all : $(TARGET)
 
