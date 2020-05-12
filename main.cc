@@ -115,11 +115,15 @@ int main(int argc, char *argv[]) {
     new_log.entry_id = entry;
     new_log.latitude = boat_pos.latitude;
     new_log.longitude = boat_pos.longitude;
-    new_log.wind_angle = wind_angle;
-    new_log.boat_heading = boat_heading;
     new_log.destination_latitude = waypoint_2.latitude;
     new_log.destination_longitude = waypoint_2.longitude;
     new_log.destination_distance = destination_distance;
+    new_log.wind_angle = wind_angle;
+    new_log.boat_heading = boat_heading;
+    new_log.boat_to_line_distance_ = calculation_unit.GetBoatToLineDistance();
+    new_log.favored_tack_ = calculation_unit.GetFavoredTack();
+    new_log.angle_of_line_ = calculation_unit.GetAngleOfLine();
+    new_log.nominal_angle_ = calculation_unit.GetNominalAngle();
     new_log.route_angle = calculation_unit.GetRouteAngle();
     new_log.rudder_angle = calculation_unit.GetRudderAngle();
     new_log.sail_angle = calculation_unit.GetSailAngle();
