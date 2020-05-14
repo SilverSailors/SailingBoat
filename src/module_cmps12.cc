@@ -3,7 +3,7 @@
 #include "../include/calculation_unit.h"
 
 ModuleCMPS12::ModuleCMPS12() {
-  data_reading_ = 0;
+  data_reading_ = -1;
   initialized_ = CMPS12_hardware_connection_.GetInitialized();
 }
 

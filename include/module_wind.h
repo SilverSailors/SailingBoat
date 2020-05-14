@@ -30,7 +30,7 @@ class ModuleWind {
    * Returns "data_reading_" member field
    * @return "data_reading_" value
    */
-   int GetReading();
+  int GetReading();
   /**
    * Reports the latest reading
    */

@@ -17,8 +17,8 @@ void CalculationUnit::SetBoatValues(GPSData waypoint_1,
   waypoint_1_ = std::move(waypoint_1);
   waypoint_2_ = std::move(waypoint_2);
   boat_pos_ = std::move(boat_pos);
-  wind_angle_ = DegreesToRadians(NormalizeDegrees(wind_angle+180-90));
-  boat_heading_ = DegreesToRadians(NormalizeDegrees(boat_heading-90));
+  wind_angle_ = DegreesToRadians(NormalizeDegrees(wind_angle + 180 - 90));
+  boat_heading_ = DegreesToRadians(NormalizeDegrees(boat_heading - 90));
   std::cout << "wind_angle_: " << wind_angle_ << std::endl;
   std::cout << "boat_heading_: " << boat_heading_ << std::endl;
 }
@@ -124,7 +124,7 @@ double CalculationUnit::GetSailAngle() {
   return sail_angle_;
 }
 
-double CalculationUnit::Sign(double sign) {
+int CalculationUnit::Sign(double sign) {
   return (sign > 0) ? 1 : -1;
 }
 
@@ -149,7 +149,7 @@ double CalculationUnit::DegreesToRadians(double degrees) {
   return degrees * (M_PI / 180);
 }
 
-double CalculationUnit::NormalizeDegrees(double degrees) {
+int CalculationUnit::NormalizeDegrees(int degrees) {
   while (degrees > 360) degrees -= 360;
   while (degrees < 0) degrees += 360;
   return degrees;

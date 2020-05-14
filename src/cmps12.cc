@@ -21,8 +21,8 @@ bool CMPS12::GetInitialized() {
   return initialized_;
 }
 
-int CMPS12::Bitshift(int high, int low) {
-  return (high << 8 | low);
+unsigned int CMPS12::Bitshift(unsigned int high, unsigned int low) {
+  return high << 8u | low;
 }
 
 int CMPS12::Read() {
@@ -41,6 +41,6 @@ int CMPS12::Read() {
   }
 
   // Bitshifts raw compass bearing
-  return Bitshift(raw_data[COMPASS_BEARING_16_HIGH_BYTE_DEGREES],
+  return (int)Bitshift(raw_data[COMPASS_BEARING_16_HIGH_BYTE_DEGREES],
                   raw_data[COMPASS_BEARING_16_LOW_BYTE_DEGREES]) / 16;
 }

@@ -24,7 +24,7 @@ class CMPS12 {
     * @param low Endian value
     * @return Result from shift
     */
-  int Bitshift(int high, int low);
+  static unsigned int Bitshift(unsigned int high, unsigned int low);
   /**
    * Boolean value on CMPS12 component initialized or not
    */

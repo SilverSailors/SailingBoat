@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
   // If testing should be done
   doctest::Context context(argc, argv);
   int result = context.run();
-  if(context.shouldExit()) return result;
+  if (context.shouldExit()) return result;
 
   // Creates and initializes modules
   ModuleServo servo_rudder(RUDDER_LOWER_THRESHOLD, RUDDER_UPPER_THRESHOLD, RUDDER_CHANNEL);
@@ -34,11 +34,22 @@ int main(int argc, char *argv[]) {
 
   // Checks if all modules are OK
   bool fail = false;
-  if (!servo_rudder.GetInitialized()) { std::cout << "Servo rudder not initialized!" << std::endl; fail = true; }
-  else if (!servo_sail.GetInitialized()) { std::cout << "Servo sail not initialized!" << std::endl; fail = true; }
-  else if (!module_gps.GetInitialized()) { std::cout << "Module GPS not initialized!" << std::endl; fail = true; }
-  else if (!module_compass.GetInitialized()) { std::cout << "Module compass not initialized!" << std::endl; fail = true; }
-  else if (!module_wind.GetInitialized()) { std::cout << "Module wind not initialized!" << std::endl; fail = true; }
+  if (!servo_rudder.GetInitialized()) {
+    std::cout << "Servo rudder not initialized!" << std::endl;
+    fail = true;
+  } else if (!servo_sail.GetInitialized()) {
+    std::cout << "Servo sail not initialized!" << std::endl;
+    fail = true;
+  } else if (!module_gps.GetInitialized()) {
+    std::cout << "Module GPS not initialized!" << std::endl;
+    fail = true;
+  } else if (!module_compass.GetInitialized()) {
+    std::cout << "Module compass not initialized!" << std::endl;
+    fail = true;
+  } else if (!module_wind.GetInitialized()) {
+    std::cout << "Module wind not initialized!" << std::endl;
+    fail = true;
+  }
   if (fail) return -1;
   else std::cout << "All modules initialized!" << std::endl;
 
@@ -65,11 +76,25 @@ int main(int argc, char *argv[]) {
   GPSData waypoint_1 = {};
   // End of line position
   GPSData waypoint_2 = control_unit.GetDestination();
-
   // Runs until GPS module is online
-  while(waypoint_1.latitude == 0.0) {
+  while (waypoint_1.latitude == 0.0) {
     waypoint_1 = module_gps.GetReading();
     std::cout << "GPS not ready yet!" << std::endl;
+  }
+  GPSData boat_pos = waypoint_1;
+
+  int wind_angle = module_wind.GetReading();
+  // Runs until Wind module is online
+  while (wind_angle == -1) {
+    wind_angle = module_wind.GetReading();
+    std::cout << "Wind not ready yet!" << std::endl;
+  }
+
+  int boat_heading = module_compass.GetReading();
+  // Runs until Compass module is online
+  while (boat_heading == -1) {
+    boat_heading = module_compass.GetReading();
+    std::cout << "Compass not ready yet!" << std::endl;
   }
 
   // Start the remaining threads
@@ -82,10 +107,6 @@ int main(int argc, char *argv[]) {
   // Runs until no more destinations
   while (control_unit.IsActive()) {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    // Get new readings
-    GPSData boat_pos = module_gps.GetReading();
-    int wind_angle = module_wind.GetReading();
-    int boat_heading = module_compass.GetReading();
 
     // Updates values for sail calculation
     calculation_unit.SetBoatValues(waypoint_1, waypoint_2, boat_pos, wind_angle, boat_heading);
@@ -120,10 +141,10 @@ int main(int argc, char *argv[]) {
     new_log.destination_distance = destination_distance;
     new_log.wind_angle = wind_angle;
     new_log.boat_heading = boat_heading;
-    new_log.boat_to_line_distance_ = calculation_unit.GetBoatToLineDistance();
-    new_log.favored_tack_ = calculation_unit.GetFavoredTack();
-    new_log.angle_of_line_ = calculation_unit.GetAngleOfLine();
-    new_log.nominal_angle_ = calculation_unit.GetNominalAngle();
+    new_log.boat_to_line_distance = calculation_unit.GetBoatToLineDistance();
+    new_log.favored_tack = calculation_unit.GetFavoredTack();
+    new_log.angle_of_line = calculation_unit.GetAngleOfLine();
+    new_log.nominal_angle = calculation_unit.GetNominalAngle();
     new_log.route_angle = calculation_unit.GetRouteAngle();
     new_log.rudder_angle = calculation_unit.GetRudderAngle();
     new_log.sail_angle = calculation_unit.GetSailAngle();
@@ -138,6 +159,11 @@ int main(int argc, char *argv[]) {
     module_compass.Report();
     calculation_unit.Report();
     std::cout << "Distance to destination : " << destination_distance << std::endl;
+
+    // Get new readings
+    boat_pos = module_gps.GetReading();
+    wind_angle = module_wind.GetReading();
+    boat_heading = module_compass.GetReading();
   }
 
   // Destroys the threads created

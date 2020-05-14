@@ -1,5 +1,6 @@
 #include "../include/module_servo.h"
 #include "../include/calculation_unit.h"
+#include <cmath>
 constexpr int MAESTRO_SET_POSITION = 0x84;
 constexpr int MAESTRO_SET_SPEED = 0x87;
 constexpr int MAESTRO_SERVO_UPPER_LIMIT = 8000;
@@ -13,9 +14,9 @@ ModuleServo::ModuleServo(double lower_limit, double upper_limit, int channel) {
   if (initialized_) {
     // Sets the speed limit for value updates
     servo_hardware_connection_.Command(
-      channel_,
-      MAESTRO_SET_SPEED,
-      50
+        channel_,
+        MAESTRO_SET_SPEED,
+        50
     );
   }
 }
@@ -27,19 +28,19 @@ bool ModuleServo::GetInitialized() {
 void ModuleServo::Run() {
   if (initialized_) {
     // Converts to value usable by hardware
-    int servo_position = CalculationUnit::ConvertCoordinates(
-      upper_boundary_,
-      lower_boundary_,
-      MAESTRO_SERVO_UPPER_LIMIT,
-      MAESTRO_SERVO_LOWER_LIMIT,
-      target_
-    );
+    int servo_position = (int)round(CalculationUnit::ConvertCoordinates(
+        upper_boundary_,
+        lower_boundary_,
+        MAESTRO_SERVO_UPPER_LIMIT,
+        MAESTRO_SERVO_LOWER_LIMIT,
+        target_
+    ));
 
     // Updates servo position
     servo_hardware_connection_.Command(
-      channel_,
-      MAESTRO_SET_POSITION,
-      servo_position
+        channel_,
+        MAESTRO_SET_POSITION,
+        servo_position
     );
   }
 }

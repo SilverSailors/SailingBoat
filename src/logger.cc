@@ -3,10 +3,11 @@
 #include "../include/io.h"
 
 Logger::Logger(std::string path) {
-  file_path_ = path;
+  file_path_ = std::move(path);
+  available_ = false;
 }
 
-void Logger::LogData(Log packet) {
+void Logger::LogData(const Log &packet) {
   log_.entry_id = packet.entry_id;
   log_.latitude = packet.latitude;
   log_.longitude = packet.longitude;
@@ -15,10 +16,10 @@ void Logger::LogData(Log packet) {
   log_.destination_distance = packet.destination_distance;
   log_.wind_angle = packet.wind_angle;
   log_.boat_heading = packet.boat_heading;
-  log_.boat_to_line_distance_ = packet.boat_to_line_distance_;
-  log_.favored_tack_ = packet.favored_tack_;
-  log_.angle_of_line_ = packet.angle_of_line_;
-  log_.nominal_angle_ = packet.nominal_angle_;
+  log_.boat_to_line_distance = packet.boat_to_line_distance;
+  log_.favored_tack = packet.favored_tack;
+  log_.angle_of_line = packet.angle_of_line;
+  log_.nominal_angle = packet.nominal_angle;
   log_.route_angle = packet.route_angle;
   log_.rudder_angle = packet.rudder_angle;
   log_.sail_angle = packet.sail_angle;
@@ -38,10 +39,10 @@ void Logger::Publish() {
     json_obj["destination_distance"] = log_.destination_distance;
     json_obj["wind_angle"] = log_.wind_angle;
     json_obj["boat_heading"] = log_.boat_heading;
-    json_obj["boat_to_line_distance"] = log_.boat_to_line_distance_;
-    json_obj["favored_tack"] = log_.favored_tack_;
-    json_obj["angle_of_line"] = log_.angle_of_line_;
-    json_obj["nominal_angle"] = log_.nominal_angle_;
+    json_obj["boat_to_line_distance"] = log_.boat_to_line_distance;
+    json_obj["favored_tack"] = log_.favored_tack;
+    json_obj["angle_of_line"] = log_.angle_of_line;
+    json_obj["nominal_angle"] = log_.nominal_angle;
     json_obj["route_angle"] = log_.route_angle;
     json_obj["rudder_angle"] = log_.rudder_angle;
     json_obj["sail_angle"] = log_.sail_angle;
@@ -53,7 +54,7 @@ void Logger::Publish() {
   }
 }
 
-void Logger::PublishWaypoint(GPSData from, GPSData to, std::string message) {
+void Logger::PublishWaypoint(const GPSData &from, const GPSData &to, const std::string &message) {
   nlohmann::json json_obj;
   json_obj["at_lat"] = from.latitude;
   json_obj["at_long"] = from.longitude;

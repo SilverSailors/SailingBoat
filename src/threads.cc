@@ -35,7 +35,7 @@ void PollCompass(ModuleCMPS12 &compass) {
 void PollWind(ModuleWind &wind) {
   while (true) {
     wind.Run();
-    std::this_thread::sleep_for(std::chrono::milliseconds(5*60000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(5 * 60000));
   }
 }
 

@@ -17,7 +17,7 @@ class Logger {
    * Saves log packet to "log_" member field
    * @param packet Log object
    */
-  void LogData(Log packet);
+  void LogData(const Log &packet);
   /**
    * Publishes "log_" member field data by writing it to file
    */
@@ -28,7 +28,7 @@ class Logger {
    * @param to To coordinates
    * @param message Data to write
    */
-  void PublishWaypoint(GPSData from, GPSData to, std::string message);
+  void PublishWaypoint(const GPSData &from, const GPSData &to, const std::string &message);
  private:
   /**
    * Log info object

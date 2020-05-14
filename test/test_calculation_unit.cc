@@ -2,7 +2,7 @@
 #include "../include/calculation_unit.h"
 #include <iostream>
 
-TEST_CASE("Test CalculationUnit") {
+TEST_CASE ("Test CalculationUnit") {
   CalculationUnit calculation_unit;
 
   GPSData waypoint1 = {60.103093, 19.861749};

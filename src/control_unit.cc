@@ -5,13 +5,13 @@ ControlUnit::ControlUnit(std::string destination) {
   active_ = false;
 
   IO io;
-  std::vector<std::string> data = io.ReadFile(destination);
+  std::vector<std::string> data = io.ReadFile(std::move(destination));
 
   // Loops through all rows from file, one row per coordinate
-  for (size_t i = 0; i < data.size(); i+=2) {
+  for (size_t i = 0; i < data.size(); i += 2) {
     GPSData gps_data;
-    gps_data.latitude = std::atof(data[i].c_str());
-    gps_data.longitude = std::atof(data[i+1].c_str());
+    gps_data.latitude = std::strtod(data[i].c_str(), nullptr);
+    gps_data.longitude = std::strtod(data[i + 1].c_str(), nullptr);
     destination_.push(gps_data);
   }
   active_ = true;
