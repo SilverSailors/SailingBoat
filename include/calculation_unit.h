@@ -84,7 +84,7 @@ class CalculationUnit {
    * @param sign Sign in form of number
    * @return -1 or +1
    */
-  static double Sign(double sign);
+  static int Sign(double sign);
   /**
    * Calculates the distance between the two positions
    * @param position_1 First position
@@ -103,7 +103,7 @@ class CalculationUnit {
    * @param degrees Degrees value
    * @return Normalized value
    */
-  static double NormalizeDegrees(double degrees);
+  static int NormalizeDegrees(int degrees);
   /**
    * Converts given from-, to- and position-coordinates to double
    * @param from_low From low

@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iomanip>
 
-std::vector<std::string> IO::ReadFile(std::string filepath) {
+std::vector<std::string> IO::ReadFile(const std::string &filepath) {
   std::vector<std::string> file_data;
 
   std::ifstream instream(filepath);
@@ -21,10 +21,11 @@ std::vector<std::string> IO::ReadFile(std::string filepath) {
   return file_data;
 }
 
-void IO::WriteFile(nlohmann::json data, std::string path) {
+void IO::WriteFile(nlohmann::json data, const std::string &path) {
   std::ofstream log_info(path, std::ios::app);
   if (log_info.is_open()) {
     log_info << std::setw(4) << data << std::endl;
+    log_info << std::setw(4) << data << "," << std::endl;
     log_info.close();
   }
 }

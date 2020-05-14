@@ -18,7 +18,7 @@ class Maestro {
    * @param command Command to use
    * @param value Value for writing
    */
-  void Command(unsigned char channel, unsigned char command, int value);
+  void Command(unsigned char channel, unsigned char command, unsigned int value);
  private:
   /**
    * If Maestro is initialized

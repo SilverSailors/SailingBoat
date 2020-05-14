@@ -22,10 +22,10 @@ bool Maestro::GetInitialized() {
   return initialized_;
 }
 
-void Maestro::Command(unsigned char channel, unsigned char command, int value) {
+void Maestro::Command(unsigned char channel, unsigned char command, unsigned int value) {
   uint8_t mask = 0x7F;
   uint8_t value1 = value & mask;
-  uint8_t value2 = (value >> 7) & mask;
+  uint8_t value2 = (value >> 7u) & mask;
 
   // Initializes data array
   unsigned char data[] = {command, channel, value1, value2};

@@ -2,6 +2,7 @@
 #define SAILINGBOAT_INCLUDE_MODULE_GPS_H_
 #include "gps.h"
 #include "DataContainers/gps_data.h"
+#include <deque>
 
 class ModuleGPS {
  public:
@@ -36,6 +37,10 @@ class ModuleGPS {
    * Hardware component for the module
    */
   GPS gps_hardware_connection_;
+  /**
+   * The latest GPS data readings
+   */
+  std::deque<GPSData> data_readings_;
   /**
    * The latest GPS data reading
    */
