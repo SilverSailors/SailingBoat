@@ -19,17 +19,19 @@ glm::dvec2 CalculationUnit::Controller(const GPSData &set_waypoint_1,
   glm::dvec3
       waypoint_1 =
       GPSToCartesian({DegreesToRadians(set_waypoint_1.latitude), DegreesToRadians(set_waypoint_1.longitude)});
+  waypoint_1 =  waypoint_1 / glm::length(waypoint_1);
   glm::dvec3
       waypoint_2 =
       GPSToCartesian({DegreesToRadians(set_waypoint_2.latitude), DegreesToRadians(set_waypoint_2.longitude)});
+  waypoint_2 =  waypoint_2 / glm::length(waypoint_2);
   GPSData boat_pos = {DegreesToRadians(set_boat_pos.latitude), DegreesToRadians(set_boat_pos.longitude)};
-  double wind_angle = DegreesToRadians(NormalizeDegrees(set_wind_angle + 180 - 90));
-  double boat_heading = DegreesToRadians(NormalizeDegrees(set_boat_heading - 90));
+  double wind_angle = DegreesToRadians(NormalizeDegrees(set_wind_angle+180));
+  double boat_heading = DegreesToRadians(NormalizeDegrees(set_boat_heading));
 
   // Calculate distance from boat to line
-  glm::dvec3 norm = glm::cross(waypoint_1 / glm::length(waypoint_1),
-                               waypoint_2 / glm::length(waypoint_2));
+  glm::dvec3 norm = glm::cross(waypoint_1, waypoint_2);
   double boat_to_line_distance = glm::dot(GPSToCartesian(boat_pos), norm);
+  std::cout << "boat_to_line_distance: " << boat_to_line_distance << std::endl;
 
   // Calculate tack variable
   if (favored_tack_ == 0) {
@@ -37,6 +39,7 @@ glm::dvec2 CalculationUnit::Controller(const GPSData &set_waypoint_1,
   } else if (fabsl(boat_to_line_distance) > BOAT_TO_LINE_MAX_DISTANCE / 2) {
     favored_tack_ = Sign(boat_to_line_distance);
   }
+  std::cout << "favored_tack_: " << favored_tack_ << std::endl;
 
   // Calculate angle of line
   glm::mat3x2 matrix;
@@ -49,10 +52,12 @@ glm::dvec2 CalculationUnit::Controller(const GPSData &set_waypoint_1,
 
   glm::dvec2 waypoint = matrix * (waypoint_2 - waypoint_1);
   double angle_of_line = atan2(waypoint.x, waypoint.y);
+  std::cout << "angle_of_line: " << angle_of_line << std::endl;
 
   // Calculate nominal angle
   double nominal_angle = angle_of_line
       - ((2 * INCIDENCE_ANGLE) / M_PI) * atan(boat_to_line_distance / BOAT_TO_LINE_MAX_DISTANCE);
+  std::cout << "nominal_angle: " << nominal_angle << std::endl;
 
   // Calculate route angle
   double route_angle;
@@ -61,10 +66,12 @@ glm::dvec2 CalculationUnit::Controller(const GPSData &set_waypoint_1,
       || (fabsl(boat_to_line_distance) < BOAT_TO_LINE_MAX_DISTANCE
           && (cos(wind_angle - angle_of_line) + cos(CLOSED_HAULED_ANGLE)) < 0)) {
     route_angle = M_PI + wind_angle - favored_tack_ * CLOSED_HAULED_ANGLE;
+    std::cout << "DIRECTION IS TOO CLOSE TO THE WIND" << std::endl;
   } else {
     // If not, use the previously calculated direction
     route_angle = nominal_angle;
   }
+  std::cout << "route_angle: " << route_angle << std::endl;
 
   // Calculate rudder and sail angles
   glm::dvec2 servo_angles;
@@ -74,7 +81,8 @@ glm::dvec2 CalculationUnit::Controller(const GPSData &set_waypoint_1,
     servo_angles.x = rudder_max_angle_ * Sign(sin(boat_heading - route_angle));
   }
   servo_angles.y = sail_max_angle_ * ((cos(wind_angle - route_angle) + 1) / 2);
-
+  std::cout << "rudder angle: " << servo_angles.x << std::endl;
+  std::cout << "sail angle: " << servo_angles.y << std::endl;
   return servo_angles;
 }
 
