@@ -6,11 +6,11 @@ class ModuleServo {
  public:
   /**
    * The constructor, initializes member fields
-   * @param lower_limit Servo lower limit
-   * @param upper_limit Servo upper limit
+   * @param lower_threshold Servo lower threshold
+   * @param upper_threshold Servo upper threshold
    * @param channel Channel to use
    */
-  ModuleServo(double lower_limit, double upper_limit, int channel);
+  ModuleServo(int lower_threshold, int upper_limit, int channel);
   /**
    * Returns "initialized_"
    * @return boolean on successful initialization
@@ -22,9 +22,9 @@ class ModuleServo {
   void Run();
   /**
    * Sets "target_" member field value based on limit and boundaries
-   * @param limit Limit value
+   * @param target_ target value
    */
-  void SetTarget(double limit);
+  void SetTarget(double target);
  private:
   /**
    * If ModuleServo is initialized
@@ -45,11 +45,11 @@ class ModuleServo {
   /**
    * Upper boundary for servo
    */
-  double upper_boundary_;
+  double upper_threshold_;
   /**
    * Lower boundary for servo
    */
-  double lower_boundary_;
+  double lower_threshold_;
 };
 
 #endif // SAILINGBOAT_INCLUDE_MODULE_SERVO_H_
