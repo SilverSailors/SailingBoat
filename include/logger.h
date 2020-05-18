@@ -31,7 +31,7 @@ class Logger {
   void PublishWaypoint(const GPSData &from, const GPSData &to, const std::string &message);
  private:
   /**
-   * Log info object
+   * Log object
    */
   Log log_;
   /**

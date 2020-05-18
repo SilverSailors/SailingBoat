@@ -18,7 +18,6 @@ class CalculationUnit {
    * @param set_boat_pos Boat position
    * @param set_wind_angle Wind direction
    * @param set_boat_heading Boat sail direction
-   * @return New rudder and sail angles
    */
   void Controller(const GPSData &set_waypoint_1,
                   const GPSData &set_waypoint_2,
@@ -42,10 +41,10 @@ class CalculationUnit {
    * @param degrees Degrees value
    * @return Normalized value
    */
-  static int NormalizeDegrees(int degrees);
+  static int NormalizeDegrees(int sign);
   /**
    * Returns value depending on sign value
-   * @param sign Sign in form of number
+   * @param sign Sign as a number
    * @return -1 or +1
    */
   static int Sign(double sign);
@@ -56,25 +55,25 @@ class CalculationUnit {
    * @param to_low To low
    * @param to_high To high
    * @param position Position
-   * @return Result from conversion
+   * @return Conversion result
    */
   static double ConvertCoordinates(double from_low, double from_high,
                                    double to_low, double to_high, double position);
   /**
    * Calculates the distance between the two positions
-   * @param position_1 First position
-   * @param position_2 Second position
-   * @return Distance between the positions
+   * @param waypoint_1 First waypoint
+   * @param waypoint_2 Second waypoint
+   * @return Distance between the waypoints
    */
-  static double CalculateDistance(const GPSData &position_1, const GPSData &position_2);
+  static double CalculateDistance(const GPSData &waypoint_1, const GPSData &waypoint_2);
   /**
    * Returns "rudder_angle_" member field value
-   * @return "rudder_angle_" object
+   * @return "rudder_angle_" value
    */
   double GetRudderAngle();
   /**
    * Returns "sail_angle_" member field value
-   * @return "sail_angle_" object
+   * @return "sail_angle_" value
    */
   double GetSailAngle();
  private:

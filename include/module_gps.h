@@ -12,7 +12,7 @@ class ModuleGPS {
   ModuleGPS();
   /**
    * Returns "initialized_" member field value
-   * @return "initialized_" object
+   * @return "initialized_" value
    */
   bool GetInitialized();
   /**
@@ -21,7 +21,7 @@ class ModuleGPS {
   void Run();
   /**
    * Returns "data_reading_" member field value
-   * @return "data_reading_" object
+   * @return "data_reading_" value
    */
   GPSData GetReading();
   /**
@@ -30,7 +30,7 @@ class ModuleGPS {
   void Report();
  private:
   /**
-   * If ModuleCompass is initialized
+   * If ModuleGPS is initialized
    */
   bool initialized_;
   /**
