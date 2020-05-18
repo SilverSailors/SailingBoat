@@ -36,26 +36,6 @@ struct Log {
    */
   int boat_heading;
   /**
-   * Distance between boat and line in meters
-   */
-  double boat_to_line_distance;
-  /**
-   * Favored tack
-   */
-  double favored_tack;
-  /**
-   * Angle between line and east
-   */
-  double angle_of_line;
-  /**
-   * Nominal angle
-   */
-  double nominal_angle;
-  /**
-   * Preferred sailing direction
-   */
-  double route_angle;
-  /**
    * Angle of rudder
    */
   double rudder_angle;

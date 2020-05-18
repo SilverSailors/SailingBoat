@@ -1,97 +1,30 @@
 #ifndef SAILINGBOAT_INCLUDE_CALCULATION_UNIT_H_
 #define SAILINGBOAT_INCLUDE_CALCULATION_UNIT_H_
 #include "DataContainers/gps_data.h"
+#include <glm/glm.hpp>
 
 class CalculationUnit {
  public:
   /**
-   * Calculates new settings for rudder and sail
+   * Constructor, initializes threshold values
+   * @param rudder_upper_threshold Rudder upper threshold
+   * @param sail_upper_threshold Sail upper threshold
    */
-  void Calculate();
+  CalculationUnit(int rudder_upper_threshold, int sail_upper_threshold);
   /**
-   * @param waypoint_1 First waypoint
-   * @param waypoint_2 Second waypoint
-   * @param boat_pos Boat position
-   * @param wind_angle Wind direction
-   * @param boat_heading Boat sail direction
+   * Sailing controller
+   * @param set_waypoint_1 First waypoint
+   * @param set_waypoint_2 Second waypoint
+   * @param set_boat_pos Boat position
+   * @param set_wind_angle Wind direction
+   * @param set_boat_heading Boat sail direction
+   * @return New rudder and sail angles
    */
-  void SetBoatValues(GPSData waypoint_1, GPSData waypoint_2, GPSData boat_pos, int wind_angle, int boat_heading);
-  /**
-   * Calculates distance from boat to line of the two waypoints
-   */
-  void CalculateDistanceFromBoatToLine();
-  /**
-   * Sets favored_tack_
-   */
-  void CheckTackVariable();
-  /**
-   * Calculates angle between line and east
-   */
-  void CalculateAngleOfLine();
-  /**
-   * Nominal angle that the boat has to follow
-   */
-  void CalculateNominalAngle();
-  /**
-   * Calculates direction to sail
-   */
-  void CalculateBoatDirection();
-  /**
-   * Calculates new rudder setting
-   */
-  void CalculateRudderAngle();
-  /**
-   * Calculates new sail setting
-   */
-  void CalculateSailAngle();
-  /**
-   * Returns boat_to_line_distance member field
-   * @return boat_to_line_distance value
-   */
-  double GetBoatToLineDistance();
-  /**
-   * Returns favored_tack_ member field
-   * @return favored_tack_ value
-   */
-  double GetFavoredTack();
-  /**
-   * Returns angle_of_line_ member field
-   * @return angle_of_line_ value
-   */
-  double GetAngleOfLine();
-  /**
-   * Returns nominal_angle_ member field
-   * @return nominal_angle_ value
-   */
-  double GetNominalAngle();
-  /**
-   * Returns route_angle_ member field
-   * @return route_angle_ value
-   */
-  double GetRouteAngle();
-  /**
-   * Returns rudder_angle_ member field
-   * @return rudder_angle_ value
-   */
-  double GetRudderAngle();
-  /**
-   * Returns sail_angle_ member field
-   * @return sail_angle_ value
-   */
-  double GetSailAngle();
-  /**
-   * Returns value depending on sign value
-   * @param sign Sign in form of number
-   * @return -1 or +1
-   */
-  static int Sign(double sign);
-  /**
-   * Calculates the distance between the two positions
-   * @param position_1 First position
-   * @param position_2 Second position
-   * @return Distance between the positions
-   */
-  static double CalculateDistance(const GPSData &position_1, const GPSData &position_2);
+  void Controller(const GPSData &set_waypoint_1,
+                  const GPSData &set_waypoint_2,
+                  const GPSData &set_boat_pos,
+                  int set_wind_angle,
+                  int set_boat_heading);
   /**
    * Converts given degrees to radians format
    * @param degrees Degrees value
@@ -99,11 +32,23 @@ class CalculationUnit {
    */
   static double DegreesToRadians(double degrees);
   /**
+   * Converts GPS coordinates to cartesian format
+   * @param waypoint GPS position
+   * @return Cartesian value
+   */
+  static glm::dvec3 GPSToCartesian(const GPSData &waypoint);
+  /**
    * Normalizes degrees to between 0 and 360
    * @param degrees Degrees value
    * @return Normalized value
    */
   static int NormalizeDegrees(int degrees);
+  /**
+   * Returns value depending on sign value
+   * @param sign Sign in form of number
+   * @return -1 or +1
+   */
+  static int Sign(double sign);
   /**
    * Converts given from-, to- and position-coordinates to double
    * @param from_low From low
@@ -116,62 +61,43 @@ class CalculationUnit {
   static double ConvertCoordinates(double from_low, double from_high,
                                    double to_low, double to_high, double position);
   /**
-   * Reports the latest reading
+   * Calculates the distance between the two positions
+   * @param position_1 First position
+   * @param position_2 Second position
+   * @return Distance between the positions
    */
-  void Report();
+  static double CalculateDistance(const GPSData &position_1, const GPSData &position_2);
+  /**
+   * Returns "rudder_angle_" member field value
+   * @return "rudder_angle_" object
+   */
+  double GetRudderAngle();
+  /**
+   * Returns "sail_angle_" member field value
+   * @return "sail_angle_" object
+   */
+  double GetSailAngle();
  private:
-  /**
-   * First waypoint
-   */
-  GPSData waypoint_1_;
-  /**
-   * Second waypoint
-   */
-  GPSData waypoint_2_;
-  /**
-   * Current boat position
-   */
-  GPSData boat_pos_;
-  /**
-   * Wind direction
-   */
-  double wind_angle_;
-  /**
-   * Boat sailing direction
-   */
-  double boat_heading_;
-  /**
-   * Distance between boat and line in meters
-   */
-  double boat_to_line_distance_;
   /**
    * Favored tack
    */
   double favored_tack_ = 0;
   /**
-   * Angle between line and east
-   */
-  double angle_of_line_;
-  /**
-   * Nominal angle
-   */
-  double nominal_angle_;
-  /**
-   * Preferred sailing direction
-   */
-  double route_angle_;
-  /**
-   * Angle of rudder
+   * Rudder angle
    */
   double rudder_angle_;
   /**
-   * Angle of sail
+   * Sail angle
    */
   double sail_angle_;
   /**
-   * New data available for reading
+   * Rudder max angle
    */
-  bool new_data_available_;
+  int rudder_max_angle_;
+  /**
+   * Sail max angle
+   */
+  int sail_max_angle_;
 };
 
 #endif // SAILINGBOAT_INCLUDE_CALCULATION_UNIT_H_

@@ -13,10 +13,10 @@
 constexpr int RUDDER_CHANNEL = 1;
 constexpr int SAIL_CHANNEL = 0;
 constexpr int RUDDER_LOWER_THRESHOLD = -1;
-constexpr int RUDDER_UPPER_THRESHOLD = 1;
+extern constexpr int RUDDER_UPPER_THRESHOLD = 1;
 constexpr int SAIL_LOWER_THRESHOLD = 0;
-constexpr int SAIL_UPPER_THRESHOLD = 1;
-constexpr double CALCULATED_THRESHOLD = 5;
+extern constexpr int SAIL_UPPER_THRESHOLD = 1;
+constexpr int CALCULATED_THRESHOLD = 5;
 
 int main(int argc, char *argv[]) {
   // If testing should be done
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
   ModuleGPS module_gps;
   ModuleCMPS12 module_compass;
   ModuleWind module_wind;
-  CalculationUnit calculation_unit;
+  CalculationUnit calculation_unit(RUDDER_UPPER_THRESHOLD, SAIL_UPPER_THRESHOLD);
 
   // Checks if all modules are OK
   bool fail = false;
@@ -109,11 +109,9 @@ int main(int argc, char *argv[]) {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     // Updates values for sail calculation
-    calculation_unit.SetBoatValues(waypoint_1, waypoint_2, boat_pos, wind_angle, boat_heading);
-    // Calculates new servo targets
-    calculation_unit.Calculate();
+    calculation_unit.Controller(waypoint_1, waypoint_2, boat_pos, wind_angle, boat_heading);
 
-    // Updates rudder and sail settings
+    // Updates rudder and sail angles
     servo_rudder.SetTarget(calculation_unit.GetRudderAngle());
     servo_sail.SetTarget(calculation_unit.GetSailAngle());
 
@@ -141,11 +139,6 @@ int main(int argc, char *argv[]) {
     new_log.destination_distance = destination_distance;
     new_log.wind_angle = wind_angle;
     new_log.boat_heading = boat_heading;
-    new_log.boat_to_line_distance = calculation_unit.GetBoatToLineDistance();
-    new_log.favored_tack = calculation_unit.GetFavoredTack();
-    new_log.angle_of_line = calculation_unit.GetAngleOfLine();
-    new_log.nominal_angle = calculation_unit.GetNominalAngle();
-    new_log.route_angle = calculation_unit.GetRouteAngle();
     new_log.rudder_angle = calculation_unit.GetRudderAngle();
     new_log.sail_angle = calculation_unit.GetSailAngle();
     new_log.timestamp = boat_pos.timestamp;
@@ -157,7 +150,6 @@ int main(int argc, char *argv[]) {
     module_gps.Report();
     module_wind.Report();
     module_compass.Report();
-    calculation_unit.Report();
     std::cout << "Distance to destination : " << destination_distance << std::endl;
 
     // Get new readings
