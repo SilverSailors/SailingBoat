@@ -109,11 +109,11 @@ int main(int argc, char *argv[]) {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
     // Updates values for sail calculation
-    glm::dvec2 servo_angles = calculation_unit.Controller(waypoint_1, waypoint_2, boat_pos, wind_angle, boat_heading);
+    calculation_unit.Controller(waypoint_1, waypoint_2, boat_pos, wind_angle, boat_heading);
 
     // Updates rudder and sail angles
-    servo_rudder.SetTarget(servo_angles.x);
-    servo_sail.SetTarget(servo_angles.y);
+    servo_rudder.SetTarget(calculation_unit.GetRudderAngle());
+    servo_sail.SetTarget(calculation_unit.GetSailAngle());
 
     double destination_distance = CalculationUnit::CalculateDistance(boat_pos, waypoint_2);
     // If close enough to destination
@@ -139,8 +139,8 @@ int main(int argc, char *argv[]) {
     new_log.destination_distance = destination_distance;
     new_log.wind_angle = wind_angle;
     new_log.boat_heading = boat_heading;
-    new_log.rudder_angle = servo_angles.x;
-    new_log.sail_angle = servo_angles.y;
+    new_log.rudder_angle = calculation_unit.GetRudderAngle();
+    new_log.sail_angle = calculation_unit.GetSailAngle();
     new_log.timestamp = boat_pos.timestamp;
     data_logger.LogData(new_log);
     entry++;

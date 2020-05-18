@@ -20,11 +20,11 @@ class CalculationUnit {
    * @param set_boat_heading Boat sail direction
    * @return New rudder and sail angles
    */
-  glm::dvec2 Controller(const GPSData &set_waypoint_1,
-                        const GPSData &set_waypoint_2,
-                        const GPSData &set_boat_pos,
-                        int set_wind_angle,
-                        int set_boat_heading);
+  void Controller(const GPSData &set_waypoint_1,
+                  const GPSData &set_waypoint_2,
+                  const GPSData &set_boat_pos,
+                  int set_wind_angle,
+                  int set_boat_heading);
   /**
    * Converts given degrees to radians format
    * @param degrees Degrees value
@@ -67,11 +67,29 @@ class CalculationUnit {
    * @return Distance between the positions
    */
   static double CalculateDistance(const GPSData &position_1, const GPSData &position_2);
+  /**
+   * Returns "rudder_angle_" member field value
+   * @return "rudder_angle_" object
+   */
+  double GetRudderAngle();
+  /**
+   * Returns "sail_angle_" member field value
+   * @return "sail_angle_" object
+   */
+  double GetSailAngle();
  private:
   /**
    * Favored tack
    */
   double favored_tack_ = 0;
+  /**
+   * Rudder angle
+   */
+  double rudder_angle_;
+  /**
+   * Sail angle
+   */
+  double sail_angle_;
   /**
    * Rudder max angle
    */
