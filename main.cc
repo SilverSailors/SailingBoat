@@ -108,7 +108,7 @@ int main(int argc, char *argv[]) {
   while (control_unit.IsActive()) {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-    // Updates values for sail calculation
+    // Runs sailing controller
     calculation_unit.Controller(waypoint_1, waypoint_2, boat_pos, wind_angle, boat_heading);
 
     // Updates rudder and sail angles

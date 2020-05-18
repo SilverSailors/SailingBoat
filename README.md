@@ -24,15 +24,6 @@ Hardware scheme [this link](doc/hardware/scheme_hardware.JPG)
 
 ![alt text](doc/software/Component_diagram.png "")
 
-## Code Procedure
-
-1. Determine destination (Latitude, Longitude)
-2. Check wind to determine best angle of approach (AOA)
-3. Select angle and set a waypoint (in meters)
-4. Each update cycle, compare our current bearing vector and adjust the
-   waypoint, adjust bearing as neccesary.
-5. repeat step 2-4.
-
 # Getting Started
 This guide will configure your Raspbian installation, install the much
 needed scripts and finally building the project and starting it up.
@@ -58,7 +49,7 @@ Go into the directory and write:
 ```
 ./build
 ```
-and that will build the library and you will finally be able to use
+and that will build the library and you will be able to use
 WiringPi as a library when compiling.
 
 ## Step 2: enable RPi Interfacing Options
@@ -76,8 +67,8 @@ All of these can be enabled through *raspi-config* under **Interfacing Options**
 
 ## Step 3: Install services & Misc
 
-Inside the **scripts/** directory, you will find *install-services.sh*
-run this file as sudo.
+Inside the **scripts/** directory, you will find *install-services.sh*,
+run this file once, as sudo.
 
 In order to have everything set-up for the application, you will also
 need to run *install-config-and-logs.sh* for certain log and settings
