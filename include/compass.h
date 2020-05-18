@@ -26,11 +26,11 @@ class Compass {
     */
   static unsigned int Bitshift(unsigned int high, unsigned int low);
   /**
-   * Boolean value on Compass component initialized or not
+   * If component is initialized
    */
   bool initialized_;
   /**
-   * Connection to hardware
+   * Connection to compass hardware
    */
   int file_descriptor_;
 };

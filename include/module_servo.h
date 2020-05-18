@@ -12,8 +12,8 @@ class ModuleServo {
    */
   ModuleServo(int lower_threshold, int upper_limit, int channel);
   /**
-   * Returns "initialized_"
-   * @return boolean on successful initialization
+   * Returns "initialized_" member field value
+   * @return "initialized_" value
    */
   bool GetInitialized();
   /**
@@ -22,7 +22,7 @@ class ModuleServo {
   void Run();
   /**
    * Sets "target_" member field value based on limit and boundaries
-   * @param target_ target value
+   * @param "target_" value
    */
   void SetTarget(double target);
  private:
@@ -43,11 +43,11 @@ class ModuleServo {
    */
   double target_;
   /**
-   * Upper boundary for servo
+   * Upper threshold for servo
    */
   double upper_threshold_;
   /**
-   * Lower boundary for servo
+   * Lower threshold for servo
    */
   double lower_threshold_;
 };

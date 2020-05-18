@@ -19,7 +19,7 @@ class ModuleWind {
   ~ModuleWind();
   /**
    * Returns "initialized_" member field value
-   * @return "initialized_" object
+   * @return "initialized_" value
    */
   bool GetInitialized();
   /**

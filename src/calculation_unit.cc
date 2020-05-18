@@ -119,16 +119,16 @@ double CalculationUnit::ConvertCoordinates(double from_low,
   return percentile * (to_high - to_low) + to_low;
 }
 
-double CalculationUnit::CalculateDistance(const GPSData &position_1, const GPSData &position_2) {
+double CalculationUnit::CalculateDistance(const GPSData &waypoint_1, const GPSData &waypoint_2) {
   // Convert to radians
-  double distance_latitude = DegreesToRadians(position_2.latitude - position_1.latitude);
-  double distance_longitude = DegreesToRadians(position_2.longitude - position_1.longitude);
+  double distance_latitude = DegreesToRadians(waypoint_2.latitude - waypoint_1.latitude);
+  double distance_longitude = DegreesToRadians(waypoint_2.longitude - waypoint_1.longitude);
 
   double factor =
       sin(distance_latitude / 2) *
           sin(distance_latitude / 2) +
-          cos(DegreesToRadians(position_1.latitude)) *
-              cos(DegreesToRadians(position_2.latitude)) *
+          cos(DegreesToRadians(waypoint_1.latitude)) *
+              cos(DegreesToRadians(waypoint_2.latitude)) *
               sin(distance_longitude / 2) *
               sin(distance_longitude / 2);
 

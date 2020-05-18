@@ -29,6 +29,7 @@ int main(int argc, char *argv[]) {
   ModuleServo servo_sail(SAIL_LOWER_THRESHOLD, SAIL_UPPER_THRESHOLD, SAIL_CHANNEL);
   ModuleGPS module_gps;
   ModuleCompass module_compass;
+  // module_wind(wind_deg) when using manual wind setting
   ModuleWind module_wind;
   CalculationUnit calculation_unit(RUDDER_UPPER_THRESHOLD, SAIL_UPPER_THRESHOLD);
 

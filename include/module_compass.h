@@ -9,8 +9,8 @@ class ModuleCompass {
    */
   ModuleCompass();
   /**
-   * Returns "initialized_"
-   * @return boolean on successful initialization
+   * Returns "initialized_" member field value
+   * @return "initialized_ value
    */
   bool GetInitialized();
   /**

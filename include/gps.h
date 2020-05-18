@@ -26,7 +26,7 @@ class GPS {
   GPSData Read();
  private:
   /**
-   * Initialized, boolean value on GPS component initialized or not
+   * If component is initialized
    */
   bool initialized_;
   /**
