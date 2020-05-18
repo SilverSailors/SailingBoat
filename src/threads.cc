@@ -1,6 +1,6 @@
 #include "../include/module_servo.h"
 #include "../include/module_gps.h"
-#include "../include/module_cmps12.h"
+#include "../include/module_compass.h"
 #include "../include/module_wind.h"
 #include "../include/logger.h"
 #include <thread>
@@ -25,7 +25,7 @@ void PollGPS(ModuleGPS &gps) {
   }
 }
 
-void PollCompass(ModuleCMPS12 &compass) {
+void PollCompass(ModuleCompass &compass) {
   while (true) {
     compass.Run();
     std::this_thread::sleep_for(std::chrono::milliseconds(100));

@@ -12,7 +12,6 @@ More info [this link](doc/hardware/components.pdf)
 - Switch - RC Switch
 - Servo Controller - Maestro
 - Servo - Futuba
-- Relay - Omron
 - GPS - GlobalSat
 - Compass - CMPS12
 - Converter - Turnigy 40V 5A
@@ -46,7 +45,7 @@ through the *raspi-config* application provided by Raspbian.
 Just use this command to install most required packages.
 
 ```bash
-sudo apt install i2c-tools gpsd libgps-dev libboost-all-dev curl
+sudo apt install i2c-tools gpsd libgps-dev libboost-all-dev curl libglm-dev
 ```
 The last package needed is WiringPi, you can clone the WiringPi
 repository and build that from source.

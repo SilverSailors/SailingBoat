@@ -3,7 +3,7 @@
 
 class ModuleServo;
 class ModuleGPS;
-class ModuleCMPS12;
+class ModuleCompass;
 class ModuleWind;
 class Logger;
 
@@ -23,10 +23,10 @@ void DriveSail(ModuleServo &sail);
  */
 void PollGPS(ModuleGPS &gps);
 /**
- * Thread for updating the CMPS12 module
- * @param compass ModuleCMPS12 object
+ * Thread for updating the Compass module
+ * @param compass ModuleCompass object
  */
-void PollCompass(ModuleCMPS12 &compass);
+void PollCompass(ModuleCompass &compass);
 /**
  * Thread for updating the wind module
  * @param wind

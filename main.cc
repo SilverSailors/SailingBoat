@@ -1,7 +1,7 @@
 #include "include/threads.h"
 #include "include/module_servo.h"
 #include "include/module_gps.h"
-#include "include/module_cmps12.h"
+#include "include/module_compass.h"
 #include "include/module_wind.h"
 #include "include/calculation_unit.h"
 #include "include/control_unit.h"
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
   ModuleServo servo_rudder(RUDDER_LOWER_THRESHOLD, RUDDER_UPPER_THRESHOLD, RUDDER_CHANNEL);
   ModuleServo servo_sail(SAIL_LOWER_THRESHOLD, SAIL_UPPER_THRESHOLD, SAIL_CHANNEL);
   ModuleGPS module_gps;
-  ModuleCMPS12 module_compass;
+  ModuleCompass module_compass;
   ModuleWind module_wind;
   CalculationUnit calculation_unit(RUDDER_UPPER_THRESHOLD, SAIL_UPPER_THRESHOLD);
 
