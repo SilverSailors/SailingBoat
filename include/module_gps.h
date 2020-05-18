@@ -30,7 +30,7 @@ class ModuleGPS {
   void Report();
  private:
   /**
-   * If ModuleCMPS12 is initialized
+   * If ModuleCompass is initialized
    */
   bool initialized_;
   /**

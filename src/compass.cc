@@ -1,4 +1,4 @@
-#include "../include/cmps12.h"
+#include "../include/compass.h"
 #include <iostream>
 #include <vector>
 #include <wiringPi.h>
@@ -9,7 +9,7 @@ constexpr int COMPASS_BEARING_16_HIGH_BYTE_DEGREES = 0x1A;
 constexpr int COMPASS_BEARING_16_LOW_BYTE_DEGREES = 0x1B;
 constexpr int CALIBRATION_STATE_8 = 0x1E;
 
-CMPS12::CMPS12() {
+Compass::Compass() {
   // Initializes wiringPi
   wiringPiSetup();
   // Open the I2C device, and registers the target device
@@ -17,15 +17,15 @@ CMPS12::CMPS12() {
   initialized_ = file_descriptor_ != -1;
 }
 
-bool CMPS12::GetInitialized() {
+bool Compass::GetInitialized() {
   return initialized_;
 }
 
-unsigned int CMPS12::Bitshift(unsigned int high, unsigned int low) {
+unsigned int Compass::Bitshift(unsigned int high, unsigned int low) {
   return high << 8u | low;
 }
 
-int CMPS12::Read() {
+int Compass::Read() {
   std::vector<int> raw_data;
   // Reserves slots for our raw data
   raw_data.reserve(TOTAL_REGISTRY_ENTRIES);

@@ -10,26 +10,24 @@ TARGET = sailingBoat
 TEST = testSailingBoat
 INSTALLBINDIR = /usr/local/bin
 
-# Lägg till eventuella nya källkodsfiler för ditt program här
+# Källkodsfiler
 SOURCES = main.cc \
 src/DataContainers/gps_data.cc \
 src/calculation_unit.cc \
-src/cmps12.cc \
+src/compass.cc \
 src/control_unit.cc \
 src/gps.cc \
 src/io.cc \
 src/logger.cc \
 src/maestro.cc \
-src/module_cmps12.cc \
+src/module_compass.cc \
 src/module_gps.cc \
 src/module_servo.cc \
 src/module_wind.cc \
 src/threads.cc
 
-# test-main samt de fristående testfilerna
-TESTSOURCES = test/test_main.cc \
-test/test_module_wind.cc \
-test/test_calculation_unit.cc
+# Testfiler
+TESTSOURCES = test/test_main.cc
 
 all : $(TARGET)
 

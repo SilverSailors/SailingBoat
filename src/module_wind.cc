@@ -47,7 +47,9 @@ void ModuleWind::Run() {
 
     nlohmann::json json_obj;
     std::stringstream(data) >> json_obj;
-    data_reading_ = json_obj["wind"]["deg"] != nullptr ? json_obj["wind"]["deg"] : data_reading_;
+    if (json_obj["wind"]["deg"] != nullptr) {
+      data_reading_ = json_obj["wind"]["deg"];
+    }
   }
 }
 

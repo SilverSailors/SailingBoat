@@ -1,13 +1,13 @@
-#ifndef SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_
-#define SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_
-#include "cmps12.h"
+#ifndef SAILINGBOAT_INCLUDE_MODULE_COMPASS_H_
+#define SAILINGBOAT_INCLUDE_MODULE_COMPASS_H_
+#include "compass.h"
 
-class ModuleCMPS12 {
+class ModuleCompass {
  public:
   /**
    * The constructor, initializes member fields
    */
-  ModuleCMPS12();
+  ModuleCompass();
   /**
    * Returns "initialized_"
    * @return boolean on successful initialization
@@ -30,13 +30,13 @@ class ModuleCMPS12 {
   /**
    * Hardware component for the module
    */
-  CMPS12 CMPS12_hardware_connection_;
+  Compass CMPS12_hardware_connection_;
   /**
    * The latest data reading
    */
   int data_reading_;
   /**
-   * If ModuleCMPS12 is initialized
+   * If ModuleCompass is initialized
    */
   bool initialized_;
   /**
@@ -45,4 +45,4 @@ class ModuleCMPS12 {
   bool new_data_available_;
 };
 
-#endif // SAILINGBOAT_INCLUDE_MODULE_CMPS12_H_
+#endif //SAILINGBOAT_INCLUDE_MODULE_COMPASS_H_

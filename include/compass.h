@@ -1,19 +1,19 @@
-#ifndef SAILINGBOAT_INCLUDE_CMPS12_H_
-#define SAILINGBOAT_INCLUDE_CMPS12_H_
+#ifndef SAILINGBOAT_INCLUDE_COMPASS_H_
+#define SAILINGBOAT_INCLUDE_COMPASS_H_
 
-class CMPS12 {
+class Compass {
  public:
   /**
    * The constructor, initializes member fields
    */
-  CMPS12();
+  Compass();
   /**
    * Returns "initialized_" member field value
    * @return "initialized_" object
    */
   bool GetInitialized();
   /**
-   * Reads data from CMPS12 component
+   * Reads data from Compass component
    * @return Retrieved compass data
    */
   int Read();
@@ -26,7 +26,7 @@ class CMPS12 {
     */
   static unsigned int Bitshift(unsigned int high, unsigned int low);
   /**
-   * Boolean value on CMPS12 component initialized or not
+   * Boolean value on Compass component initialized or not
    */
   bool initialized_;
   /**
@@ -35,4 +35,4 @@ class CMPS12 {
   int file_descriptor_;
 };
 
-#endif // SAILINGBOAT_INCLUDE_CMPS12_H_
+#endif //SAILINGBOAT_INCLUDE_COMPASS_H_
