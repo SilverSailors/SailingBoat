@@ -64,7 +64,6 @@ void CalculationUnit::Controller(const GPSData &set_waypoint_1,
       || (fabsl(boat_to_line_distance) < BOAT_TO_LINE_MAX_DISTANCE
           && (cos(wind_angle - angle_of_line) + cos(CLOSED_HAULED_ANGLE)) < 0)) {
     route_angle = M_PI + wind_angle - favored_tack_ * CLOSED_HAULED_ANGLE;
-    std::cout << "DIRECTION IS TOO CLOSE TO THE WIND" << std::endl;
   } else {
     // If not, use the previously calculated direction
     route_angle = nominal_angle;
@@ -91,7 +90,7 @@ double CalculationUnit::GetSailAngle() {
 }
 
 double CalculationUnit::DegreesToRadians(double degrees) {
-  return degrees * (M_PI / 180);
+  return degrees * M_PI / 180;
 }
 
 glm::dvec3 CalculationUnit::GPSToCartesian(const GPSData &waypoint) {

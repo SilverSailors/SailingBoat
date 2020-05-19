@@ -28,7 +28,7 @@ bool ModuleServo::GetInitialized() {
 void ModuleServo::Run() {
   if (initialized_) {
     // Converts to value usable by hardware
-    int servo_position = (int)round(CalculationUnit::ConvertCoordinates(
+    int servo_position = (int) round(CalculationUnit::ConvertCoordinates(
         upper_threshold_,
         lower_threshold_,
         MAESTRO_SERVO_UPPER_THRESHOLD,

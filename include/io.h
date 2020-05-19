@@ -11,13 +11,13 @@ class IO {
    * @param filepath Path to file
    * @return File's content
    */
-  std::vector<std::string> ReadFile(const std::string &filepath);
+  static std::vector<std::string> ReadFile(const std::string &filepath);
   /**
    * Writes the data given to json file
    * @param data Data to write
    * @param path Path to file
    */
-  void WriteFile(nlohmann::json data, const std::string &path);
+  static void WriteFile(const nlohmann::json &data, const std::string &path);
 };
 
 #endif // SAILINGBOAT_INCLUDE_IO_H_

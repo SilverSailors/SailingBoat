@@ -26,7 +26,9 @@ void ModuleGPS::Run() {
     for (const GPSData &data_reading : data_readings_) {
       tmp_gps_data = tmp_gps_data + data_reading;
     }
-    data_reading_ = gps_data / data_readings_.size();
+    if (data_readings_.size() > 0) {
+      data_reading_ = tmp_gps_data / data_readings_.size();
+    }
   }
 }
 

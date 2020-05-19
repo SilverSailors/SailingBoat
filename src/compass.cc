@@ -41,6 +41,6 @@ int Compass::Read() {
   }
 
   // Bitshifts raw compass bearing
-  return (int)Bitshift(raw_data[COMPASS_BEARING_16_HIGH_BYTE_DEGREES],
-                  raw_data[COMPASS_BEARING_16_LOW_BYTE_DEGREES]) / 16;
+  return (int) Bitshift(raw_data[COMPASS_BEARING_16_HIGH_BYTE_DEGREES],
+                        raw_data[COMPASS_BEARING_16_LOW_BYTE_DEGREES]) / 16;
 }

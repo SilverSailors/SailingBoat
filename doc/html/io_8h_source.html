@@ -80,20 +80,20 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classIO.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIO.html">IO</a> {</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  std::vector&lt;std::string&gt; <a class="code" href="classIO.html#a17dd829a15d6e9a357fffab685d4296a">ReadFile</a>(<span class="keyword">const</span> std::string &amp;filepath);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIO.html#a52fd209b374224d168a09e890ed8b6e6">WriteFile</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> data, <span class="keyword">const</span> std::string &amp;path);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keyword">static</span> std::vector&lt;std::string&gt; <a class="code" href="classIO.html#a17dd829a15d6e9a357fffab685d4296a">ReadFile</a>(<span class="keyword">const</span> std::string &amp;filepath);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classIO.html#a19685ba7d3d24d44a81c25da44b4377a">WriteFile</a>(<span class="keyword">const</span> <a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;data, <span class="keyword">const</span> std::string &amp;path);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif // SAILINGBOAT_INCLUDE_IO_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassIO_html_a52fd209b374224d168a09e890ed8b6e6"><div class="ttname"><a href="classIO.html#a52fd209b374224d168a09e890ed8b6e6">IO::WriteFile</a></div><div class="ttdeci">void WriteFile(nlohmann::json data, const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> io.cc:24</div></div>
+<div class="ttc" id="aclassIO_html_a19685ba7d3d24d44a81c25da44b4377a"><div class="ttname"><a href="classIO.html#a19685ba7d3d24d44a81c25da44b4377a">IO::WriteFile</a></div><div class="ttdeci">static void WriteFile(const nlohmann::json &amp;data, const std::string &amp;path)</div><div class="ttdef"><b>Definition:</b> io.cc:24</div></div>
 <div class="ttc" id="aclassIO_html"><div class="ttname"><a href="classIO.html">IO</a></div><div class="ttdef"><b>Definition:</b> io.h:7</div></div>
 <div class="ttc" id="ajson_8hpp_html"><div class="ttname"><a href="json_8hpp.html">json.hpp</a></div></div>
 <div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
-<div class="ttc" id="aclassIO_html_a17dd829a15d6e9a357fffab685d4296a"><div class="ttname"><a href="classIO.html#a17dd829a15d6e9a357fffab685d4296a">IO::ReadFile</a></div><div class="ttdeci">std::vector&lt; std::string &gt; ReadFile(const std::string &amp;filepath)</div><div class="ttdef"><b>Definition:</b> io.cc:8</div></div>
+<div class="ttc" id="aclassIO_html_a17dd829a15d6e9a357fffab685d4296a"><div class="ttname"><a href="classIO.html#a17dd829a15d6e9a357fffab685d4296a">IO::ReadFile</a></div><div class="ttdeci">static std::vector&lt; std::string &gt; ReadFile(const std::string &amp;filepath)</div><div class="ttdef"><b>Definition:</b> io.cc:8</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2020 16:27:22 for SailingBoat by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2020 16:38:25 for SailingBoat by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>
