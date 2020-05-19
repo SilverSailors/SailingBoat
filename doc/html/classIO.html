@@ -65,7 +65,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classIO-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">IO Class Reference</div>  </div>
@@ -74,12 +74,12 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="io_8h_source.html">io.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a17dd829a15d6e9a357fffab685d4296a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIO.html#a17dd829a15d6e9a357fffab685d4296a">ReadFile</a> (const std::string &amp;filepath)</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a17dd829a15d6e9a357fffab685d4296a"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIO.html#a17dd829a15d6e9a357fffab685d4296a">ReadFile</a> (const std::string &amp;filepath)</td></tr>
 <tr class="separator:a17dd829a15d6e9a357fffab685d4296a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52fd209b374224d168a09e890ed8b6e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIO.html#a52fd209b374224d168a09e890ed8b6e6">WriteFile</a> (<a class="el" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a> data, const std::string &amp;path)</td></tr>
-<tr class="separator:a52fd209b374224d168a09e890ed8b6e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19685ba7d3d24d44a81c25da44b4377a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIO.html#a19685ba7d3d24d44a81c25da44b4377a">WriteFile</a> (const <a class="el" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a> &amp;data, const std::string &amp;path)</td></tr>
+<tr class="separator:a19685ba7d3d24d44a81c25da44b4377a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a17dd829a15d6e9a357fffab685d4296a"></a>
@@ -87,6 +87,9 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; std::string &gt; IO::ReadFile </td>
@@ -96,6 +99,11 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Opens up and reads file specified </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -107,16 +115,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a52fd209b374224d168a09e890ed8b6e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52fd209b374224d168a09e890ed8b6e6">&#9670;&nbsp;</a></span>WriteFile()</h2>
+<a id="a19685ba7d3d24d44a81c25da44b4377a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19685ba7d3d24d44a81c25da44b4377a">&#9670;&nbsp;</a></span>WriteFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void IO::WriteFile </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a> &amp;&#160;</td>
           <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
@@ -131,6 +142,11 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Writes the data given to json file </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -149,7 +165,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2020 16:27:22 for SailingBoat by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2020 16:38:25 for SailingBoat by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

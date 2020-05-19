@@ -8,16 +8,16 @@ class ControlUnit {
  public:
   /**
    * The constructor, initializes member fields and saves destinations read from file
-   * @param destination Destinations
+   * @param destinations Destinations
    */
-  ControlUnit(std::string destination);
+  ControlUnit(const std::string &destinations);
   /**
    * Returns "active_" member field value
    * @return "active_" boolean value
    */
   bool IsActive();
   /**
-   * Returns first GPSData in "destination_" member field
+   * Returns first GPSData in "destinations_" member field
    * @return GPSData object
    */
   GPSData GetDestination();
@@ -27,13 +27,13 @@ class ControlUnit {
   void UpdateJourney();
  private:
   /**
-   * If there are destionations left
+   * If there are destinations left
    */
   bool active_;
   /**
    * Queue of all our GPS destinations
    */
-  std::queue<GPSData> destination_;
+  std::queue<GPSData> destinations_;
 };
 
 #endif // SAILINGBOAT_INCLUDE_CONTROL_UNIT_H_

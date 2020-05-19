@@ -80,29 +80,29 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classControlUnit.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="classControlUnit.html">ControlUnit</a> {</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="classControlUnit.html#a9307936f7e6ce00660432fb616c82665">ControlUnit</a>(std::string destination);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="classControlUnit.html#ab135942b99240061fe34c92ddc6baf28">ControlUnit</a>(<span class="keyword">const</span> std::string &amp;destinations);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classControlUnit.html#a33252547cbdf2510dfee1bb09621bfbe">IsActive</a>();</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="structGPSData.html">GPSData</a> <a class="code" href="classControlUnit.html#a36bbbc5e44d1aa2eef7a5279ff12d67c">GetDestination</a>();</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classControlUnit.html#ae0e79689a5444c77ec3ad4032d9a3574">UpdateJourney</a>();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classControlUnit.html#a73a45934ccc050d881455543efadc9c9">   32</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classControlUnit.html#a73a45934ccc050d881455543efadc9c9">active_</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classControlUnit.html#a61a83a3dfb383a6439b5b3cbf9adeecb">   36</a></span>&#160;  std::queue&lt;GPSData&gt; <a class="code" href="classControlUnit.html#a61a83a3dfb383a6439b5b3cbf9adeecb">destination_</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classControlUnit.html#a80abedfbf0cf383d7ce0d47959e8f9ed">   36</a></span>&#160;  std::queue&lt;GPSData&gt; <a class="code" href="classControlUnit.html#a80abedfbf0cf383d7ce0d47959e8f9ed">destinations_</a>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif // SAILINGBOAT_INCLUDE_CONTROL_UNIT_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astructGPSData_html"><div class="ttname"><a href="structGPSData.html">GPSData</a></div><div class="ttdef"><b>Definition:</b> gps_data.h:5</div></div>
-<div class="ttc" id="aclassControlUnit_html_ae0e79689a5444c77ec3ad4032d9a3574"><div class="ttname"><a href="classControlUnit.html#ae0e79689a5444c77ec3ad4032d9a3574">ControlUnit::UpdateJourney</a></div><div class="ttdeci">void UpdateJourney()</div><div class="ttdef"><b>Definition:</b> control_unit.cc:29</div></div>
+<div class="ttc" id="aclassControlUnit_html_ae0e79689a5444c77ec3ad4032d9a3574"><div class="ttname"><a href="classControlUnit.html#ae0e79689a5444c77ec3ad4032d9a3574">ControlUnit::UpdateJourney</a></div><div class="ttdeci">void UpdateJourney()</div><div class="ttdef"><b>Definition:</b> control_unit.cc:32</div></div>
 <div class="ttc" id="agps__data_8h_html"><div class="ttname"><a href="gps__data_8h.html">gps_data.h</a></div></div>
 <div class="ttc" id="aclassControlUnit_html"><div class="ttname"><a href="classControlUnit.html">ControlUnit</a></div><div class="ttdef"><b>Definition:</b> control_unit.h:7</div></div>
-<div class="ttc" id="aclassControlUnit_html_a61a83a3dfb383a6439b5b3cbf9adeecb"><div class="ttname"><a href="classControlUnit.html#a61a83a3dfb383a6439b5b3cbf9adeecb">ControlUnit::destination_</a></div><div class="ttdeci">std::queue&lt; GPSData &gt; destination_</div><div class="ttdef"><b>Definition:</b> control_unit.h:36</div></div>
-<div class="ttc" id="aclassControlUnit_html_a9307936f7e6ce00660432fb616c82665"><div class="ttname"><a href="classControlUnit.html#a9307936f7e6ce00660432fb616c82665">ControlUnit::ControlUnit</a></div><div class="ttdeci">ControlUnit(std::string destination)</div><div class="ttdef"><b>Definition:</b> control_unit.cc:4</div></div>
-<div class="ttc" id="aclassControlUnit_html_a33252547cbdf2510dfee1bb09621bfbe"><div class="ttname"><a href="classControlUnit.html#a33252547cbdf2510dfee1bb09621bfbe">ControlUnit::IsActive</a></div><div class="ttdeci">bool IsActive()</div><div class="ttdef"><b>Definition:</b> control_unit.cc:20</div></div>
-<div class="ttc" id="aclassControlUnit_html_a36bbbc5e44d1aa2eef7a5279ff12d67c"><div class="ttname"><a href="classControlUnit.html#a36bbbc5e44d1aa2eef7a5279ff12d67c">ControlUnit::GetDestination</a></div><div class="ttdeci">GPSData GetDestination()</div><div class="ttdef"><b>Definition:</b> control_unit.cc:24</div></div>
+<div class="ttc" id="aclassControlUnit_html_a80abedfbf0cf383d7ce0d47959e8f9ed"><div class="ttname"><a href="classControlUnit.html#a80abedfbf0cf383d7ce0d47959e8f9ed">ControlUnit::destinations_</a></div><div class="ttdeci">std::queue&lt; GPSData &gt; destinations_</div><div class="ttdef"><b>Definition:</b> control_unit.h:36</div></div>
+<div class="ttc" id="aclassControlUnit_html_a33252547cbdf2510dfee1bb09621bfbe"><div class="ttname"><a href="classControlUnit.html#a33252547cbdf2510dfee1bb09621bfbe">ControlUnit::IsActive</a></div><div class="ttdeci">bool IsActive()</div><div class="ttdef"><b>Definition:</b> control_unit.cc:23</div></div>
+<div class="ttc" id="aclassControlUnit_html_ab135942b99240061fe34c92ddc6baf28"><div class="ttname"><a href="classControlUnit.html#ab135942b99240061fe34c92ddc6baf28">ControlUnit::ControlUnit</a></div><div class="ttdeci">ControlUnit(const std::string &amp;destinations)</div><div class="ttdef"><b>Definition:</b> control_unit.cc:4</div></div>
+<div class="ttc" id="aclassControlUnit_html_a36bbbc5e44d1aa2eef7a5279ff12d67c"><div class="ttname"><a href="classControlUnit.html#a36bbbc5e44d1aa2eef7a5279ff12d67c">ControlUnit::GetDestination</a></div><div class="ttdeci">GPSData GetDestination()</div><div class="ttdef"><b>Definition:</b> control_unit.cc:27</div></div>
 <div class="ttc" id="aclassControlUnit_html_a73a45934ccc050d881455543efadc9c9"><div class="ttname"><a href="classControlUnit.html#a73a45934ccc050d881455543efadc9c9">ControlUnit::active_</a></div><div class="ttdeci">bool active_</div><div class="ttdef"><b>Definition:</b> control_unit.h:32</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2020 16:27:22 for SailingBoat by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2020 16:38:25 for SailingBoat by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

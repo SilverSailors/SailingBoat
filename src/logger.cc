@@ -38,8 +38,7 @@ void Logger::Publish() {
     json_obj["sail_angle"] = log_.sail_angle;
     json_obj["timestamp"] = log_.timestamp;
 
-    IO io;
-    io.WriteFile(json_obj, file_path_);
+    IO::WriteFile(json_obj, file_path_);
     available_ = false;
   }
 }
@@ -53,6 +52,5 @@ void Logger::PublishWaypoint(const GPSData &from, const GPSData &to, const std::
   json_obj["message"] = message;
   json_obj["time"] = from.timestamp;
 
-  IO io;
-  io.WriteFile(json_obj, file_path_);
+  IO::WriteFile(json_obj, file_path_);
 }

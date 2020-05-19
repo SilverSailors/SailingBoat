@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
   else std::cout << "All modules initialized!" << std::endl;
 
   // Creates control unit for journey, with destinations path
-  ControlUnit control_unit("/home/pi/.config/sailingBoat/settings/destination.txt");
+  ControlUnit control_unit("/home/pi/.config/sailingBoat/settings/destinations.txt");
 
   // Our loggers
   time_t raw_time = std::time(nullptr);

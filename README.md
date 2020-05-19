@@ -94,6 +94,11 @@ so now all that's needed is to run the application as sudo like this:
 sudo sailingBoat
 ```
 
+## Code comments
+Sailing formula used: https://www.ensta-bretagne.fr/jaulin/paper_jaulin_irsc12.pdf
+
+When viewing doxygen documentation, open up index.html
+
 ## Optional add-on
 [Front-end](https://github.com/Dreameh/sailboat-logsite) can
 be used as a front-end for logs and adding coordinates to the
