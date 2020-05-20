@@ -31,15 +31,6 @@ void CalculationUnit::Controller(const GPSData &set_waypoint_1,
   double boat_to_line_distance = glm::dot(GPSToCartesian(boat_pos), norm);
   std::cout << "boat_to_line_distance: " << boat_to_line_distance << std::endl;
 
-  double dif_lat = set_waypoint_2.latitude - set_waypoint_1.latitude;
-  double dif_long = set_waypoint_2.longitude - set_waypoint_1.longitude;
-  double length = (dif_lat * (set_boat_pos.latitude - set_waypoint_1.latitude)
-      + dif_long * (set_boat_pos.longitude - set_waypoint_1.longitude))
-      / (dif_lat * dif_lat + dif_long * dif_long);
-  GPSData current_line = {set_waypoint_1.latitude + dif_lat * length, set_waypoint_1.longitude + dif_long * length};
-  boat_to_line_distance = boat_to_line_distance > 0 ? CalculateDistance(set_boat_pos, current_line) : -CalculateDistance(set_boat_pos, current_line);
-  std::cout << "boat_to_line_distance: " << boat_to_line_distance << std::endl;
-
   // Calculate tack variable
   if (favored_tack_ == 0) {
     favored_tack_ = Sign(boat_to_line_distance);
